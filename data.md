@@ -1,0 +1,332 @@
+Introduction
+Energy plays a key role cutting across sectors and impacting various aspects of development. Different aspects of development social, economic, environment, access to water, health, education, gender, agricultural productivity and livelihoods are directly or indirectly impacted by the energy sector. There is also a shifting paradigm where communities and people are being empowered by allowing them to choose how they wish to develop their resources. The Government here plays the role of a facilitator in comparison to the traditional role of being a provider. The empowerment of people in developing nations is very critical. Such initiatives help communities build greater resilience to negative changes, helps them withstand the onslaught of global market forces and most important of all, allows them to ensure an assured standard of quality life.
+
+Nagaland Empowerment of People through Energy Development (NEPeD)
+The previous phases of Nagaland Empowerment of People through Economic Development (NEPED), with a focus on livelihood and environment, created a need for energy as an essential requirement for adding value to farmer produce. Thus retaining the well-established acronym Nagaland Empowerment of People through Energy Development (NEPeD) came into being in 2007 comprising a multi-disciplinary team of 7 members.
+
+
+
+Vision Statement
+Nagaland has the unique distinction where people are empowered and have sustainable livelihoods by being part of a vibrant economy, driven by locally generated eco-friendly power that is being used for accelerated development. This enables Nagaland to leap-frog into the globalized world as a leader in sustainable development worthy of emulation.
+
+Mission Statement
+In order to achieve the vision, NEPeD shall work with the stakeholders to evolve a bottom-up approach to empower them to become partners in development and create awareness about green-energy utilization and its benefits for enhancing quality of life. Accumulated resources shall be judiciously used to create need-based infrastructure with a people centric approach to development. Working in a transparent manner, NEPeD becomes a replicable development model that inspires and mobilizes people and governments to succeed.
+ 
+ Aims:
+To implement community-based pico/micro hydro projects of sub megawatt level.
+To supplement and provide alternative energy needs in rural areas.
+To promote catchment area conservation in potential energy development sites
+To empower people for sustainable livelihood through locally generated eco-friendly power.
+To empower youth and women in sustainable livelihoods.
+To provide technical skills and capacities for rural employment.
+To facilitate entrepreneurship development and provide market linkages
+ Objectives: 
+To add value to the past and current activities of NEPED and allied projects in Nagaland and the northeast;
+To further promote research and development of the hydroger technology developed by NEPeD
+To sustainably streamline production and installation of the technology across the region
+To collaborate with both government and non-government agencies and organizations in the field of energy and rural development
+To ensure sustainable development through sustainable technologies and protection of the environment.
+ 
+
+ Team Members at Inception
+ 
+ 	Temjem Toy		
+ 
+
+ 	Mr.-Temjen-Toy (IAS)
+Team Leader	Lt. Mr. Raj K. Verma (NCS)
+Deputy Team Leader	 
+ 	 	 	 
+			
+
+Lt. Er. Shanchothung Odyuo
+POU Member
+
+Mr. Ari Jamir
+POU Member
+
+Mr. Mingthungo Ezung
+POU Member
+
+Ms Ayong Chang
+POU Member
+
+ 
+
+		
+Er. Cheong Konyak
+POU Member
+
+Renilo Nuh
+POU Member
+
+Takum Chang
+POU Member
+
+ Team Leaders
+aa1-Mr.-Temjen-Toy,-IAS,-Team-Leader	
+bb-H.K.-Khulu
+Mr.-Temjen-Toy (IAS)
+2007-2011	Mr H. K. Khulu
+2011-2012
+ 	 
+Mr Amardeep	
+cc1-Mr.-Menukhol-John,-NCS,-Team-Leader
+Mr Amardeep Singh (IAS)
+2012-2013
+Mr. Menukhol John
+Commissioner & Secretary
+2013 - 2018
+cc1-Mr.-Menukhol-John,-NCS,-Team-Leader	 
+Mr K. Libanthung Lotha
+Commissioner & Secretary
+2018 - Present
+ 
+
+ In Memoriam
+ 	 	 
+	 	
+Lt. Er. Shanchothung Odyuo
+11/12/1962 - 05/03/2010	 	Lt. Raj K. Verma (NCS)
+13/04/1959 - 03/02/2012
+ 
+
+ 	 
+ Present Team Members
+cc1-Mr.-Menukhol-John,-NCS,-Team-Leader
+Mr K. Libanthung Lotha
+Commissioner & Secretary
+2018 - Present
+ 	 	 
+		
+Er. Renbenthung Humtsoe
+POU Member
+
+Ayong Chang
+POU Member
+
+David Yepthomi
+POU Member
+
+ 	 	 
+		Takum Chang
+Er. Moamanen Imchen
+POU Member	Er. Imnayanger Imchen
+Coordinator
+NEPeD - CERES	Takum Chang
+POU Member
+
+What is Hydroger?
+Impulse ReactionThe technology is commonly called watermills. Based on the applicability in Nagaland, NEPeD coined the term ‘Hydroger’ (derived from the amalgamation of Hydro and Generator). The mechanism is unique in its simplicity. It comprises of cylindrical cast iron casing housing an alternator which is connected to the turbine through the shaft. Hydro (water) power is used to turn the turbine to generate energy. There are basically two types of turbines, Reaction and Impulse. Reaction turbine requires volume of water and less height and is suitable in low lying areas whereas Impulse turbine requires higher height and lower volume and is suitable for hilly areas.
+
+ 
+Indigenization:
+Initially, NEPeD addressed its objectives by importing pico machines (Chinese make). However, the poor performance of these imported Reaction Turbinemachines could not help NEPeD in its mission. Faced with these challenges, the Team decided to do R&D on the existing machines and collaborated with The Nagaland Mini Tool room and Training Centre (NMTTC) Dimapur, now known as Nagaland Tool Room and Training Centre (NTTC) for use of their facilities and personnel. R&D was done on the Permanent magnets, Stator windings for the alternator and turbine blades. Prototypes of a 1kW Reaction and a 3kW Impulse Hydroger were produced in 2008. These were found to be more efficient than the Chinese machines. The prototypes were successfully tested at NEPeD’s Testing and Demo Site at Phesama, 8km from Kohima in the presence of the Development Commissioner of Nagaland, Advisor NTTC and Power Department Officials and duly certified by them. To this effect, an MoU was signed between NEPeD and NTTC in 2009 for indigenization.
+
+NEPeD’s hydroger replication program was also supported by NABARD under their Rural Innovation Fund (RIF), for procurement of coils, permanent magnets, shafts, guide vanes and casings.
+
+
+
+Electronic Load Controller (ELC):
+The Hydrogers were being installed without Electronic Load Controllers (ELC) which meant that a tricky balance between power generation and load given had to be maintained often resulting in fused bulbs and damaged appliances. Thus emerged the urgent need for the ELCs to be provided as part and parcel of Hydroger installation. The major constraint was the high cost and the complete lack of compatible ones in the internal markets.
+NEPeD under its Entrepreneurship programme thus decided to fund and use the services of a private entrepreneur - an Electronic Engineer to do R&D on the ELC. He brought out a prototype in 2009 and field tested it with the ‘Made in Nagaland’ hydroger and the results were found to be very encouraging.
+
+Its main function is to give a steady power output using a simple electronic load censors to control the following parameters:
+
+(a) Constant Rpm of a generator
+(b) Required frequency
+(c) Overload
+(d) High voltage
+(e) Low voltage
+(f) Short circuiting
+
+ELC can also be used as synchronizer for coupling parallel connection of hydrogers. It can be used for higher capacity of hydro turbines. It is a handy apparatus which weighs about 1 kilogram.
+
+ Electronic Load Controller (ELC):
+The Hydrogers were being installed without Electronic Load Controllers (ELC) which meant that a tricky balance between power generation and load given had to be maintained often resulting in fused bulbs and damaged appliances. Thus emerged the urgent need for the ELCs to be provided as part and parcel of Hydroger installation. The major constraint was the high cost and the complete lack of compatible ones in the internal markets.
+NEPeD under its Entrepreneurship programme thus decided to fund and use the services of a private entrepreneur - an Electronic Engineer to do R&D on the ELC. He brought out a prototype in 2009 and field tested it with the ‘Made in Nagaland’ hydroger and the results were found to be very encouraging.
+
+Its main function is to give a steady power output using a simple electronic load censors to control the following parameters:
+
+(a) Constant Rpm of a generator
+(b) Required frequency
+(c) Overload
+(d) High voltage
+(e) Low voltage
+(f) Short circuiting
+
+ELC can also be used as synchronizer for coupling parallel connection of hydrogers. It can be used for higher capacity of hydro turbines. It is a handy apparatus which weighs about 1 kilogram.
+
+ SPECIFICATIONS
+1. Capacity	:	3Kw
+2. Rate RPM	:	750
+3. Frequency	:	50Hz single phase
+4. Voltage	:	230 - 240V
+5. Shaft & Nozzle Material	:	M/steel
+6. Nozzles	:	1 or 2 depending on head & discharge
+7. Bearing	:	2 nos, 1 roller bearing (top), 1 taper roller bearing (bottom)
+8. Turbine Turgo Runners on steel hub	:	18 to 43 nos,depending  on discharge
+9. Controller	:	Indigenous Electronic Load Controller (ELC)
+10. Permanent magnetic core type	:	8 poles with copper winding alternators
+11. Casting Materials	:	Cast iron
+12. Discharge Range	:	10-40lts/sec
+13. Head Range	:	9-35m
+14. Pitch dia. of Turbine	:	16.14 to 31.5cm
+15. Gross Weight	:	78 kilograms
+ 	 	 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+SALIENT FEATURES
+ 
+USES
+ 
+1. Generates clean green energy
+2. Provided with Electronic Load
+3. Easily transportable
+4. Easy to install
+5. Environment friendly	 	1. Lighting
+2. Computer/television
+3. Refrigerator
+4. Cooking
+5. Juicing
+6. Milling
+7. Battery/mobile charging	 
+ 
+Expected benefits:
+Access to pico hydro units (Hydrogers) provide energy required for lighting up wayside amenities, juicing, milk chilling plant and poultry by the poor villagers with zero percent maintenance. Rural youth have started using electrically operated carpentry tools with the energy generated from hydrogers. Such income generating activities could be established in many villages with supply of reliable energy. The technology will also require maintenance for which selected youth could be trained and create scope to employ them through the creation of “Rural Engineers” a concept propounded by NEPeD.
+
+Economic disparity due to energy shortage could be reduced by making use of appropriate technology. Hydroger will introduce rural people to clean renewable energy and its utilization for improving the quality of life. It is observed that many villages have started conserving their water shed areas after installing hydrogers as the villagers attain logical understanding that water shed areas are very important for sustenance of perennial streams thereby sustaining energy generation from their hydrogers.
+
+Women’s every day schedule is always multi-tasking starting from fetching water in the morning, cooking, caring for the children, going to field and collecting firewood. Their evening is also as laborious as the day. Energy is required to ease and save women’s time spent in cooking, collecting and using wood as fuel. Using energy from hydroger at night will give women more time to work on marketable products like sorting vegetables, weaving and knitting at night. School going children will also have more time to study which will have an impact on rural education. Hydroger technology could be a useful tool for reduction of women drudgery.
+
+
+Impacts
+NEPeD has been installing indigenously made or “Made in Nagaland” Hydroger systems both within and outside Nagaland. The low cost, light weight, easy operation and versatile utility of the Hydroger systems have allowed widespread adoption of such systems among rural folk.
+
+There are many dimensions to this Hydroger project. Not only does it help address basic power needs of people living in the villages but it has impacts in the environment, social and economic sectors. Communities with Hydroger Systems undergo capacity building and conservation of environmental ideas is deeply ingrained as part of this training. Each project site is also capacitated and facilitated to evolve their own revenue model.
+
+Hydroger being a clean and alternative source of renewable energy has made an impact for delivering energy. Further, NEPeD while introducing and popularising this technology, has also encouraged the villagers to maintain the upland catchment areas to ensure supply of water. The demand of Hydroger is ever increasing from within the state as well as from the neighbouring states.
+
+Setting up of Hydroger projects have been done following a model which is holistic, integrated and can be replicated in other areas as well. The common sectoral impacts as registered by the existing Hydroger Project Sites are presented below.
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 	 	 	 
+TUENSANG
+
+Langnok
+Chiphur
+Shopelak
+Longra
+Kingjung
+Aniashu
+Kingpao
+Deithung
+Pang
+LONGLENG
+
+Yanglok
+Anaki C (L. Bulom's Farm)
+Yongyah
+KIPHIRE
+
+Achumse's farm
+Hurong (Chemlongse's farm)
+Kaha
+Tukhinkiu Village
+MON
+
+Sheangha wamsa
+Nyanhyu
+ 	 	 	 
+KOHIMA
+
+Khiyokie
+Tsiepama
+Logwesunyu
+Phesama
+Sendenyu Model Farm Village
+MOKOKCHUNG
+
+Salulamang
+Longkong
+Longkhum
+Kubolong
+DIMAPUR
+
+Seithekima
+PEREN
+
+Datui’s Farm
+ 	 	 	 
+ZUNHEBOTO
+
+Kheshepu
+Phushito's farm - Xuivi village
+ 	 	 
+ 	 	 	 
+MEGHALAYA
+
+Sakhri Village
+Mawlyngbna
+ 
+
+SIKKIM
+
+Martam
+ 
+
+ARUNACHAL PRADESH
+
+Pongging village
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
