@@ -9,6 +9,13 @@ import { BentoCell, BentoGrid, ContainerScroll } from "@/components/ui/hero-gall
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { ArcGalleryHero } from "@/components/ui/arc-gallery-hero-component";
 import AnimatedCardStack from "@/components/ui/animate-card-animation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const revealVariants = {
   hidden: { opacity: 0, y: 25, filter: "blur(8px)" },
@@ -23,18 +30,6 @@ const revealVariants = {
   },
 };
 
-function Pill({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <span
-      className={
-        "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium " +
-        (dark ? "bg-ink text-white" : "bg-white text-ink")
-      }
-    >
-      {children}
-    </span>
-  );
-}
 
 function ArrowCircle({ tone = "amber" }: { tone?: "amber" | "ink" | "white" }) {
   const cls =
@@ -65,7 +60,7 @@ export function HomePage() {
   return (
     <div className="space-y-4">
       {/* HERO */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, filter: "blur(15px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -80,6 +75,9 @@ export function HomePage() {
             "/solar-field.png",
             "/microgrid.png",
             "/forest.png",
+            "/mountain-windmills.png",
+            "/orange-building.png",
+            "/hero.png",
           ]}
           title="Clean, Green & Affordable Energy for Nagaland"
           subtitle="Empowering communities through indigenous micro-hydro generators and smart off-grid solutions built in the Northeast."
@@ -90,7 +88,7 @@ export function HomePage() {
       </motion.section>
 
       {/* INTERACTIVE CAROUSEL DECK */}
-      <section className="relative overflow-hidden rounded-3xl bg-white border border-ink/5 p-8 flex flex-col items-center">
+      <section className="relative overflow-hidden rounded-3xl border border-ink/5 p-8 flex flex-col items-center">
         <div className="text-center max-w-xl mb-4">
           <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">Explore NEPeD</span>
           <h2 className="text-2xl font-bold tracking-tight text-ink mt-1">
@@ -113,8 +111,8 @@ export function HomePage() {
       <HydrogersSection />
 
       {/* DARK STATS */}
-      <motion.section 
-        id="impact" 
+      <motion.section
+        id="impact"
         initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
@@ -130,7 +128,7 @@ export function HomePage() {
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <DottedWorldMap />
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
@@ -144,7 +142,7 @@ export function HomePage() {
             }}
             className="grid grid-cols-2 gap-6 self-end"
           >
-            <motion.div 
+            <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
                 visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } }
@@ -155,7 +153,7 @@ export function HomePage() {
                 Founded by the Government of Nagaland as an independent registered society (NGO).
               </p>
             </motion.div>
-            <motion.div 
+            <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
                 visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } }
@@ -166,7 +164,7 @@ export function HomePage() {
                 Hydrogers and Electronic Load Controllers — designed and manufactured in Nagaland.
               </p>
             </motion.div>
-            <motion.div 
+            <motion.div
               variants={{
                 hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
                 visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } }
@@ -189,7 +187,7 @@ export function HomePage() {
       </motion.section>
 
       {/* IMPACT NARRATIVE */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
@@ -200,7 +198,7 @@ export function HomePage() {
         <p className="text-xl leading-snug md:col-span-6 text-ink">
           Every Hydroger installed and every village electrified is a step toward energy independence for the rural communities of Nagaland.
         </p>
-        <motion.article 
+        <motion.article
           initial={{ opacity: 0, x: 20, filter: "blur(6px)" }}
           whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           viewport={{ once: true }}
@@ -230,8 +228,8 @@ export function HomePage() {
       <TechCards />
 
       {/* PROJECTS */}
-      <motion.section 
-        id="projects" 
+      <motion.section
+        id="projects"
         initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
@@ -252,7 +250,7 @@ export function HomePage() {
       </motion.section>
 
       {/* CTA BANNER */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-100px" }}
@@ -340,17 +338,17 @@ function DottedWorldMap() {
     // 5 letters: N, E, P, E, D
     const letterWidth = 10;
     const startX = 2; // offset from left border
-    
+
     // Determine which letter index (0 to 4)
     const relativeX = x - startX;
     if (relativeX < 0 || relativeX >= 58) return false;
-    
+
     const letterIndex = Math.floor(relativeX / 12);
     const lx = relativeX % 12; // 0 to 11
-    
+
     // Check padding inside each letter slot
     if (lx >= letterWidth) return false; // space between letters
-    
+
     // y goes from 0 to 23. Let's draw the letters between y = 4 and y = 19 (height = 16)
     const ly = y - 4;
     if (ly < 0 || ly >= 16) return false;
@@ -481,7 +479,7 @@ function TimelineSection() {
       aria-label="NEPeD timeline"
     >
       <div className="sticky top-28 flex h-[70vh] flex-col justify-center overflow-hidden">
-        <motion.div 
+        <motion.div
           variants={revealVariants}
           initial="hidden"
           whileInView="visible"
@@ -622,7 +620,7 @@ function TechCards() {
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
@@ -632,7 +630,7 @@ function TechCards() {
         <SectionNum n="04" />
         <span className="text-xs text-ink-soft">Hover to explore</span>
       </motion.div>
-      <motion.div 
+      <motion.div
         variants={staggerContainer}
         className="grid grid-cols-1 gap-4 md:grid-cols-3"
       >
@@ -667,7 +665,7 @@ function TechCards() {
           );
         })}
       </motion.div>
-      <motion.div 
+      <motion.div
         variants={cardItemVariants}
         className="relative mt-4 h-[420px] overflow-hidden rounded-3xl bg-ink"
       >
@@ -677,7 +675,7 @@ function TechCards() {
             src={c.img}
             alt={c.alt}
             initial={{ opacity: 0, scale: 1.02, filter: "blur(4px)" }}
-            animate={{ 
+            animate={{
               opacity: active === i ? 1 : 0,
               scale: active === i ? 1 : 1.02,
               filter: active === i ? "blur(0px)" : "blur(4px)",
@@ -699,105 +697,140 @@ function ProjectsCarousel() {
   const slides = [
     {
       tag: "Ongoing",
-      title: "Hydroger Micro-grids\nfor Rural Farmers",
-      body:
-        "Indigenous Hydrogers paired with locally built ELCs deliver reliable power to remote villages across Nagaland — supporting livelihoods of rural farmers and households.",
+      title: "Hydroger Micro-grids for Rural Farmers",
+      body: "Indigenous Hydrogers paired with locally built ELCs deliver reliable power to remote villages across Nagaland — supporting livelihoods of rural farmers and households.",
       img: microgrid,
       alt: "Hybrid microgrid construction at sunset",
       pills: ["Hydroger", "Nagaland"],
     },
     {
       tag: "Deployed",
-      title: "Community Solar\nfor Naga Villages",
-      body:
-        "Village-scale solar installations built with local artisans, expanding clean energy access to households beyond the reach of the central grid.",
+      title: "Community Solar for Naga Villages",
+      body: "Village-scale solar installations built with local artisans, expanding clean energy access to households beyond the reach of the central grid.",
       img: solarField,
       alt: "Solar field across a green valley",
       pills: ["Solar", "Community"],
     },
     {
       tag: "Regional",
-      title: "Wind & Hybrid Systems\nAcross Northeast India",
-      body:
-        "Sustainable hybrid installations extending NEPeD's Made-in-Nagaland approach to neighbouring states — mountain wind paired with micro-hydro.",
+      title: "Wind & Hybrid Systems Across Northeast India",
+      body: "Sustainable hybrid installations extending NEPeD's Made-in-Nagaland approach to neighbouring states — mountain wind paired with micro-hydro.",
       img: mountainWindmills,
       alt: "Wind turbines on mountain ridge",
       pills: ["Wind", "NE India"],
     },
   ];
 
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const doubleSlides = [...slides, ...slides, ...slides];
 
-  const goTo = (i: number) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const clamped = Math.max(0, Math.min(slides.length - 1, i));
-    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
-  };
-
-  const onScroll = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    const i = Math.round(el.scrollLeft / el.clientWidth);
-    if (i !== active) setActive(i);
-  };
+  const cssStyles = `
+    .ProjectsCarousal .swiper-pagination-bullet-active {
+      background: var(--color-ink, #111111) !important;
+      width: 24px;
+      border-radius: 4px;
+    }
+    .ProjectsCarousal {
+      padding-bottom: 40px !important;
+    }
+  `;
 
   return (
-    <div className="mt-8">
-      <div
-        ref={trackRef}
-        onScroll={onScroll}
-        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    <div className="mt-8 w-full relative">
+      <style>{cssStyles}</style>
+
+      <Swiper
+        spaceBetween={30}
+        effect="coverflow"
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.15,
+            spaceBetween: 15,
+          },
+          640: {
+            slidesPerView: 1.6,
+            spaceBetween: 25,
+          },
+          1024: {
+            slidesPerView: 2.1,
+            spaceBetween: 35,
+          },
+        }}
+        coverflowEffect={{
+          rotate: 0,
+          slideShadows: false,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.0,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={{
+          nextEl: ".projects-btn-next",
+          prevEl: ".projects-btn-prev",
+        }}
+        className="ProjectsCarousal"
+        modules={[EffectCoverflow, Pagination, Navigation]}
       >
-        {slides.map((s) => (
-          <article
-            key={s.title}
-            className="min-w-full shrink-0 snap-center pr-0"
-          >
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-              <div className="md:col-span-4">
-                <p className="text-xs text-ink-soft">{s.tag}</p>
-                <h4 className="mt-2 whitespace-pre-line text-2xl font-semibold leading-tight text-ink">
-                  {s.title}
-                </h4>
-                <p className="mt-3 text-sm text-ink-soft">{s.body}</p>
-                <a
-                  href="#projects"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline transition-all duration-150 active-scale"
-                >
-                  Read More <span aria-hidden>→</span>
-                </a>
-              </div>
-              <div className="relative overflow-hidden rounded-2xl md:col-span-8 border border-ink/5 shadow-sm">
+        {doubleSlides.map((s, index) => (
+          <SwiperSlide key={index} className="w-full select-none cursor-grab active:cursor-grabbing">
+            <div className="bg-white border border-ink/5 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-[400px]">
+              {/* Image Frame */}
+              <div className="h-56 w-full relative overflow-hidden bg-canvas">
                 <img
+                  className="h-full w-full object-cover"
                   src={s.img}
                   alt={s.alt}
-                  width={1200}
-                  height={800}
                   loading="lazy"
-                  className="h-[320px] w-full object-cover"
+                  draggable={false}
                 />
-                <div className="absolute right-4 top-4 flex gap-2">
-                  <Pill>{s.pills[0]}</Pill>
-                  <Pill dark>{s.pills[1]}</Pill>
+                <span className="absolute left-4 top-4 px-3 py-1 rounded-full bg-accent-amber text-ink text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                  {s.tag}
+                </span>
+                <div className="absolute right-4 top-4 flex gap-1.5">
+                  {s.pills.map((p) => (
+                    <span key={p} className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-ink text-[9px] font-semibold border border-ink/5 shadow-sm">
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Content Details */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h4 className="text-lg font-bold text-ink leading-snug tracking-tight">
+                    {s.title}
+                  </h4>
+                  <p className="text-xs text-ink-soft leading-relaxed line-clamp-3">
+                    {s.body}
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <a
+                    href="#projects"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-accent-amber hover:text-ink transition-colors"
+                  >
+                    Read details →
+                  </a>
                 </div>
               </div>
             </div>
-          </article>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
-      <div className="mt-6 flex justify-center gap-1.5">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => goTo(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 active-scale ${active === i ? "w-6 bg-ink" : "w-1.5 bg-ink/30 hover:bg-ink/50"
-              }`}
-          />
-        ))}
+      {/* Navigation Controls */}
+      <div className="flex justify-center gap-4 mt-2">
+        <button className="projects-btn-prev p-3 rounded-full border border-ink/10 bg-white text-ink hover:bg-canvas active-scale transition-all cursor-pointer shadow-sm">
+          <ChevronLeftIcon size={16} />
+        </button>
+        <button className="projects-btn-next p-3 rounded-full border border-ink/10 bg-white text-ink hover:bg-canvas active-scale transition-all cursor-pointer shadow-sm">
+          <ChevronRightIcon size={16} />
+        </button>
       </div>
     </div>
   );

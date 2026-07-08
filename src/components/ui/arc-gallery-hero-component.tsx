@@ -28,12 +28,12 @@ type ArcGalleryHeroProps = {
 export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   images,
   startAngle = 20,
-  radiusLg = 480,
-  radiusMd = 360,
-  radiusSm = 260,
+  radiusLg = 360,
+  radiusMd = 280,
+  radiusSm = 180,
   cardSizeLg = 120,
-  cardSizeMd = 100,
-  cardSizeSm = 80,
+  cardSizeMd = 90,
+  cardSizeSm = 70,
   className = "",
   title = "Rediscover Your Memories with AI",
   subtitle = "Our intelligent platform finds, organizes, and brings your most cherished moments back to life.",
@@ -172,7 +172,7 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
       </div>
 
       {/* Content positioned below the arc */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-6 -mt-20 sm:-mt-28 md:-mt-36 lg:-mt-44 pb-16">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-6 -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-28 pb-16">
         <motion.div 
           className="text-center max-w-2xl px-6"
           variants={containerVariants}
@@ -180,13 +180,13 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
           animate="visible"
         >
           <motion.h1 
-            className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-[108px] font-normal leading-[0.9] tracking-[-0.04em] text-ink"
             variants={itemVariants}
           >
             {title}
           </motion.h1>
           <motion.p 
-            className="mt-4 text-base sm:text-lg text-ink-soft"
+            className="mt-6 text-sm sm:text-[18px] font-normal leading-[1.5] text-ink-soft max-w-xl mx-auto"
             variants={itemVariants}
           >
             {subtitle}

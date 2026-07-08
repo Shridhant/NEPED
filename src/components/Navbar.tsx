@@ -102,7 +102,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => handleLinkClick(cat.basePath)}
-                className={`flex items-center gap-1 rounded-full px-4 py-2 font-medium hover:bg-ink/5 transition-colors duration-150 active-scale cursor-pointer ${hoveredIndex === idx ? "bg-ink/5" : ""
+                className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium hover:bg-ink/5 transition-colors duration-150 active-scale cursor-pointer ${hoveredIndex === idx ? "bg-ink/5" : ""
                   }`}
               >
                 {cat.title}
@@ -149,7 +149,7 @@ export function Navbar() {
             <Link
               to="/#projects"
               onClick={() => handleLinkClick("/#projects")}
-              className="rounded-full px-4 py-2 font-medium hover:bg-ink/5 transition-colors duration-150 active-scale"
+              className="rounded-full px-4 py-2 text-sm font-medium hover:bg-ink/5 transition-colors duration-150 active-scale"
             >
               Projects
             </Link>
