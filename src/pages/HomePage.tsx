@@ -532,14 +532,24 @@ function TimelineSection() {
 
 function HydrogersSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.12]);
-  const textY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.0, isMobile ? 1.05 : 1.12]);
+  const textY = useTransform(scrollYProgress, [0, 1], [isMobile ? 0 : 40, isMobile ? 0 : -40]);
 
   return (
     <section
@@ -560,7 +570,7 @@ function HydrogersSection() {
         </p>
       </div>
 
-      <div className="relative w-full h-[300px] sm:h-[400px] md:h-[480px] overflow-hidden rounded-3xl border border-ink/5 shadow-md">
+      <div className="relative w-full h-[220px] sm:h-[320px] md:h-[440px] lg:h-[480px] overflow-hidden rounded-3xl border border-ink/5 shadow-md">
         <motion.img
           src={forest}
           alt="Forest canopy powering Hydrogers"
