@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import TeamShowcase, { type TeamMember } from "@/components/ui/team-showcase";
 
 const revealVariants = {
   hidden: { opacity: 0, y: 25, filter: "blur(8px)" },
@@ -23,14 +24,14 @@ const staggerContainer = {
 };
 
 export function AboutPage() {
-  const presentTeam = [
-    { name: "Mr. K. Libanthung Lotha", role: "Commissioner & Secretary (Team Leader)", period: "2018 - Present" },
-    { name: "Er. Renbenthung Humtsoe", role: "POU Member", period: "Present" },
-    { name: "Ayong Chang", role: "POU Member", period: "Present" },
-    { name: "David Yepthomi", role: "POU Member", period: "Present" },
-    { name: "Takum Chang", role: "POU Member", period: "Present" },
-    { name: "Er. Moamanen Imchen", role: "POU Member", period: "Present" },
-    { name: "Er. Imnayanger Imchen", role: "Coordinator (NEPeD - CERES)", period: "Present" },
+  const presentTeam: TeamMember[] = [
+    { id: "1", name: "Mr. K. Libanthung Lotha", role: "Commissioner & Secretary (Team Leader) • 2018 - Present", image: "/people/Klibathung.jpg" },
+    { id: "2", name: "Er. Renbenthung Humtsoe", role: "POU Member • Present", image: "/people/erenbeuthang.jpg" },
+    { id: "3", name: "Ayong Chang", role: "POU Member • Present", image: "/people/ayongchang.jpg" },
+    { id: "4", name: "David Yepthomi", role: "POU Member • Present", image: "/people/davidyepthomi.jpg" },
+    { id: "5", name: "Takum Chang", role: "POU Member • Present", image: "/people/takum.jpg" },
+    { id: "6", name: "Er. Moamanen Imchen", role: "POU Member • Present", image: "/people/ermoamanen.jpg" },
+    { id: "7", name: "Er. Imnayanger Imchen", role: "Coordinator (NEPeD - CERES) • Present", image: "/people/erimyanger.jpg" },
   ];
 
   const inceptionTeam = [
@@ -197,25 +198,7 @@ export function AboutPage() {
         {/* Present Team Members Grid */}
         <div className="space-y-6">
           <h3 className="text-lg font-bold text-ink uppercase tracking-wider">Present POU Members</h3>
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {presentTeam.map((member) => (
-              <motion.div
-                key={member.name}
-                variants={revealVariants}
-                className="bg-white border border-ink/5 rounded-2xl p-5 shadow-sm space-y-2 hover:shadow-md transition-all active-scale cursor-default"
-              >
-                <div className="font-bold text-base text-ink">{member.name}</div>
-                <div className="text-xs text-accent-amber font-semibold">{member.role}</div>
-                <div className="text-[10px] text-ink-soft">{member.period}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <TeamShowcase members={presentTeam} />
         </div>
 
         {/* Leaders Timeline Grid */}
