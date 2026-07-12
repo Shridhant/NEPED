@@ -79,7 +79,7 @@ export function Navbar() {
       initial={{ opacity: 0, y: -15, filter: "blur(8px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      className="sticky top-4 sm:top-6 z-50 flex items-center justify-between gap-4 rounded-full bg-white/80 border border-ink/5 p-1.5 shadow-sm backdrop-blur-md max-w-[1200px] mx-auto mb-6"
+      className="sticky top-4 sm:top-6 z-50 flex items-center justify-between gap-4 rounded-full bg-white/80 border border-ink/5 p-1.5 shadow-sm backdrop-blur-md max-w-[1200px] mx-auto mb-6 [font-family:'Inter',sans-serif] text-[14px] font-medium tracking-[-0.01em] text-[#222]"
     >
       <div className="flex items-center gap-2 relative">
         <Link
@@ -92,7 +92,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Menu links with dropdown subcategories */}
-        <ul className="hidden items-center gap-1 px-2 text-sm text-ink sm:flex">
+        <ul className="hidden items-center gap-1 px-2 text-[14px] font-medium tracking-[-0.01em] text-[#222] sm:flex">
           {categories.map((cat, idx) => (
             <li
               key={cat.title}
@@ -102,7 +102,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => handleLinkClick(cat.basePath)}
-                className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium hover:bg-ink/5 transition-colors duration-150 active-scale cursor-pointer ${hoveredIndex === idx ? "bg-ink/5" : ""
+                className={`flex items-center gap-1 rounded-full px-4 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#222] hover:bg-ink/5 transition-colors duration-150 active-scale cursor-pointer ${hoveredIndex === idx ? "bg-ink/5" : ""
                   }`}
               >
                 {cat.title}
@@ -149,7 +149,7 @@ export function Navbar() {
             <Link
               to="/#projects"
               onClick={() => handleLinkClick("/#projects")}
-              className="rounded-full px-4 py-2 text-sm font-medium hover:bg-ink/5 transition-colors duration-150 active-scale"
+              className="rounded-full px-4 py-2 text-[14px] font-medium tracking-[-0.01em] text-[#222] hover:bg-ink/5 transition-colors duration-150 active-scale"
             >
               Projects
             </Link>

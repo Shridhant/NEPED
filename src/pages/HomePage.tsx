@@ -7,7 +7,7 @@ import mountainWindmills from "@/assets/mountain-windmills.png";
 import microgrid from "@/assets/microgrid.png";
 import { BentoCell, BentoGrid, ContainerScroll } from "@/components/ui/hero-gallery-scroll-animation";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
-import { ArcGalleryHero } from "@/components/ui/arc-gallery-hero-component";
+import { LayoutPreloader } from "@/components/ui/layout-preloader";
 import AnimatedCardStack from "@/components/ui/animate-card-animation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
@@ -60,32 +60,13 @@ export function HomePage() {
   return (
     <div className="space-y-4">
       {/* HERO */}
-      <motion.section
-        initial={{ opacity: 0, filter: "blur(15px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="relative overflow-hidden rounded-3xl bg-white dark:bg-ink/5 border border-ink/5"
-      >
-        <ArcGalleryHero
-          images={[
-            "/hero-windmill.png",
-            "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
-            "/49 Visitors at NEPeD's stall (Republic day 2016).jpg",
-            "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
-            "/solar-field.png",
-            "/microgrid.png",
-            "/forest.png",
-            "/mountain-windmills.png",
-            "/orange-building.png",
-            "/hero.png",
-          ]}
-          title="Clean, Green & Affordable Energy for Nagaland"
-          subtitle="Empowering communities through indigenous micro-hydro generators and smart off-grid solutions built in the Northeast."
-          primaryButtonText="Our Projects"
-          secondaryButtonText="Learn More"
-          className="pt-10"
-        />
-      </motion.section>
+      <LayoutPreloader
+        title={"Sustainable Living\nStarts Here"}
+        subtitle="Empowering communities through indigenous micro-hydro generators and smart off-grid solutions designed, built and deployed in the Northeast."
+        primaryLabel="Learn More"
+        secondaryLabel="Learn More"
+        secondaryHref="/about"
+      />
 
       {/* INTERACTIVE CAROUSEL DECK */}
       <section className="relative overflow-hidden rounded-3xl border border-ink/5 p-8 flex flex-col items-center">
@@ -355,13 +336,14 @@ function DottedWorldMap() {
 
     // Inside the letter subgrid of width 10 (lx = 0..9) and height 16 (ly = 0..15):
     switch (letterIndex) {
-      case 0: // N
+      case 0: { // N
         if (lx === 0 || lx === 1) return true;
         if (lx === 8 || lx === 9) return true;
         // Diagonal stroke connecting (1,0) to (8,15)
         const diagX = 1 + Math.floor((ly / 15) * 7);
         if (lx === diagX || lx === diagX + 1) return true;
         return false;
+      }
 
       case 1: // E
         if (lx === 0 || lx === 1) return true;
@@ -415,8 +397,19 @@ function DottedWorldMap() {
 function TimelineSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const onScroll = () => {
       const el = wrapperRef.current;
       if (!el) return;
@@ -432,7 +425,7 @@ function TimelineSection() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   const items = [
     {
@@ -475,10 +468,10 @@ function TimelineSection() {
     <section
       ref={wrapperRef}
       className="relative mt-16"
-      style={{ height: "200vh" }}
+      style={{ height: isMobile ? "auto" : "200vh" }}
       aria-label="NEPeD timeline"
     >
-      <div className="sticky top-28 flex h-[70vh] flex-col justify-center overflow-hidden">
+      <div className={isMobile ? "relative py-4" : "sticky top-28 flex h-[70vh] flex-col justify-center overflow-hidden"}>
         <motion.div
           variants={revealVariants}
           initial="hidden"
@@ -496,14 +489,19 @@ function TimelineSection() {
         </motion.div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
           {items.map((it, i) => {
-            const p = cardProgress(i);
-            const tx = (1 - p) * 80 * it.from;
+            const p = isMobile ? 1 : cardProgress(i);
+            const tx = isMobile ? 0 : (1 - p) * 80 * it.from;
+            const ty = isMobile ? 0 : (1 - p) * 20;
             return (
-              <article
+              <motion.article
                 key={it.title}
-                style={{
+                initial={isMobile ? { opacity: 0, y: 35 } : undefined}
+                whileInView={isMobile ? { opacity: 1, y: 0 } : undefined}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+                style={isMobile ? undefined : {
                   opacity: p,
-                  transform: `translate3d(${tx}px, ${(1 - p) * 20}px, 0)`,
+                  transform: `translate3d(${tx}px, ${ty}px, 0)`,
                 }}
                 className="overflow-hidden rounded-2xl bg-white shadow-sm will-change-transform border border-ink/5"
               >
@@ -515,16 +513,18 @@ function TimelineSection() {
                   <h4 className="mt-1 text-base font-semibold leading-snug text-ink">{it.title}</h4>
                   <p className="mt-2 text-xs leading-snug text-ink-soft">{it.body}</p>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>
-        <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-ink/10">
-          <div
-            className="h-full bg-ink transition-[width] duration-100"
-            style={{ width: `${Math.round(progress * 100)}%` }}
-          />
-        </div>
+        {!isMobile && (
+          <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-ink/10">
+            <div
+              className="h-full bg-ink transition-[width] duration-100"
+              style={{ width: `${Math.round(progress * 100)}%` }}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
