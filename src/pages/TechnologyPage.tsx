@@ -1,308 +1,351 @@
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import microgrid from "@/assets/microgrid.png";
-import forest from "@/assets/forest.png";
-
-const revealVariants = {
-  hidden: { opacity: 0, y: 25, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.8,
-      ease: [0.23, 1, 0.32, 1] as const,
-    },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-function StripeCard({
-  tag,
-  title,
-  body,
-  imageSrc,
-  linkHref = "#",
-  linkLabel = "Learn more",
-}: {
-  tag: string;
-  title: string;
-  body: string;
-  imageSrc: string;
-  linkHref?: string;
-  linkLabel?: string;
-}) {
-  return (
-    <motion.div 
-      variants={revealVariants}
-      className="w-full h-[480px] group mx-auto bg-white border border-ink/5 overflow-hidden rounded-3xl text-ink shadow-sm hover:shadow-md transition-shadow"
-    >
-      <figure className="w-full h-76 group-hover:h-68 transition-all duration-300 bg-canvas p-2 rounded-2xl relative overflow-hidden">
-        <div
-          style={{
-            background: "linear-gradient(123.9deg, #f59e0b 1.52%, rgba(0, 0, 0, 0) 68.91%)",
-          }}
-          className="absolute top-0 left-0 w-full h-full group-hover:opacity-40 opacity-0 transition-all duration-300 mix-blend-multiply"
-        />
-        <img
-          src={imageSrc}
-          alt={title}
-          className="absolute -bottom-1 group-hover:-bottom-5 right-0 h-60 w-[85%] group-hover:border-4 border-4 border-[#76aaf82d] group-hover:border-accent-amber/20 rounded-2xl object-cover transition-all duration-300"
-        />
-      </figure>
-      <article className="p-5 space-y-2">
-        <div className="inline-flex px-3 py-1 rounded-full bg-accent-amber/15 text-accent-amber text-[10px] font-bold uppercase tracking-wider">
-          {tag}
-        </div>
-        <h4 className="text-xl font-bold capitalize text-ink">{title}</h4>
-        <p className="text-xs text-ink-soft leading-relaxed line-clamp-3">
-          {body}
-        </p>
-        <a
-          href={linkHref}
-          className="text-xs text-[#0B65ED] font-semibold group-hover:opacity-100 opacity-0 translate-y-2 group-hover:translate-y-0 pt-1 flex items-center gap-1 transition-all duration-300"
-        >
-          {linkLabel}
-          <span>
-            <ChevronRight size={14} />
-          </span>
-        </a>
-      </article>
-    </motion.div>
-  );
-}
+import { useEffect, useState } from "react";
+import {
+  SectionLabel,
+  SectionHeading,
+  TextArrowButton,
+} from "@/components/ui/AkerPrimitives";
 
 export function TechnologyPage() {
-  const specs = [
-    { name: "Capacity", value: "3 kW" },
-    { name: "Rate RPM", value: "750" },
-    { name: "Frequency", value: "50Hz (Single Phase)" },
-    { name: "Voltage", value: "230 - 240 V" },
-    { name: "Shaft & Nozzle Material", value: "M/steel" },
-    { name: "Nozzles", value: "1 or 2 depending on head & discharge" },
-    { name: "Bearings", value: "2 nos (1 roller bearing top, 1 taper roller bearing bottom)" },
-    { name: "Turbine Turgo Runners", value: "18 to 43 nos, depending on discharge on steel hub" },
-    { name: "Controller", value: "Indigenous Electronic Load Controller (ELC)" },
-    { name: "Permanent Magnetic Core", value: "8 poles with copper winding alternators" },
-    { name: "Casting Materials", value: "Cast iron" },
-    { name: "Discharge Range", value: "10 - 40 lts/sec" },
-    { name: "Head Range", value: "9 - 35 m" },
-    { name: "Pitch Diameter of Turbine", value: "16.14 to 31.5 cm" },
-    { name: "Gross Weight", value: "78 kg" },
-  ];
+  const [activeTab, setActiveTab] = useState<"3kw" | "5kw" | "10kw">("3kw");
 
-  const elcFunctions = [
-    { letter: "A", title: "Constant RPM", desc: "Regulates generator speeds under dynamic loading." },
-    { letter: "B", title: "Required Frequency", desc: "Locks system output directly at 50Hz single-phase." },
-    { letter: "C", title: "Overload Shielding", desc: "Senses power peaks and redirects energy to dummy load." },
-    { letter: "D", title: "Voltage Regulation", desc: "Keeps output between 230-240V, avoiding low/high surges." },
-    { letter: "E", title: "Short Circuit Protection", desc: "Auto-disconnects output during severe network faults." },
-    { letter: "F", title: "Parallel Coupling", desc: "Functions as a synchronizer for coupling parallel connections." },
-  ];
+  useEffect(() => {
+    document.title = "Technology & Hydrogers — NEPeD Indigenous Micro-Hydro";
+  }, []);
 
-  const uses = [
-    "General lighting & wayside amenities",
-    "Computers, TV, and electronics support",
-    "Refrigeration & cold storage",
-    "Household cooking & heating",
-    "Fruit juicing & community mills",
-    "Agricultural milling machines",
-    "Battery & mobile device charging hubs",
-  ];
+  const specs = {
+    "3kw": {
+      name: "NEPeD Hydroger 3kW Model",
+      head: "25 – 45 Meters",
+      discharge: "12 – 18 Litres/Sec",
+      output: "3.0 kVA / 230V Single Phase",
+      ideal: "Single village hamlets (15–25 households) for lighting & basic processing.",
+      rpm: "1500 RPM (Belt-driven / Direct)",
+      alternator: "Brushless synchronous AC generator",
+      weight: "~85 kg (Modular for mountain porterage)",
+    },
+    "5kw": {
+      name: "NEPeD Hydroger 5kW Model",
+      head: "35 – 60 Meters",
+      discharge: "18 – 25 Litres/Sec",
+      output: "5.0 kVA / 230V Single Phase",
+      ideal: "Medium village clusters (30–50 households) + community agro-mills.",
+      rpm: "1500 RPM synchronous",
+      alternator: "Class H insulation, tropicalized brushless",
+      weight: "~110 kg (Modular cast assembly)",
+    },
+    "10kw": {
+      name: "NEPeD Hydroger 10kW Model",
+      head: "50 – 90 Meters",
+      discharge: "25 – 40 Litres/Sec",
+      output: "10.0 kVA / 415V Three Phase",
+      ideal: "Large village centers, small cottage industries & multi-hamlet mini-grids.",
+      rpm: "1500 RPM synchronous",
+      alternator: "Industrial continuous duty alternator",
+      weight: "~175 kg (Cast iron modular casing)",
+    },
+  };
+
+  const currentSpec = specs[activeTab];
 
   return (
-    <div className="space-y-24 py-10">
-      {/* Hydrogers Section */}
-      <section id="hydrogers" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">01 / Mechanical Innovation</span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink mt-3">
-            Hydroger Technology
+    <div className="w-full space-y-20 sm:space-y-28">
+      {/* 1. FULL-BLEED HERO */}
+      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/microgrid.png"
+            alt="Hydroger Technology"
+            className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
+        </div>
+
+        <div className="relative z-10 pt-16 sm:pt-20 max-w-[500px]">
+          <SectionLabel dark={true} className="mb-2">
+            01 / Indigenous Engineering
+          </SectionLabel>
+          <h1 className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">
+            The Hydroger & ELC System
           </h1>
-          <p className="mt-8 text-base sm:text-lg text-ink-soft leading-relaxed">
-            Coined from the amalgamation of <strong>Hydro</strong> and <strong>Generator</strong>, the "Hydroger" is a simplified watermill mechanism designed specifically for the rugged terrain of Nagaland. Comprising a cylindrical cast iron casing housing an alternator, it converts mountain stream power into clean electrical energy.
+          <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
+            Pioneered and manufactured in Nagaland, our pico-hydro turbines harness high-velocity mountain streams to deliver clean 230V baseload electricity.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Impulse vs Reaction Grid */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          <StripeCard
-            tag="Hilly Streams"
-            title="Impulse Turbines"
-            body="Designed for high head (height) and low volume locations. Ideal for mountainous streams with steep drops, utilizing high velocity jet nozzles to turn turbine runners (like Turgo runners) mounted on a steel hub."
-            imageSrc={microgrid}
-            linkHref="#hydrogers"
-            linkLabel="Explore Impulse Designs"
-          />
-          <StripeCard
-            tag="Low Lying Regions"
-            title="Reaction Turbines"
-            body="Best suited for low head height and large volume flows. These turbines run completely submerged, utilizing pressure differences and volume flow to generate power in valley and river basin sites."
-            imageSrc={forest}
-            linkHref="#hydrogers"
-            linkLabel="Explore Reaction Designs"
-          />
-        </motion.div>
-
-        {/* Indigenization R&D Story */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="rounded-3xl bg-ink p-8 text-white space-y-6 sm:p-12"
-        >
-          <div className="max-w-2xl space-y-3">
-            <span className="text-xs uppercase tracking-widest text-accent-amber font-mono">The Indigenization Journey</span>
-            <h3 className="text-3xl font-semibold leading-tight">Made in Nagaland</h3>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Faced with poor performance from imported pico turbines, the NEPeD team launched a custom R&D initiative in 2008 in collaboration with the Nagaland Tool Room and Training Centre (NTTC) Dimapur. Re-engineering permanent magnets, stator windings, and turbine blade materials, they successfully designed 1kW Reaction and 3kW Impulse prototypes. Tested and certified at Phesama, an MOU in 2009 laid the pathway for 100% local production, backed by NABARD's Rural Innovation Fund.
-            </p>
-          </div>
-        </motion.div>
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
+          <span>Sub-Megawatt Pico Hydro • Solid-State Electronic Load Balancing</span>
+          <a href="#specs" className="hover:text-white transition-colors">
+            View Technical Specs ↓
+          </a>
+        </div>
       </section>
 
-      {/* ELC Section */}
-      <section id="elc" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">02 / Electrical Stability</span>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink mt-3">
-            Electronic Load Controllers
-          </h2>
-          <p className="mt-4 text-sm text-ink-soft leading-relaxed">
-            Running standalone generators without regulation often causes voltage surges, damaged appliances, and fused bulbs. To solve this, NEPeD designed its own light, 1kg Electronic Load Controller (ELC). By balancing generator output with demand automatically, the ELC provides steady, safe voltage.
-          </p>
-        </motion.div>
+      {/* 2. TWO-COLUMN FEATURE CARDS (Hydroger + ELC) */}
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-8">
+          <SectionLabel>02 / Core Components</SectionLabel>
+          <SectionHeading size="lg" className="mt-1">
+            Precision engineering for off-grid resilience
+          </SectionHeading>
+        </div>
 
-        {/* ELC Functions Grid */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {elcFunctions.map((func) => (
-            <motion.div
-              key={func.title}
-              variants={revealVariants}
-              className="bg-white border border-ink/5 rounded-2xl p-6 shadow-sm flex gap-4 hover:shadow-md transition-shadow duration-200"
-            >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-amber/20 text-accent-amber font-mono font-bold text-sm">
-                {func.letter}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Mist (#e5e4e4) Hydroger Card */}
+          <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[420px]">
+            <div>
+              <span className="text-[12px] font-mono text-[#666666] uppercase tracking-wider">
+                Component A
               </span>
-              <div className="space-y-1">
-                <h4 className="font-bold text-sm text-ink">{func.title}</h4>
-                <p className="text-[11px] text-ink-soft leading-relaxed">{func.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              <h3 className="text-[30px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] mt-3">
+                Indigenous Hydroger
+              </h3>
+              <p className="text-[15px] text-[#494949] mt-3 leading-relaxed">
+                The Hydroger turbine incorporates an impulse Pelton/cross-flow runner encased in a modular chassis. Built to withstand silted mountain water with minimal maintenance.
+              </p>
 
-        {/* Technical specifications and uses */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Specs sheet table */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={revealVariants}
-            className="lg:col-span-7 bg-white rounded-3xl border border-ink/5 overflow-hidden shadow-sm"
-          >
-            <div className="p-6 border-b border-ink/5 bg-ink/5">
-              <h3 className="font-bold text-base text-ink">Technical Specifications</h3>
-              <p className="text-[10px] text-ink-soft mt-1">Standard 3kW Pico Hydroger System specifications</p>
-            </div>
-            <div className="divide-y divide-ink/5 text-xs">
-              {specs.map((item) => (
-                <div key={item.name} className="grid grid-cols-12 p-3.5 hover:bg-ink/5 transition-colors">
-                  <div className="col-span-5 font-semibold text-ink-soft">{item.name}</div>
-                  <div className="col-span-7 font-medium text-ink">{item.value}</div>
+              <div className="mt-6 space-y-2 border-t border-[#000000]/10 pt-4 text-[13px] text-[#262626]">
+                <div className="flex justify-between">
+                  <span>Available Capacities:</span>
+                  <span className="font-mono font-medium">3 kW / 5 kW / 10 kW</span>
                 </div>
+                <div className="flex justify-between">
+                  <span>Manufacturing:</span>
+                  <span className="font-mono font-medium">Fabricated in Nagaland</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Design Life:</span>
+                  <span className="font-mono font-medium">15+ Years Continuous</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <TextArrowButton to="#specs" variant="pill">
+                Explore Capacities
+              </TextArrowButton>
+            </div>
+          </div>
+
+          {/* Card 2: Char (#1c1c1c) ELC Card with Hardware Image */}
+          <div id="elc" className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[420px]">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider">
+                  Component B • Dimapur R&D
+                </span>
+                <span className="text-[11px] font-mono bg-white/10 text-[#ffffff] px-2 py-0.5 rounded-[1584px]">
+                  ~1 kg Apparatus
+                </span>
+              </div>
+              <h3 className="text-[30px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
+                Electronic Load Controller (ELC)
+              </h3>
+              <p className="text-[14px] text-[#e5e4e4]/80 mt-3 leading-relaxed">
+                Originally, Hydrogers lacked ELCs, requiring tricky manual load balancing that often fused bulbs and damaged appliances. Under its Entrepreneurship Programme, NEPeD funded a local Electronic Engineer who built a working prototype in 2009.
+              </p>
+
+              <div className="my-4 aspect-[16/9] rounded-[6px] overflow-hidden bg-[#070707] border border-white/10">
+                <img
+                  src="/elc-device.png"
+                  alt="NEPeD Electronic Load Controller Device"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="space-y-1.5 text-[12px] text-[#e5e4e4]">
+                <div className="font-medium text-[#b75928]">Controls 6 Parameters:</div>
+                <div className="grid grid-cols-2 gap-1 text-[12px] text-[#8d8d8d]">
+                  <span>(a) Constant Generator RPM</span>
+                  <span>(b) Frequency (12–60Hz)</span>
+                  <span>(c) Overload Protection</span>
+                  <span>(d) High Voltage Cutoff</span>
+                  <span>(e) Low Voltage Regulation</span>
+                  <span>(f) Short Circuit Protection</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/10 mt-4 flex items-center justify-between">
+              <span className="text-[12px] text-[#8d8d8d]">Parallel Hydroger Synchronizer</span>
+              <TextArrowButton to="#specs" dark={true} variant="pill">
+                Turbine Specs
+              </TextArrowButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. INTERACTIVE TECHNICAL SPECIFICATIONS EXHIBIT */}
+      <section id="specs" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-8 sm:p-12">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 gap-4 border-b border-[#e5e4e4] pb-6">
+            <div>
+              <SectionLabel>Technical Data Sheet</SectionLabel>
+              <SectionHeading size="md" className="mt-1">
+                Hydroger Turbine Specifications
+              </SectionHeading>
+            </div>
+
+            {/* Pill Selector */}
+            <div className="flex items-center gap-2 bg-[#e5e4e4]/50 p-1 rounded-[1584px]">
+              {(["3kw", "5kw", "10kw"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-1.5 rounded-[1584px] text-[13px] font-medium transition-all ${
+                    activeTab === tab
+                      ? "bg-[#1c1c1c] text-[#ffffff]"
+                      : "text-[#666666] hover:text-[#000000]"
+                  }`}
+                >
+                  {tab.toUpperCase()} Unit
+                </button>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Uses & Salient Features */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={revealVariants}
-            className="lg:col-span-5 space-y-8"
-          >
-            <div className="bg-white border border-ink/5 rounded-3xl p-8 shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-ink">Salient Features</h3>
-              <ul className="space-y-3.5 text-xs text-ink-soft">
-                <li className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="text-accent-amber shrink-0">
-                    <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M4 6l1.5 1.5L8 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <span>100% clean, green, renewable energy</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="text-accent-amber shrink-0">
-                    <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M4 6l1.5 1.5L8 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <span>Pre-bundled with smart ELC regulation</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="text-accent-amber shrink-0">
-                    <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M4 6l1.5 1.5L8 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <span>Lightweight (78kg gross) and highly transportable</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="text-accent-amber shrink-0">
-                    <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M4 6l1.5 1.5L8 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  <span>No heavy civil works; easy to install & maintain</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white border border-ink/5 rounded-3xl p-8 shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-ink">Supported Energy Uses</h3>
-              <div className="grid grid-cols-1 gap-2.5">
-                {uses.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-xs text-ink-soft">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent-amber shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-5 space-y-4">
+              <h3 className="text-[24px] font-light text-[#000000]">{currentSpec.name}</h3>
+              <p className="text-[14px] text-[#666666] leading-relaxed">
+                {currentSpec.ideal}
+              </p>
+              <div className="p-4 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-2 text-[13px]">
+                <div className="text-[#8d8d8d] uppercase text-[11px] font-mono">Portability Profile</div>
+                <p className="text-[#000000]">{currentSpec.weight}</p>
+                <p className="text-[#666666]">Designed for remote mountain transport without heavy machinery.</p>
               </div>
             </div>
-          </motion.div>
+
+            <div className="lg:col-span-7">
+              <table className="w-full text-left text-[14px]">
+                <tbody>
+                  <tr className="border-b border-[#e5e4e4]">
+                    <td className="py-3.5 text-[#8d8d8d] font-normal w-1/3">Operating Head</td>
+                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.head}</td>
+                  </tr>
+                  <tr className="border-b border-[#e5e4e4]">
+                    <td className="py-3.5 text-[#8d8d8d] font-normal">Water Flow Rate</td>
+                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.discharge}</td>
+                  </tr>
+                  <tr className="border-b border-[#e5e4e4]">
+                    <td className="py-3.5 text-[#8d8d8d] font-normal">Rated Output</td>
+                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.output}</td>
+                  </tr>
+                  <tr className="border-b border-[#e5e4e4]">
+                    <td className="py-3.5 text-[#8d8d8d] font-normal">Operating Speed</td>
+                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.rpm}</td>
+                  </tr>
+                  <tr className="border-b border-[#e5e4e4]">
+                    <td className="py-3.5 text-[#8d8d8d] font-normal">Alternator Spec</td>
+                    <td className="py-3.5 text-[#000000]">{currentSpec.alternator}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. MICROGRID ARCHITECTURE (Pine & Tide Surfaces) */}
+      <section id="microgrids" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Pine Card */}
+          <div className="bg-[#193f32] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+            <div>
+              <SectionLabel dark={true} className="text-[#e5e4e4]">
+                Off-Grid Architecture
+              </SectionLabel>
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
+                Decentralized Village Grids
+              </h3>
+              <p className="text-[15px] text-[#e5e4e4]/80 mt-3 leading-relaxed">
+                Distribution lines run directly from the powerhouse to village dwellings, eliminating expensive long-distance transmission line losses.
+              </p>
+            </div>
+            <div className="pt-6">
+              <TextArrowButton to="/impact" dark={true} variant="pill">
+                View Village Case Studies
+              </TextArrowButton>
+            </div>
+          </div>
+
+          {/* Tide Card */}
+          <div className="bg-[#002934] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+            <div>
+              <SectionLabel dark={true} className="text-[#e5e4e4]">
+                Zero Emission
+              </SectionLabel>
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
+                Run-of-the-River Impact
+              </h3>
+              <p className="text-[15px] text-[#e5e4e4]/80 mt-3 leading-relaxed">
+                No large dams or flooded valleys. Water is diverted through a small forebay tank, passed through the runner, and returned 100% cleanly to the stream.
+              </p>
+            </div>
+            <div className="pt-6">
+              <TextArrowButton to="/about" dark={true} variant="pill">
+                Environmental Policy
+              </TextArrowButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. PROJECTS IMPLEMENTED UNDER NEPeD (ENERGY DEVELOPMENT) */}
+      <section id="energy-projects" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-8 sm:p-12">
+          <div className="mb-8">
+            <SectionLabel>Government Sponsored Schemes</SectionLabel>
+            <SectionHeading size="md" className="mt-1">
+              Projects Implemented Under NEPeD (Energy Division)
+            </SectionHeading>
+            <p className="text-[14px] text-[#666666] mt-2 max-w-xl">
+              Official energy technology deployments funded by central ministries and regional development councils.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
+              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2015 – 2016 • MNRE</span>
+              <h4 className="text-[17px] font-medium text-[#000000]">
+                Installation of 30 Watermills / Pico Hydrogers
+              </h4>
+              <div className="text-[12px] text-[#b75928] font-medium">
+                Ministry of New and Renewable Energy (MNRE), GoI
+              </div>
+              <p className="text-[13px] text-[#666666] leading-relaxed">
+                Upgraded and deployed 30 indigenous pico-hydro installations across remote hill villages in Nagaland.
+              </p>
+            </div>
+
+            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
+              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2017 – 2019 • NEC</span>
+              <h4 className="text-[17px] font-medium text-[#000000]">
+                Development of Made-in-Nagaland Hydrogers
+              </h4>
+              <div className="text-[12px] text-[#b75928] font-medium">
+                North Eastern Council (NEC)
+              </div>
+              <p className="text-[13px] text-[#666666] leading-relaxed">
+                R&D initiative to standardise and fabricate indigenous Pico Hydro (Hydroger) turbines locally in Nagaland.
+              </p>
+            </div>
+
+            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
+              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2018 – 2026 • NAFCC</span>
+              <h4 className="text-[17px] font-medium text-[#000000]">
+                National Adaptation Fund for Climate Change
+              </h4>
+              <div className="text-[12px] text-[#b75928] font-medium">
+                Ministry of Agriculture, Govt. of India
+              </div>
+              <p className="text-[13px] text-[#666666] leading-relaxed">
+                Empowering mountain villages to mitigate seasonal flow fluctuations and secure sustainable power.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,0 +1,45 @@
+---
+id: "7"
+slug: "pristine-catchment-conservation"
+title: "Catchment Area Watershed Preserves"
+subtitle: "Eco-Stewardship Sustaining Mountain River Baseloads"
+eventDate: "Ongoing Archive"
+location: "Community Conserved Areas (CCAs)"
+district: "Statewide Nagaland"
+category: "Watershed Landscapes"
+coverImage: "/forest.png"
+description: "Preservation and natural regeneration of virgin cloud forests and mountain spring basins that feed the perennial streams driving NEPeD hydrogers and rural drinking water supplies."
+historicalContext: "A core principle of NEPeD's energy philosophy is that hydrogers cannot generate electricity without perennial water, and streams cannot flow without protected forest catchments. Installing a hydroger creates an immediate economic incentive for villages to declare upstream forests as protected sanctuaries."
+
+keyHighlights:
+  - "Over 40,000+ hectares of mountain catchment forests protected by customary village resolutions."
+  - "Natural reforestation of degraded mountain slopes with indigenous Alder and hardwood species."
+  - "Perennial river discharge maintained through dry winter seasons."
+  - "Synergy between energy self-reliance and biodiversity conservation."
+
+tags:
+  - "Catchment Conservation"
+  - "Watersheds"
+  - "Cloud Forests"
+  - "Ecological Stewardship"
+
+photos:
+  - id: "pc-1"
+    url: "/forest.png"
+    title: "Pristine Catchment Cloud Forest"
+    caption: "Dense native canopy in an upstream watershed basin acting as a natural sponge for perennial river recharge."
+    location: "Nagaland Highlands"
+    year: "2020"
+  - id: "pc-2"
+    url: "/mountain-windmills.png"
+    title: "High-Altitude Ridges and Watershed Divide"
+    caption: "Panoramic mountain divide where precipitation feeds multiple stream channels across tribal valleys."
+    location: "Mountain Ridge"
+    year: "2020"
+  - id: "pc-3"
+    url: "/solar-field.png"
+    title: "Ecological Solar Catchment Monitoring Station"
+    caption: "Micro-meteorological monitoring node recording precipitation and temperature gradients."
+    location: "Ridge Station"
+    year: "2020"
+---

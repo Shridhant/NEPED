@@ -1,18 +1,10 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const revealVariants = {
-  hidden: { opacity: 0, y: 25, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.8,
-      ease: [0.23, 1, 0.32, 1] as const,
-    },
-  },
-};
+import { useEffect, useState } from "react";
+import {
+  SectionLabel,
+  SectionHeading,
+  TextArrowButton,
+  PillBadge,
+} from "@/components/ui/AkerPrimitives";
 
 interface LocationGroup {
   region: string;
@@ -21,191 +13,259 @@ interface LocationGroup {
 }
 
 const locations: LocationGroup[] = [
-  { region: "Kohima", state: "Nagaland", villages: ["Khiyokie", "Tsiepama", "Logwesunyu", "Phesama", "Sendenyu Model Farm Village"] },
-  { region: "Tuensang", state: "Nagaland", villages: ["Langnok", "Chiphur", "Shopelak", "Longra", "Kingjung", "Aniashu", "Kingpao", "Deithung", "Pang"] },
-  { region: "Mokokchung", state: "Nagaland", villages: ["Salulamang", "Longkong", "Longkhum", "Kubolong"] },
-  { region: "Kiphire", state: "Nagaland", villages: ["Achumse's farm", "Hurong (Chemlongse's farm)", "Kaha", "Tukhinkiu Village"] },
-  { region: "Longleng", state: "Nagaland", villages: ["Yanglok", "Anaki C (L. Bulom's Farm)", "Yongyah"] },
-  { region: "Mon", state: "Nagaland", villages: ["Sheangha wamsa", "Nyanhyu"] },
-  { region: "Zunheboto", state: "Nagaland", villages: ["Kheshepu", "Phushito's farm - Xuivi village"] },
-  { region: "Dimapur", state: "Nagaland", villages: ["Seithekima"] },
-  { region: "Peren", state: "Nagaland", villages: ["Datui’s Farm"] },
-  { region: "Meghalaya", state: "Neighbouring States", villages: ["Sakhri Village", "Mawlyngbna"] },
-  { region: "Sikkim", state: "Neighbouring States", villages: ["Martam"] },
-  { region: "Arunachal Pradesh", state: "Neighbouring States", villages: ["Pongging village"] }
+  {
+    region: "Kohima",
+    state: "Nagaland",
+    villages: ["Khiyokie", "Tsiepama", "Logwesunyu", "Phesama", "Sendenyu Model Farm Village"],
+  },
+  {
+    region: "Tuensang",
+    state: "Nagaland",
+    villages: ["Langnok", "Chiphur", "Shopelak", "Longra", "Kingjung", "Aniashu", "Kingpao", "Deithung", "Pang"],
+  },
+  {
+    region: "Mokokchung",
+    state: "Nagaland",
+    villages: ["Salulamang", "Longkong", "Longkhum", "Kubolong"],
+  },
+  {
+    region: "Kiphire",
+    state: "Nagaland",
+    villages: ["Achumse's farm", "Hurong (Chemlongse's farm)", "Kaha", "Tukhinkiu Village"],
+  },
+  {
+    region: "Longleng",
+    state: "Nagaland",
+    villages: ["Yanglok", "Anaki C (L. Bulom's Farm)", "Yongyah"],
+  },
+  {
+    region: "Mon",
+    state: "Nagaland",
+    villages: ["Sheangha wamsa", "Nyanhyu"],
+  },
+  {
+    region: "Zunheboto",
+    state: "Nagaland",
+    villages: ["Kheshepu", "Phushito's farm - Xuivi village"],
+  },
+  {
+    region: "Dimapur",
+    state: "Nagaland",
+    villages: ["Seithekima R&D Base"],
+  },
+  {
+    region: "Peren",
+    state: "Nagaland",
+    villages: ["Datui’s Farm"],
+  },
+  {
+    region: "Meghalaya",
+    state: "Neighbouring States",
+    villages: ["Sakhri Village", "Mawlyngbna"],
+  },
+  {
+    region: "Sikkim",
+    state: "Neighbouring States",
+    villages: ["Martam"],
+  },
+  {
+    region: "Arunachal Pradesh",
+    state: "Neighbouring States",
+    villages: ["Pongging village"],
+  },
 ];
 
 export function ImpactPage() {
-  const [activeRegion, setActiveRegion] = useState<string | null>("Kohima");
+  const [activeRegion, setActiveRegion] = useState<string>("Kohima");
 
-  const benefits = [
+  useEffect(() => {
+    document.title = "Impact & Village Deployments — NEPeD";
+  }, []);
+
+  const selectedLocation = locations.find((l) => l.region === activeRegion) || locations[0];
+
+  const pillars = [
     {
+      num: "01",
       title: "Reduction of Women's Drudgery",
-      desc: "Clean light saves hours collected for firewood, making evening routines safer. Villagers use hydroger energy to ease cooking, fetching water, and sorting crops.",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent-amber">
-          <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 12c-4.42 0-8 2.24-8 5v3h16v-3c0-2.76-3.58-5-8-5z" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      desc: "Clean light eliminates dangerous evening firewood collection routines. Hydroger energy eases household cooking, water pumping, and manual grain milling.",
     },
     {
+      num: "02",
       title: "Night-Time Cottage Livelihoods",
-      desc: "Lighting gives weavers, knitters, and farmers extra hours to produce marketable goods at night. Rural carpenters use electrical tools to run cottage industries.",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent-amber">
-          <path d="M2 22h20M12 2v20M5 12h14" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      desc: "Lighting gives weavers, knitters, and artisans extra productive evening hours. Rural carpenters use electric grinding and cutting tools to launch local enterprises.",
     },
     {
-      title: "Rural Employment & 'Rural Engineers'",
-      desc: "Youth are selected and trained locally to run and maintain hydrogers, creating dedicated scope for rural employment under NEPeD's 'Rural Engineers' concept.",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent-amber">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      num: "03",
+      title: "Rural Engineers Program",
+      desc: "Local youths are trained as certified hydro operators and maintenance engineers, establishing skilled, long-term employment directly inside rural villages.",
     },
     {
-      title: "Water Catchment Area Conservation",
-      desc: "Knowing streamflow is key to power, villages set up protected catchment zones. Hydrogers introduce logical understanding of forest preservation to safeguard water supplies.",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent-amber">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
-    }
+      num: "04",
+      title: "Catchment Forest Conservation",
+      desc: "Recognizing that uninterrupted streamflow directly guarantees electricity, village councils establish legally protected watershed preservation belts.",
+    },
   ];
 
   return (
-    <div className="space-y-24 py-10">
-      {/* Benefits Section */}
-      <section id="benefits" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">01 / Social & Economic Upliftment</span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink mt-3">
-            Impact & Community Benefits
-          </h1>
-          <p className="mt-8 text-base sm:text-lg text-ink-soft leading-relaxed">
-            Beyond electricity, pico hydro projects foster social change. Communities taking part build greater resilience to external market forces, protect water resources, and establish self-sustaining revenue systems that allow them to determine their own standard of living.
-          </p>
-        </motion.div>
+    <div className="w-full space-y-20 sm:space-y-28">
+      {/* 1. FULL-BLEED HERO */}
+      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/20 Kingjung Village Energy Committee (2).jpg"
+            alt="Village Energy Committee"
+            className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
+        </div>
 
-        {/* Benefits Grid */}
+        <div className="relative z-10 pt-16 sm:pt-20 max-w-[500px]">
+          <SectionLabel dark={true} className="mb-2">
+            01 / Community Footprint
+          </SectionLabel>
+          <h1 className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">
+            Village Impact & Transformations
+          </h1>
+          <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
+            From remote hilltops in Tuensang to neighbouring Himalayan states, NEPeD hydrogers power off-grid communities with sustainable green electricity.
+          </p>
+        </div>
+
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
+          <span>75+ Installed Micro-Hydro Sites • 12 Districts & 3 States</span>
+          <a href="#villages" className="hover:text-white transition-colors">
+            Explore Village Directory ↓
+          </a>
+        </div>
+      </section>
+
+      {/* 2. FOUR IMPACT PILLARS (2-Column Grid with Mist & White cards) */}
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-8">
+          <SectionLabel>02 / Transformation Pillars</SectionLabel>
+          <SectionHeading size="lg" className="mt-1">
+            Empowering grassroots development
+          </SectionHeading>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {benefits.map((benefit, idx) => (
-            <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className="bg-white border border-ink/5 rounded-3xl p-8 shadow-sm space-y-4 hover:shadow-md transition-shadow"
+          {pillars.map((p) => (
+            <div
+              key={p.num}
+              className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between transition-all duration-200 hover:border-[#000000]"
             >
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-amber/10">
-                {benefit.icon}
+              <div>
+                <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider">
+                  Pillar {p.num}
+                </span>
+                <h3 className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.5px] mt-2">
+                  {p.title}
+                </h3>
+                <p className="text-[15px] text-[#666666] mt-3 leading-relaxed">
+                  {p.desc}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-ink">{benefit.title}</h3>
-              <p className="text-xs text-ink-soft leading-relaxed">{benefit.desc}</p>
-            </motion.div>
+              <div className="pt-6 mt-4 border-t border-[#e5e4e4] flex items-center justify-between text-[12px] text-[#8d8d8d]">
+                <span>Grassroots Impact</span>
+                <span className="text-[#b75928] font-medium">NEPeD Model</span>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Deployments Section */}
-      <section id="deployments" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">02 / Regional Footprint</span>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink mt-3">
-            Deployments Directory
-          </h2>
-          <p className="mt-4 text-sm text-ink-soft">
-            NEPeD has successfully replicated and deployed indigenously made Hydroger units in remote rural areas across Nagaland and neighbouring Northeast states.
-          </p>
-        </motion.div>
-
-        {/* Interactive accordion/tab listing */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Navigation regions list */}
-          <div className="md:col-span-4 flex flex-wrap md:flex-col gap-1.5">
-            <div className="w-full text-xs font-bold text-ink-soft uppercase tracking-wider mb-2 px-3 hidden md:block">
-              District / State
-            </div>
-            {locations.map((loc) => {
-              const isActive = activeRegion === loc.region;
-              return (
-                <button
-                  key={loc.region}
-                  onClick={() => setActiveRegion(loc.region)}
-                  className={`px-4 py-2.5 rounded-full text-xs font-semibold text-left transition-all active-scale cursor-pointer ${
-                    isActive
-                      ? "bg-ink text-white shadow-sm"
-                      : "bg-white text-ink border border-ink/5 hover:bg-ink/5"
-                  }`}
-                >
-                  <span className="flex items-center justify-between gap-4">
-                    <span>{loc.region}</span>
-                    <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-full ${
-                      isActive ? "bg-accent-amber text-ink" : "bg-ink/5 text-ink-soft"
-                    }`}>
-                      {loc.villages.length}
-                    </span>
-                  </span>
-                </button>
-              );
-            })}
+      {/* 3. INTERACTIVE REGIONAL VILLAGE DIRECTORY */}
+      <section id="villages" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#e5e4e4]/40 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-12">
+          <div className="max-w-xl mb-8">
+            <SectionLabel>Field Installation Registry</SectionLabel>
+            <SectionHeading size="md" className="mt-1">
+              Select a District or State
+            </SectionHeading>
+            <p className="text-[14px] text-[#666666] mt-2">
+              Browse hydroger installations, village committees, and micro-grid sites across the region.
+            </p>
           </div>
 
-          {/* Villages panel */}
-          <div className="md:col-span-8 bg-white border border-ink/5 rounded-3xl p-6 sm:p-10 shadow-sm min-h-[300px]">
-            <AnimatePresence mode="wait">
-              {locations
-                .filter((loc) => loc.region === activeRegion)
-                .map((loc) => (
-                  <motion.div
-                    key={loc.region}
-                    initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-6"
-                  >
-                    <div>
-                      <div className="text-[10px] text-accent-amber font-bold uppercase tracking-widest">{loc.state}</div>
-                      <h3 className="text-2xl font-bold text-ink mt-1">{loc.region}</h3>
-                      <p className="text-xs text-ink-soft mt-1">
-                        Active Hydroger installations supporting households and local mills:
-                      </p>
-                    </div>
+          {/* Pill Selector */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {locations.map((loc) => (
+              <button
+                key={loc.region}
+                type="button"
+                onClick={() => setActiveRegion(loc.region)}
+                className={`px-4 py-2 rounded-[1584px] text-[13px] font-medium transition-all ${
+                  activeRegion === loc.region
+                    ? "bg-[#1c1c1c] text-[#ffffff]"
+                    : "bg-[#ffffff] text-[#000000] border border-[#e5e4e4] hover:border-[#000000]"
+                }`}
+              >
+                {loc.region}
+                <span className="ml-1.5 text-[11px] opacity-70">
+                  ({loc.villages.length})
+                </span>
+              </button>
+            ))}
+          </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-ink/5">
-                      {loc.villages.map((village, idx) => (
-                        <div
-                          key={village}
-                          className="flex items-center gap-3 p-3 bg-canvas/30 border border-ink/5 rounded-2xl hover:bg-canvas transition-colors"
-                        >
-                          <span className="h-6 w-6 rounded-full bg-accent-amber/15 text-accent-amber flex items-center justify-center text-xs font-bold font-mono">
-                            {idx + 1}
-                          </span>
-                          <span className="text-xs font-semibold text-ink leading-tight">{village}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-            </AnimatePresence>
+          {/* Selected Region Card */}
+          <div className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-6 sm:p-8">
+            <div className="flex items-center justify-between border-b border-[#e5e4e4] pb-4 mb-6">
+              <div>
+                <span className="text-[11px] uppercase tracking-wider text-[#8d8d8d] font-mono">
+                  {selectedLocation.state}
+                </span>
+                <h3 className="text-[26px] font-light text-[#000000]">
+                  {selectedLocation.region} Deployments
+                </h3>
+              </div>
+              <PillBadge>{selectedLocation.villages.length} Sites Documented</PillBadge>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {selectedLocation.villages.map((village, idx) => (
+                <div
+                  key={village}
+                  className="p-4 bg-[#e5e4e4]/30 rounded-[6px] border border-[#e5e4e4] flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-[11px] font-mono text-[#8d8d8d]">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[14px] font-medium text-[#000000]">
+                      {village}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-[#b75928]">Active Grid</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TONAL FEATURE PANEL (Char #1c1c1c Gallery Card) */}
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
+          <div className="max-w-xl space-y-4">
+            <SectionLabel dark={true} className="text-[#b75928]">
+              Rural Sustainability Concept
+            </SectionLabel>
+            <h3 className="text-[32px] sm:text-[40px] font-light text-[#ffffff] tracking-[-0.72px] leading-tight">
+              The 'Rural Engineers' Framework
+            </h3>
+            <p className="text-[15px] text-[#e5e4e4]/80 leading-relaxed font-serif italic">
+              “Empowerment is incomplete without local autonomy. By training village youth to assemble, troubleshoot, and operate hydrogers without outside dependencies, NEPeD turns recipients into engineers.”
+            </p>
+            <div className="pt-4 flex items-center gap-4">
+              <TextArrowButton to="/about" dark={true} variant="pill">
+                About the Society
+              </TextArrowButton>
+              <TextArrowButton to="/technology" dark={true} variant="inline">
+                View Turbine Specs
+              </TextArrowButton>
+            </div>
           </div>
         </div>
       </section>

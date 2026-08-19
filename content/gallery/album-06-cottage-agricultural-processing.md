@@ -1,0 +1,46 @@
+---
+id: "6"
+slug: "cottage-agricultural-processing"
+title: "Post-Harvest Milling & Tool Fabrication"
+subtitle: "Productive End-Use Livelihood Applications"
+eventDate: "2014 – 2017"
+location: "Various Village Micro-Enterprises"
+district: "Wokha, Mokokchung, Phek & Mon"
+category: "Technology & Fabrication"
+coverImage: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg"
+description: "Demonstration of daytime productive power utilization — powering rice de-huskers, spice grinders, carpentry sawmills, and sharpening stones using clean pico-hydropower."
+historicalContext: "Beyond lighting homes at night, NEPeD focused on maximizing daytime electricity utilization for cottage agro-processing. By connecting mechanical grain mills and sharpening machinery to hydroger output during daylight hours, village women saved hours of manual pounding, while local artisans boosted productivity."
+
+keyHighlights:
+  - "Replaced hours of domestic grain pounding with electric micro-milling."
+  - "Enabled village blacksmiths and carpenters to use motorized power tools."
+  - "Boosted village economic productivity and lowered firewood processing times."
+  - "Provided daytime commercial revenue streams for Village Energy Committees."
+
+tags:
+  - "Productive End-Use"
+  - "Milling"
+  - "Carpentry"
+  - "Dao Sharpening"
+  - "Women Drudgery"
+
+photos:
+  - id: "cap-1"
+    url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg"
+    title: "Dao Sharpening on Motorized Grinder"
+    caption: "Village farmers sharpening agricultural machetes on an electric bench grinder powered by the local hydroger."
+    location: "Village Agro-Center"
+    year: "2015"
+  - id: "cap-2"
+    url: "/microgrid.png"
+    title: "Daytime Power Switchboard"
+    caption: "Distribution board channeling excess daytime hydropower to cottage agro-processing machinery."
+    location: "Community Micro-Hub"
+    year: "2015"
+  - id: "cap-3"
+    url: "/20 Kingjung Village Energy Committee (2).jpg"
+    title: "Community Mill Management Group"
+    caption: "Village committee members reviewing monthly milling hours and maintenance logbooks."
+    location: "Kingjung"
+    year: "2015"
+---

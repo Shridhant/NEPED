@@ -1,37 +1,65 @@
-import { motion } from "framer-motion";
-import TeamShowcase, { type TeamMember } from "@/components/ui/team-showcase";
+import { useEffect } from "react";
+import {
+  SectionLabel,
+  SectionHeading,
+  NumberedItem,
+} from "@/components/ui/AkerPrimitives";
 
-const revealVariants = {
-  hidden: { opacity: 0, y: 25, filter: "blur(8px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.8,
-      ease: [0.23, 1, 0.32, 1] as const,
-    },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+}
 
 export function AboutPage() {
+  useEffect(() => {
+    document.title = "About NEPED — History, Vision & Leadership";
+  }, []);
+
   const presentTeam: TeamMember[] = [
-    { id: "1", name: "Mr. K. Libanthung Lotha", role: "Commissioner & Secretary (Team Leader) • 2018 - Present", image: "/people/Klibathung.jpg" },
-    { id: "2", name: "Er. Renbenthung Humtsoe", role: "POU Member • Present", image: "/people/erenbeuthang.jpg" },
-    { id: "3", name: "Ayong Chang", role: "POU Member • Present", image: "/people/ayongchang.jpg" },
-    { id: "4", name: "David Yepthomi", role: "POU Member • Present", image: "/people/davidyepthomi.jpg" },
-    { id: "5", name: "Takum Chang", role: "POU Member • Present", image: "/people/takum.jpg" },
-    { id: "6", name: "Er. Moamanen Imchen", role: "POU Member • Present", image: "/people/ermoamanen.jpg" },
-    { id: "7", name: "Er. Imnayanger Imchen", role: "Coordinator (NEPeD - CERES) • Present", image: "/people/erimyanger.jpg" },
+    {
+      id: "1",
+      name: "Mr. K. Libanthung Lotha",
+      role: "Commissioner & Secretary (Team Leader)",
+      image: "/people/Klibathung.jpg",
+    },
+    {
+      id: "2",
+      name: "Er. Renbenthung Humtsoe",
+      role: "POU Member",
+      image: "/people/erenbeuthang.jpg",
+    },
+    {
+      id: "3",
+      name: "Ayong Chang",
+      role: "POU Member",
+      image: "/people/ayongchang.jpg",
+    },
+    {
+      id: "4",
+      name: "David Yepthomi",
+      role: "POU Member",
+      image: "/people/davidyepthomi.jpg",
+    },
+    {
+      id: "5",
+      name: "Takum Chang",
+      role: "POU Member",
+      image: "/people/takum.jpg",
+    },
+    {
+      id: "6",
+      name: "Er. Moamanen Imchen",
+      role: "POU Member",
+      image: "/people/ermoamanen.jpg",
+    },
+    {
+      id: "7",
+      name: "Er. Imnayanger Imchen",
+      role: "Coordinator (NEPeD - CERES)",
+      image: "/people/erimyanger.jpg",
+    },
   ];
 
   const inceptionTeam = [
@@ -47,235 +75,326 @@ export function AboutPage() {
   ];
 
   const teamLeaders = [
-    { name: "Mr. Temjen Toy (IAS)", period: "2007 - 2011" },
-    { name: "Mr. H. K. Khulu", period: "2011 - 2012" },
-    { name: "Mr. Amardeep Singh (IAS)", period: "2012 - 2013" },
-    { name: "Mr. Menukhol John", period: "2013 - 2018" },
-    { name: "Mr. K. Libanthung Lotha", period: "2018 - Present" },
+    { name: "Padmashree A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer" },
+    { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader" },
+    { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader" },
+    { name: "Shri. Alemtemshi Jamir (IAS)", period: "2003 – 2006", title: "Team Leader" },
+    { name: "Shri Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader" },
+    { name: "Shri Raj K. Verma (NCS)", period: "2007 – 2012", title: "Team Leader / Deputy Leader" },
+    { name: "Shri. H. K. Khulu (IAS)", period: "2011 – 2012", title: "Team Leader" },
+    { name: "Shri. Amardeep S. Bhatia (IAS)", period: "2012 – 2013", title: "Team Leader" },
+    { name: "Late Menukhol John", period: "2013 – 2018", title: "Principal Secretary, Govt. of Nagaland" },
+    { name: "Shri. K. Libanthung Lotha (IAS)", period: "2018 – 2025", title: "Commissioner & Secretary" },
+    { name: "Shri. Kovi Meyase (NCS)", period: "2025 – Present", title: "Team Leader (Current Incumbent)" },
   ];
 
   const memoriam = [
-    { name: "Lt. Er. Shanchothung Odyuo", life: "11/12/1962 - 05/03/2010" },
-    { name: "Lt. Raj K. Verma (NCS)", life: "13/04/1959 - 03/02/2012" },
+    {
+      name: "Lt. Er. Shanchothung Odyuo",
+      role: "POU Member (Pioneer Hydro Engineer)",
+      life: "11/12/1962 – 05/03/2010",
+      tribute: "A foundational pillar in designing and manufacturing the first generation of indigenous Nagaland Hydrogers.",
+    },
+    {
+      name: "Lt. Raj K. Verma (NCS)",
+      role: "Deputy Team Leader",
+      life: "13/04/1959 – 03/02/2012",
+      tribute: "Instrumental in establishing community frameworks and village energy committees across remote districts.",
+    },
   ];
 
   return (
-    <div className="space-y-24 py-10">
-      {/* Overview & Vision Section */}
-      <section id="overview" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">01 / About NEPeD</span>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-ink mt-3">
-            Empowerment through Green Energy
+    <div className="w-full space-y-20 sm:space-y-28">
+      {/* 1. FULL-BLEED SECTION HERO */}
+      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/hero-windmill.png"
+            alt="NEPeD Inception History"
+            className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
+        </div>
+
+        <div className="relative z-10 pt-16 sm:pt-20 max-w-[480px]">
+          <SectionLabel dark={true} className="mb-2">
+            01 / Background & Heritage
+          </SectionLabel>
+          <h1 className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">
+            Empowerment Through Energy
           </h1>
-          <p className="mt-8 text-base sm:text-lg text-ink-soft leading-relaxed">
-            Nagaland Empowerment of People through Energy Development (NEPeD) was established in 2007 as a multi-disciplinary program to bring clean, green, and affordable energy solutions to the remote villages of Nagaland. Building upon the legacy of livelihood and environmental initiatives, NEPeD targets sustainable energy as a key driver of rural economy and community resilience.
+          <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
+            Formed in 2007 as a specialized multidisciplinary team, NEPeD evolved from economic development to green power generation for sustainable village self-reliance.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Vision & Mission Cards */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          <motion.div variants={revealVariants} className="bg-white border border-ink/5 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-ink">Vision Statement</h2>
-            <p className="mt-4 text-sm text-ink-soft leading-relaxed">
-              Nagaland has the unique distinction where people are empowered and have sustainable livelihoods by being part of a vibrant economy, driven by locally generated eco-friendly power that is being used for accelerated development. This enables Nagaland to leap-frog into the globalized world as a leader in sustainable development worthy of emulation.
-            </p>
-          </motion.div>
-          <motion.div variants={revealVariants} className="bg-white border border-ink/5 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-ink">Mission Statement</h2>
-            <p className="mt-4 text-sm text-ink-soft leading-relaxed">
-              NEPeD works with local stakeholders to evolve a bottom-up approach, empowering communities to become active partners in green-energy utilization. By using need-based, people-centric infrastructure, NEPeD creates transparent, replicable development models that inspire self-reliance and environmental protection.
-            </p>
-          </motion.div>
-        </motion.div>
-
-        {/* Aims & Objectives lists */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={revealVariants}
-            className="space-y-6"
-          >
-            <h3 className="text-xl font-bold text-ink border-b border-ink/5 pb-2">Aims</h3>
-            <ul className="space-y-3 text-sm text-ink-soft">
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">1</span>
-                <span>Implement community-based pico/micro hydro projects of sub megawatt level.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">2</span>
-                <span>Supplement and provide alternative energy needs in rural areas.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">3</span>
-                <span>Promote catchment area conservation in potential energy development sites.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">4</span>
-                <span>Empower people for sustainable livelihood through locally generated eco-friendly power.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">5</span>
-                <span>Empower youth and women in sustainable livelihoods.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">6</span>
-                <span>Provide technical skills and capacities for rural employment.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-accent-amber/20 text-accent-amber flex items-center justify-center shrink-0 text-xs font-bold">7</span>
-                <span>Facilitate entrepreneurship development and provide market linkages.</span>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={revealVariants}
-            className="space-y-6"
-          >
-            <h3 className="text-xl font-bold text-ink border-b border-ink/5 pb-2">Objectives</h3>
-            <ul className="space-y-3 text-sm text-ink-soft">
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-ink/5 text-ink flex items-center justify-center shrink-0 text-xs font-bold">1</span>
-                <span>Add value to past and current activities of NEPED and allied projects in Nagaland and the Northeast.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-ink/5 text-ink flex items-center justify-center shrink-0 text-xs font-bold">2</span>
-                <span>Promote research and development of the Hydroger technology developed by NEPeD.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-ink/5 text-ink flex items-center justify-center shrink-0 text-xs font-bold">3</span>
-                <span>Sustainably streamline production and installation of Hydrogers across the region.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-ink/5 text-ink flex items-center justify-center shrink-0 text-xs font-bold">4</span>
-                <span>Collaborate with both government and non-government agencies and organizations in the field of energy and rural development.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="h-5 w-5 rounded-full bg-ink/5 text-ink flex items-center justify-center shrink-0 text-xs font-bold">5</span>
-                <span>Ensure sustainable development through green technologies and watershed protection.</span>
-              </li>
-            </ul>
-          </motion.div>
+        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
+          <span>7-Member Multidisciplinary Cell • Government of Nagaland Initiative</span>
+          <a href="#vision" className="hover:text-white transition-colors">
+            Scroll to Statements ↓
+          </a>
         </div>
       </section>
 
-      {/* Our Team Section */}
-      <section id="team" className="scroll-mt-24 space-y-16">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={revealVariants}
-          className="max-w-3xl"
-        >
-          <span className="text-xs uppercase tracking-wider text-accent-amber font-semibold">02 / People Behind the Mission</span>
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-ink mt-3">
-            Our Team
-          </h2>
-          <p className="mt-4 text-sm text-ink-soft">
-            NEPeD is driven by a committed team of administrators, technical experts, and project officers operating with a bottom-up community approach.
-          </p>
-        </motion.div>
-
-        {/* Present Team Members Grid */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-bold text-ink uppercase tracking-wider">Present POU Members</h3>
-          <TeamShowcase members={presentTeam} />
+      {/* 2. VISION & MISSION CARDS (2-Column Grid with Mist card) */}
+      <section id="vision" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-8">
+          <SectionLabel>02 / Mandate</SectionLabel>
+          <SectionHeading size="lg" className="mt-1">
+            Vision & Mission Framework
+          </SectionHeading>
         </div>
 
-        {/* Leaders Timeline Grid */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-bold text-ink uppercase tracking-wider">Historical Team Leaders</h3>
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
-          >
-            {teamLeaders.map((leader) => (
-              <motion.div
-                key={leader.name + leader.period}
-                variants={revealVariants}
-                className="bg-ink text-white rounded-2xl p-5 space-y-2"
-              >
-                <div className="text-xs text-white/50">{leader.period}</div>
-                <div className="font-semibold text-sm leading-tight">{leader.name}</div>
-                <div className="text-[10px] text-accent-amber uppercase tracking-widest">Team Leader</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* In Inception Team */}
-        <div className="space-y-6">
-          <h3 className="text-lg font-bold text-ink uppercase tracking-wider">Team Members at Inception (2007)</h3>
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"
-          >
-            {inceptionTeam.map((member) => (
-              <motion.div
-                key={member.name}
-                variants={revealVariants}
-                className="bg-white/50 border border-ink/5 rounded-xl p-4 text-center"
-              >
-                <div className="font-semibold text-xs text-ink">{member.name}</div>
-                <div className="text-[9px] text-ink-soft mt-1">{member.role}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* In Memoriam */}
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="rounded-3xl border border-dashed border-ink/15 bg-white p-6 sm:p-10 space-y-6 text-center max-w-xl mx-auto"
-        >
-          <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-amber/10 text-accent-amber">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2v20M17 5H7M19 9H5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Vision Card */}
+          <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span className="text-[12px] font-mono text-[#666666] uppercase tracking-wider">
+                Our Vision
+              </span>
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] mt-3">
+                A Vibrant Himalayan Economy
+              </h3>
+              <p className="font-serif italic text-[16px] sm:text-[17px] text-[#262626] leading-[1.6] mt-4">
+                “Nagaland has the unique distinction where people are empowered and have sustainable livelihoods by being part of a vibrant economy, driven by locally generated eco-friendly power that is being used for accelerated development.”
+              </p>
+            </div>
+            <div className="pt-6 border-t border-[#000000]/10 text-[12px] text-[#666666]">
+              Leader in Sustainable Development
+            </div>
           </div>
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold text-ink">In Memoriam</h3>
-            <p className="text-xs text-ink-soft max-w-md mx-auto leading-relaxed">
-              We respectfully honor and remember our pioneer POU members who laid the core foundation of NEPeD's energy development programs.
+
+          {/* Mission Card */}
+          <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider">
+                Our Mission
+              </span>
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
+                People-Centric Partnership
+              </h3>
+              <p className="font-serif italic text-[16px] sm:text-[17px] text-[#e5e4e4] leading-[1.6] mt-4">
+                “To evolve a bottom-up approach to empower stakeholders to become partners in development, create awareness about green-energy utilization, and judiciously create need-based infrastructure that becomes a replicable model.”
+              </p>
+            </div>
+            <div className="pt-6 border-t border-white/10 text-[12px] text-[#8d8d8d]">
+              Transparent & Replicable Development Model
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEPED HERITAGE & ECONOMIC DEVELOPMENT HISTORICAL BRIDGE */}
+      <section id="neped-economic" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-8 sm:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left">
+              <div className="w-full max-w-[280px] aspect-square rounded-[8px] overflow-hidden border border-[#e5e4e4] p-4 bg-[#ffffff] flex items-center justify-center">
+                <img
+                  src="/NEPED Logo.jpg.jpeg"
+                  alt="NEPED Heritage & Economic Development Logo"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <span className="text-[11px] font-mono text-[#8d8d8d] mt-3 uppercase tracking-wider">
+                Foundational Heritage • Established 1994
+              </span>
+            </div>
+
+            <div className="lg:col-span-8 space-y-4">
+              <SectionLabel>Heritage & Evolutionary Lineage</SectionLabel>
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] leading-tight">
+                NEPED Heritage to NEPeD Clean Energy Development
+              </h3>
+              <p className="text-[15px] text-[#666666] leading-relaxed">
+                The landmark foundational program, <strong>NEPED (Nagaland Empowerment of People through Economic Development)</strong>, with its revolutionary focus on agroforestry, biodiversity, participatory village land-use, and community livelihoods, transformed rural Nagaland.
+              </p>
+              <p className="font-serif italic text-[16px] text-[#262626] leading-relaxed border-l-2 border-[#b75928] pl-4">
+                “The tremendous agricultural and economic success of NEPED created an essential requirement for decentralized clean energy to process, grind, and add value to farmer produce right in the villages. Thus, retaining and evolving the well-established acronym, NEPeD (Clean Energy Development) was constituted in 2007.”
+              </p>
+              <div className="pt-2 flex flex-wrap items-center gap-6 text-[13px] text-[#8d8d8d]">
+                <span>NEPED Heritage: 1994 – Present (Agroforestry & Eco-Enterprises)</span>
+                <span>•</span>
+                <span className="text-[#000000] font-medium">NEPeD Energy: 2007 – Present (Hydrogers & Rural Micro-Grids)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. AIMS & OBJECTIVES (Numbered List Rows with Mist Hairlines) */}
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-4 space-y-4">
+            <SectionLabel>03 / Strategic Pillars</SectionLabel>
+            <SectionHeading size="md">
+              Core Aims & Technology Objectives
+            </SectionHeading>
+            <p className="text-[15px] text-[#666666] leading-relaxed">
+              Guiding principles framed at inception in 2007 to ensure technical precision, environmental protection, and community sovereignty.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 sm:gap-12 pt-2">
+
+          <div className="lg:col-span-8 space-y-1">
+            <NumberedItem
+              num="01"
+              title="Community-Based Pico/Micro Hydro"
+              subtitle="Implement sub-megawatt micro-turbines designed for rugged mountain water channels."
+            />
+            <NumberedItem
+              num="02"
+              title="Catchment Area Conservation"
+              subtitle="Promote ecological watershed protection in all energy generation sites."
+            />
+            <NumberedItem
+              num="03"
+              title="R&D of Indigenous Hydroger Tech"
+              subtitle="Continuously advance locally engineered turbines and electronic load controllers."
+            />
+            <NumberedItem
+              num="04"
+              title="Capacity Building for Rural Engineers"
+              subtitle="Provide youth and women with technical skills, operation certs, and market linkages."
+            />
+            <NumberedItem
+              num="05"
+              title="Cross-State Regional Collaboration"
+              subtitle="Partner with government and non-government agencies across Northeast India."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PRESENT MULTIDISCIPLINARY TEAM (Gallery Wall of Portraits) */}
+      <section id="team" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div>
+            <SectionLabel>04 / Leadership & Officers</SectionLabel>
+            <SectionHeading size="lg" className="mt-1">
+              Multidisciplinary Team
+            </SectionHeading>
+          </div>
+          <p className="text-[14px] text-[#666666] max-w-sm">
+            Project Operations Unit (POU) members combining administrative leadership, electrical engineering, and rural outreach.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {presentTeam.map((member) => (
+            <div
+              key={member.id}
+              className="group bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-200 hover:border-[#000000]"
+            >
+              <div className="w-full aspect-[4/5] bg-[#e5e4e4] overflow-hidden relative">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = "none";
+                  }}
+                />
+              </div>
+              <div className="p-4 bg-[#ffffff]">
+                <div className="text-[11px] uppercase tracking-wider text-[#8d8d8d]">
+                  POU Member
+                </div>
+                <h3 className="text-[16px] font-medium text-[#000000] mt-1 tracking-tight">
+                  {member.name}
+                </h3>
+                <p className="text-[12px] text-[#666666] mt-1 leading-snug">
+                  {member.role}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. HISTORICAL LEADERSHIP & INCEPTION TEAM (Clean Architectural Panels) */}
+      <section id="leaders" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Past Team Leaders */}
+          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 space-y-6">
+            <div>
+              <SectionLabel>Historical Archive</SectionLabel>
+              <h3 className="text-[28px] font-light text-[#000000] tracking-[-0.72px] mt-1">
+                Past Team Leaders
+              </h3>
+            </div>
+            <div className="space-y-4 pt-2">
+              {teamLeaders.map((lead) => (
+                <div
+                  key={lead.name}
+                  className="flex items-baseline justify-between border-b border-[#e5e4e4] pb-3"
+                >
+                  <div>
+                    <h4 className="text-[15px] font-medium text-[#000000]">{lead.name}</h4>
+                    <span className="text-[12px] text-[#666666]">{lead.title}</span>
+                  </div>
+                  <span className="text-[12px] font-mono text-[#8d8d8d]">{lead.period}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Inception Members */}
+          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 space-y-6">
+            <div>
+              <SectionLabel>2007 Founding Unit</SectionLabel>
+              <h3 className="text-[28px] font-light text-[#000000] tracking-[-0.72px] mt-1">
+                Inception POU Cell
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {inceptionTeam.map((mem) => (
+                <div
+                  key={mem.name}
+                  className="p-3 bg-[#ffffff] border border-[#e5e4e4] rounded-[6px]"
+                >
+                  <h4 className="text-[14px] font-medium text-[#000000]">{mem.name}</h4>
+                  <span className="text-[11px] text-[#8d8d8d]">{mem.role}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. IN MEMORIAM EXHIBIT (Dark gallery tribute card) */}
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
+          <div className="max-w-xl mb-8">
+            <span className="text-[12px] uppercase tracking-[0.12px] text-[#b75928]">
+              In Memoriam & Dedication
+            </span>
+            <h3 className="text-[32px] sm:text-[40px] font-light text-[#ffffff] tracking-[-0.72px] mt-2">
+              Remembering Our Pioneers
+            </h3>
+            <p className="text-[14px] text-[#e5e4e4]/80 mt-2 leading-relaxed">
+              We honor the visionaries whose engineering breakthroughs and dedication laid the groundwork for rural hydro power across Nagaland.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {memoriam.map((item) => (
-              <div key={item.name} className="space-y-1">
-                <div className="font-bold text-sm text-ink">{item.name}</div>
-                <div className="text-[10px] text-accent-amber font-mono">{item.life}</div>
+              <div
+                key={item.name}
+                className="bg-[#262626] border border-white/10 rounded-[8px] p-6 space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-[#b75928]">{item.life}</span>
+                  <span className="text-[11px] text-[#8d8d8d]">Honour Roll</span>
+                </div>
+                <h4 className="text-[18px] font-medium text-[#ffffff]">{item.name}</h4>
+                <p className="text-[12px] text-[#e5e4e4]/70">{item.role}</p>
+                <p className="text-[13px] text-[#e5e4e4]/90 pt-2 border-t border-white/10 leading-relaxed font-serif italic">
+                  “{item.tribute}”
+                </p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
     </div>
   );
