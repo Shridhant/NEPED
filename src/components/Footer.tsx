@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
+import { Mail } from "lucide-react";
 import { TextArrowButton } from "./ui/AkerPrimitives";
+import { loadAllProjects } from "@/lib/contentLoader";
 
 /**
  * 1. NEPED Master Umbrella Portal Footer
  * Displayed across main portal pages (Home, About, Technology, Impact, Blog, Gallery)
  */
-function NepedMasterFooter() {
+function NepedMasterFooter({ onOpenContact }: { onOpenContact: () => void }) {
   return (
     <footer id="contact" className="mt-20 border-t border-[#e5e4e4] pt-16 pb-12 bg-[#ffffff]">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -39,12 +41,20 @@ function NepedMasterFooter() {
                   Explore Society Mandate
                 </TextArrowButton>
                 <Link
-                  to="/technology"
+                  to="/neped-energy"
                   className="text-[13px] text-[#b75928] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <span>NEPeD (Clean Energy Wing)</span>
                   <span>↗</span>
                 </Link>
+                <button
+                  type="button"
+                  onClick={onOpenContact}
+                  className="inline-flex items-center gap-2 text-[13px] text-[#ffffff] border border-white/20 hover:border-white/60 px-4 py-2.5 rounded-[80px] transition-all cursor-pointer"
+                >
+                  <Mail size={13} />
+                  <span>Contact Us</span>
+                </button>
               </div>
             </div>
 
@@ -94,8 +104,13 @@ function NepedMasterFooter() {
                 </span>
                 <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
                   <li>
+                    <Link to="/neped-energy" className="hover:text-[#b75928] transition-colors">
+                      NEPeD Energy Overview
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/technology" className="hover:text-[#b75928] transition-colors">
-                      Hydroger Turbines
+                      CERES & Hydrogers
                     </Link>
                   </li>
                   <li>
@@ -109,8 +124,8 @@ function NepedMasterFooter() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/impact" className="hover:text-[#b75928] transition-colors">
-                      Catchment Conservation
+                    <Link to="/energy-projects" className="hover:text-[#b75928] transition-colors">
+                      Government Schemes
                     </Link>
                   </li>
                 </ul>
@@ -154,7 +169,9 @@ function NepedMasterFooter() {
  * 2. NEPED Agroforestry & Economic Heritage Footer
  * Displayed specifically on the /neped-economic Heritage Archive page
  */
-function NepedHeritageFooter() {
+function NepedHeritageFooter({ onOpenContact }: { onOpenContact: () => void }) {
+  const totalProjects = loadAllProjects().length;
+
   return (
     <footer id="contact" className="mt-20 border-t border-[#e5e4e4] pt-16 pb-12 bg-[#ffffff]">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -192,12 +209,20 @@ function NepedHeritageFooter() {
                   Explore 30-Year Archives
                 </TextArrowButton>
                 <Link
-                  to="/technology"
+                  to="/neped-energy"
                   className="text-[13px] text-[#b75928] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <span>Explore NEPeD Clean Energy Wing</span>
                   <span>→</span>
                 </Link>
+                <button
+                  type="button"
+                  onClick={onOpenContact}
+                  className="inline-flex items-center gap-2 text-[13px] text-[#ffffff] border border-white/20 hover:border-white/60 px-4 py-2.5 rounded-[80px] transition-all cursor-pointer"
+                >
+                  <Mail size={13} />
+                  <span>Contact Us</span>
+                </button>
               </div>
             </div>
 
@@ -253,7 +278,7 @@ function NepedHeritageFooter() {
                   </li>
                   <li>
                     <a href="#projects" className="hover:text-[#b75928] transition-colors">
-                      13 Official Projects
+                      {totalProjects} Official Projects
                     </a>
                   </li>
                   <li>
@@ -303,13 +328,13 @@ function NepedHeritageFooter() {
  * Main Dynamic Footer Switcher
  * Intelligently renders the tailored footer based on the active route
  */
-export function Footer() {
+export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
   const location = useLocation();
   const isHeritagePage = location.pathname.startsWith("/neped-economic");
 
   if (isHeritagePage) {
-    return <NepedHeritageFooter />;
+    return <NepedHeritageFooter onOpenContact={onOpenContact} />;
   }
 
-  return <NepedMasterFooter />;
+  return <NepedMasterFooter onOpenContact={onOpenContact} />;
 }

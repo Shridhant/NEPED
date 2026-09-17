@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { loadAllGalleryAlbums } from "@/lib/contentLoader";
 import { type GalleryAlbum } from "@/data/galleryData";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
   SectionHeading,
@@ -51,7 +53,12 @@ export function GalleryPage() {
         </div>
 
         {/* Top Content */}
-        <div className="relative z-10 pt-16 sm:pt-20 max-w-[620px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 pt-16 sm:pt-20 max-w-[620px]"
+        >
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2 h-2 rounded-full bg-[#b75928]" />
             <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/90 font-mono">
@@ -75,10 +82,15 @@ export function GalleryPage() {
               Hydroger Specs & Tech →
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Metrics Bar */}
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-6 text-[13px] text-[#e5e4e4]/70">
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-6 text-[13px] text-[#e5e4e4]/70"
+        >
           <div className="flex items-center gap-6 sm:gap-10">
             <div>
               <span className="text-[20px] font-light text-[#ffffff] block">108+</span>
@@ -96,13 +108,13 @@ export function GalleryPage() {
             </div>
           </div>
           <span className="text-[12px] font-mono text-[#8d8d8d]">
-            Click any album to view full event photo logs
+            Click album to expand full lightbox viewer ↓
           </span>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. ALBUMS DIRECTORY & FILTERING */}
-      <section id="albums" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="albums" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#e5e4e4] pb-6 mb-8">
           <div>
             <SectionLabel>Event Collections</SectionLabel>
@@ -191,10 +203,10 @@ export function GalleryPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. ARCHIVAL PHOTOGRAPHIC SUBMISSION CTA */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-xl space-y-4">
             <SectionLabel dark={true} className="text-[#b75928]">
@@ -217,7 +229,7 @@ export function GalleryPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

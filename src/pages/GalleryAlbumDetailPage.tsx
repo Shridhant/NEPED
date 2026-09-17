@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import { loadAllGalleryAlbums } from "@/lib/contentLoader";
 import { type GalleryAlbum, type GalleryPhoto } from "@/data/galleryData";
 import {
@@ -109,7 +111,7 @@ export function GalleryAlbumDetailPage() {
       </section>
 
       {/* 2. EVENT ALBUM HERO DOSSIER */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
@@ -148,10 +150,10 @@ export function GalleryAlbumDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. EVENT PHOTOGRAPHIC GALLERY GRID */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <SectionLabel>Photo Archive Index</SectionLabel>
@@ -211,10 +213,10 @@ export function GalleryAlbumDetailPage() {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. EVENT HISTORICAL CONTEXT & FIELD HIGHLIGHTS */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-8 space-y-6">
             <div className="space-y-3">
@@ -222,7 +224,7 @@ export function GalleryAlbumDetailPage() {
               <h3 className="text-[26px] sm:text-[32px] font-light text-[#000000] tracking-tight">
                 Historical Context & Operational Significance
               </h3>
-              <p className="font-serif text-[16px] text-[#333333] leading-relaxed pt-2">
+              <p className="text-[16px] text-[#333333] leading-relaxed pt-2">
                 {album.historicalContext}
               </p>
             </div>
@@ -306,10 +308,10 @@ export function GalleryAlbumDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. PREVIOUS / NEXT ALBUM NAVIGATION */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="border-t border-b border-[#e5e4e4] py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {prevAlbum ? (
             <Link
@@ -343,10 +345,10 @@ export function GalleryAlbumDetailPage() {
             <div />
           )}
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. RELATED ALBUMS GRID */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <SectionLabel>More Collections</SectionLabel>
@@ -390,7 +392,7 @@ export function GalleryAlbumDetailPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 7. FULL-SCREEN LIGHTBOX MODAL */}
       {selectedPhotoIndex !== null && selectedPhoto && (

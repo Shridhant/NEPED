@@ -21,11 +21,11 @@
   --color-coral: #df6a6b;
   --color-primary-action-fill: #494949;
 
-  /* Typography */
-  --font-proxima-nova: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-lora: 'Lora', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-serif: 'Lora', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  /* Typography — Geist for all UI, Instrument Serif (italic) as editorial accent */
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-geist: 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', 'Fraunces', Times, ui-serif, Georgia, serif;
+  --font-instrument: 'Instrument Serif', Times, ui-serif, Georgia, serif;
 
   /* Typography — Scale */
   --text-body: 15px;
@@ -77,8 +77,10 @@
   --color-primary-action-fill: #494949;
 
   /* Typography — Font Families */
-  --font-proxima-nova: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-lora: 'Lora', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-geist: 'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', 'Fraunces', Times, ui-serif, Georgia, serif;
+  --font-instrument: 'Instrument Serif', Times, ui-serif, Georgia, serif;
 
   /* Typography — Scale */
   --text-body: 15px;
@@ -136,7 +138,7 @@
   body {
     background-color: var(--color-paper);
     color: var(--color-ink);
-    font-family: var(--font-proxima-nova);
+    font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.5;
     letter-spacing: 0.15px;
@@ -145,27 +147,33 @@
     overflow-x: hidden;
   }
   html {
-    font-family: var(--font-proxima-nova);
+    font-family: var(--font-sans);
     scroll-behavior: smooth;
   }
+  /* Headings default to Geist with tight tracking; serif is opted into
+     explicitly per-component (always italic), never inherited. */
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
 /* Aker gallery typography helpers */
 .font-display {
-  font-family: var(--font-proxima-nova);
+  font-family: var(--font-sans);
   font-weight: 300;
   letter-spacing: -0.025em;
 }
 
+/* Editorial accent — Instrument Serif is a display face, so it is always
+   italic and reserved for one accent per screen (lede, pull-quote, caption). */
 .font-editorial {
-  font-family: var(--font-lora);
+  font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 400;
   letter-spacing: 0.011em;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .section-label {

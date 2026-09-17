@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { loadAllBlogs } from "@/lib/contentLoader";
 import { type BlogPostData } from "@/data/blogData";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
   SectionHeading,
@@ -81,7 +83,7 @@ export function BlogDetailPage() {
       </section>
 
       {/* 2. EDITORIAL ARTICLE HERO */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
@@ -119,10 +121,10 @@ export function BlogDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. HERO IMAGE DISPLAY */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="aspect-[16/9] w-full rounded-[8px] overflow-hidden bg-[#070707] border border-[#e5e4e4] shadow-md relative">
           <img
             src={post.image}
@@ -133,16 +135,16 @@ export function BlogDetailPage() {
             <span>Archival Field Reference: {post.title}</span>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. IN-DEPTH ARTICLE BODY & SIDEBAR */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Main Article Text */}
           <div className="lg:col-span-8 space-y-10">
             {/* Lead Intro */}
             <div className="prose prose-lg text-[#262626]">
-              <p className="font-serif text-[18px] sm:text-[19px] leading-[1.7] text-[#1c1c1c] font-normal border-l-2 border-[#b75928] pl-5 py-1">
+              <p className="font-serif italic text-[19px] sm:text-[21px] leading-[1.5] text-[#1c1c1c] font-normal border-l-2 border-[#b75928] pl-5 py-1">
                 {post.content.intro}
               </p>
             </div>
@@ -155,7 +157,7 @@ export function BlogDetailPage() {
                     {sec.heading}
                   </h2>
 
-                  <div className="space-y-4 font-serif text-[16px] sm:text-[17px] text-[#333333] leading-[1.7]">
+                  <div className="space-y-4 text-[16px] sm:text-[17px] text-[#333333] leading-relaxed">
                     {sec.body.map((para, pIdx) => (
                       <p key={pIdx}>{para}</p>
                     ))}
@@ -269,10 +271,10 @@ export function BlogDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. PREVIOUS / NEXT ARTICLE PAGINATION */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="border-t border-b border-[#e5e4e4] py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {prevPost ? (
             <Link
@@ -306,10 +308,10 @@ export function BlogDetailPage() {
             <div />
           )}
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. RELATED ARTICLES GRID */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex items-center justify-between mb-8">
           <div>
             <SectionLabel>Field Publications</SectionLabel>
@@ -353,7 +355,7 @@ export function BlogDetailPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

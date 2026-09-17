@@ -4,13 +4,17 @@ import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { TechnologyPage } from "./pages/TechnologyPage";
+import { TechProductDetailPage } from "./pages/TechProductDetailPage";
 import { ImpactPage } from "./pages/ImpactPage";
 import { BlogPage } from "./pages/BlogPage";
 import { BlogDetailPage } from "./pages/BlogDetailPage";
 import { NepedEconomicPage } from "./pages/NepedEconomicPage";
 import { NepedProjectDetailPage } from "./pages/NepedProjectDetailPage";
+import { ProjectsPage } from "./pages/ProjectsPage";
+import { EnergyProjectsPage } from "./pages/EnergyProjectsPage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { GalleryAlbumDetailPage } from "./pages/GalleryAlbumDetailPage";
+import { NepedEnergyPage } from "./pages/NepedEnergyPage";
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -42,12 +46,26 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="neped-energy" element={<NepedEnergyPage />} />
+          <Route path="neped" element={<NepedEnergyPage />} />
+          <Route path="clean-energy" element={<NepedEnergyPage />} />
           <Route path="technology" element={<TechnologyPage />} />
+          <Route path="ceres" element={<TechnologyPage />} />
+          <Route path="technology/product/:slug" element={<TechProductDetailPage />} />
+          <Route path="technology/:slug" element={<TechProductDetailPage />} />
+          <Route path="products/:slug" element={<TechProductDetailPage />} />
+          <Route path="energy-projects" element={<EnergyProjectsPage />} />
+          <Route path="technology/projects" element={<EnergyProjectsPage />} />
+          <Route path="neped-energy-projects" element={<EnergyProjectsPage />} />
+          <Route path="neped-energy/projects" element={<EnergyProjectsPage />} />
           <Route path="impact" element={<ImpactPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:idOrSlug" element={<BlogDetailPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="gallery/:albumSlug" element={<GalleryAlbumDetailPage />} />
+          <Route path="projects" element={<ProjectsPage />} />
+          <Route path="neped-projects" element={<ProjectsPage />} />
+          <Route path="neped-economic/projects" element={<ProjectsPage />} />
           <Route path="neped-economic" element={<NepedEconomicPage />} />
           <Route path="neped-economic/project/:idOrSlug" element={<NepedProjectDetailPage />} />
           <Route path="neped-economic/projects/:idOrSlug" element={<NepedProjectDetailPage />} />

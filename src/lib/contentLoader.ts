@@ -108,6 +108,62 @@ function parseMarkdownWithFrontmatter(rawContent: string): {
 }
 
 /**
+ * Splits a markdown body into named sections keyed by their "## Heading" text.
+ */
+function splitBodyIntoSections(body: string): Record<string, string> {
+  const sections: Record<string, string> = {};
+  let currentHeading: string | null = null;
+  let buffer: string[] = [];
+
+  for (const line of body.split("\n")) {
+    const headingMatch = line.match(/^##\s+(.*)/);
+    if (headingMatch) {
+      if (currentHeading) sections[currentHeading] = buffer.join("\n").trim();
+      currentHeading = headingMatch[1].trim();
+      buffer = [];
+    } else if (currentHeading) {
+      buffer.push(line);
+    }
+  }
+  if (currentHeading) sections[currentHeading] = buffer.join("\n").trim();
+
+  return sections;
+}
+
+/** Finds a section whose heading contains any of the given keywords (case-insensitive). */
+export function findSection(sections: Record<string, string>, keywords: string[]): string {
+  const key = Object.keys(sections).find((heading) =>
+    keywords.some((word) => heading.toLowerCase().includes(word))
+  );
+  return key ? sections[key] : "";
+}
+
+/** Like findSection, but returns the matching heading key itself (or undefined). */
+function pickHeadingKey(sections: Record<string, string>, keywords: string[]): string | undefined {
+  return Object.keys(sections).find((heading) =>
+    keywords.some((word) => heading.toLowerCase().includes(word))
+  );
+}
+
+/** Pulls a leading "> quote" blockquote line out of a section, returning the quote and the remaining text. */
+function extractBlockquote(text: string): { quote?: string; rest: string } {
+  const match = text.match(/^>\s*"?(.*?)"?\s*$/m);
+  if (!match) return { rest: text };
+  return { quote: match[1], rest: (text.slice(0, match.index) + text.slice(match.index! + match[0].length)).trim() };
+}
+
+/** Parses a "1. item" or "- item" / "* item" list block into a plain string array. */
+function parseListItems(text: string): string[] {
+  if (!text) return [];
+  return text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.replace(/^(\d+\.|[-*])\s*/, "").trim())
+    .filter(Boolean);
+}
+
+/**
  * Load all project files dynamically from /content/projects/*.md
  */
 export function loadAllProjects(): NepedProject[] {
@@ -124,25 +180,18 @@ export function loadAllProjects(): NepedProject[] {
     }
 
     const loadedProjects: NepedProject[] = files.map((content) => {
-      const { frontmatter, body } = parseMarkdownWithFrontmatter(content);
+      const { frontmatter } = parseMarkdownWithFrontmatter(content);
+
       return {
         id: frontmatter.id || "1",
         slug: frontmatter.slug || `project-${frontmatter.id}`,
-        phase: frontmatter.phase || `Phase ${frontmatter.id}`,
+        phase: frontmatter.phase || `Project ${frontmatter.id}`,
         name: frontmatter.name || "Untitled Project",
         period: frontmatter.period || "",
         category: frontmatter.category || "Agroforestry",
         fundingAgency: frontmatter.fundingAgency || "",
-        budgetOrScale: frontmatter.budgetOrScale,
-        targetDistricts: frontmatter.targetDistricts || "Nagaland",
         heroImage: frontmatter.heroImage || "/forest.png",
-        documentRef: frontmatter.documentRef,
-        objective: frontmatter.objective || body.slice(0, 160) + "...",
-        overview: body,
-        keyObjectives: frontmatter.keyObjectives || [],
-        majorMilestones: frontmatter.majorMilestones || [],
-        impactHighlights: frontmatter.highlights || [],
-        partnerAgencies: frontmatter.partnerAgencies || [],
+        objective: frontmatter.objective || "",
       };
     });
 
@@ -171,6 +220,28 @@ export function loadAllBlogs(): BlogPostData[] {
 
     const loadedBlogs: BlogPostData[] = files.map((content) => {
       const { frontmatter, body } = parseMarkdownWithFrontmatter(content);
+      const sections = splitBodyIntoSections(body);
+      const hasHeadings = Object.keys(sections).length > 0;
+      const introKey = pickHeadingKey(sections, ["intro"]);
+      const takeawaysKey = pickHeadingKey(sections, ["takeaway"]);
+
+      const introText = introKey
+        ? sections[introKey]
+        : hasHeadings
+          ? body.split("\n##")[0].trim()
+          : body.split("\n\n")[0] || "";
+
+      const builtSections = Object.keys(sections)
+        .filter((heading) => heading !== introKey && heading !== takeawaysKey)
+        .map((heading) => {
+          const { quote, rest } = extractBlockquote(sections[heading]);
+          return {
+            heading,
+            body: rest.split("\n\n").map((p) => p.trim()).filter(Boolean),
+            ...(quote ? { highlightQuote: quote } : {}),
+          };
+        });
+
       return {
         id: frontmatter.id || "1",
         slug: frontmatter.slug || `blog-${frontmatter.id}`,
@@ -186,17 +257,23 @@ export function loadAllBlogs(): BlogPostData[] {
         },
         tags: frontmatter.tags || ["NEPeD", "Nagaland"],
         content: {
-          intro: body.split("\n\n")[0] || "",
-          sections: [
-            {
-              heading: "Field Dispatch & Analysis",
-              body: body.split("\n\n").slice(1),
-            },
-          ],
-          takeaways: frontmatter.takeaways || [
-            "Participatory community engineering.",
-            "Sustainable mountain resource utilization.",
-          ],
+          intro: introText,
+          sections: hasHeadings
+            ? builtSections
+            : [
+                {
+                  heading: "Field Dispatch & Analysis",
+                  body: body.split("\n\n").slice(1),
+                },
+              ],
+          takeaways: frontmatter.takeaways?.length
+            ? frontmatter.takeaways
+            : takeawaysKey
+              ? parseListItems(sections[takeawaysKey])
+              : [
+                  "Participatory community engineering.",
+                  "Sustainable mountain resource utilization.",
+                ],
         },
       };
     });

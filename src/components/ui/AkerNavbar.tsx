@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 
-// Master Umbrella Dropdown Items (NEPED)
+// Master Umbrella Dropdown Items (NEPED only — Heritage, Agroforestry & Society)
 const nepedMasterDropdownItems = [
   {
     num: "01",
@@ -17,28 +17,23 @@ const nepedMasterDropdownItems = [
   },
   {
     num: "03",
-    label: "NEPeD Energy Division",
-    href: "/technology",
-  },
-  {
-    num: "04",
-    label: "Village Microgrids & Impact",
-    href: "/impact",
-  },
-  {
-    num: "05",
     label: "Field Gallery & Event Logs",
     href: "/gallery",
   },
   {
-    num: "06",
+    num: "04",
     label: "Stories & Field Reports",
     href: "/blog",
   },
   {
-    num: "07",
+    num: "05",
     label: "30-Year Heritage Archives",
     href: "/neped-economic",
+  },
+  {
+    num: "06",
+    label: "Projects Archive",
+    href: "/projects",
   },
 ];
 
@@ -46,18 +41,22 @@ const nepedMasterDropdownItems = [
 const nepedEnergyDropdownItems = [
   {
     num: "01",
-    label: "Hydroger Pico-Turbines",
-    href: "/technology",
+    label: "Overview & Genesis (Est. 2007)",
+    href: "/neped-energy",
   },
   {
     num: "02",
-    label: "Electronic Load Controllers (ELC)",
-    href: "/technology#elc",
+    label: "CERES (Centre of Excellence)",
+    href: "/technology",
+    children: [
+      { label: "Hydroger Pico-Turbines", href: "/technology/product/hydroger-turbine-system" },
+      { label: "Electronic Load Controllers (ELC)", href: "/technology/product/electronic-load-controller" },
+    ],
   },
   {
     num: "03",
     label: "Pico Micro-Grids",
-    href: "/technology#microgrids",
+    href: "/technology/product/village-pico-microgrid",
   },
   {
     num: "04",
@@ -69,11 +68,17 @@ const nepedEnergyDropdownItems = [
     label: "Village Energy Committees (VEC)",
     href: "/impact",
   },
+  {
+    num: "06",
+    label: "Government Sponsored Projects",
+    href: "/energy-projects",
+  },
 ];
 
-export function AkerNavbar() {
+export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   const [isMasterDropdownOpen, setIsMasterDropdownOpen] = useState(false);
   const [isEnergyDropdownOpen, setIsEnergyDropdownOpen] = useState(false);
+  const [isCeresExpanded, setIsCeresExpanded] = useState(false);
   const masterDropdownRef = useRef<HTMLDivElement>(null);
   const energyDropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
@@ -82,6 +87,7 @@ export function AkerNavbar() {
   useEffect(() => {
     setIsMasterDropdownOpen(false);
     setIsEnergyDropdownOpen(false);
+    setIsCeresExpanded(false);
   }, [location.pathname, location.hash]);
 
   // Click outside listener for dropdowns
@@ -93,6 +99,9 @@ export function AkerNavbar() {
       if (energyDropdownRef.current && !energyDropdownRef.current.contains(event.target as Node)) {
         setIsEnergyDropdownOpen(false);
       }
+    }
+    if (!isEnergyDropdownOpen) {
+      setIsCeresExpanded(false);
     }
     if (isMasterDropdownOpen || isEnergyDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -181,7 +190,7 @@ export function AkerNavbar() {
                   </span>
                 </div>
                 <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 rounded-[3.2px]">
-                  7 Portals
+                  6 Portals
                 </span>
               </div>
 
@@ -217,6 +226,17 @@ export function AkerNavbar() {
                   <span>Visit Master NEPED Homepage</span>
                   <span>↗</span>
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMasterDropdownOpen(false);
+                    onOpenContact();
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors cursor-pointer"
+                >
+                  <span>Contact Us</span>
+                  <Mail size={12} />
+                </button>
               </div>
             </motion.div>
           )}
@@ -232,9 +252,9 @@ export function AkerNavbar() {
               : "bg-[#1c1c1c]/90 backdrop-blur-md text-[#ffffff] border-white/15 hover:bg-[#262626] hover:border-white/35"
           }`}
         >
-          {/* Direct Link to NEPeD Clean Energy Page */}
+          {/* Direct Link to NEPeD Clean Energy Landing Page */}
           <Link
-            to="/technology"
+            to="/neped-energy"
             onClick={() => setIsEnergyDropdownOpen(false)}
             aria-label="Go to NEPeD Clean Energy and Technology"
             className="flex items-center gap-2.5 pl-1.5 pr-2 h-full rounded-l-[1584px] group cursor-pointer"
@@ -294,42 +314,97 @@ export function AkerNavbar() {
                   </span>
                 </div>
                 <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 rounded-[3.2px]">
-                  5 Sections
+                  6 Sections
                 </span>
               </div>
 
-              {/* 5 Page/Section Links */}
+              {/* Page/Section Links */}
               <div className="space-y-0.5">
                 {nepedEnergyDropdownItems.map((item) => (
-                  <Link
-                    key={item.num}
-                    to={item.href}
-                    onClick={() => setIsEnergyDropdownOpen(false)}
-                    className="group flex items-center justify-between px-3 py-2 rounded-[6px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[13px]"
-                  >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="text-[11px] font-mono text-[#8d8d8d] group-hover:text-[#b75928] transition-colors">
-                        {item.num}
-                      </span>
-                      <span className="truncate">{item.label}</span>
+                  <div key={item.num}>
+                    <div className="group flex items-center justify-between rounded-[6px] text-[#e5e4e4] hover:bg-[#262626] transition-all text-[13px]">
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsEnergyDropdownOpen(false)}
+                        className="flex-1 min-w-0 flex items-center gap-2.5 px-3 py-2 group-hover:text-[#ffffff]"
+                      >
+                        <span className="text-[11px] font-mono text-[#8d8d8d] group-hover:text-[#b75928] transition-colors">
+                          {item.num}
+                        </span>
+                        <span className="truncate">{item.label}</span>
+                      </Link>
+                      {item.children ? (
+                        <button
+                          type="button"
+                          onClick={() => setIsCeresExpanded(!isCeresExpanded)}
+                          aria-label={isCeresExpanded ? `Collapse ${item.label}` : `Expand ${item.label}`}
+                          className="px-3 py-2 text-[#8d8d8d] hover:text-[#ffffff] cursor-pointer"
+                        >
+                          <ChevronDown
+                            size={12}
+                            className={`transition-transform duration-200 ${isCeresExpanded ? "rotate-180" : ""}`}
+                          />
+                        </button>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsEnergyDropdownOpen(false)}
+                          className="pr-3 pl-1 py-2 text-[12px] text-[#8d8d8d] group-hover:text-[#ffffff] group-hover:translate-x-0.5 transition-all"
+                        >
+                          →
+                        </Link>
+                      )}
                     </div>
-                    <span className="text-[12px] text-[#8d8d8d] group-hover:text-[#ffffff] group-hover:translate-x-0.5 transition-all">
-                      →
-                    </span>
-                  </Link>
+                    <AnimatePresence>
+                      {item.children && isCeresExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          className="ml-8 pl-3 border-l border-white/10 space-y-0.5 mb-0.5 overflow-hidden"
+                        >
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.label}
+                              to={child.href}
+                              onClick={() => setIsEnergyDropdownOpen(false)}
+                              className="group flex items-center justify-between px-3 py-1.5 rounded-[6px] text-[#8d8d8d] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[12px]"
+                            >
+                              <span className="truncate">{child.label}</span>
+                              <span className="text-[11px] text-[#8d8d8d] group-hover:text-[#ffffff] group-hover:translate-x-0.5 transition-all">
+                                →
+                              </span>
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 ))}
               </div>
 
               {/* Bottom Full Page Link */}
               <div className="mt-1.5 pt-1.5 border-t border-white/10">
                 <Link
-                  to="/technology"
+                  to="/neped-energy"
                   onClick={() => setIsEnergyDropdownOpen(false)}
                   className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors"
                 >
-                  <span>Explore Clean Energy & Tech Page</span>
+                  <span>Visit NEPeD Clean Energy Portal</span>
                   <span>↗</span>
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsEnergyDropdownOpen(false);
+                    onOpenContact();
+                  }}
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors cursor-pointer"
+                >
+                  <span>Contact Us</span>
+                  <Mail size={12} />
+                </button>
               </div>
             </motion.div>
           )}

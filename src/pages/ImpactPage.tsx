@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
   SectionHeading,
@@ -120,7 +122,12 @@ export function ImpactPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
         </div>
 
-        <div className="relative z-10 pt-16 sm:pt-20 max-w-[500px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 pt-16 sm:pt-20 max-w-[500px]"
+        >
           <SectionLabel dark={true} className="mb-2">
             01 / Community Footprint
           </SectionLabel>
@@ -130,18 +137,23 @@ export function ImpactPage() {
           <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
             From remote hilltops in Tuensang to neighbouring Himalayan states, NEPeD hydrogers power off-grid communities with sustainable green electricity.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70"
+        >
           <span>75+ Installed Micro-Hydro Sites • 12 Districts & 3 States</span>
           <a href="#villages" className="hover:text-white transition-colors">
             Explore Village Directory ↓
           </a>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. FOUR IMPACT PILLARS (2-Column Grid with Mist & White cards) */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="mb-8">
           <SectionLabel>02 / Transformation Pillars</SectionLabel>
           <SectionHeading size="lg" className="mt-1">
@@ -173,10 +185,10 @@ export function ImpactPage() {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. INTERACTIVE REGIONAL VILLAGE DIRECTORY */}
-      <section id="villages" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="villages" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#e5e4e4]/40 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-12">
           <div className="max-w-xl mb-8">
             <SectionLabel>Field Installation Registry</SectionLabel>
@@ -243,10 +255,10 @@ export function ImpactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. TONAL FEATURE PANEL (Char #1c1c1c Gallery Card) */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-xl space-y-4">
             <SectionLabel dark={true} className="text-[#b75928]">
@@ -268,7 +280,7 @@ export function ImpactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

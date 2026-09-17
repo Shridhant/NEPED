@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   SectionLabel,
   SectionHeading,
@@ -9,6 +10,7 @@ import {
   LoraEditorialBlock,
 } from "@/components/ui/AkerPrimitives";
 import { loadAllProjects } from "@/lib/contentLoader";
+import { fadeUpOnView } from "@/lib/motionVariants";
 
 const teamLeaders = [
   { num: "01", name: "Padmashree A M Gokhale (IAS)", period: "Founding Advisor & Visionary", role: "Conceived the NEPED participatory model" },
@@ -62,7 +64,12 @@ export function NepedEconomicPage() {
         </div>
 
         {/* Top Content */}
-        <div className="relative z-10 pt-16 sm:pt-20 max-w-[660px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 pt-16 sm:pt-20 max-w-[660px]"
+        >
           <div className="flex items-center gap-2 mb-3">
             <span className="w-2 h-2 rounded-full bg-[#b75928]" />
             <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/90 font-mono">
@@ -79,14 +86,19 @@ export function NepedEconomicPage() {
             <TextArrowButton to="#history" dark={true} variant="pill">
               Explore 30-Year History
             </TextArrowButton>
-            <TextArrowButton to="#projects" dark={true} variant="inline">
-              13 Official Projects →
+            <TextArrowButton to="/projects" dark={true} variant="pill" className="bg-white/10 border-white/20 hover:bg-white/15">
+              {allProjects.length} Official Projects Archive →
             </TextArrowButton>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar with Official Registration Details */}
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+        >
           <div className="flex items-center gap-4">
             <div className="h-16 w-16 rounded-[8px] bg-white p-1.5 border border-white/20 flex items-center justify-center shrink-0">
               <img
@@ -108,11 +120,44 @@ export function NepedEconomicPage() {
           <div className="text-[12px] text-[#8d8d8d] max-w-md">
             Phase-I: <em>Nagaland Environment Protection and Economic Development through People's Action</em> (CIDA / ICEF)
           </div>
-        </div>
+        </motion.div>
       </section>
 
+      {/* 1B. ABOUT NEPED SOCIETY — ORIGIN, CHARTER & GOVERNANCE CULTURE (From NEPED PDF & History PDF) */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-8 max-w-[720px]">
+          <SectionLabel>Origin & Charter</SectionLabel>
+          <SectionHeading size="md" className="mt-1">
+            About the NEPED Society
+          </SectionHeading>
+          <p className="text-[15px] text-[#666666] leading-relaxed mt-4">
+            Formed by the Government of Nagaland in 1994 as an autonomous registered society, NEPED went on to implement <strong>Nagaland's first foreign-aided project</strong> — the Indo-Canada Environment Facility (ICEF) programme, funded by the Canadian International Development Agency (CIDA). Its Phase-I project was originally titled <em>Nagaland Environment Protection and Economic Development through People's Action</em>; from Phase II onward, the acronym was retained under its present name, Nagaland Empowerment of People through Economic Development (NEPED). The Society's overall aim was envisaged as building strong resilience towards emerging climate change issues while bridging developmental gaps for economic empowerment statewide.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10">
+            <LoraEditorialBlock author="NEPED Society Charter" role="Purpose of the Society">
+              To care and manage issues linked with sustainable development for employment generation, utilizing the human resources of the state by coordinating with all developmental departments. The Society seeks and implements external funding related to environmental issues and poverty reduction — carrying out studies to identify major issues and generate technologies that promote sustainable use of natural resources and improved livelihood options.
+            </LoraEditorialBlock>
+          </div>
+
+          <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 space-y-4">
+            <SectionLabel dark={true} className="text-[#b75928]">
+              Governance Culture & Reach
+            </SectionLabel>
+            <p className="text-[14px] text-[#e5e4e4]/85 leading-relaxed">
+              The Project Operations Unit (POU) forms the hub of NEPED — a team of versatile, dedicated professionals drawn from various government line departments, headed by a Team Leader who mandatorily holds Secretary-level rank and above. The Unit is advised and supported by a Project Steering Committee headed by the Chief Secretary, within an informal and highly conducive work culture that strongly supports innovation.
+            </p>
+            <p className="text-[14px] text-[#e5e4e4]/85 leading-relaxed pt-3 border-t border-white/10">
+              Acting as a coordinating hub across the state's developmental departments, NEPED has amassed considerable credibility over three decades — serving as a <strong>knowledge bank</strong> for researchers, government departments, and NGOs within India and beyond national borders.
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
       {/* 2. HISTORICAL NUMERICAL IMPACT MATRIX (From PDF) */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-6 sm:p-10">
           <div className="mb-6">
             <SectionLabel>Milestones by the Numbers</SectionLabel>
@@ -171,10 +216,10 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. IN-DEPTH 30-YEAR HISTORY & PHASES (From History PDF) */}
-      <section id="history" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6 space-y-12">
+      <motion.section {...fadeUpOnView} id="history" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6 space-y-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#e5e4e4] pb-6">
           <div>
             <SectionLabel>01 / Chronicle of 30 Years</SectionLabel>
@@ -263,10 +308,10 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. INNOVATIONS SPOTLIGHT: FODDORIZER, LSPs, & SACON BLYTH'S TRAGOPAN */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Foddorizer & Livestock Innovation */}
           <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
@@ -328,10 +373,10 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. SEVEN OFFICIAL AIMS & OBJECTIVES */}
-      <section id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="mb-8">
           <SectionLabel>02 / Official Objectives</SectionLabel>
           <SectionHeading size="lg" className="mt-1">
@@ -384,10 +429,10 @@ export function NepedEconomicPage() {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. ORGANIZATIONAL STRUCTURE */}
-      <section id="structure" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="structure" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-xl mb-10">
             <SectionLabel dark={true} className="text-[#b75928]">
@@ -457,10 +502,10 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 7. ALL 13 PROJECTS ARCHIVE */}
-      <section id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+      {/* 7. PROJECTS ARCHIVE */}
+      <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-[#e5e4e4] pb-6 mb-8">
           <div>
             <SectionLabel>Official Project Archive</SectionLabel>
@@ -468,8 +513,17 @@ export function NepedEconomicPage() {
               Projects Implemented Under NEPED
             </SectionHeading>
             <p className="text-[14px] text-[#666666] mt-2">
-              Comprehensive registry of 13 landmark projects across international, national, and state funding agencies.
+              Comprehensive registry of {allProjects.length} landmark projects across international, national, and state funding agencies.
             </p>
+            <div className="mt-3">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 text-[12.5px] font-medium text-[#b75928] hover:text-[#000000] transition-colors"
+              >
+                <span>Open Fullscreen Dedicated Projects Archive</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
 
           {/* Category Filter Pills */}
@@ -491,44 +545,70 @@ export function NepedEconomicPage() {
           </div>
         </div>
 
-        {/* Project Cards Grid — Clickable like blog cards */}
+        {/* Project Cards Grid — same glassmorphic dark-card language as the homepage hero spotlight */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((proj) => (
             <Link
               key={proj.id}
               to={`/neped-economic/project/${proj.slug}`}
-              className="group bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-6 flex flex-col justify-between hover:border-[#000000] hover:shadow-lg transition-all duration-200 cursor-pointer relative overflow-hidden"
+              className="group rounded-[8px] border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20"
             >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[11px] font-mono text-[#8d8d8d]">{proj.period}</span>
-                  <PillBadge>{proj.category}</PillBadge>
+              {/* Image banner with project tag + period */}
+              <div className="relative h-[110px] overflow-hidden bg-[#1c1c1c]">
+                <img
+                  src={proj.heroImage}
+                  alt={proj.name}
+                  className="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/20 to-transparent" />
+                <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
+                  <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
+                    {proj.phase}
+                  </span>
                 </div>
-                <h3 className="text-[17px] font-medium text-[#000000] group-hover:text-[#b75928] transition-colors tracking-tight leading-snug">
-                  {proj.name}
-                </h3>
-                <div className="mt-2.5 text-[12px] text-[#b75928] font-medium">
-                  Funding: {proj.fundingAgency}
+                <div className="absolute right-3.5 top-3.5">
+                  <PillBadge dark={true}>{proj.category}</PillBadge>
                 </div>
-                <p className="text-[13px] text-[#666666] mt-3 leading-relaxed line-clamp-3">
-                  {proj.objective}
-                </p>
+                <div className="absolute left-3.5 bottom-3 text-[10px] font-mono text-[#e5e4e4]/70 uppercase">
+                  {proj.period}
+                </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#e5e4e4] flex items-center justify-between text-[12px] text-[#8d8d8d]">
-                <span className="font-mono">{proj.phase || `Phase ${proj.id}`}</span>
-                <span className="text-[#000000] font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  <span>Read Dossier</span>
-                  <span>→</span>
-                </span>
+              {/* Card Body */}
+              <div className="p-4 sm:p-5 space-y-3 flex-1 flex flex-col">
+                <h3 className="text-[16px] sm:text-[17px] font-light leading-[1.25] text-[#ffffff] tracking-[-0.2px]">
+                  {proj.name}
+                </h3>
+
+                {proj.objective ? (
+                  <p className="text-[12.5px] sm:text-[13px] leading-relaxed text-[#e5e4e4]/75 line-clamp-4 flex-1">
+                    {proj.objective}
+                  </p>
+                ) : (
+                  <p className="text-[12.5px] italic leading-relaxed text-[#8d8d8d] flex-1">
+                    No objective statement recorded in the source register for this project.
+                  </p>
+                )}
+
+                <div className="pt-3 border-t border-white/10 text-[11px] text-[#8d8d8d]">
+                  <span className="font-mono uppercase tracking-wider text-[10px] text-[#8d8d8d]/80 block">
+                    Funding Agency
+                  </span>
+                  <span className="text-[#e5e4e4]/90">{proj.fundingAgency}</span>
+                </div>
+
+                <div className="pt-1 flex items-center justify-between text-[12px] sm:text-[13px] text-[#ffffff] group-hover:text-[#b75928] transition-colors">
+                  <span className="font-medium">View Project Record</span>
+                  <span className="text-[15px] transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </div>
               </div>
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 8. TEAM LEADERS & PRESENT POU MEMBERS */}
-      <section id="team" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="team" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="mb-10">
           <SectionLabel>04 / Institutional Leadership</SectionLabel>
           <SectionHeading size="lg" className="mt-1">
@@ -611,10 +691,10 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 9. THE EVOLUTIONARY BRIDGE: HOW NEPED HERITAGE GAVE RISE TO NEPeD CLEAN ENERGY */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#002934] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-2xl space-y-4">
             <SectionLabel dark={true} className="text-[#e5e4e4]">
@@ -639,7 +719,7 @@ export function NepedEconomicPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

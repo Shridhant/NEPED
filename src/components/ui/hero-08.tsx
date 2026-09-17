@@ -164,7 +164,7 @@ export function Hero08({
   const titleElement = title && (
     <h1
       className={cn(
-        'text-foreground font-serif font-normal tracking-tight text-balance',
+        'text-foreground font-serif italic font-normal tracking-tight text-balance',
         vs.title,
       )}
     >

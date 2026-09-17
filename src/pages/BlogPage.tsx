@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import { loadAllBlogs } from "@/lib/contentLoader";
 import { type BlogPostData } from "@/data/blogData";
 import {
@@ -36,7 +38,12 @@ export function BlogPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
         </div>
 
-        <div className="relative z-10 pt-16 sm:pt-20 max-w-[500px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 pt-16 sm:pt-20 max-w-[500px]"
+        >
           <SectionLabel dark={true} className="mb-2">
             01 / Editorial & Field Logs
           </SectionLabel>
@@ -46,18 +53,23 @@ export function BlogPage() {
           <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
             Dispatches from remote Himalayan villages, engineering breakthroughs, and community energy chronicles.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70"
+        >
           <span>Field Archives • Technical Whitepapers • Village Chronicles</span>
           <a href="#feed" className="hover:text-white transition-colors">
             Browse Articles ↓
           </a>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. CATEGORY PILL FILTER */}
-      <section id="feed" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="feed" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-[#e5e4e4] pb-6 mb-10">
           <div>
             <SectionLabel>Curated Archive</SectionLabel>
@@ -137,7 +149,7 @@ export function BlogPage() {
             </Link>
           ))}
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

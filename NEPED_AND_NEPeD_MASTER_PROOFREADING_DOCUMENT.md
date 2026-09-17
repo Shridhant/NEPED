@@ -14,16 +14,17 @@
 
 | Page Name | Live Local URL | Primary Component File | Key Content Displayed |
 |---|---|---|---|
-| **Master Home** | `http://localhost:5173/` | [`src/pages/HomePage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/HomePage.tsx) | Hero brand statement, 04 Gallery Carousel, Hardware Product Deck, Regional maps |
-| **About NEPED** | `http://localhost:5173/about` | [`src/pages/AboutPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/AboutPage.tsx) | Vision & Mission, Historical Bridge (1994 to 2007), 11 Team Leaders, Present POU, In Memoriam |
-| **NEPeD Clean Energy & Tech** | `http://localhost:5173/technology` | [`src/pages/TechnologyPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/TechnologyPage.tsx) | 15-point Hydroger specs, ELC controller mechanics, CERD Fab Lab, Projects Under Energy |
-| **Community & Impact** | `http://localhost:5173/impact` | [`src/pages/ImpactPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/ImpactPage.tsx) | Village Energy Committees (VECs), socio-economic impacts, catchment conservation |
-| **Field Gallery Directory** | `http://localhost:5173/gallery` | [`src/pages/GalleryPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/GalleryPage.tsx) | Category filter, 8 event album cards, verified photo metrics, photo contribution CTA |
-| **Event Album Detail Page** | `http://localhost:5173/gallery/:albumSlug` | [`src/pages/GalleryAlbumDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/GalleryAlbumDetailPage.tsx) | All photos for that specific event, captions, full-screen lightbox modal, historical context |
-| **Stories & Field Reports Feed** | `http://localhost:5173/blog` | [`src/pages/BlogPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/BlogPage.tsx) | Category filter pills, 6 article cards with read times, author divisions, and dates |
-| **Article Detail Page** | `http://localhost:5173/blog/:slug` | [`src/pages/BlogDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/BlogDetailPage.tsx) | Full editorial article body, key takeaways box, high-res hero image, previous/next pagination |
-| **NEPED Heritage Archives** | `http://localhost:5173/neped-economic` | [`src/pages/NepedEconomicPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedEconomicPage.tsx) | 30-year agroforestry history, 7 aims, society structure, 13 projects directory, 11 leaders roll |
-| **Project Dossier Page** | `http://localhost:5173/neped-economic/project/:slug` | [`src/pages/NepedProjectDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedProjectDetailPage.tsx) | Full project dossier, 4 field metrics, mandates checklist, deliverables, funding agency |
+| **Master Home** | `https://neped.vercel.app/` | [`src/pages/HomePage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/HomePage.tsx) | Hero brand statement, 04 Gallery Carousel, Hardware Product Deck, Regional maps |
+| **About NEPED** | `https://neped.vercel.app/about` | [`src/pages/AboutPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/AboutPage.tsx) | Vision & Mission, Historical Bridge (1994 to 2007), 11 Team Leaders, Present POU, In Memoriam |
+| **NEPeD Clean Energy Landing** | `https://neped.vercel.app/neped-energy` | [`src/pages/NepedEnergyPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedEnergyPage.tsx) | 9-sector energy impact matrix, Government as facilitator paradigm, 2007 7-member genesis, gateway to CERES & micro-grids |
+| **CERES R&D & Tech** | `https://neped.vercel.app/technology` | [`src/pages/TechnologyPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/TechnologyPage.tsx) | 15-point Hydroger specs, ELC controller mechanics, CERD Fab Lab, Projects Under Energy |
+| **Community & Impact** | `https://neped.vercel.app/impact` | [`src/pages/ImpactPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/ImpactPage.tsx) | Village Energy Committees (VECs), socio-economic impacts, catchment conservation |
+| **Field Gallery Directory** | `https://neped.vercel.app/gallery` | [`src/pages/GalleryPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/GalleryPage.tsx) | Category filter, 8 event album cards, verified photo metrics, photo contribution CTA |
+| **Event Album Detail Page** | `https://neped.vercel.app/gallery/:albumSlug` | [`src/pages/GalleryAlbumDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/GalleryAlbumDetailPage.tsx) | All photos for that specific event, captions, full-screen lightbox modal, historical context |
+| **Stories & Field Reports Feed** | `https://neped.vercel.app/blog` | [`src/pages/BlogPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/BlogPage.tsx) | Category filter pills, 6 article cards with read times, author divisions, and dates |
+| **Article Detail Page** | `https://neped.vercel.app/blog/:slug` | [`src/pages/BlogDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/BlogDetailPage.tsx) | Full editorial article body, key takeaways box, high-res hero image, previous/next pagination |
+| **NEPED Heritage Archives** | `https://neped.vercel.app/neped-economic` | [`src/pages/NepedEconomicPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedEconomicPage.tsx) | 30-year agroforestry history, 7 aims, society structure, 13 projects directory, 11 leaders roll |
+| **Project Dossier Page** | `https://neped.vercel.app/neped-economic/project/:slug` | [`src/pages/NepedProjectDetailPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedProjectDetailPage.tsx) | Full project dossier, 4 field metrics, mandates checklist, deliverables, funding agency |
 | **Floating Navbar** | *Persistent across all pages* | [`src/components/ui/AkerNavbar.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/components/ui/AkerNavbar.tsx) | Left NEPED master dropdown, Right NEPeD energy dropdown, MENU directory overlay |
 | **Dynamic Footer** | *Persistent across all pages* | [`src/components/Footer.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/components/Footer.tsx) | NEPED Master Footer (on main pages) & NEPED Heritage Footer (on `/neped-economic`) |
 
@@ -65,7 +66,7 @@
 
 ## 2. Vision, Mission & Shukla Commission Foundation
 
-* **📍 Where on site:** `http://localhost:5173/about#vision` and `http://localhost:5173/neped-economic#aims`
+* **📍 Where on site:** `https://neped.vercel.app/about#vision` and `https://neped.vercel.app/neped-economic#aims`
 * **🧩 Component File:** [`src/pages/AboutPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/AboutPage.tsx) (Section 02) & [`src/pages/NepedEconomicPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedEconomicPage.tsx) (Section 03)
 
 ### 2.1 Vision Statement
@@ -91,7 +92,7 @@
 
 ## 3. Society Structure & Institutional Leadership Roll
 
-* **📍 Where on site:** `http://localhost:5173/about#leaders`, `http://localhost:5173/about#team`, and `http://localhost:5173/neped-economic#team`
+* **📍 Where on site:** `https://neped.vercel.app/about#leaders`, `https://neped.vercel.app/about#team`, and `https://neped.vercel.app/neped-economic#team`
 * **🧩 Component Files:** [`src/pages/AboutPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/AboutPage.tsx) & [`src/pages/NepedEconomicPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/NepedEconomicPage.tsx)
 
 ### 3.1 11 Team Leaders Honor Roll (Chronological)
@@ -138,14 +139,14 @@
 
 ## 4. Complete Archive of 13 Projects Under NEPED
 
-* **📍 Master Directory URL:** `http://localhost:5173/neped-economic#projects`
+* **📍 Master Directory URL:** `https://neped.vercel.app/neped-economic#projects`
 * **🧩 Dataset File:** [`src/data/nepedProjectsData.ts`](file:///Users/apple/Documents/NagaEd/NEPED/src/data/nepedProjectsData.ts)
 * **🔍 How to view individual project dossier:** Click any project card on `/neped-economic#projects` or visit `/neped-economic/project/:slug`.
 
 ---
 
 ### Project 01: NEPED I — Agroforestry in Shifting Cultivation
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/neped-1-agroforestry-shifting-cultivation`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/neped-1-agroforestry-shifting-cultivation`
 * **Duration:** 1995 – 2000 | **Category:** Agroforestry
 * **Funding Agency:** Indo-Canada Environment Facility (ICEF) / Canadian International Development Agency (CIDA)
 * **Grant Scale:** ₹14.5+ Crores (Bilateral Grant)
@@ -160,7 +161,7 @@
 ---
 
 ### Project 02: NEPED II — Cash Crops & Micro-Finance
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/neped-2-cash-crops-microfinance`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/neped-2-cash-crops-microfinance`
 * **Duration:** 2001 – 2006 | **Category:** Agroforestry & Rural Finance
 * **Funding Agency:** Indo-Canada Environment Facility (ICEF) / CIDA
 * **Grant Scale:** ₹825+ Crores estimated economic turnover
@@ -173,7 +174,7 @@
 ---
 
 ### Project 03: NEPED III — Watershed Development in Shifting Cultivation (WDPSCA)
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/neped-3-watershed-development-shifting-cultivation`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/neped-3-watershed-development-shifting-cultivation`
 * **Duration:** 2006 – 2012 | **Category:** Conservation & Watersheds
 * **Funding Agency:** Ministry of Agriculture, Govt. of India (WDPSCA)
 * **Scale:** 17,930 Hectares Watershed Coverage across 11 districts
@@ -185,7 +186,7 @@
 ---
 
 ### Project 04: NEPED-SCEN Biodiversity & Traditional Knowledge
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/neped-scen-biodiversity-traditional-knowledge`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/neped-scen-biodiversity-traditional-knowledge`
 * **Duration:** 2007 – 2010 | **Category:** Biodiversity & Climate
 * **Funding Agency:** Sir Dorabji Ratan Tata Trust (SDTT) in collaboration with SACON
 * **Footprint:** Kohima, Phek, Zunheboto, and Wokha hill ranges
@@ -197,7 +198,7 @@
 ---
 
 ### Project 05: Community-Based Piggery Livelihood Project & Foddorizer
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/community-piggery-foddorizer-project`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/community-piggery-foddorizer-project`
 * **Duration:** 2012 – 2016 | **Category:** Livelihood & Energy Conservation
 * **Funding Agency:** Navajbhai Ratan Tata Trust (NRTT) & State Plan
 * **Scale:** 4,200 Resource-Poor Families
@@ -209,7 +210,7 @@
 ---
 
 ### Project 06: Thematic Exhibition of Indian Handicrafts
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/thematic-exhibition-indian-handicrafts`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/thematic-exhibition-indian-handicrafts`
 * **Duration:** 2021 – 2022 | **Category:** Handicrafts & Livelihood
 * **Funding Agency:** Development Commissioner (Handicrafts), Ministry of Textiles, GoI
 * **Core Objective:** Marketing platforms in Kohima and Dimapur to showcase and test market ethnic craft products developed by rural artisan clusters.
@@ -219,7 +220,7 @@
 ---
 
 ### Project 07: Handicraft Heritage Fashion Show & Cultural Outreach
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/handicraft-heritage-fashion-show`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/handicraft-heritage-fashion-show`
 * **Duration:** 2021 – 2022 | **Category:** Handicrafts & Cultural Heritage
 * **Funding Agency:** Ministry of Textiles, Govt. of India
 * **Core Objective:** Spreading awareness about Naga handicrafts, indigenous heritage, loin-loom textiles, and organic dyeing traditions.
@@ -229,7 +230,7 @@
 ---
 
 ### Project 08: Artisan Brand Building Seminars & Workshops
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/artisan-brand-building-seminars`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/artisan-brand-building-seminars`
 * **Duration:** 2021 – 2022 | **Category:** Capacity Building & Livelihoods
 * **Funding Agency:** Ministry of Textiles, Govt. of India
 * **Core Objective:** Sensitizing artisans and NGO personnel on brand creation, packaging, trademarking, and digital commerce.
@@ -239,7 +240,7 @@
 ---
 
 ### Project 09: Setting up of Handicraft Emporia at Tuensang
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/handicraft-emporia-tuensang`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/handicraft-emporia-tuensang`
 * **Duration:** 2024 – 2026 (Active) | **Category:** Infrastructure & Retail
 * **Funding Agency:** Ministry of Textiles, Govt. of India
 * **Scale:** Dedicated Eastern Nagaland Retail Complex in Tuensang
@@ -250,7 +251,7 @@
 ---
 
 ### Project 10: Value Addition to Non-Timber Forest Products (NTFP)
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/value-addition-non-timber-forest-products`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/value-addition-non-timber-forest-products`
 * **Duration:** 2022 – 2023 | **Category:** Agroforestry & Bio-Resources
 * **Funding Agency:** CCS NIAM Jaipur, Ministry of Agriculture, Govt. of India
 * **Core Objective:** Sensitizing and training forest gatherers about commercial value addition and marketing of wild NTFP harvests (wild apple, honey, mushrooms, herbs).
@@ -260,7 +261,7 @@
 ---
 
 ### Project 11: NAFCC — National Adaptation Fund for Climate Change
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/naffc-climate-change-adaptation`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/naffc-climate-change-adaptation`
 * **Duration:** 2018 – 2026 (Active) | **Category:** Climate Resilience & Hydrology
 * **Funding Agency:** MoEFCC & NABARD, Govt. of India
 * **Scale:** ₹24+ Crores Multidisciplinary Climate Adaptation Project
@@ -271,7 +272,7 @@
 ---
 
 ### Project 12: NEPED IV — Forest & Biodiversity Management in the Himalaya (FBMP)
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/neped-4-forest-biodiversity-management-kfw`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/neped-4-forest-biodiversity-management-kfw`
 * **Duration:** 2019 – Present (Active) | **Category:** Biodiversity & Climate
 * **Funding Agency:** Federal Republic of Germany through KfW Development Bank
 * **Scale:** Multilateral Indo-German Bilateral Partnership
@@ -282,7 +283,7 @@
 ---
 
 ### Project 13: State Level Workshop on Eco-Tourism Development
-* **📍 Dedicated URL:** `http://localhost:5173/neped-economic/project/state-level-workshop-ecotourism-development`
+* **📍 Dedicated URL:** `https://neped.vercel.app/neped-economic/project/state-level-workshop-ecotourism-development`
 * **Duration:** 2025 – 2026 (Active) | **Category:** Eco-Tourism & Conservation
 * **Funding Agency:** North Eastern Council (NEC), Ministry of DoNER, GoI
 * **Core Objective:** Empowering village communities through eco-tourism: wilderness guides, homestays, and cultural hospitality.
@@ -293,7 +294,7 @@
 
 ## 5. NEPeD Clean Energy Technology & Engineering Specifications
 
-* **📍 Primary Page URL:** `http://localhost:5173/technology`
+* **📍 Primary Page URL:** `https://neped.vercel.app/technology`
 * **🧩 Component Files:** [`src/pages/TechnologyPage.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/pages/TechnologyPage.tsx) & Hardware Card Stack [`src/components/ui/animate-card-animation.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/components/ui/animate-card-animation.tsx)
 
 ### 5.1 What is a Hydroger?
@@ -327,38 +328,38 @@ The term **‘Hydroger’** was coined by NEPeD in 2007 (an amalgamation of **Hy
 
 ## 6. Field Gallery & Event Logs (8 Collections)
 
-* **📍 Main Gallery URL:** `http://localhost:5173/gallery`
-* **📍 Homepage Carousel:** `http://localhost:5173/#section-04` ([`great-ui-diagonal-marquee-carousel.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/components/ui/great-ui-diagonal-marquee-carousel.tsx))
+* **📍 Main Gallery URL:** `https://neped.vercel.app/gallery`
+* **📍 Homepage Carousel:** `https://neped.vercel.app/#section-04` ([`great-ui-diagonal-marquee-carousel.tsx`](file:///Users/apple/Documents/NagaEd/NEPED/src/components/ui/great-ui-diagonal-marquee-carousel.tsx))
 * **🧩 Dataset File:** [`src/data/galleryData.ts`](file:///Users/apple/Documents/NagaEd/NEPED/src/data/galleryData.ts)
 * **🔍 How to view full photo album & lightbox:** Click any card in the carousel or gallery index.
 
 | # | Event / Day Collection Title | Category | Date & Location | Dedicated URL |
 |---|---|---|---|---|
-| 1 | **Nagaland Youth Summit 2016** | Youth Summits | Oct 2016 • State Academy Hall, Kohima | `http://localhost:5173/gallery/nagaland-youth-summit-2016` |
-| 2 | **Republic Day Exhibition 2016** | Youth Summits | Jan 26, 2016 • Secretariat Plaza, Kohima | `http://localhost:5173/gallery/republic-day-exhibition-2016` |
-| 3 | **Kingjung Village Energy Committee** | Village Committees | March 2015 • Kingjung, Eastern Nagaland | `http://localhost:5173/gallery/kingjung-village-energy-committee` |
-| 4 | **Deithung Hydroger Deployment** | Field Deployments | Nov 2015 • Deithung Ridge, Tuensang | `http://localhost:5173/gallery/deithung-hydroger-site-deployment` |
-| 5 | **Mountain Intake & Penstock Operations** | Field Deployments | 2013–2018 • Stream Gorges across Nagaland | `http://localhost:5173/gallery/intake-penstock-operations` |
-| 6 | **Post-Harvest Milling & Tool Fabrication** | Technology | 2014–2017 • Wokha, Mokokchung, Phek, Mon | `http://localhost:5173/gallery/cottage-agricultural-processing` |
-| 7 | **Catchment Area Watershed Preserves** | Watersheds | Ongoing Archive • Protected CCAs | `http://localhost:5173/gallery/pristine-catchment-conservation` |
-| 8 | **CERD Fabrication Hub & Indigenous R&D** | Technology | 2008–Present • NTTC Dimapur & Kohima Labs | `http://localhost:5173/gallery/indigenous-cerd-fabrication-hub` |
+| 1 | **Nagaland Youth Summit 2016** | Youth Summits | Oct 2016 • State Academy Hall, Kohima | `https://neped.vercel.app/gallery/nagaland-youth-summit-2016` |
+| 2 | **Republic Day Exhibition 2016** | Youth Summits | Jan 26, 2016 • Secretariat Plaza, Kohima | `https://neped.vercel.app/gallery/republic-day-exhibition-2016` |
+| 3 | **Kingjung Village Energy Committee** | Village Committees | March 2015 • Kingjung, Eastern Nagaland | `https://neped.vercel.app/gallery/kingjung-village-energy-committee` |
+| 4 | **Deithung Hydroger Deployment** | Field Deployments | Nov 2015 • Deithung Ridge, Tuensang | `https://neped.vercel.app/gallery/deithung-hydroger-site-deployment` |
+| 5 | **Mountain Intake & Penstock Operations** | Field Deployments | 2013–2018 • Stream Gorges across Nagaland | `https://neped.vercel.app/gallery/intake-penstock-operations` |
+| 6 | **Post-Harvest Milling & Tool Fabrication** | Technology | 2014–2017 • Wokha, Mokokchung, Phek, Mon | `https://neped.vercel.app/gallery/cottage-agricultural-processing` |
+| 7 | **Catchment Area Watershed Preserves** | Watersheds | Ongoing Archive • Protected CCAs | `https://neped.vercel.app/gallery/pristine-catchment-conservation` |
+| 8 | **CERD Fabrication Hub & Indigenous R&D** | Technology | 2008–Present • NTTC Dimapur & Kohima Labs | `https://neped.vercel.app/gallery/indigenous-cerd-fabrication-hub` |
 
 ---
 
 ## 7. Field Reports, Articles & Editorial Publications (6 Articles)
 
-* **📍 Main Feed URL:** `http://localhost:5173/blog`
+* **📍 Main Feed URL:** `https://neped.vercel.app/blog`
 * **🧩 Dataset File:** [`src/data/blogData.ts`](file:///Users/apple/Documents/NagaEd/NEPED/src/data/blogData.ts)
 * **🔍 How to read full article:** Click any card on `/blog` or navigate to its dedicated slug URL.
 
 | # | Article Title | Category | Author Division | Read Time | Dedicated URL |
 |---|---|---|---|---|---|
-| 1 | **How ELC Systems Regulate Off-Grid Micro-Grids in Rugged Terrains** | Technology | NEPeD Engineering Cell | 6 min | `http://localhost:5173/blog/how-elc-systems-regulate-off-grid-microgrids` |
-| 2 | **Youth Empowerment & Local Artisan Skill Building in Nagaland** | Community | Community Outreach Cell | 4 min | `http://localhost:5173/blog/youth-empowerment-and-rural-engineers-in-nagaland` |
-| 3 | **Scaling Made-in-Nagaland Clean Energy Tech Across NE India** | Field Reports | Project Directorate | 8 min | `http://localhost:5173/blog/scaling-made-in-nagaland-clean-energy-across-ne-india` |
-| 4 | **Preserving Mountain Watersheds & Forest Catchments** | Policy | Environmental Cell | 5 min | `http://localhost:5173/blog/preserving-mountain-watersheds-and-forest-catchments` |
-| 5 | **NEPeD Demonstration at Republic Day & Youth Summit** | Field Reports | Exhibition Cell | 4 min | `http://localhost:5173/blog/neped-demonstrations-at-republic-day-and-youth-summits` |
-| 6 | **Sharpening Daos & Powering Mountain Cottage Mills** | Community | Livelihood Cell | 5 min | `http://localhost:5173/blog/sharpening-daos-and-powering-mountain-cottage-mills` |
+| 1 | **How ELC Systems Regulate Off-Grid Micro-Grids in Rugged Terrains** | Technology | NEPeD Engineering Cell | 6 min | `https://neped.vercel.app/blog/how-elc-systems-regulate-off-grid-microgrids` |
+| 2 | **Youth Empowerment & Local Artisan Skill Building in Nagaland** | Community | Community Outreach Cell | 4 min | `https://neped.vercel.app/blog/youth-empowerment-and-rural-engineers-in-nagaland` |
+| 3 | **Scaling Made-in-Nagaland Clean Energy Tech Across NE India** | Field Reports | Project Directorate | 8 min | `https://neped.vercel.app/blog/scaling-made-in-nagaland-clean-energy-across-ne-india` |
+| 4 | **Preserving Mountain Watersheds & Forest Catchments** | Policy | Environmental Cell | 5 min | `https://neped.vercel.app/blog/preserving-mountain-watersheds-and-forest-catchments` |
+| 5 | **NEPeD Demonstration at Republic Day & Youth Summit** | Field Reports | Exhibition Cell | 4 min | `https://neped.vercel.app/blog/neped-demonstrations-at-republic-day-and-youth-summits` |
+| 6 | **Sharpening Daos & Powering Mountain Cottage Mills** | Community | Livelihood Cell | 5 min | `https://neped.vercel.app/blog/sharpening-daos-and-powering-mountain-cottage-mills` |
 
 ---
 

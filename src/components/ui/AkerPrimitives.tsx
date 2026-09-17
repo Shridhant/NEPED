@@ -73,7 +73,7 @@ export function TextArrowButton({
 
   const content = (
     <span
-      className={`inline-flex items-center gap-2 text-[13px] sm:text-[15px] font-normal tracking-[0.15px] transition-all duration-200 group ${colorClass} ${borderClass} ${paddingClass} ${className}`}
+      className={`inline-flex items-center gap-2 text-[13px] sm:text-[15px] font-normal tracking-[0.15px] transition-all duration-200 active:scale-[0.97] select-none group ${colorClass} ${borderClass} ${paddingClass} ${className}`}
     >
       <span>{children}</span>
       <span className="text-[16px] transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -81,12 +81,12 @@ export function TextArrowButton({
   );
 
   if (to) {
-    return <Link to={to}>{content}</Link>;
+    return <Link to={to} className="inline-block">{content}</Link>;
   }
   if (href) {
-    return <a href={href}>{content}</a>;
+    return <a href={href} className="inline-block">{content}</a>;
   }
-  return <button onClick={onClick} type="button" className="cursor-pointer">{content}</button>;
+  return <button onClick={onClick} type="button" className="cursor-pointer inline-block">{content}</button>;
 }
 
 export function FilledDarkButton({
@@ -104,19 +104,19 @@ export function FilledDarkButton({
 }) {
   const content = (
     <span
-      className={`inline-flex items-center justify-center bg-[#1c1c1c] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px] rounded-[80px] hover:bg-[#070707] transition-all duration-200 tracking-[0.15px] ${className}`}
+      className={`inline-flex items-center justify-center bg-[#1c1c1c] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px] rounded-[80px] hover:bg-[#070707] transition-all duration-200 active:scale-[0.97] select-none tracking-[0.15px] ${className}`}
     >
       {children}
     </span>
   );
 
   if (to) {
-    return <Link to={to}>{content}</Link>;
+    return <Link to={to} className="inline-block">{content}</Link>;
   }
   if (href) {
-    return <a href={href}>{content}</a>;
+    return <a href={href} className="inline-block">{content}</a>;
   }
-  return <button onClick={onClick} type="button" className="cursor-pointer">{content}</button>;
+  return <button onClick={onClick} type="button" className="cursor-pointer inline-block">{content}</button>;
 }
 
 export function NumberedItem({

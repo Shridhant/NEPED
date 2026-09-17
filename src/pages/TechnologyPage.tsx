@@ -1,16 +1,65 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
   SectionHeading,
   TextArrowButton,
 } from "@/components/ui/AkerPrimitives";
+import { TECH_PRODUCTS } from "@/data/techProductsData";
+import { ArrowRight } from "lucide-react";
 
 export function TechnologyPage() {
   const [activeTab, setActiveTab] = useState<"3kw" | "5kw" | "10kw">("3kw");
 
   useEffect(() => {
-    document.title = "Technology & Hydrogers — NEPeD Indigenous Micro-Hydro";
+    document.title = "CERES — Centre of Excellence for Renewable Energy Studies • NEPeD";
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  const ceresObjectives = [
+    {
+      num: "01",
+      title: "Mass production of hydrogers",
+      desc: "Fabricating standardized, modular pico-hydro turbines locally in Nagaland to meet rural off-grid demand.",
+    },
+    {
+      num: "02",
+      title: "Production of other essential hydroger components like Electronic Load Controller (ELC)",
+      desc: "In-house manufacturing of solid-state dynamic ballast governors and grid stabilization electronics.",
+    },
+    {
+      num: "03",
+      title: "Focus on improving renewable technologies",
+      desc: "Continuous R&D on blade aerodynamics, silt-resistant metallurgy, and high-efficiency permanent magnet alternators.",
+    },
+    {
+      num: "04",
+      title: "Training of “Rural Engineers”",
+      desc: "Skilling local village youths in electro-mechanical assembly, powerhouse maintenance, and rapid troubleshooting.",
+    },
+    {
+      num: "05",
+      title: "Centre for trans-generational sharing, learning and research on hydro based technologies in the North East and beyond",
+      desc: "A regional knowledge hub for grassroots innovators, universities, and Himalayan community power advocates.",
+    },
+    {
+      num: "06",
+      title: "Entrepreneurship development",
+      desc: "Incubating local micro-enterprises, rural machinery fabricators, and village energy service providers.",
+    },
+    {
+      num: "07",
+      title: "Upscale production of hydroger to Small Hydro technology",
+      desc: "Expanding technical capacity from sub-megawatt pico units into mini and small hydro power stations.",
+    },
+    {
+      num: "08",
+      title: "Easy availability of hydro technology and enabling state to harness the hydro potential rivers and streams of Nagaland",
+      desc: "Democratizing renewable hardware access so every mountain community can tap its local river streams.",
+    },
+  ];
 
   const specs = {
     "3kw": {
@@ -48,141 +97,222 @@ export function TechnologyPage() {
   const currentSpec = specs[activeTab];
 
   return (
-    <div className="w-full space-y-20 sm:space-y-28">
-      {/* 1. FULL-BLEED HERO */}
+    <div className="w-full space-y-20 sm:space-y-28 pb-20">
+      {/* 1. FULL-BLEED HERO BANNER */}
       <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/microgrid.png"
-            alt="Hydroger Technology"
+            alt="CERES Centre of Excellence for Renewable Energy Studies"
             className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
         </div>
 
-        <div className="relative z-10 pt-16 sm:pt-20 max-w-[500px]">
-          <SectionLabel dark={true} className="mb-2">
-            01 / Indigenous Engineering
-          </SectionLabel>
-          <h1 className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">
-            The Hydroger & ELC System
-          </h1>
-          <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
-            Pioneered and manufactured in Nagaland, our pico-hydro turbines harness high-velocity mountain streams to deliver clean 230V baseload electricity.
-          </p>
-        </div>
-
-        <div className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70">
-          <span>Sub-Megawatt Pico Hydro • Solid-State Electronic Load Balancing</span>
-          <a href="#specs" className="hover:text-white transition-colors">
-            View Technical Specs ↓
-          </a>
-        </div>
-      </section>
-
-      {/* 2. TWO-COLUMN FEATURE CARDS (Hydroger + ELC) */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="mb-8">
-          <SectionLabel>02 / Core Components</SectionLabel>
-          <SectionHeading size="lg" className="mt-1">
-            Precision engineering for off-grid resilience
-          </SectionHeading>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1: Mist (#e5e4e4) Hydroger Card */}
-          <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[420px]">
-            <div>
-              <span className="text-[12px] font-mono text-[#666666] uppercase tracking-wider">
-                Component A
+        <motion.div
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 pt-16 sm:pt-20 max-w-[760px]"
+        >
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <Link
+              to="/neped-energy"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[1584px] bg-white/[0.08] hover:bg-white/15 border border-white/18 text-[11px] font-mono text-[#e5e4e4] transition-colors"
+            >
+              <span>← NEPeD Energy Overview</span>
+            </Link>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#b75928] animate-pulse" />
+              <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.12em] text-[#e5e4e4] font-mono">
+                Centre of Excellence for Renewable Energy Studies (CERES)
               </span>
-              <h3 className="text-[30px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] mt-3">
-                Indigenous Hydroger
-              </h3>
-              <p className="text-[15px] text-[#494949] mt-3 leading-relaxed">
-                The Hydroger turbine incorporates an impulse Pelton/cross-flow runner encased in a modular chassis. Built to withstand silted mountain water with minimal maintenance.
-              </p>
-
-              <div className="mt-6 space-y-2 border-t border-[#000000]/10 pt-4 text-[13px] text-[#262626]">
-                <div className="flex justify-between">
-                  <span>Available Capacities:</span>
-                  <span className="font-mono font-medium">3 kW / 5 kW / 10 kW</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Manufacturing:</span>
-                  <span className="font-mono font-medium">Fabricated in Nagaland</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Design Life:</span>
-                  <span className="font-mono font-medium">15+ Years Continuous</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6">
-              <TextArrowButton to="#specs" variant="pill">
-                Explore Capacities
-              </TextArrowButton>
             </div>
           </div>
 
-          {/* Card 2: Char (#1c1c1c) ELC Card with Hardware Image */}
-          <div id="elc" className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[420px]">
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider">
-                  Component B • Dimapur R&D
-                </span>
-                <span className="text-[11px] font-mono bg-white/10 text-[#ffffff] px-2 py-0.5 rounded-[1584px]">
-                  ~1 kg Apparatus
-                </span>
-              </div>
-              <h3 className="text-[30px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
-                Electronic Load Controller (ELC)
-              </h3>
-              <p className="text-[14px] text-[#e5e4e4]/80 mt-3 leading-relaxed">
-                Originally, Hydrogers lacked ELCs, requiring tricky manual load balancing that often fused bulbs and damaged appliances. Under its Entrepreneurship Programme, NEPeD funded a local Electronic Engineer who built a working prototype in 2009.
-              </p>
+          <h1 className="text-[36px] sm:text-[54px] md:text-[62px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]">
+            CERES — Centre of Excellence
+          </h1>
 
-              <div className="my-4 aspect-[16/9] rounded-[6px] overflow-hidden bg-[#070707] border border-white/10">
-                <img
-                  src="/elc-device.png"
-                  alt="NEPeD Electronic Load Controller Device"
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
+          <p className="mt-4 text-[15px] sm:text-[16.5px] text-[#ffffff]/90 font-normal leading-relaxed">
+            NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.
+          </p>
 
-              <div className="space-y-1.5 text-[12px] text-[#e5e4e4]">
-                <div className="font-medium text-[#b75928]">Controls 6 Parameters:</div>
-                <div className="grid grid-cols-2 gap-1 text-[12px] text-[#8d8d8d]">
-                  <span>(a) Constant Generator RPM</span>
-                  <span>(b) Frequency (12–60Hz)</span>
-                  <span>(c) Overload Protection</span>
-                  <span>(d) High Voltage Cutoff</span>
-                  <span>(e) Low Voltage Regulation</span>
-                  <span>(f) Short Circuit Protection</span>
+          <p className="mt-2 text-[13.5px] sm:text-[14px] text-[#e5e4e4]/75 font-light leading-relaxed max-w-2xl">
+            Established to mass-produce indigenous hydrogers, engineer Electronic Load Controllers (ELC), train rural engineers, and enable Nagaland to harness its vast Himalayan river potential.
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href="#ceres-objectives"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[1584px] bg-[#ffffff] text-[#000000] text-[13px] font-medium hover:bg-[#e5e4e4] transition-all"
+            >
+              <span>CERES Institutional Objectives ↓</span>
+            </a>
+            <a
+              href="#products-catalog"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[1584px] bg-white/10 border border-white/20 text-[#ffffff] text-[13px] font-medium hover:bg-white/15 transition-all"
+            >
+              <span>Explore Products Lineup</span>
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+          className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70"
+        >
+          <span>Industrial Estate, Dimapur • Established for Indigenous Clean Energy R&D • Govt. of Nagaland</span>
+          <a href="#ceres-objectives" className="hover:text-white transition-colors">
+            Scroll to 8 Mandates ↓
+          </a>
+        </motion.div>
+      </section>
+
+      {/* 2. CERES INSTITUTIONAL MANDATE & 8 CORE OBJECTIVES */}
+      <motion.section {...fadeUpOnView} id="ceres-objectives" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-8 sm:p-12 shadow-sm space-y-8">
+          <div className="border-b border-[#e5e4e4] pb-6 max-w-3xl">
+            <SectionLabel>Institutional Charter • Industrial Estate, Dimapur</SectionLabel>
+            <SectionHeading size="lg" className="mt-1">
+              Objectives of CERES
+            </SectionHeading>
+            <p className="text-[15px] sm:text-[16px] text-[#262626] font-normal leading-relaxed mt-4">
+              <strong>NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.</strong> CERES was set up with the following objectives:
+            </p>
+          </div>
+
+          {/* 8 Official Objectives Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {ceresObjectives.map((obj) => (
+              <div
+                key={obj.num}
+                className="p-5 rounded-[8px] bg-[#e5e4e4]/25 border border-[#e5e4e4] flex flex-col justify-between hover:border-[#1c1c1c] hover:bg-[#ffffff] transition-all group"
+              >
+                <div className="space-y-3">
+                  <span className="inline-block px-2.5 py-0.5 rounded-[4px] bg-[#1c1c1c] text-[#ffffff] font-mono text-[11px] font-semibold">
+                    {obj.num}
+                  </span>
+                  <h4 className="text-[15.5px] font-medium text-[#000000] leading-snug group-hover:text-[#b75928] transition-colors">
+                    {obj.title}
+                  </h4>
                 </div>
+                <p className="mt-3 text-[12.5px] text-[#666666] leading-relaxed border-t border-[#e5e4e4] pt-2.5">
+                  {obj.desc}
+                </p>
               </div>
-            </div>
-
-            <div className="pt-6 border-t border-white/10 mt-4 flex items-center justify-between">
-              <span className="text-[12px] text-[#8d8d8d]">Parallel Hydroger Synchronizer</span>
-              <TextArrowButton to="#specs" dark={true} variant="pill">
-                Turbine Specs
-              </TextArrowButton>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* 3. INTERACTIVE HARDWARE PRODUCTS CATALOG (CLICKABLE PRODUCT CARDS) */}
+      <motion.section {...fadeUpOnView} id="products-catalog" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#e5e4e4] pb-6">
+          <div>
+            <SectionLabel>CERES Production Lineup</SectionLabel>
+            <SectionHeading size="lg" className="mt-1">
+              Engineered Clean Tech Products
+            </SectionHeading>
+            <p className="text-[14.5px] text-[#666666] mt-2">
+              Hardware designed, manufactured, and tested at the CERES facility in Dimapur. Click any card to inspect full technical data sheets.
+            </p>
+          </div>
+          <span className="text-[12px] font-mono text-[#8d8d8d] shrink-0">
+            {TECH_PRODUCTS.length} Official Hardware Products
+          </span>
+        </div>
+
+        {/* Clickable Product Cards Grid (Dynamically adapts to 1, 2, 3, 4+ cards) */}
+        <div
+          className={`grid gap-6 sm:gap-8 ${
+            TECH_PRODUCTS.length === 1
+              ? "max-w-md mx-auto grid-cols-1"
+              : TECH_PRODUCTS.length === 2
+              ? "max-w-4xl mx-auto grid-cols-1 md:grid-cols-2"
+              : TECH_PRODUCTS.length === 3
+              ? "max-w-6xl mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          }`}
+        >
+          {TECH_PRODUCTS.map((prod, idx) => (
+            <Link
+              key={prod.id}
+              to={`/technology/product/${prod.slug}`}
+              className="group bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] overflow-hidden shadow-sm hover:shadow-xl hover:border-[#1c1c1c] active:scale-[0.98] transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                {/* Product Image Header with Tag */}
+                <div className="relative aspect-[16/10] bg-[#1c1c1c] overflow-hidden">
+                  <img
+                    src={prod.heroImage}
+                    alt={prod.name}
+                    className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                    <span className="px-3 py-1 rounded-[1584px] bg-black/70 backdrop-blur-md border border-white/20 text-[10.5px] font-mono text-white uppercase tracking-wider">
+                      Product 0{idx + 1}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-3 left-3 right-3 text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4] truncate">
+                    {prod.category}
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <h3 className="text-[22px] font-light text-[#000000] tracking-[-0.3px] group-hover:text-[#b75928] transition-colors leading-snug">
+                      {prod.name}
+                    </h3>
+                    <p className="mt-1 text-[12px] font-mono text-[#b75928] uppercase tracking-wider truncate">
+                      {prod.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-[13.5px] text-[#494949] leading-relaxed line-clamp-3">
+                    {prod.summary}
+                  </p>
+
+                  {/* Clean 3-Column Preview Specs Matrix */}
+                  <div className="grid grid-cols-3 gap-2 p-3 bg-[#e5e4e4]/35 rounded-[6px] border border-[#e5e4e4] text-center">
+                    {prod.previewSpecs.map((sp, sIdx) => (
+                      <div key={sIdx} className="space-y-0.5">
+                        <span className="text-[10px] font-mono text-[#8d8d8d] uppercase block truncate">
+                          {sp.label}
+                        </span>
+                        <span className="text-[11.5px] font-semibold text-[#000000] block truncate">
+                          {sp.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Footer Button Action */}
+              <div className="p-6 pt-0">
+                <div className="w-full py-3 px-5 rounded-[80px] bg-[#1c1c1c] group-hover:bg-[#070707] text-[#ffffff] text-[13px] font-medium transition-colors flex items-center justify-between shadow-sm">
+                  <span>View Product Specifications</span>
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </motion.section>
 
       {/* 3. INTERACTIVE TECHNICAL SPECIFICATIONS EXHIBIT */}
-      <section id="specs" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="specs" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-8 sm:p-12">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 gap-4 border-b border-[#e5e4e4] pb-6">
             <div>
-              <SectionLabel>Technical Data Sheet</SectionLabel>
+              <SectionLabel>Turbine Engineering Specs</SectionLabel>
               <SectionHeading size="md" className="mt-1">
-                Hydroger Turbine Specifications
+                Hydroger Capacity Comparison
               </SectionHeading>
             </div>
 
@@ -193,7 +323,7 @@ export function TechnologyPage() {
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-1.5 rounded-[1584px] text-[13px] font-medium transition-all ${
+                  className={`px-4 py-1.5 rounded-[1584px] text-[13px] font-medium transition-all cursor-pointer ${
                     activeTab === tab
                       ? "bg-[#1c1c1c] text-[#ffffff]"
                       : "text-[#666666] hover:text-[#000000]"
@@ -213,8 +343,18 @@ export function TechnologyPage() {
               </p>
               <div className="p-4 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-2 text-[13px]">
                 <div className="text-[#8d8d8d] uppercase text-[11px] font-mono">Portability Profile</div>
-                <p className="text-[#000000]">{currentSpec.weight}</p>
+                <p className="text-[#000000] font-medium">{currentSpec.weight}</p>
                 <p className="text-[#666666]">Designed for remote mountain transport without heavy machinery.</p>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  to="/technology/product/hydroger-turbine-system"
+                  className="inline-flex items-center gap-2 text-[13px] font-medium text-[#b75928] hover:underline"
+                >
+                  <span>Open Full Hydroger Specification Page</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
 
@@ -222,34 +362,34 @@ export function TechnologyPage() {
               <table className="w-full text-left text-[14px]">
                 <tbody>
                   <tr className="border-b border-[#e5e4e4]">
-                    <td className="py-3.5 text-[#8d8d8d] font-normal w-1/3">Operating Head</td>
-                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.head}</td>
+                    <td className="py-3 text-[#8d8d8d] font-normal w-1/3">Operating Head</td>
+                    <td className="py-3 text-[#000000] font-mono">{currentSpec.head}</td>
                   </tr>
                   <tr className="border-b border-[#e5e4e4]">
-                    <td className="py-3.5 text-[#8d8d8d] font-normal">Water Flow Rate</td>
-                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.discharge}</td>
+                    <td className="py-3 text-[#8d8d8d] font-normal">Water Flow Rate</td>
+                    <td className="py-3 text-[#000000] font-mono">{currentSpec.discharge}</td>
                   </tr>
                   <tr className="border-b border-[#e5e4e4]">
-                    <td className="py-3.5 text-[#8d8d8d] font-normal">Rated Output</td>
-                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.output}</td>
+                    <td className="py-3 text-[#8d8d8d] font-normal">Rated Output</td>
+                    <td className="py-3 text-[#000000] font-mono">{currentSpec.output}</td>
                   </tr>
                   <tr className="border-b border-[#e5e4e4]">
-                    <td className="py-3.5 text-[#8d8d8d] font-normal">Operating Speed</td>
-                    <td className="py-3.5 text-[#000000] font-mono">{currentSpec.rpm}</td>
+                    <td className="py-3 text-[#8d8d8d] font-normal">Operating Speed</td>
+                    <td className="py-3 text-[#000000] font-mono">{currentSpec.rpm}</td>
                   </tr>
                   <tr className="border-b border-[#e5e4e4]">
-                    <td className="py-3.5 text-[#8d8d8d] font-normal">Alternator Spec</td>
-                    <td className="py-3.5 text-[#000000]">{currentSpec.alternator}</td>
+                    <td className="py-3 text-[#8d8d8d] font-normal">Alternator Spec</td>
+                    <td className="py-3 text-[#000000]">{currentSpec.alternator}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. MICROGRID ARCHITECTURE (Pine & Tide Surfaces) */}
-      <section id="microgrids" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+      <motion.section {...fadeUpOnView} id="microgrids" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Pine Card */}
           <div className="bg-[#193f32] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
@@ -265,8 +405,8 @@ export function TechnologyPage() {
               </p>
             </div>
             <div className="pt-6">
-              <TextArrowButton to="/impact" dark={true} variant="pill">
-                View Village Case Studies
+              <TextArrowButton to="/technology/product/village-pico-microgrid" dark={true} variant="pill">
+                Explore Microgrid System
               </TextArrowButton>
             </div>
           </div>
@@ -291,63 +431,35 @@ export function TechnologyPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* 5. PROJECTS IMPLEMENTED UNDER NEPeD (ENERGY DEVELOPMENT) */}
-      <section id="energy-projects" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-8 sm:p-12">
-          <div className="mb-8">
-            <SectionLabel>Government Sponsored Schemes</SectionLabel>
-            <SectionHeading size="md" className="mt-1">
-              Projects Implemented Under NEPeD (Energy Division)
-            </SectionHeading>
-            <p className="text-[14px] text-[#666666] mt-2 max-w-xl">
-              Official energy technology deployments funded by central ministries and regional development councils.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
-              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2015 – 2016 • MNRE</span>
-              <h4 className="text-[17px] font-medium text-[#000000]">
-                Installation of 30 Watermills / Pico Hydrogers
-              </h4>
-              <div className="text-[12px] text-[#b75928] font-medium">
-                Ministry of New and Renewable Energy (MNRE), GoI
-              </div>
-              <p className="text-[13px] text-[#666666] leading-relaxed">
-                Upgraded and deployed 30 indigenous pico-hydro installations across remote hill villages in Nagaland.
+      {/* 5. EDITORIAL CROSS-NAVIGATION BANNER */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-8 space-y-4">
+              <SectionLabel dark={true} className="text-[#b75928]">
+                Government Energy Schemes & Field Rollout
+              </SectionLabel>
+              <h2 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-tight leading-tight">
+                Explore Government Sponsored Clean Energy Projects
+              </h2>
+              <p className="text-[14.5px] text-[#e5e4e4]/80 leading-relaxed max-w-2xl">
+                Discover the 30+ watermill deployments funded by MNRE, Made-in-Nagaland R&D supported by the North Eastern Council (NEC), and climate adaptation funds across mountain catchments.
               </p>
             </div>
 
-            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
-              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2017 – 2019 • NEC</span>
-              <h4 className="text-[17px] font-medium text-[#000000]">
-                Development of Made-in-Nagaland Hydrogers
-              </h4>
-              <div className="text-[12px] text-[#b75928] font-medium">
-                North Eastern Council (NEC)
-              </div>
-              <p className="text-[13px] text-[#666666] leading-relaxed">
-                R&D initiative to standardise and fabricate indigenous Pico Hydro (Hydroger) turbines locally in Nagaland.
-              </p>
-            </div>
-
-            <div className="p-6 bg-[#e5e4e4]/30 rounded-[8px] border border-[#e5e4e4] space-y-3">
-              <span className="text-[11px] font-mono text-[#8d8d8d] uppercase">2018 – 2026 • NAFCC</span>
-              <h4 className="text-[17px] font-medium text-[#000000]">
-                National Adaptation Fund for Climate Change
-              </h4>
-              <div className="text-[12px] text-[#b75928] font-medium">
-                Ministry of Agriculture, Govt. of India
-              </div>
-              <p className="text-[13px] text-[#666666] leading-relaxed">
-                Empowering mountain villages to mitigate seasonal flow fluctuations and secure sustainable power.
-              </p>
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
+              <TextArrowButton to="/energy-projects" dark={true} variant="pill">
+                Explore Energy Projects →
+              </TextArrowButton>
+              <TextArrowButton to="/impact" dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
+                Village Impact Directory
+              </TextArrowButton>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
