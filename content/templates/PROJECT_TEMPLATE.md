@@ -12,7 +12,7 @@ category: "Agroforestry" # Options: "Agroforestry" | "Biodiversity & Climate" | 
 fundingAgency: "Name of Primary Funding Department or International Body"
 budgetOrScale: "e.g. ₹15 Crores or 5,000 Families"
 targetDistricts: "Districts or Village Clusters covered"
-heroImage: "/forest.png" # Photo path or name of attached image
+heroImage: "/forest.webp" # Photo path or name of attached image
 documentRef: "Optional Official Report / Evaluation Reference Document"
 
 # 4 Key Quantitative Field Statistics (Displayed in the stats matrix)

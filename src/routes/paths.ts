@@ -31,6 +31,8 @@ export const NEPED_ENERGY_PATHS = {
   technology: "/neped-energy/technology",
   product: (slug: string) => `/neped-energy/technology/${slug}`,
   impact: "/neped-energy/impact",
+  caseStudies: "/neped-energy/case-studies",
+  caseStudy: (slug: string) => `/neped-energy/case-studies/${slug}`,
 } as const;
 
 /** True when the pathname belongs to the NEPED section: the homepage and /neped/* (not NEPeD, whose prefix also starts with "/neped"). */

@@ -1,5 +1,7 @@
+import type React from "react";
 import { motion, type Transition } from "motion/react";
 import type { LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 /*
  * Adapted from the "FolderCards" component: a folder that slides down on hover to
@@ -20,6 +22,8 @@ export interface FolderCardItem {
   textColor: string;
   subTextColor: string;
   iconColor: string;
+  /** Page the card opens (keyboard and mouse) */
+  to?: string;
 }
 
 const gpuSpringTransition: Transition = {
@@ -33,14 +37,28 @@ const gpuSpringTransition: Transition = {
 
 export function FolderCard({ card }: { card: FolderCardItem }) {
   const Icon = card.icon;
+  const navigate = useNavigate();
+  const open = card.to ? () => navigate(card.to!) : undefined;
 
   return (
     <motion.div
-      className="group relative isolate block h-[420px] w-full cursor-default select-none overflow-hidden rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] transform-gpu [backface-visibility:hidden] [contain:paint]"
+      className={`group relative isolate block h-[420px] w-full ${card.to ? "cursor-pointer" : "cursor-default"} select-none outline-none focus-visible:ring-2 focus-visible:ring-(--brand-accent) focus-visible:ring-offset-2 overflow-hidden rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] transform-gpu [backface-visibility:hidden] [contain:paint]`}
       style={{ border: `10px solid ${card.borderColor}`, boxSizing: "border-box" }}
       initial="initial"
       whileHover="hover"
+      whileFocus="hover"
       animate="initial"
+      {...(open
+        ? {
+            role: "link",
+            tabIndex: 0,
+            "aria-label": card.title,
+            onClick: open,
+            onKeyDown: (e: React.KeyboardEvent) => {
+              if (e.key === "Enter") open();
+            },
+          }
+        : {})}
     >
       {/* Gradient background (scales on hover) */}
       <motion.div

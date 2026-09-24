@@ -19,11 +19,11 @@ export default function ParallaxDemo() {
 
   const images = [
     {
-      src: "/hero-windmill.png",
+      src: "/hero-windmill.webp",
       alt: "Windmill at sunrise over mountains",
     },
     {
-      src: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+      src: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
       alt: "Villagers sharpening daos powered by hydroger",
     },
     {
@@ -31,19 +31,19 @@ export default function ParallaxDemo() {
       alt: "Visitors at NEPeD stall Republic Day 2016",
     },
     {
-      src: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+      src: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
       alt: "NEPeD members at Nagaland Youth Summit 2016",
     },
     {
-      src: "/solar-field.png",
+      src: "/solar-field.webp",
       alt: "Community solar field in Nagaland",
     },
     {
-      src: "/microgrid.png",
+      src: "/microgrid.webp",
       alt: "Hybrid microgrid setup in a Naga village",
     },
     {
-      src: "/forest.png",
+      src: "/forest.webp",
       alt: "Lush green forests of Nagaland",
     },
   ];

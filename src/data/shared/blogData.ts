@@ -34,7 +34,7 @@ export const BLOG_POSTS: BlogPostData[] = [
     category: "Technology",
     date: "July 28, 2026",
     readTime: "6 min read",
-    image: "/solar-field.png",
+    image: "/solar-field.webp",
     summary:
       "Locally manufactured Electronic Load Controllers ensure constant voltage and frequency stability despite seasonal mountain stream fluctuations.",
     author: {
@@ -85,7 +85,7 @@ export const BLOG_POSTS: BlogPostData[] = [
     category: "Community",
     date: "June 14, 2026",
     readTime: "4 min read",
-    image: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+    image: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
     summary:
       "Capacity building workshops equip rural youth to operate, service, and maintain micro-hydro generators independently without outside reliance.",
     author: {
@@ -129,7 +129,7 @@ export const BLOG_POSTS: BlogPostData[] = [
     category: "Field Reports",
     date: "May 05, 2026",
     readTime: "8 min read",
-    image: "/mountain-windmills.png",
+    image: "/mountain-windmills.webp",
     summary:
       "Partnering with state agencies across Meghalaya, Sikkim, and Arunachal Pradesh to deploy indigenous micro-hydro solutions.",
     author: {
@@ -173,7 +173,7 @@ export const BLOG_POSTS: BlogPostData[] = [
     category: "Policy",
     date: "April 19, 2026",
     readTime: "5 min read",
-    image: "/forest.png",
+    image: "/forest.webp",
     summary:
       "Community watershed management protocols safeguard perpetual river flow for multi-generational village electrification.",
     author: {
@@ -261,7 +261,7 @@ export const BLOG_POSTS: BlogPostData[] = [
     category: "Community",
     date: "February 02, 2026",
     readTime: "5 min read",
-    image: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+    image: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
     summary:
       "How electricity directly translates into agricultural value addition: tool sharpening, grain hulling, and evening timber processing.",
     author: {

@@ -1,0 +1,151 @@
+/**
+ * NEPeD case studies — text verbatim from NEPeD/casestudies.txt.
+ * Edits: photo captions pasted into the text were removed (e.g. "Street lighting" before "Kingjung is…");
+ * numbering removed from list items (shown as a numbered list). overview = first sentence.
+ */
+export type CaseStudySection = { heading: string | null; paragraphs: string[]; list: string[] };
+export type CaseStudy = { slug: string; place: string; title: string; overview: string; sections: CaseStudySection[] };
+
+export const CASE_STUDIES: CaseStudy[] = [
+  {
+    "slug": "kingjung",
+    "place": "Kingjung",
+    "title": "The Kingjung Story",
+    "overview": "Kingjung is a small village of 90 households in Tuensang, 108 kms south-east of Noklak, along the Indo-Myanmar border.",
+    "sections": [
+      {
+        "heading": null,
+        "paragraphs": [
+          "Kingjung is a small village of 90 households in Tuensang, 108 kms south-east of Noklak, along the Indo-Myanmar border. To reach there one would have to go through perilous mountain roads that become inaccessible during the monsoons. Although it was only in 2008 that the village was connected to the rest of the world by a newly constructed road, it has since then has the distinction of being the only village in the area to have uninterrupted power supply -for the past three years. This came about when the villagers approached NEPeD in 2009 evincing their need for electricity. This need became more apparent when on instruction from NEPeD they themselves constructed a 2.5 km long power channel, a fore bay with a de-silting tank within 4 days. A 3 kW Hydroger was thus provided and installed with full community participation."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Hydroger Installation",
+        "paragraphs": [
+          "As part of a Pilot project, a team from NEPeD decided to reinforce the electrification at Kingjung. In November 2012, the team successfully installed 2x3kW Indigenous hydrogers provided with ELCs developed at CERES, Dimapur. Each household was provided with a 3 point connection.",
+          "Neighbouring villagers would walk miles to charge their mobiles and emergency LED lamps. Kingjung, a village unknown to the outside world proudly has uninterrupted and Green, sustainable power supply."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Impacts",
+        "paragraphs": [
+          "The impacts of these small machines have been tremendous. A deep sense of ownership has developed and their understanding of technology is reflected in their ingenious method of splitting L/T aluminium wires for transmission, repair of CFL bulbs and in the fitting and servicing of the machines. Dependence on candles, kerosene and pinewood for lighting is now redundant while tremendously saving on time and money. Livelihood activities, educational performances and revenue generation have been enhanced. The wave of change brought by the Hydroger is astonishing. Not only has it given them electricity but has improved their quality of life. There has been participation of women and NEPeD has also gone the extra mile to educate the community on matters relating to sanitation, health and most importantly by giving them a voice in village decision making.",
+          "The villagers have passed a resolution to conserve the catchment areas. The pine forests have now been conserved for future generations. Kingjung village is on the path to become an international rural tourist hotspot for what they have achieved in such a small window in time."
+        ],
+        "list": []
+      }
+    ]
+  },
+  {
+    "slug": "kingpao",
+    "place": "Kingpao",
+    "title": "The Kingpao Hydroger Story",
+    "overview": "Kingpao is a peaceful village of 27 household located in the mountainous part bordering Myanmar.",
+    "sections": [
+      {
+        "heading": null,
+        "paragraphs": [
+          "Kingpao is a peaceful village of 27 household located in the mountainous part bordering Myanmar. It is situated south east of Noklak Sub-Division under Tuensang District, Nagaland having an elevation-1768m and Co-ordinates of N26°06.728’ E095°04.708. The village is still without road connectivity and any hopes of getting any electricity from the nearest power grid location i.e. from Noku (EAC outpost- about 15 km) is still a distant dream. The village is fortunate to have primary school but other services in the area of health are hard to come by. Patients have to travel 35 km, passing through rough and dangerous roads before they have access to medical facilities. The main agricultural products here are upland rice, vegetables, corn and some other crops."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Hydroger Installation",
+        "paragraphs": [
+          "The successful installation of hydroger at the Kingpao Village in April 2014, was made possible through the active participation of the village womenfolks community. This was due to the ripple effect of the Kingjung Village installation which served as a catalyst that captured the imagination of the residents of Kingpao and other surrounding villages. They were convinced that village level hydropower generation was possible.",
+          "Due to the lack of road connectivity to Kingpao Village, the villagers had to transport all the machineries by carrying them on their heads right from the Aniashu Village, which is 5 km away. This installation stage was perhaps one of the most memorable moments in the history of the people of Kingpao. There was a remarkable display of collective dedication and profound commitment to one common undertaking aimed at improving the quality of their lives.",
+          "Women participated in digging up the power channels from the source to the forebay tank. In-situ training on hydroger installation, feasibility, operation & maintenance was provided to the villagers."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Impacts :",
+        "paragraphs": [],
+        "list": [
+          "Revitalized social dynamics, community interaction and community bonding.",
+          "Women empowered on health, sanitation and decision making.",
+          "Longer study hours of school going children.",
+          "Man hours increased in livelihood activities (Basketry, weaving etc.).",
+          "NEPeD Energy Committee formed along with women representatives.",
+          "Revenue generation initiated for operation & maintenance and salary of the operators.",
+          "The community has resolved to conserve and protect the catchment areas/biodiversity."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "pang",
+    "place": "Pang",
+    "title": "The Pang Story",
+    "overview": "Pang is a village of 94 households, situated along the Indo Myanmar border about 150 kms south east of Noklak with a coordinates of N-25° 56’ 19”, E-094° 57’ 40”.",
+    "sections": [
+      {
+        "heading": null,
+        "paragraphs": [
+          "Pang is a village of 94 households, situated along the Indo Myanmar border about 150 kms south east of Noklak with a coordinates of N-25° 56’ 19”, E-094° 57’ 40”. The village has been connected by road only as late as of Sept’ 2013."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Hydroger Installation",
+        "paragraphs": [
+          "NEPeD’s Energy Team installed a 3Kw hydroger in the first week of Dec’ 2013. Community participation was tremendous in all facets of installation, from the cutting of the power channels, digging and de-silting the forebay tanks, erecting and setting up the transmission lines and the construction of the power house. The Rural engineers from Kingjung village did a remarkable job in laying the transmission lines and electrifying the households. They also helped NEPeD to identify the energy committee members to whom basic training was imparted."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Impacts:",
+        "paragraphs": [],
+        "list": [
+          "Generation of sustainable clean green energy",
+          "Change in mindset of the community, social bonding, and happiness quotient up.",
+          "Villagers learn to share the power generated.",
+          "NEPeD’s intervention on women empowerment, health and sanitation, decision making and child care.",
+          "Children have longer study hours.",
+          "Increase in man hours for livelihood activities",
+          "Awareness created on protection of the bio-diversity and catchment areas.",
+          "NEPeD energy committee created with involvement of women representatives.",
+          "Revenue generation for operation & maintenance of the hydroger/ salary component of the operators."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "aniashu",
+    "place": "Aniashu",
+    "title": "Aniashu Hydroger Project",
+    "overview": "Aniashu a Khiamniungan village is located 65 kms south east of Noklak at an altitude of 1137 with coordinates N26º 07.551’ E095º 04.695’.",
+    "sections": [
+      {
+        "heading": null,
+        "paragraphs": [
+          "Aniashu a Khiamniungan village is located 65 kms south east of Noklak at an altitude of 1137 with coordinates N26º 07.551’ E095º 04.695’. The village got road connectivity only recently in 2013.",
+          "A 3Kw hydroger was installed in the first week of April 2014 by the team with active support from the villagers. After providing light to the village, it was seen that the children find it very convenient to study at night, while the grownups especially the women are enjoying the experience of engaging in more productive activities due to presence of sufficient lighting throughout the night while men folks have more hours to put into improving their handicrafts and blacksmith works.",
+          "A NEPeD Energy Committee was setup with two women representative as part of the mission policy to uplift and empower women in the decision making. The community had also appointed two youths from the Committee for operation & maintenance with a salary of Rs. 750/- each, from the revenue collected. The communities are now aware of the importance of forest conservation for sustainability of the hydropower which will surely have impact for the future generation."
+        ],
+        "list": []
+      }
+    ]
+  },
+  {
+    "slug": "kaha",
+    "place": "Kaha",
+    "title": "Kaha Hydroger Project",
+    "overview": "A small village of 24 household under Kiphire district is a place inhabited by Yimchungers.",
+    "sections": [
+      {
+        "heading": null,
+        "paragraphs": [
+          "A small village of 24 household under Kiphire district is a place inhabited by Yimchungers. It is about 95 kilometres from Pungro town and about 10 km from Mimi village. The villagers are among the most under privileged in the area and are still without road and grid connectivity.",
+          "Before the hydroger was installed, the villagers depended only on pine sticks as a means of lighting at night as they could not effort to buy candles and kerosene.",
+          "Moreover to buy their basic needs, they had to walk one whole day to reach Pungro which is the nearest town.",
+          "“Hydroger has brought smiles and hope for the community, which will go down in the history of Kaha people” said G.B. Kaha. Earlier the communities were fully dependent on farming, hunting and forest produce, but now they have started different livelihood activities like handicrafts basketry and weaving, thus creating different pathways for income generation.",
+          "Mention may be made that the areas around the village is a biodiversity hot spot for Orchids of various species. The villagers have passed a resolution for their conservation and a sum of Rs.10,000/- as fine is imposed on the perpetrators who decide to violate the accepted conservation norms."
+        ],
+        "list": []
+      }
+    ]
+  }
+];

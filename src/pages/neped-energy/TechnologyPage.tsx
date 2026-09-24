@@ -124,7 +124,7 @@ export function TechnologyPage() {
       <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-[#070707]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/microgrid.png"
+            src="/microgrid.webp"
             alt="CERES Centre of Excellence for Renewable Energy Studies"
             className="w-full h-full object-cover"
           />

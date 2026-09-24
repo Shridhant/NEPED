@@ -34,7 +34,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "State Academy Hall, Kohima",
     district: "Kohima District",
     category: "Youth Summits & Events",
-    coverImage: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+    coverImage: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
     description: "A landmark multi-day convention bringing together over 500+ rural youth, village technicians, and NEPeD Project Operations Unit members to promote clean energy entrepreneurship and indigenous pico-hydro technology across Nagaland.",
     historicalContext: "Organized by NEPeD in collaboration with state youth bodies, the summit served as a strategic platform to showcase the 'Rural Engineers' paradigm. Youth from remote border villages were trained in hands-on turbine operation, electrical load balancing, and community micro-grid management, establishing a localized network of certified village technicians.",
     keyHighlights: [
@@ -47,7 +47,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "nys-1",
-        url: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+        url: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
         title: "NEPeD Delegation at Nagaland Youth Summit",
         caption: "NEPeD Project Operations Unit members and technical coordinators assembled at the State Academy Hall during the youth summit.",
         location: "Kohima",
@@ -55,7 +55,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "nys-2",
-        url: "/people/takum.jpg",
+        url: "/people/takum.webp",
         title: "Master Fabricator & POU Member Takum Chang",
         caption: "Technical officer Takum Chang leading the fabrication and machinery demonstration workshop for rural trainees.",
         location: "Kohima",
@@ -63,7 +63,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "nys-3",
-        url: "/people/erimyanger.jpg",
+        url: "/people/erimyanger.webp",
         title: "Technical Coordinator Er. Imnayanger Imchen",
         caption: "Coordinator presenting the CERES electrical load distribution schematic to participating delegates.",
         location: "Kohima",
@@ -71,7 +71,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "nys-4",
-        url: "/people/Klibathung.jpg",
+        url: "/people/Klibathung.webp",
         title: "Leadership Address by Commissioner & Secretary",
         caption: "Shri. K. Libanthung Lotha addressing youth on village energy sovereignty and self-reliant maintenance.",
         location: "Kohima",
@@ -79,7 +79,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "nys-5",
-        url: "/microgrid.png",
+        url: "/microgrid.webp",
         title: "Hydroger & ELC Demonstration Station",
         caption: "Working exhibition rig of the indigenous 3kW Turgo turbine connected to an active Electronic Load Controller.",
         location: "State Academy Hall",
@@ -125,7 +125,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "rd-3",
-        url: "/elc-device.png",
+        url: "/elc-device.webp",
         title: "Electronic Load Controller (ELC) Display Unit",
         caption: "The indigenous 1-kg electronic load controller unit showcased as a breakthrough in village power stabilization.",
         location: "Pavilion Tech Counter",
@@ -133,7 +133,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "rd-4",
-        url: "/solar-field.png",
+        url: "/solar-field.webp",
         title: "Hybrid Off-Grid Energy Architecture Panel",
         caption: "Infographic panel explaining the integration of pico-hydro with catchment solar installations.",
         location: "Kohima Pavilion",
@@ -171,7 +171,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "kj-2",
-        url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+        url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
         title: "Village Agricultural Workshop Powered by Hydroger",
         caption: "Kingjung farmers sharpening heavy machetes (daos) on a mechanical grinder driven by clean hydropower.",
         location: "Kingjung Workshop",
@@ -179,7 +179,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "kj-3",
-        url: "/6 Laying of intake pipes.jpg",
+        url: "/6 Laying of intake pipes.webp",
         title: "Community Pipe-Laying Shramdaan",
         caption: "Villagers contributing voluntary collective labor (shramdaan) to lay high-density polyethylene intake pipes up steep gorges.",
         location: "Kingjung Stream Ridge",
@@ -187,7 +187,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "kj-4",
-        url: "/forest.png",
+        url: "/forest.webp",
         title: "Kingjung Catchment Protection Zone",
         caption: "Upstream forest basin protected by village council resolution to ensure year-round perennial water discharge.",
         location: "Kingjung Watershed",
@@ -204,7 +204,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "Deithung Mountain Ridge",
     district: "Tuensang District",
     category: "Field Deployments",
-    coverImage: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.jpg",
+    coverImage: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.webp",
     description: "Commissioning of a specialized high-head pico-hydroger installation at Deithung, electrifying remote administrative settlements and security checkpoints along the mountain frontier.",
     historicalContext: "The Deithung deployment demonstrated the rugged versatility of the Made-in-Nagaland Hydroger under extreme mountain gradients. The installation harnesses a steep 32-meter head stream to provide 24/7 baseload power, replacing noisy diesel generators with silent, zero-emission water power.",
     keyHighlights: [
@@ -217,7 +217,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "dt-1",
-        url: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.jpg",
+        url: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.webp",
         title: "Site Inspection by SP Tuensang and NEPeD Engineers",
         caption: "Superintendent of Police, Tuensang inspecting the newly energized Deithung hydroger powerhouse with NEPeD officers.",
         location: "Deithung, Tuensang",
@@ -225,7 +225,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "dt-2",
-        url: "/microgrid.png",
+        url: "/microgrid.webp",
         title: "Deithung Powerhouse Interior",
         caption: "Compact cast-iron 3kW hydroger coupled with the electronic load controller and distribution busbar.",
         location: "Deithung Powerhouse",
@@ -233,7 +233,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "dt-3",
-        url: "/6 Laying of intake pipes.jpg",
+        url: "/6 Laying of intake pipes.webp",
         title: "Penstock Alignment Across Rocky Ridge",
         caption: "High-pressure pipeline secured onto rock anchors descending into the river valley.",
         location: "Deithung Gorge",
@@ -241,7 +241,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "dt-4",
-        url: "/mountain-windmills.png",
+        url: "/mountain-windmills.webp",
         title: "Tuensang Mountain Panorama",
         caption: "Topographical view of the rugged mountain terrain surrounding the Deithung hydro installation.",
         location: "Tuensang Hills",
@@ -258,7 +258,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "Various Mountain Stream Basins",
     district: "Statewide Nagaland",
     category: "Field Deployments",
-    coverImage: "/6 Laying of intake pipes.jpg",
+    coverImage: "/6 Laying of intake pipes.webp",
     description: "Photographic documentation of community pipeline laying, desilting chamber construction, and penstock alignment through steep mountain gorges across Nagaland.",
     historicalContext: "Installing pico-hydro in Nagaland requires navigating steep ravines, landslide-prone shale, and dense mountain jungles. NEPeD pioneered a lightweight, community-led civic construction approach using durable HDPE pipes that can be carried by hand along footpath trails without heavy vehicular access.",
     keyHighlights: [
@@ -271,7 +271,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "ip-1",
-        url: "/6 Laying of intake pipes.jpg",
+        url: "/6 Laying of intake pipes.webp",
         title: "Transporting and Jointing Intake Penstocks",
         caption: "Village team aligning and solvent-welding heavy-duty HDPE intake pipes along steep jungle slopes.",
         location: "Hill Gorge",
@@ -279,7 +279,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "ip-2",
-        url: "/forest.png",
+        url: "/forest.webp",
         title: "Stream Catchment Upstream Diversion",
         caption: "Low-impact stone weir diverting small stream fraction into the desilting forebay tank.",
         location: "Catchment Stream",
@@ -287,7 +287,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "ip-3",
-        url: "/mountain-windmills.png",
+        url: "/mountain-windmills.webp",
         title: "Mountain Ridge Gradient Descent",
         caption: "High hydraulic head gradient harnessed from mountain ridge crest to valley stream bed.",
         location: "Nagaland Highlands",
@@ -295,7 +295,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "ip-4",
-        url: "/microgrid.png",
+        url: "/microgrid.webp",
         title: "Powerhouse Tailrace Return",
         caption: "Clean water discharging back into the natural stream bed after generating turbine power, with zero pollution.",
         location: "Powerhouse Site",
@@ -312,7 +312,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "Various Village Micro-Enterprises",
     district: "Wokha, Mokokchung, Phek & Mon",
     category: "Technology & Fabrication",
-    coverImage: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+    coverImage: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
     description: "Demonstration of daytime productive power utilization — powering rice de-huskers, spice grinders, carpentry sawmills, and sharpening stones using clean pico-hydropower.",
     historicalContext: "Beyond lighting homes at night, NEPeD focused on maximizing daytime electricity utilization for cottage agro-processing. By connecting mechanical grain mills and sharpening machinery to hydroger output during daylight hours, village women saved hours of manual pounding, while local artisans boosted productivity.",
     keyHighlights: [
@@ -325,7 +325,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "cap-1",
-        url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+        url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
         title: "Dao Sharpening on Motorized Grinder",
         caption: "Village farmers sharpening agricultural machetes on an electric bench grinder powered by the local hydroger.",
         location: "Village Agro-Center",
@@ -333,7 +333,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "cap-2",
-        url: "/microgrid.png",
+        url: "/microgrid.webp",
         title: "Daytime Power Switchboard",
         caption: "Distribution board channeling excess daytime hydropower to cottage agro-processing machinery.",
         location: "Community Micro-Hub",
@@ -358,7 +358,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "Community Conserved Areas (CCAs)",
     district: "Statewide Nagaland",
     category: "Watershed Landscapes",
-    coverImage: "/forest.png",
+    coverImage: "/forest.webp",
     description: "Preservation and natural regeneration of virgin cloud forests and mountain spring basins that feed the perennial streams driving NEPeD hydrogers and rural drinking water supplies.",
     historicalContext: "A core principle of NEPeD's energy philosophy is that hydrogers cannot generate electricity without perennial water, and streams cannot flow without protected forest catchments. Installing a hydroger creates an immediate economic incentive for villages to declare upstream forests as protected sanctuaries.",
     keyHighlights: [
@@ -371,7 +371,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "pc-1",
-        url: "/forest.png",
+        url: "/forest.webp",
         title: "Pristine Catchment Cloud Forest",
         caption: "Dense native canopy in an upstream watershed basin acting as a natural sponge for perennial river recharge.",
         location: "Nagaland Highlands",
@@ -379,7 +379,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "pc-2",
-        url: "/mountain-windmills.png",
+        url: "/mountain-windmills.webp",
         title: "High-Altitude Ridges and Watershed Divide",
         caption: "Panoramic mountain divide where precipitation feeds multiple stream channels across tribal valleys.",
         location: "Mountain Ridge",
@@ -387,7 +387,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "pc-3",
-        url: "/solar-field.png",
+        url: "/solar-field.webp",
         title: "Ecological Solar Catchment Monitoring Station",
         caption: "Micro-meteorological monitoring node recording precipitation and temperature gradients.",
         location: "Ridge Station",
@@ -404,7 +404,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     location: "NTTC Dimapur & CERD Complex, Kohima",
     district: "Dimapur & Kohima Districts",
     category: "Technology & Fabrication",
-    coverImage: "/microgrid.png",
+    coverImage: "/microgrid.webp",
     description: "Inside the R&D and fabrication workshops of NEPeD — designing, casting, precision machining, and field-testing the indigenous Hydroger turbines and Electronic Load Controllers.",
     historicalContext: "Faced with high failure rates of imported foreign pico machines, NEPeD collaborated with the Nagaland Tool Room and Training Centre (NTTC) in 2008 to completely indigenize turbine manufacturing. Today, every casing, runner, stator coil, and electronic governor is manufactured locally by Naga engineers and technicians.",
     keyHighlights: [
@@ -417,7 +417,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
     photos: [
       {
         id: "cf-1",
-        url: "/microgrid.png",
+        url: "/microgrid.webp",
         title: "Assembled 3kW Hydroger Unit with ELC",
         caption: "Finished Made-in-Nagaland 3kW Hydroger turbine ready for dispatch to remote hill villages.",
         location: "CERD Workshop",
@@ -425,7 +425,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "cf-2",
-        url: "/elc-device.png",
+        url: "/elc-device.webp",
         title: "Electronic Load Controller Circuitry",
         caption: "Solid-state electronic governor designed to dynamically divert surplus power to ballast loads.",
         location: "Electronics Lab",
@@ -433,7 +433,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "cf-3",
-        url: "/logo.jpeg",
+        url: "/logo.webp",
         title: "Official NEPeD Quality Assurance Mark",
         caption: "Emblem stamped on all tested and certified indigenous renewable energy hardware.",
         location: "Kohima Secretariat",
@@ -441,7 +441,7 @@ export const GALLERY_ALBUMS: GalleryAlbum[] = [
       },
       {
         id: "cf-4",
-        url: "/solar-field.png",
+        url: "/solar-field.webp",
         title: "Renewable Testing & Calibration Array",
         caption: "Grid-synchronization testing bench for multi-hydroger parallel coupling.",
         location: "Dimapur Testing Center",

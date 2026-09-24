@@ -9,7 +9,7 @@ title: "Full Title of Your Article or Field Report"
 category: "Field Reports" # Options: "Technology" | "Field Reports" | "Community" | "Policy"
 date: "Month DD, YYYY (e.g. August 15, 2026)"
 readTime: "5 min read"
-image: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg" # Main banner photo
+image: "/52 NEPeD members at Nagaland Youth Summit 2016.webp" # Main banner photo
 summary: "A 1-to-2 sentence summary of this article that will appear on the blog cards."
 
 # Author details

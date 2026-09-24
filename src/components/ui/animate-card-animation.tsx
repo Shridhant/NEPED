@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import microgrid from "@/assets/microgrid.png";
-import solarField from "@/assets/solar-field.png";
+import microgrid from "@/assets/microgrid.webp";
+import solarField from "@/assets/solar-field.webp";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 
 interface Card {
@@ -23,7 +23,7 @@ const cardData = {
       "Short Circuit Cutoff & 1 kg Compact Apparatus",
       "Synchronizer for coupling parallel hydrogers & larger turbines",
     ],
-    image: "/elc-device.png",
+    image: "/elc-device.webp",
     path: `${NEPED_ENERGY_PATHS.technology}#elc`,
     cta: "ELC Specs",
   },

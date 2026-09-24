@@ -281,8 +281,8 @@ const nepedMenuPanels: MenuPanel[] = [
   {
     id: "technology",
     items: [
-      { title: "Hydrogers", mediaType: "image", imageSrc: "/microgrid.png", href: "/technology#hydrogers" },
-      { title: "ELC Systems", mediaType: "image", imageSrc: "/solar-field.png", href: "/technology#elc" },
+      { title: "Hydrogers", mediaType: "image", imageSrc: "/microgrid.webp", href: "/technology#hydrogers" },
+      { title: "ELC Systems", mediaType: "image", imageSrc: "/solar-field.webp", href: "/technology#elc" },
       { title: "Technical Specifications", description: "Electronic Load Controllers tuned for mountain micro-grids.", href: "/technology#specs" },
     ],
   },
@@ -339,7 +339,7 @@ export function NepedNavbarSection() {
           onClick={() => handleNavigation("/")}
           className="flex items-center gap-2 rounded-full bg-ink pl-1.5 pr-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-ink/90 active-scale"
         >
-          <img src="/logo.jpeg" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
+          <img src="/logo.webp" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
           <span className="font-extrabold tracking-tight">NEPeD</span>
         </Link>
 
@@ -389,7 +389,7 @@ export function NepedNavbarSection() {
           onClick={() => handleNavigation("/")}
           className="flex items-center gap-2 rounded-full bg-ink pl-1.5 pr-4 py-1 text-sm font-semibold text-white"
         >
-          <img src="/logo.jpeg" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
+          <img src="/logo.webp" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
           <span className="font-extrabold tracking-tight">NEPeD</span>
         </Link>
         <div className="flex items-center gap-2">

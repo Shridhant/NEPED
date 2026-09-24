@@ -45,7 +45,7 @@ export function NepedEnergyAboutPage() {
       <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero-windmill.png"
+            src="/hero-windmill.webp"
             alt="NEPeD Inception History"
             className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
           />

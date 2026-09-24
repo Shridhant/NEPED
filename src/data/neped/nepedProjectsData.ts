@@ -22,7 +22,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Indo-Canada Environment Facility (ICEF) under Canadian International Development Agency (CIDA)",
     category: "Agroforestry",
     objective: "Planting trees along with jhum (slash and burn / Shifting cultivation) practiced.",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
   {
     id: "2",
@@ -33,7 +33,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Indo-Canada Environment Facility (ICEF) under Canadian International Development Agency (CIDA)",
     category: "Agroforestry",
     objective: "Reinforced Jhum through cash crop plantation (Micro Finance).",
-    heroImage: "/mountain-windmills.png",
+    heroImage: "/mountain-windmills.webp",
   },
   {
     id: "3",
@@ -44,7 +44,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Agriculture, Govt. of India",
     category: "Conservation",
     objective: "Consolidating the achievements of NEPED-I and NEPED-II through watershed development.",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
   {
     id: "4",
@@ -56,7 +56,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     category: "Biodiversity & Climate",
     objective:
       "Strengthening of Community Conservation Areas (CCAs), developing biodiversity registers, resource maps and management plans, and developing the process by which biodiversity registers are legally protected; documentation of indigenous Ecological Knowledge.",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
   {
     id: "5",
@@ -67,7 +67,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Navajbhai Ratan Tata Trust (NRTT)",
     category: "Handicrafts & Livelihood",
     objective: "Pig Breeders Concept.",
-    heroImage: "/microgrid.png",
+    heroImage: "/microgrid.webp",
   },
   {
     id: "6",
@@ -78,7 +78,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Textiles, Govt. of India",
     category: "Handicrafts & Livelihood",
     objective: "To provide marketing platform to showcase and test market the products developed by the artisans in cluster.",
-    heroImage: "/solar-field.png",
+    heroImage: "/solar-field.webp",
   },
   {
     id: "7",
@@ -89,7 +89,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Textiles, Govt. of India",
     category: "Handicrafts & Livelihood",
     objective: "To spread awareness about Indian handicrafts, the heritage, culture and tradition associated with it.",
-    heroImage: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+    heroImage: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
   },
   {
     id: "8",
@@ -100,7 +100,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Textiles, Govt. of India",
     category: "Handicrafts & Livelihood",
     objective: "To sensitize the artisans, and personnel of NGOs on importance of brand building of unique handicraft items of ethnic group.",
-    heroImage: "/mountain-windmills.png",
+    heroImage: "/mountain-windmills.webp",
   },
   {
     id: "9",
@@ -111,7 +111,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Textiles, Govt. of India",
     category: "Handicrafts & Livelihood",
     objective: "To assist the local artisans to enhance their products.",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
   {
     id: "10",
@@ -122,7 +122,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "CCS National Institute of Agricultural Marketing (CCS NIAM), Ministry of Agriculture, Govt. of India",
     category: "Agroforestry",
     objective: "Sensitize farmers about the marketing activities of NTFP products.",
-    heroImage: "/mountain-windmills.png",
+    heroImage: "/mountain-windmills.webp",
   },
   {
     id: "11",
@@ -133,7 +133,7 @@ export const NEPED_PROJECTS: NepedProject[] = [
     fundingAgency: "Ministry of Agriculture, Govt. of India",
     category: "Biodiversity & Climate",
     objective: "",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
   {
     id: "12",
@@ -145,6 +145,6 @@ export const NEPED_PROJECTS: NepedProject[] = [
     category: "Biodiversity & Climate",
     objective:
       "Effective and sustainable management of Community Conserved Areas (CCAs) in selected landscapes in Nagaland for improved connectivity and conservation of biodiversity, while supporting forest dependent communities in their livelihood activities.",
-    heroImage: "/forest.png",
+    heroImage: "/forest.webp",
   },
 ];

@@ -8,7 +8,7 @@ category: "Conservation"
 fundingAgency: "North Eastern Council (NEC), Ministry of DoNER, Govt. of India"
 budgetOrScale: "Statewide Capacity & Strategy Framework"
 targetDistricts: "Statewide across all tourism circuits in Nagaland"
-heroImage: "/mountain-windmills.png"
+heroImage: "/mountain-windmills.webp"
 highlights:
   - label: "Village Youth"
     value: "150+ Guides"

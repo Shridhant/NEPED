@@ -7,5 +7,5 @@ period: "2006 – 2012"
 category: "Conservation"
 fundingAgency: "Ministry of Agriculture, Govt. of India"
 objective: "Consolidating the achievements of NEPED-I and NEPED-II through watershed development."
-heroImage: "/forest.png"
+heroImage: "/forest.webp"
 ---

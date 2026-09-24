@@ -7,5 +7,5 @@ period: "2024 – 26"
 category: "Handicrafts & Livelihood"
 fundingAgency: "Ministry of Textiles, Govt. of India"
 objective: "To assist the local artisans to enhance their products."
-heroImage: "/forest.png"
+heroImage: "/forest.webp"
 ---

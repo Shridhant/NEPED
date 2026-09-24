@@ -26,6 +26,26 @@ import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { ProductImageCard } from "@/components/shared/ProductImageCard";
+import { BookDemoButton } from "@/components/ui/book-demo-button";
+import { ScrollStackDeck, type ProjectItem } from "@/components/ui/scroll-stack-deck";
+import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
+
+// Case studies deck: NEPeD tones; village photos where the site has one, gradient panel otherwise
+const CASE_DECK_STYLE: Record<string, { color: string; panel: string; image?: string; imageAlt?: string }> = {
+  kingjung: { color: "#cfe6e8", panel: "", image: "/20 Kingjung Village Energy Committee (2).webp", imageAlt: "Kingjung Village Energy Committee" },
+  kingpao: { color: "#f3dcc8", panel: "", image: "/gallery-photos/nagaland/12 Rural Engineer after hydroger installation at Kinpoa Village.webp", imageAlt: "Rural Engineer after hydroger installation at Kinpoa Village" },
+  pang: { color: "#ece4c9", panel: "linear-gradient(145deg, #f7f1dd 0%, #d9c98f 100%)" },
+  aniashu: { color: "#d6e4ec", panel: "linear-gradient(145deg, #eaf2f7 0%, #9fc0d2 100%)" },
+  kaha: { color: "#efd6cd", panel: "linear-gradient(145deg, #f8e8e2 0%, #d99f8a 100%)" },
+};
+const CASE_STUDY_DECK: ProjectItem[] = CASE_STUDIES.map((study, i) => ({
+  id: study.slug,
+  tabTitle: `${String(i + 1).padStart(2, "0")} · ${study.place}`,
+  title: study.title,
+  description: study.overview,
+  to: NEPED_ENERGY_PATHS.caseStudy(study.slug),
+  ...CASE_DECK_STYLE[study.slug],
+}));
 
 export function NepedEnergyPage() {
   useEffect(() => {
@@ -36,15 +56,15 @@ export function NepedEnergyPage() {
 
   // Common sectoral impacts (verbatim from the NEPeD sectoral impacts image)
   const sectoralImpacts = [
-    { title: "Social", image: { src: "/social.png", alt: "Social" }, icon: Users, points: ["Revitalized Social Dynamics- Greater Community Bonding & Interactions", "Health and Sanitation related impact", "Empowerment and involvement of Women in the Decision Making Process"] },
-    { title: "Economic", image: { src: "/economic.jpg", alt: "Economic", fit: "contain" as const }, icon: IndianRupee, points: ["Source of Revenue Generation for the Community", "Employment of Individuals", "Increased man hours of industries such as Handicrafts"] },
-    { title: "Environment", image: { src: "/mountain-windmills.png", alt: "Environment" }, icon: Leaf, points: ["Generation of clean sustainable energy", "Decreased Dependence on Fossil Fuels", "Spreading/Creating Awareness on Environmental fronts", "Community commitments to conserve and protect catchment areas and Biodiversity"] },
+    { title: "Social", image: { src: "/social.webp", alt: "Social" }, icon: Users, points: ["Revitalized Social Dynamics- Greater Community Bonding & Interactions", "Health and Sanitation related impact", "Empowerment and involvement of Women in the Decision Making Process"] },
+    { title: "Economic", image: { src: "/economic.webp", alt: "Economic", fit: "contain" as const }, icon: IndianRupee, points: ["Source of Revenue Generation for the Community", "Employment of Individuals", "Increased man hours of industries such as Handicrafts"] },
+    { title: "Environment", image: { src: "/mountain-windmills.webp", alt: "Environment" }, icon: Leaf, points: ["Generation of clean sustainable energy", "Decreased Dependence on Fossil Fuels", "Spreading/Creating Awareness on Environmental fronts", "Community commitments to conserve and protect catchment areas and Biodiversity"] },
   ];
 
   // NEPeD products (names from NEPeD/data.txt)
   const products = [
     { name: "Hydroger", image: "/Hydroger (Impulse).jpeg", to: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
-    { name: "Electronic Load Controller (ELC)", image: "/elc-device.png", to: NEPED_ENERGY_PATHS.product("electronic-load-controller") },
+    { name: "Electronic Load Controller (ELC)", image: "/elc-device.webp", to: NEPED_ENERGY_PATHS.product("electronic-load-controller") },
   ];
 
   // NEPeD Aims (verbatim from NEPeD/data.txt)
@@ -74,7 +94,7 @@ export function NepedEnergyPage() {
         {/* Background photo with soft legibility gradients */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero1.png"
+            src="/hero1.webp"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -92,7 +112,7 @@ export function NepedEnergyPage() {
           {/* Nomenclature Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.12] border border-white/25 backdrop-blur-md mb-6">
             <img
-              src="/NEPeD Logo High Res.png"
+              src="/NEPeD Logo High Res.webp"
               alt="NEPeD Logo"
               className="w-4 h-4 rounded-full object-cover"
             />
@@ -127,9 +147,9 @@ export function NepedEnergyPage() {
           {/* NEPED ↔ NEPeD lineage card */}
           <div className="col-span-2 md:col-span-6 rounded-[16px] bg-gradient-to-br from-white/25 to-white/[0.06] border border-white/30 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] p-3 flex flex-col sm:flex-row gap-5">
             <div className="sm:w-[42%] shrink-0 rounded-[10px] bg-[#ffffff]/95 flex items-center justify-center gap-4 p-4 sm:p-5 aspect-[16/6] sm:aspect-auto">
-              <img src="/NEPED Logo.jpg.jpeg" alt="NEPED Logo" className="h-12 sm:h-20 w-auto object-contain" />
+              <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="h-12 sm:h-20 w-auto object-contain" />
               <ArrowRight size={16} className="text-[#8d8d8d] shrink-0" />
-              <img src="/NEPeD Logo High Res.png" alt="NEPeD Logo" className="h-12 sm:h-20 w-auto object-contain" />
+              <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="h-12 sm:h-20 w-auto object-contain" />
             </div>
             <div className="flex flex-col justify-center gap-2 px-2 pb-3 sm:py-3 sm:pr-4 text-left">
               <span className="font-mono text-[13px] text-[#ffffff] font-medium">NEPeD vs NEPED:</span>
@@ -283,6 +303,19 @@ export function NepedEnergyPage() {
   
     
 
+
+      {/* CASE STUDIES — first 4 as a scroll-stacking deck, button to all case studies */}
+      <motion.section {...fadeUpOnView} id="case-studies" className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4]">
+          <SectionPill>Case Studies</SectionPill>
+        </div>
+      </motion.section>
+      <ScrollStackDeck projects={CASE_STUDY_DECK.slice(0, 4)} className="!mt-0" />
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="flex justify-center">
+          <BookDemoButton to={NEPED_ENERGY_PATHS.caseStudies} variant="orange">Click for more case studies</BookDemoButton>
+        </div>
+      </motion.section>
 
       {/* 7. CTA — CERES (centred dark banner, reference-inspired) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">

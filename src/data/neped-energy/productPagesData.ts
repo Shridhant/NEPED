@@ -122,7 +122,7 @@ export const HYDROGER_PAGE = {
 export const ELC_PAGE = {
   "slug": "electronic-load-controller",
   "name": "Electronic Load Controller (ELC)",
-  "heroImage": "/elc-device.png",
+  "heroImage": "/elc-device.webp",
   "intro": "The Hydrogers were being installed without Electronic Load Controllers (ELC) which meant that a tricky balance between power generation and load given had to be maintained often resulting in fused bulbs and damaged appliances. Thus emerged the urgent need for the ELCs to be provided as part and parcel of Hydroger installation. The major constraint was the high cost and the complete lack of compatible ones in the internal markets.",
   "development": "NEPeD under its Entrepreneurship programme thus decided to fund and use the services of a private entrepreneur - an Electronic Engineer to do R&D on the ELC. He brought out a prototype in 2009 and field tested it with the ‘Made in Nagaland’ hydroger and the results were found to be very encouraging.",
   "parameters": {

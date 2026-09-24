@@ -29,15 +29,15 @@ type LayoutPreloaderProps = {
 
 const defaultGallery: HeroImage[] = [
   {
-    src: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+    src: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
     alt: "Villagers using hydroger-powered equipment",
   },
   {
-    src: "/microgrid.png",
+    src: "/microgrid.webp",
     alt: "A renewable microgrid installation",
   },
   {
-    src: "/solar-field.png",
+    src: "/solar-field.webp",
     alt: "Solar panels in a green valley",
   },
 ];
@@ -51,28 +51,28 @@ const defaultMetrics: HeroMetric[] = [
 const preloaderItems = [
   {
     word: "Indigenous hydrogers",
-    image: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+    image: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
     rotate: -3,
     x: -15,
     y: -10,
   },
   {
     word: "Community microgrids",
-    image: "/microgrid.png",
+    image: "/microgrid.webp",
     rotate: 2,
     x: 15,
     y: -15,
   },
   {
     word: "Clean energy",
-    image: "/solar-field.png",
+    image: "/solar-field.webp",
     rotate: -2,
     x: -10,
     y: 15,
   },
   {
     word: "NEPeD",
-    image: "/hero-windmill.png",
+    image: "/hero-windmill.webp",
     rotate: 3,
     x: 10,
     y: -5,
@@ -86,7 +86,7 @@ export function LayoutPreloader({
   primaryLabel = "Explore Projects",
   secondaryHref = NEPED_ENERGY_PATHS.technology,
   heroImage = {
-    src: "/hero-windmill.png",
+    src: "/hero-windmill.webp",
     alt: "Wind turbines along a mountain ridge in Nagaland",
   },
   galleryImages = defaultGallery,

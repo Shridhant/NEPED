@@ -14,7 +14,7 @@ const IMPACT_PARAGRAPHS = [
 
 // NASA Blue Marble: Next Generation (public domain), north-east India, EPSG:4326 extent below
 const NE_INDIA_MAP = {
-  imageUrl: "/maps/northeast-india.jpg",
+  imageUrl: "/maps/northeast-india.webp",
   imageAlt: "Satellite image of north-east India",
   bounds: { west: 87.5, east: 96.5, south: 23, north: 29 },
 };
@@ -42,7 +42,7 @@ export function NepedEnergyImpactPage() {
           </div>
           {/* Decorative illustration beside the description */}
           <div className="lg:col-span-5 flex justify-center">
-            <img src="/impact.png" alt="" className="w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[460px] h-auto select-none" draggable={false} />
+            <img src="/impact.webp" alt="" className="w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[460px] h-auto select-none" draggable={false} />
           </div>
         </div>
       </motion.section>

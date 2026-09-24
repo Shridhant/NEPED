@@ -14,17 +14,17 @@ export const GALLERY_ALBUMS_DATA: GalleryAlbumData[] = [
     "photos": [
       {
         "id": "nagaland/12 Rural Engineer after hydroger installation at Kinpoa Village.jpg",
-        "src": "/gallery-photos/nagaland/12 Rural Engineer after hydroger installation at Kinpoa Village.jpg",
+        "src": "/gallery-photos/nagaland/12 Rural Engineer after hydroger installation at Kinpoa Village.webp",
         "alt": "Rural Engineer after hydroger installation at Kinpoa Village"
       },
       {
         "id": "nagaland/3 Channel and forebay tank.jpg",
-        "src": "/gallery-photos/nagaland/3 Channel and forebay tank.jpg",
+        "src": "/gallery-photos/nagaland/3 Channel and forebay tank.webp",
         "alt": "Channel and forebay tank"
       },
       {
-        "id": "nagaland/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
-        "src": "/gallery-photos/nagaland/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+        "id": "nagaland/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
+        "src": "/gallery-photos/nagaland/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
         "alt": "Villagers sharpening their daos on a grinder powered by hydroger"
       }
     ]
@@ -35,17 +35,17 @@ export const GALLERY_ALBUMS_DATA: GalleryAlbumData[] = [
     "photos": [
       {
         "id": "meghalaya/IMG_1949.jpg",
-        "src": "/gallery-photos/meghalaya/IMG_1949.jpg",
+        "src": "/gallery-photos/meghalaya/IMG_1949.webp",
         "alt": ""
       },
       {
         "id": "meghalaya/IMG_1958.jpg",
-        "src": "/gallery-photos/meghalaya/IMG_1958.jpg",
+        "src": "/gallery-photos/meghalaya/IMG_1958.webp",
         "alt": ""
       },
       {
         "id": "meghalaya/IMG_1972.jpg",
-        "src": "/gallery-photos/meghalaya/IMG_1972.jpg",
+        "src": "/gallery-photos/meghalaya/IMG_1972.webp",
         "alt": ""
       }
     ]
@@ -56,12 +56,12 @@ export const GALLERY_ALBUMS_DATA: GalleryAlbumData[] = [
     "photos": [
       {
         "id": "arunachal pradesh/IMG_6612.jpg",
-        "src": "/gallery-photos/arunachal pradesh/IMG_6612.jpg",
+        "src": "/gallery-photos/arunachal pradesh/IMG_6612.webp",
         "alt": ""
       },
       {
         "id": "arunachal pradesh/IMG_6797.jpg",
-        "src": "/gallery-photos/arunachal pradesh/IMG_6797.jpg",
+        "src": "/gallery-photos/arunachal pradesh/IMG_6797.webp",
         "alt": ""
       }
     ]
@@ -72,7 +72,7 @@ export const GALLERY_ALBUMS_DATA: GalleryAlbumData[] = [
     "photos": [
       {
         "id": "sikkim/UNNAMED_FILE25652.jpg",
-        "src": "/gallery-photos/sikkim/UNNAMED_FILE25652.jpg",
+        "src": "/gallery-photos/sikkim/UNNAMED_FILE25652.webp",
         "alt": ""
       }
     ]

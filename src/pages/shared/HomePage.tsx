@@ -27,7 +27,7 @@ export function HomePage() {
         {/* Full-bleed background photo with multi-stop vignette gradients */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
-            src="/mountain-windmills.png"
+            src="/mountain-windmills.webp"
             alt="Nagaland Mountain Landscape"
             className="w-full h-full object-cover opacity-55 filter brightness-[0.72] contrast-[1.08]"
           />
@@ -105,7 +105,7 @@ export function HomePage() {
               {/* Image banner with phase tag */}
               <div className="relative h-[115px] sm:h-[125px] overflow-hidden bg-[#1c1c1c]">
                 <img
-                  src="/forest.png"
+                  src="/forest.webp"
                   alt="NEPED agroforestry project landscape"
                   className="h-full w-full object-cover opacity-85 transition-transform duration-500 hover:scale-[1.04]"
                 />
@@ -255,7 +255,7 @@ export function HomePage() {
           {/* Right Card: Full-bleed photo with 8px radius and overlaid text */}
           <div className="relative rounded-[8px] overflow-hidden min-h-[400px] flex flex-col justify-between p-8 sm:p-10 bg-[#1c1c1c]">
             <img
-              src="/microgrid.png"
+              src="/microgrid.webp"
               alt="Electronic Load Controller Microgrid"
               className="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-[0.7]"
             />
@@ -372,7 +372,7 @@ export function HomePage() {
       {/* 6. FULL-BLEED PHOTOGRAPHIC TRANSITION BAND */}
       <motion.section {...fadeUpOnView} className="relative w-full h-[450px] sm:h-[550px] bg-[#070707] flex items-center justify-center p-6 text-center overflow-hidden">
         <img
-          src="/forest.png"
+          src="/forest.webp"
           alt="Nagaland Pristine Forest Catchment"
           className="absolute inset-0 w-full h-full object-cover opacity-45 filter brightness-[0.7]"
         />

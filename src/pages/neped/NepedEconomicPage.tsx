@@ -75,7 +75,7 @@ export function NepedEconomicPage() {
           {/* Background photo with legibility gradients */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/forest.png"
+              src="/forest.webp"
               alt="Nagaland Agroforestry Heritage"
               className="w-full h-full object-cover"
             />
@@ -120,7 +120,7 @@ export function NepedEconomicPage() {
               <div className="pt-4 flex items-center gap-3.5 max-w-[620px]">
                 <div className="h-12 w-12 rounded-[10px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0">
                   <img
-                    src="/NEPED Logo.jpg.jpeg"
+                    src="/NEPED Logo.jpg.webp"
                     alt="NEPED Heritage & Economic Development Logo"
                     className="max-h-full max-w-full object-contain"
                   />

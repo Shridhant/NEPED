@@ -7,5 +7,5 @@ period: "2022 – 23"
 category: "Agroforestry"
 fundingAgency: "CCS National Institute of Agricultural Marketing (CCS NIAM), Ministry of Agriculture, Govt. of India"
 objective: "Sensitize farmers about the marketing activities of NTFP products."
-heroImage: "/mountain-windmills.png"
+heroImage: "/mountain-windmills.webp"
 ---

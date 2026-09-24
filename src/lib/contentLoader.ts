@@ -190,7 +190,7 @@ export function loadAllProjects(): NepedProject[] {
         period: frontmatter.period || "",
         category: frontmatter.category || "Agroforestry",
         fundingAgency: frontmatter.fundingAgency || "",
-        heroImage: frontmatter.heroImage || "/forest.png",
+        heroImage: frontmatter.heroImage || "/forest.webp",
         objective: frontmatter.objective || "",
       };
     });
@@ -249,7 +249,7 @@ export function loadAllBlogs(): BlogPostData[] {
         category: frontmatter.category || "Field Reports",
         date: frontmatter.date || "2026",
         readTime: frontmatter.readTime || "5 min read",
-        image: frontmatter.image || "/forest.png",
+        image: frontmatter.image || "/forest.webp",
         summary: frontmatter.summary || body.slice(0, 150) + "...",
         author: {
           name: frontmatter.authorName || "NEPeD Field Cell",
@@ -312,7 +312,7 @@ export function loadAllGalleryAlbums(): GalleryAlbum[] {
         location: frontmatter.location || "Nagaland",
         district: frontmatter.district || "Nagaland",
         category: frontmatter.category || "Field Deployments",
-        coverImage: frontmatter.coverImage || "/forest.png",
+        coverImage: frontmatter.coverImage || "/forest.webp",
         description: frontmatter.description || body,
         historicalContext: frontmatter.historicalContext || body,
         keyHighlights: frontmatter.keyHighlights || [],

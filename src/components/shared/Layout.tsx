@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./Navbar";
@@ -22,7 +22,9 @@ export function Layout() {
             animate="animate"
             exit="exit"
           >
-            <Outlet />
+            <Suspense fallback={<div className="min-h-screen" />}>
+              <Outlet />
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>

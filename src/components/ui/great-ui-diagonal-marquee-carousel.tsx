@@ -27,7 +27,7 @@ export interface DiagonalMarqueeCarouselProps {
 const DEFAULT_CARDS: CardItem[] = [
   {
     id: 1,
-    url: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
+    url: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
     title: "Nagaland Youth Summit 2016",
     subtitle: "Rural engineers capacity building",
     href: SHARED_PATHS.galleryAlbum("nagaland-youth-summit-2016"),
@@ -51,7 +51,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 4,
-    url: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.jpg",
+    url: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.webp",
     title: "Deithung Hydroger Site",
     subtitle: "Tuensang district deployment",
     href: SHARED_PATHS.galleryAlbum("deithung-hydroger-site-deployment"),
@@ -59,7 +59,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 5,
-    url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
+    url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
     title: "Cottage Agricultural Tools",
     subtitle: "Dao sharpening & mechanical power",
     href: SHARED_PATHS.galleryAlbum("cottage-agricultural-processing"),
@@ -67,7 +67,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 6,
-    url: "/6 Laying of intake pipes.jpg",
+    url: "/6 Laying of intake pipes.webp",
     title: "Intake Penstock Installation",
     subtitle: "Community pipe-laying operations",
     href: SHARED_PATHS.galleryAlbum("intake-penstock-operations"),
@@ -75,7 +75,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 7,
-    url: "/forest.png",
+    url: "/forest.webp",
     title: "Pristine Catchment Preserves",
     subtitle: "Preserving river baseloads",
     href: SHARED_PATHS.galleryAlbum("pristine-catchment-conservation"),
@@ -83,7 +83,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 8,
-    url: "/microgrid.png",
+    url: "/microgrid.webp",
     title: "CERD Fabrication & ELC Systems",
     subtitle: "Precision engineering workshop",
     href: SHARED_PATHS.galleryAlbum("indigenous-cerd-fabrication-hub"),
@@ -91,7 +91,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 9,
-    url: "/mountain-windmills.png",
+    url: "/mountain-windmills.webp",
     title: "Mountain Ridges of Nagaland",
     subtitle: "High-altitude watershed catchments",
     href: SHARED_PATHS.galleryAlbum("pristine-catchment-conservation"),
@@ -99,7 +99,7 @@ const DEFAULT_CARDS: CardItem[] = [
   },
   {
     id: 10,
-    url: "/solar-field.png",
+    url: "/solar-field.webp",
     title: "Decentralized Village Microgrids",
     subtitle: "Hybrid clean power systems",
     href: SHARED_PATHS.galleryAlbum("indigenous-cerd-fabrication-hub"),

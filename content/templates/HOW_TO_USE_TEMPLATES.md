@@ -20,4 +20,4 @@ Welcome! This system allows anyone on the NEPED / NEPeD team to contribute new *
 ### File Format Rules:
 * Leave the keys (like `title:`, `date:`, `category:`) as they are, and change the text inside quotes `"..."`.
 * For bullet lists, keep the `- ` dash prefix.
-* For images, provide either a filename in `/public` (e.g. `"/forest.png"`) or email the high-resolution photo file along with your document.
+* For images, provide either a filename in `/public` (e.g. `"/forest.webp"`) or email the high-resolution photo file along with your document.

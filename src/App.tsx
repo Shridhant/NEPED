@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { Layout } from "./components/shared/Layout";
 // Shared pages (both entities)
-import { LandingPage } from "./pages/landing/LandingPage";
-import { GalleryPage } from "./pages/shared/GalleryPage";
+const LandingPage = lazy(() => import("./pages/landing/LandingPage").then((m) => ({ default: m.LandingPage })));
+const GalleryPage = lazy(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
 // NEPED pages
-import { NepedEconomicPage } from "./pages/neped/NepedEconomicPage";
-import { NepedAboutPage } from "./pages/neped/NepedAboutPage";
-import { ProjectsPage } from "./pages/neped/ProjectsPage";
-import { NepedProjectDetailPage } from "./pages/neped/NepedProjectDetailPage";
-import { NepedArticlePage } from "./pages/neped/NepedArticlePage";
+const NepedEconomicPage = lazy(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
+const NepedAboutPage = lazy(() => import("./pages/neped/NepedAboutPage").then((m) => ({ default: m.NepedAboutPage })));
+const ProjectsPage = lazy(() => import("./pages/neped/ProjectsPage").then((m) => ({ default: m.ProjectsPage })));
+const NepedProjectDetailPage = lazy(() => import("./pages/neped/NepedProjectDetailPage").then((m) => ({ default: m.NepedProjectDetailPage })));
+const NepedArticlePage = lazy(() => import("./pages/neped/NepedArticlePage").then((m) => ({ default: m.NepedArticlePage })));
 import { NEPED_PHASES } from "./data/neped/nepedPhasesData";
 import { NEPED_SUCCESS_STORIES } from "./data/neped/nepedSuccessStoriesData";
 // NEPeD pages
-import { NepedEnergyPage } from "./pages/neped-energy/NepedEnergyPage";
-import { NepedEnergyAboutPage } from "./pages/neped-energy/NepedEnergyAboutPage";
-import { TechnologyPage } from "./pages/neped-energy/TechnologyPage";
-import { TechProductDetailPage } from "./pages/neped-energy/TechProductDetailPage";
-import { NepedEnergyImpactPage } from "./pages/neped-energy/NepedEnergyImpactPage";
+const NepedEnergyPage = lazy(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
+const NepedEnergyAboutPage = lazy(() => import("./pages/neped-energy/NepedEnergyAboutPage").then((m) => ({ default: m.NepedEnergyAboutPage })));
+const TechnologyPage = lazy(() => import("./pages/neped-energy/TechnologyPage").then((m) => ({ default: m.TechnologyPage })));
+const TechProductDetailPage = lazy(() => import("./pages/neped-energy/TechProductDetailPage").then((m) => ({ default: m.TechProductDetailPage })));
+const CaseStudiesPage = lazy(() => import("./pages/neped-energy/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage })));
+const CaseStudyDetailPage = lazy(() => import("./pages/neped-energy/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage })));
+const NepedEnergyImpactPage = lazy(() => import("./pages/neped-energy/NepedEnergyImpactPage").then((m) => ({ default: m.NepedEnergyImpactPage })));
 import { SHARED_PATHS, NEPED_PATHS, NEPED_ENERGY_PATHS } from "./routes/paths";
 
 function ScrollToHash() {
@@ -83,6 +85,8 @@ export default function App() {
           <Route path={NEPED_ENERGY_PATHS.technology} element={<TechnologyPage />} />
           <Route path="neped-energy/technology/:slug" element={<TechProductDetailPage />} />
           <Route path={NEPED_ENERGY_PATHS.impact} element={<NepedEnergyImpactPage />} />
+          <Route path={NEPED_ENERGY_PATHS.caseStudies} element={<CaseStudiesPage />} />
+          <Route path="neped-energy/case-studies/:slug" element={<CaseStudyDetailPage />} />
 
           {/* Legacy URLs → new locations */}
           <Route path="about" element={<LegacyAboutRedirect />} />

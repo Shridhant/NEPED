@@ -23,7 +23,7 @@ function NepedMasterFooter({ onOpenContact }: { onOpenContact: () => void }) {
               <div className="flex items-center gap-2.5">
                 <div className="h-8 w-8 rounded-full bg-white p-0.5 border border-white/20 flex items-center justify-center shrink-0 overflow-hidden">
                   <img
-                    src="/NEPED Logo.jpg.jpeg"
+                    src="/NEPED Logo.jpg.webp"
                     alt="NEPED Logo"
                     className="h-full w-full rounded-full object-cover"
                   />

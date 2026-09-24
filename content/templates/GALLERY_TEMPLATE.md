@@ -31,7 +31,7 @@ tags:
 # Verified Photo Roster for this Event/Day
 photos:
   - id: "photo-1"
-    url: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg"
+    url: "/52 NEPeD members at Nagaland Youth Summit 2016.webp"
     title: "Title of First Photograph"
     caption: "Detailed caption describing what is happening in this photo, who is shown, and the location."
     location: "Specific Site / Room"
@@ -43,7 +43,7 @@ photos:
     location: "Specific Site"
     year: "2026"
   - id: "photo-3"
-    url: "/microgrid.png"
+    url: "/microgrid.webp"
     title: "Title of Third Photograph"
     caption: "Detailed caption for the third photo."
     location: "Specific Site"

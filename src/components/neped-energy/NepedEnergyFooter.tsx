@@ -37,7 +37,7 @@ export function NepedEnergyFooter({ onOpenContact }: { onOpenContact: () => void
             </nav>
             <div className="space-y-3">
               <div className="flex items-center gap-4">
-                <img src="/NEPeD Logo High Res.png" alt="NEPeD Logo" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
+                <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="w-12 h-12 sm:w-16 sm:h-16 object-contain" />
                 <span className="text-[56px] sm:text-[88px] font-light text-[#000000] tracking-[-2.5px] leading-none">
                   NEPeD
                 </span>

@@ -7,5 +7,5 @@ period: "2012 – 2016"
 category: "Handicrafts & Livelihood"
 fundingAgency: "Navajbhai Ratan Tata Trust (NRTT)"
 objective: "Pig Breeders Concept."
-heroImage: "/microgrid.png"
+heroImage: "/microgrid.webp"
 ---

@@ -7,5 +7,5 @@ period: "2018 – 26"
 category: "Biodiversity & Climate"
 fundingAgency: "Ministry of Agriculture, Govt. of India"
 objective: ""
-heroImage: "/forest.png"
+heroImage: "/forest.webp"
 ---

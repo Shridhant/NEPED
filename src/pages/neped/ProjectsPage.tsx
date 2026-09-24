@@ -59,7 +59,7 @@ export function ProjectsPage() {
       <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
         <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] text-[#ffffff]">
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <img src="/forest.png" alt="Nagaland Agroforestry & Ecology" className="w-full h-full object-cover" />
+            <img src="/forest.webp" alt="Nagaland Agroforestry & Ecology" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/85 via-[#0b1f18]/50 to-[#0b1f18]/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f18]/80 via-transparent to-[#0b1f18]/40" />
           </div>

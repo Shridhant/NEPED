@@ -43,9 +43,9 @@ export const TECH_PRODUCTS: TechProduct[] = [
     heroImage: "/Hydroger (Impulse).jpeg",
     galleryImages: [
       "/Hydroger (Impulse).jpeg",
-      "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
-      "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.jpg",
-      "/microgrid.png",
+      "/35 Villagers sharpening their daos on a grinder powered by hydroger.webp",
+      "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.webp",
+      "/microgrid.webp",
     ],
     summary:
       "Pioneered and fabricated directly in Nagaland by NEPeD engineers, the Hydroger is a compact, high-efficiency pico-hydro turbine engineered specifically for rugged Himalayan mountain topography and silt-laden run-of-the-river streams.",
@@ -135,11 +135,11 @@ export const TECH_PRODUCTS: TechProduct[] = [
     category: "Power Electronics & Control Systems",
     origin: "NEPeD Entrepreneurship Programme",
     manufacturingHub: "Dimapur, Nagaland",
-    heroImage: "/elc-device.png",
+    heroImage: "/elc-device.webp",
     galleryImages: [
-      "/elc-device.png",
-      "/microgrid.png",
-      "/solar-field.png",
+      "/elc-device.webp",
+      "/microgrid.webp",
+      "/solar-field.webp",
     ],
     summary:
       "The Hydrogers were being installed without Electronic Load Controllers (ELC) which meant that a tricky balance between power generation and load given had to be maintained often resulting in fused bulbs and damaged appliances. Thus emerged the urgent need for the ELCs to be provided as part and parcel of Hydroger installation. The major constraint was the high cost and the complete lack of compatible ones in the internal markets. NEPeD under its Entrepreneurship programme thus decided to fund and use the services of a private entrepreneur - an Electronic Engineer to do R&D on the ELC. He brought out a prototype in 2009 and field tested it with the ‘Made in Nagaland’ hydroger and the results were found to be very encouraging.",
