@@ -72,16 +72,16 @@ export function NepedEconomicPage() {
       {/* 1. HERO — inset rounded photo panel with a floating society card (inspired by inspo.webp) */}
       <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
         <div className="relative w-full min-h-[calc(100svh-20px)] sm:min-h-[calc(100svh-32px)] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] flex flex-col">
-          {/* Background photo with legibility gradients */}
+          {/* Background photo with a minimal dark overlay */}
           <div className="absolute inset-0 z-0">
             <img
-              src="/forest.webp"
-              alt="Nagaland Agroforestry Heritage"
-              className="w-full h-full object-cover"
+              src="/bg2.webp"
+              alt=""
+              className="w-full h-full object-cover saturate-[0.9]"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/85 via-[#0b1f18]/45 to-[#0b1f18]/10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f18]/70 via-transparent to-[#0b1f18]/40" />
-            <div className="absolute inset-0 bg-[#0b1f18]/30 lg:hidden" />
+            {/* Minimal dark overlay: just enough for white text */}
+            <div className="absolute inset-0 bg-[#0b1f18]/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/45 via-[#0b1f18]/15 to-transparent" />
           </div>
 
           <div className="relative z-10 flex-1 w-full max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-28 sm:pt-36 pb-6 sm:pb-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
@@ -92,13 +92,13 @@ export function NepedEconomicPage() {
               transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-7 lg:self-center space-y-6"
             >
-              <span className="inline-flex items-center px-4 py-2 rounded-[1584px] border border-white/45 text-[12px] sm:text-[13px] text-[#ffffff]">
+              <span className="inline-flex items-center px-4 py-2 rounded-[1584px] border border-white/40 bg-white/10 backdrop-blur-sm text-[12px] sm:text-[13px] text-[#ffffff]">
                 Foundational Heritage • Govt. of Nagaland (Est. 1994)
               </span>
-              <h1 className="text-[44px] sm:text-[68px] lg:text-[84px] font-light text-[#ffffff] tracking-[-2px] leading-[1.02]">
+              <h1 className="text-[44px] sm:text-[68px] lg:text-[84px] font-light text-[#ffffff] tracking-[-2px] leading-[1.02] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">
                 NEPED — Heritage & Ecology
               </h1>
-              <p className="max-w-[560px] text-[15px] sm:text-[17px] text-[#ffffff]/90 leading-relaxed">
+              <p className="max-w-[560px] text-[15px] sm:text-[17px] text-[#ffffff]/95 leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.25)]">
                 Nagaland Empowerment of People through Economic Development (NEPED) — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -110,15 +110,15 @@ export function NepedEconomicPage() {
                 </a>
                 <Link
                   to={NEPED_PATHS.projects}
-                  className="inline-flex items-center px-6 py-3.5 rounded-[1584px] border border-white/70 hover:bg-white/10 text-[15px] font-medium text-[#ffffff] transition-colors"
+                  className="inline-flex items-center px-6 py-3.5 rounded-[1584px] border border-white/60 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-[15px] font-medium text-[#ffffff] transition-colors"
                 >
                   {allProjects.length} Official Projects Archive
                 </Link>
               </div>
 
               {/* Society registration details */}
-              <div className="pt-4 flex items-center gap-3.5 max-w-[620px]">
-                <div className="h-12 w-12 rounded-[10px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0">
+              <div className="pt-5 mt-2 border-t border-white/25 flex items-center gap-3.5 max-w-[620px]">
+                <div className="h-12 w-12 rounded-[12px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(14,36,25,0.12)]">
                   <img
                     src="/NEPED Logo.jpg.webp"
                     alt="NEPED Heritage & Economic Development Logo"
@@ -126,11 +126,11 @@ export function NepedEconomicPage() {
                   />
                 </div>
                 <div className="min-w-0 space-y-0.5">
-                  <span className="block text-[14px] text-[#ffffff]">NEPED Society (Govt. of Nagaland)</span>
-                  <span className="block text-[11.5px] font-mono text-[#ffffff]/70 leading-snug">
+                  <span className="block text-[14px] font-medium text-[#ffffff]">NEPED Society (Govt. of Nagaland)</span>
+                  <span className="block text-[11.5px] font-mono text-[#ffffff]/80 leading-snug">
                     Regd. NO. H/RS-4238 (19-04-2005) • Regd. NO. HOME/SRC-6751 (07-07-2014)
                   </span>
-                  <span className="block text-[12px] text-[#ffffff]/65 leading-snug">
+                  <span className="block text-[12px] text-[#ffffff]/75 leading-snug">
                     Phase-I: <em>Nagaland Environment Protection and Economic Development through People's Action</em> (CIDA / ICEF)
                   </span>
                 </div>
@@ -140,12 +140,12 @@ export function NepedEconomicPage() {
             {/* Floating project card (same card as the Projects page) */}
             {allProjects[0] && (
               <motion.div
-                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
                 className="lg:col-span-5 lg:justify-self-end w-full max-w-[400px]"
               >
-                <ProjectCard project={allProjects[0]} className="shadow-[0_24px_60px_rgba(0,0,0,0.35)]" />
+                <ProjectCard project={allProjects[0]} tone="glass" className="shadow-[0_24px_60px_rgba(14,36,25,0.25)]" />
               </motion.div>
             )}
           </div>

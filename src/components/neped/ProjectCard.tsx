@@ -5,12 +5,17 @@ import { NEPED_PATHS } from "@/routes/paths";
 import { cn } from "@/lib/utils";
 
 /** Dark NEPED project card (image banner with phase / category / period, objective, funding agency). */
-export function ProjectCard({ project: proj, className }: { project: NepedProject; className?: string }) {
+/** tone "glass" = lighter frosted version for use over photos (e.g. the hero) */
+export function ProjectCard({ project: proj, className, tone = "dark" }: { project: NepedProject; className?: string; tone?: "dark" | "glass" }) {
+  const glass = tone === "glass";
   return (
     <Link
       to={NEPED_PATHS.project(proj.slug)}
       className={cn(
-        "group h-full rounded-[8px] border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25",
+        "group h-full rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1",
+        glass
+          ? "rounded-[16px] border border-white/25 bg-[#0b1f18]/55 backdrop-blur-xl backdrop-saturate-150 hover:bg-[#0b1f18]/60"
+          : "border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25",
         className,
       )}
     >
@@ -21,7 +26,7 @@ export function ProjectCard({ project: proj, className }: { project: NepedProjec
           alt={proj.name}
           className="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/20 to-transparent" />
+        <div className={`absolute inset-0 bg-gradient-to-t ${glass ? "from-black/45 via-black/10" : "from-[#070707] via-[#070707]/20"} to-transparent`} />
         <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
           <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
             {proj.phase}

@@ -126,10 +126,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               <span className="text-[14px] sm:text-[15px] font-medium tracking-[0.06em] text-white group-hover:text-white">
                 NEPED
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#b75928]" />
-              <span className="hidden sm:inline text-[11px] text-[#8d8d8d] font-mono group-hover:text-[#b75928] transition-colors">
-                Nagaland
-              </span>
+             
             </div>
           </Link>
 

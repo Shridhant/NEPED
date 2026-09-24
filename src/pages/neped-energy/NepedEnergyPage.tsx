@@ -94,11 +94,11 @@ export function NepedEnergyPage() {
         {/* Background photo with soft legibility gradients */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero1.webp"
+            src="/bg.webp"
             alt=""
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#070707]/20" />
+          <div className="absolute inset-0 bg-[#070707]/35" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/50 via-[#070707]/10 to-[#070707]/45" />
         </div>
 

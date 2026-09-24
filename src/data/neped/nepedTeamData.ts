@@ -18,12 +18,13 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     name: "Asa Tep",
     role: "POU Member",
     image: "/POU/Asa Tep - POU member.jpg.webp",
-  },{
-    id: "3",
-    name: "Dr. Kezevituo Metha",
-    role: "POU Member",
-    image: "/POU/Dr. Kezevituo Metha - POU member.jpg.webp",
   },
+  { id: "3",
+    name: "Shri. Kovi Meyase (NCS)", 
+    role: "Team Leader", 
+    image: "/Team Leaders/Kovi Keyase, NCS -  - Team Leader.jpg.webp" },
+  
+  
   
   {
     id: "4",
@@ -43,4 +44,12 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     role: "POU Member",
     image: "/POU/Er. Moamanen Imchen - POU member.jpg.webp",
   },
+  {
+    id: "7",
+    name: "Dr. Kezevituo Metha",
+    role: "POU Member",
+    image: "/POU/Dr. Kezevituo Metha - POU member.jpg.webp",
+  },
+  
+  
 ];

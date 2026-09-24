@@ -12,12 +12,12 @@ export function NepedAboutPage() {
 
 
   const teamLeaders = [
-    { name: "Padmashree A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.webp" },
+    { name: "Late A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.webp" },
     { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader" },
     { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader" },
     { name: "Shri. Alemtemshi Jamir (IAS)", period: "2003 – 2006", title: "Team Leader", image: "/Team Leaders/Alemtemshi Jamir, IAS - Team Leader.jpg.webp" },
-    { name: "Shri Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader", image: "/Team Leaders/Temjen Toy, IAS - Team Leader.jpg.webp" },
-    { name: "Shri Raj K. Verma (NCS)", period: "2007 – 2012", title: "Team Leader / Deputy Leader", image: "/Team Leaders/2 Mr. Raj K. Verma, NCS, Deputy Team Leader.jpg.webp" },
+    { name: "Late Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader", image: "/Team Leaders/Temjen Toy, IAS - Team Leader.jpg.webp" },
+    { name: "Late Raj K. Verma (NCS)", period: "2007 – 2012", title: "Team Leader / Deputy Leader", image: "/Team Leaders/2 Mr. Raj K. Verma, NCS, Deputy Team Leader.jpg.webp" },
     { name: "Shri. H. K. Khulu (IAS)", period: "2011 – 2012", title: "Team Leader", image: "/Team Leaders/H.K. Khulu, IAS - Team Leader.jpg.webp" },
     { name: "Shri. Amardeep S. Bhatia (IAS)", period: "2012 – 2013", title: "Team Leader", image: "/Team Leaders/A.S. Bhatia, IAS - Team Leader.jpg.webp" },
     { name: "Late Menukhol John", period: "2013 – 2018", title: "Principal Secretary, Govt. of Nagaland", image: "/Team Leaders/Menukhol John - Team Leader.jpg.webp" },
@@ -67,12 +67,18 @@ export function NepedAboutPage() {
           </p>
         </div>
 
-        {/* 3 columns: two cards | tall featured card + short card | two cards */}
+        {/* 3 columns: 2 regular cards | featured card + short cards (rest of the team) | last 2 regular cards.
+            Middle column heights are set so all three columns end on the same line. */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {[presentTeam.slice(0, 2), presentTeam.slice(2, 4), presentTeam.slice(4, 6)].map((column, col) => (
+          {[presentTeam.slice(0, 2), presentTeam.slice(2, Math.max(2, presentTeam.length - 2)), presentTeam.slice(Math.max(2, presentTeam.length - 2))].map((column, col) => (
             <div key={col} className="flex flex-col gap-5">
               {column.map((member, i) => (
-                <TeamCard key={member.id} member={member} variant={col === 1 ? (i === 0 ? "featured" : "short") : "regular"} />
+                <TeamCard
+                  key={member.id}
+                  member={member}
+                  variant={col === 1 ? (i === 0 ? "featured" : "short") : "regular"}
+                  shortCount={col === 1 ? column.length - 1 : 0}
+                />
               ))}
             </div>
           ))}
@@ -129,14 +135,18 @@ export function NepedAboutPage() {
 }
 
 /** Team card — regular (photo bottom-right), featured (tall, dark, photo centred on a glow), short (compact). */
-function TeamCard({ member, variant }: { member: TeamMember; variant: "regular" | "featured" | "short" }) {
+const SHORT_H = 125;
+const COLUMN_H = 2 * 300 + 20;
+
+function TeamCard({ member, variant, shortCount = 0 }: { member: TeamMember; variant: "regular" | "featured" | "short"; shortCount?: number }) {
+  const featuredH = COLUMN_H - shortCount * (SHORT_H + 20);
   const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     (e.target as HTMLElement).style.display = "none";
   };
 
   if (variant === "featured") {
     return (
-      <div className="relative h-[340px] lg:h-[450px] rounded-[20px] overflow-hidden bg-(--brand-surface) text-[#ffffff] p-7 sm:p-8">
+      <div className="relative h-[340px] lg:h-(--featured-h) rounded-[20px] overflow-hidden bg-(--brand-surface) text-[#ffffff] p-7 sm:p-8" style={{ "--featured-h": `${featuredH}px` } as React.CSSProperties}>
         <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 w-[420px] h-[420px] rounded-full bg-(--brand-accent)/60 blur-3xl pointer-events-none" />
         <div className="relative z-10">
           <h3 className="text-[22px] sm:text-[24px] font-medium tracking-[-0.3px]">{member.name}</h3>
@@ -152,12 +162,12 @@ function TeamCard({ member, variant }: { member: TeamMember; variant: "regular" 
 
   if (variant === "short") {
     return (
-      <div className="h-[150px] rounded-[20px] bg-[#f5f5f5] p-7 sm:p-8 flex items-center justify-between gap-4">
+      <div className="h-[125px] rounded-[20px] bg-[#f5f5f5] px-6 sm:px-7 flex items-center justify-between gap-4">
         <div>
           <h3 className="text-[20px] sm:text-[22px] font-medium text-[#000000] tracking-[-0.3px]">{member.name}</h3>
           <p className="text-[14px] text-[#666666] mt-1">{member.role}</p>
         </div>
-        <div className="h-20 w-20 shrink-0 rounded-full overflow-hidden">
+        <div className="h-[72px] w-[72px] shrink-0 rounded-full overflow-hidden">
           <img src={member.image} alt={member.name} onError={hideOnError} className="w-full h-full object-cover object-top scale-[1.15]" />
         </div>
       </div>
