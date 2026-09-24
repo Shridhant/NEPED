@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { loadAllBlogs } from "@/lib/contentLoader";
-import { type BlogPostData } from "@/data/blogData";
+import { type BlogPostData } from "@/data/shared/blogData";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
   SectionHeading,
 } from "@/components/ui/AkerPrimitives";
+import { NEPED_ENERGY_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 export function BlogDetailPage() {
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
@@ -37,7 +38,7 @@ export function BlogDetailPage() {
         </p>
         <div className="pt-4">
           <Link
-            to="/blog"
+            to={SHARED_PATHS.blog}
             className="inline-flex items-center gap-2 bg-[#1c1c1c] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#070707] transition-all"
           >
             ← Return to All Stories & Reports
@@ -64,7 +65,7 @@ export function BlogDetailPage() {
               NEPeD
             </Link>
             <span>/</span>
-            <Link to="/blog" className="hover:text-[#000000] transition-colors">
+            <Link to={SHARED_PATHS.blog} className="hover:text-[#000000] transition-colors">
               Stories & Reports
             </Link>
             <span>/</span>
@@ -74,7 +75,7 @@ export function BlogDetailPage() {
           </div>
 
           <Link
-            to="/blog"
+            to={SHARED_PATHS.blog}
             className="text-[12px] text-[#b75928] hover:text-[#000000] font-medium flex items-center gap-1 transition-colors"
           >
             <span>← All Stories & Reports</span>
@@ -246,7 +247,7 @@ export function BlogDetailPage() {
               </p>
               <div className="pt-2">
                 <Link
-                  to="/technology"
+                  to={NEPED_ENERGY_PATHS.technology}
                   className="text-[12px] text-[#ffffff] underline font-medium hover:text-[#b75928] transition-colors"
                 >
                   View Technical Specifications →
@@ -278,7 +279,7 @@ export function BlogDetailPage() {
         <div className="border-t border-b border-[#e5e4e4] py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {prevPost ? (
             <Link
-              to={`/blog/${prevPost.slug}`}
+              to={SHARED_PATHS.blogPost(prevPost.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -294,7 +295,7 @@ export function BlogDetailPage() {
 
           {nextPost ? (
             <Link
-              to={`/blog/${nextPost.slug}`}
+              to={SHARED_PATHS.blogPost(nextPost.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -319,7 +320,7 @@ export function BlogDetailPage() {
               Explore More Stories & Reports
             </SectionHeading>
           </div>
-          <Link to="/blog" className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium">
+          <Link to={SHARED_PATHS.blog} className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium">
             View All Reports →
           </Link>
         </div>
@@ -328,7 +329,7 @@ export function BlogDetailPage() {
           {relatedPosts.map((rel) => (
             <Link
               key={rel.id}
-              to={`/blog/${rel.slug}`}
+              to={SHARED_PATHS.blogPost(rel.slug)}
               className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-200"
             >
               <div className="aspect-[16/10] w-full overflow-hidden bg-[#070707] relative">

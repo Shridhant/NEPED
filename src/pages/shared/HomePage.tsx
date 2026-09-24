@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/AkerPrimitives";
 import AnimatedCardStack from "@/components/ui/animate-card-animation";
 import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-carousel";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 export function HomePage() {
   useEffect(() => {
@@ -87,10 +88,10 @@ export function HomePage() {
               transition={{ duration: 0.55, delay: 0.24, ease: [0.23, 1, 0.32, 1] }}
               className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
             >
-              <TextArrowButton to="/about" dark={true} variant="pill">
+              <TextArrowButton to={NEPED_PATHS.about} dark={true} variant="pill">
                 Explore Our Story
               </TextArrowButton>
-              <TextArrowButton to="/technology" dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
+              <TextArrowButton to={NEPED_ENERGY_PATHS.technology} dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
                 Hydroger Technology
               </TextArrowButton>
             </motion.div>
@@ -147,7 +148,7 @@ export function HomePage() {
 
                 {/* Bottom link */}
                 <Link
-                  to="/neped-economic/project/neped-1-agroforestry-shifting-cultivation"
+                  to={NEPED_PATHS.project("neped-1-agroforestry-shifting-cultivation")}
                   className="pt-1 flex items-center justify-between text-[12px] sm:text-[13px] text-[#ffffff] hover:text-[#b75928] transition-colors group cursor-pointer"
                 >
                   <span className="font-medium">Explore Project Case Study</span>
@@ -176,7 +177,7 @@ export function HomePage() {
             <a href="#initiatives" className="hover:text-white transition-colors">
               View Initiatives ↓
             </a>
-            <Link to="/neped-economic" className="text-[#b75928] hover:text-white transition-colors">
+            <Link to={NEPED_PATHS.home} className="text-[#b75928] hover:text-white transition-colors">
               30-Year Archives →
             </Link>
           </div>
@@ -205,16 +206,13 @@ export function HomePage() {
             </LoraEditorialBlock>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <FilledDarkButton to="/about">
+              <FilledDarkButton to={NEPED_ENERGY_PATHS.about}>
                 Read the Inception Mandate
               </FilledDarkButton>
-              <TextArrowButton to="/impact" variant="pill">
-                Explore Village Impact
-              </TextArrowButton>
             </div>
 
             <div className="pt-6 mt-2 border-t border-[#e5e4e4]">
-              <Link to="/neped-economic" className="group inline-block">
+              <Link to={NEPED_PATHS.home} className="group inline-block">
                 <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider block group-hover:text-[#000000] transition-colors">
                   1994 → NEPED Founded
                 </span>
@@ -250,7 +248,7 @@ export function HomePage() {
             </div>
 
             <div className="pt-8 flex items-center justify-between">
-              <TextArrowButton to="/technology" variant="pill">
+              <TextArrowButton to={NEPED_ENERGY_PATHS.technology} variant="pill">
                 Technical Specifications
               </TextArrowButton>
               <span className="text-[12px] font-mono text-[#666666]">01 / TECH</span>
@@ -279,7 +277,7 @@ export function HomePage() {
             </div>
 
             <div className="relative z-10 pt-8 flex items-center justify-between">
-              <TextArrowButton to="/technology#elc" dark={true} variant="pill">
+              <TextArrowButton to={`${NEPED_ENERGY_PATHS.technology}#elc`} dark={true} variant="pill">
                 Explore ELC Units
               </TextArrowButton>
               <span className="text-[12px] font-mono text-[#e5e4e4]/60">02 / ELC</span>
@@ -306,25 +304,23 @@ export function HomePage() {
               num="01"
               title="Community Pico-Hydro Implementation"
               subtitle="Deploying sub-megawatt micro-turbines in remote off-grid settlements with zero environmental disruption."
-              to="/technology"
+              to={NEPED_ENERGY_PATHS.technology}
             />
             <NumberedItem
               num="02"
               title="Catchment Area Conservation"
               subtitle="Safeguarding mountain river basins through native forestry and village water management charters."
-              to="/impact"
             />
             <NumberedItem
               num="03"
               title="Women's Empowerment & Night Livelihoods"
               subtitle="Powering cottage weaving looms, crop processing, and evening study hours to eliminate domestic drudgery."
-              to="/impact"
             />
             <NumberedItem
               num="04"
               title="Rural Engineers Capacity Building"
               subtitle="Training village youth as certified hydro operators and regional technicians across the Northeast."
-              to="/about"
+              to={NEPED_ENERGY_PATHS.about}
             />
           </div>
         </div>
@@ -349,11 +345,6 @@ export function HomePage() {
                 NEPeD hydrogers now generate clean energy in Meghalaya, Sikkim, Arunachal Pradesh, and beyond — building regional energy resilience.
               </p>
             </div>
-            <div className="pt-6">
-              <TextArrowButton to="/impact" dark={true} variant="pill">
-                Explore Regional Map
-              </TextArrowButton>
-            </div>
           </div>
 
           {/* Tide (#002934) Deep Teal Card */}
@@ -373,7 +364,7 @@ export function HomePage() {
               </p>
             </div>
             <div className="pt-6">
-              <TextArrowButton to="/blog" dark={true} variant="pill">
+              <TextArrowButton to={SHARED_PATHS.blog} dark={true} variant="pill">
                 Read Summit Stories
               </TextArrowButton>
             </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { loadAllGalleryAlbums } from "@/lib/contentLoader";
-import { type GalleryAlbum } from "@/data/galleryData";
+import { type GalleryAlbum } from "@/data/shared/galleryData";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   SectionLabel,
@@ -10,6 +10,7 @@ import {
   PillBadge,
   TextArrowButton,
 } from "@/components/ui/AkerPrimitives";
+import { NEPED_ENERGY_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 export function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -76,7 +77,7 @@ export function GalleryPage() {
               Browse Event Albums
             </TextArrowButton>
             <Link
-              to="/technology"
+              to={NEPED_ENERGY_PATHS.technology}
               className="text-[13px] text-[#e5e4e4]/80 hover:text-white transition-colors"
             >
               Hydroger Specs & Tech →
@@ -150,7 +151,7 @@ export function GalleryPage() {
           {filteredAlbums.map((album) => (
             <Link
               key={album.id}
-              to={`/gallery/${album.slug}`}
+              to={SHARED_PATHS.galleryAlbum(album.slug)}
               className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] rounded-[8px] overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all duration-300"
             >
               {/* Photo Thumbnail with aspect-ratio 16:10 */}

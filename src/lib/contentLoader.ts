@@ -1,6 +1,6 @@
-import { NEPED_PROJECTS, type NepedProject } from "@/data/nepedProjectsData";
-import { BLOG_POSTS, type BlogPostData } from "@/data/blogData";
-import { GALLERY_ALBUMS, type GalleryAlbum } from "@/data/galleryData";
+import { NEPED_PROJECTS, type NepedProject } from "@/data/neped/nepedProjectsData";
+import { BLOG_POSTS, type BlogPostData } from "@/data/shared/blogData";
+import { GALLERY_ALBUMS, type GalleryAlbum } from "@/data/shared/galleryData";
 
 /**
  * Simple, zero-dependency YAML Frontmatter & Markdown Parser

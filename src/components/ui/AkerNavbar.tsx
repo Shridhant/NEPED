@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Mail } from "lucide-react";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 // Master Umbrella Dropdown Items (NEPED only — Heritage, Agroforestry & Society)
 const nepedMasterDropdownItems = [
@@ -13,27 +14,27 @@ const nepedMasterDropdownItems = [
   {
     num: "02",
     label: "About Mandate & Leadership",
-    href: "/about",
+    href: NEPED_PATHS.about,
   },
   {
     num: "03",
     label: "Field Gallery & Event Logs",
-    href: "/gallery",
+    href: SHARED_PATHS.gallery,
   },
   {
     num: "04",
     label: "Stories & Field Reports",
-    href: "/blog",
+    href: SHARED_PATHS.blog,
   },
   {
     num: "05",
     label: "30-Year Heritage Archives",
-    href: "/neped-economic",
+    href: NEPED_PATHS.home,
   },
   {
     num: "06",
     label: "Projects Archive",
-    href: "/projects",
+    href: NEPED_PATHS.projects,
   },
 ];
 
@@ -42,36 +43,21 @@ const nepedEnergyDropdownItems = [
   {
     num: "01",
     label: "Overview & Genesis (Est. 2007)",
-    href: "/neped-energy",
+    href: NEPED_ENERGY_PATHS.home,
   },
   {
     num: "02",
     label: "CERES (Centre of Excellence)",
-    href: "/technology",
+    href: NEPED_ENERGY_PATHS.technology,
     children: [
-      { label: "Hydroger Pico-Turbines", href: "/technology/product/hydroger-turbine-system" },
-      { label: "Electronic Load Controllers (ELC)", href: "/technology/product/electronic-load-controller" },
+      { label: "Hydroger Pico-Turbines", href: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
+      { label: "Electronic Load Controllers (ELC)", href: NEPED_ENERGY_PATHS.product("electronic-load-controller") },
     ],
   },
   {
     num: "03",
-    label: "Pico Micro-Grids",
-    href: "/technology/product/village-pico-microgrid",
-  },
-  {
-    num: "04",
-    label: "CERD Fabrication Lab",
-    href: "/technology",
-  },
-  {
-    num: "05",
-    label: "Village Energy Committees (VEC)",
-    href: "/impact",
-  },
-  {
-    num: "06",
-    label: "Government Sponsored Projects",
-    href: "/energy-projects",
+    label: "Impact",
+    href: NEPED_ENERGY_PATHS.impact,
   },
 ];
 
@@ -254,7 +240,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
         >
           {/* Direct Link to NEPeD Clean Energy Landing Page */}
           <Link
-            to="/neped-energy"
+            to={NEPED_ENERGY_PATHS.home}
             onClick={() => setIsEnergyDropdownOpen(false)}
             aria-label="Go to NEPeD Clean Energy and Technology"
             className="flex items-center gap-2.5 pl-1.5 pr-2 h-full rounded-l-[1584px] group cursor-pointer"
@@ -387,7 +373,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               {/* Bottom Full Page Link */}
               <div className="mt-1.5 pt-1.5 border-t border-white/10">
                 <Link
-                  to="/neped-energy"
+                  to={NEPED_ENERGY_PATHS.home}
                   onClick={() => setIsEnergyDropdownOpen(false)}
                   className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors"
                 >

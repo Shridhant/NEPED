@@ -3,6 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { SHARED_PATHS } from "@/routes/paths";
 
 export interface CardItem {
   id: string | number;
@@ -29,7 +30,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/52 NEPeD members at Nagaland Youth Summit 2016.jpg",
     title: "Nagaland Youth Summit 2016",
     subtitle: "Rural engineers capacity building",
-    href: "/gallery/nagaland-youth-summit-2016",
+    href: SHARED_PATHS.galleryAlbum("nagaland-youth-summit-2016"),
     category: "Summit",
   },
   {
@@ -37,7 +38,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/47 NEPeD's stall at Republic Day 2016.jpg",
     title: "Republic Day Exhibition 2016",
     subtitle: "Hydroger model demonstrations",
-    href: "/gallery/republic-day-exhibition-2016",
+    href: SHARED_PATHS.galleryAlbum("republic-day-exhibition-2016"),
     category: "Exhibition",
   },
   {
@@ -45,7 +46,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/20 Kingjung Village Energy Committee (2).jpg",
     title: "Kingjung Village Committee",
     subtitle: "Grassroots energy stewardship",
-    href: "/gallery/kingjung-village-energy-committee",
+    href: SHARED_PATHS.galleryAlbum("kingjung-village-energy-committee"),
     category: "Village VEC",
   },
   {
@@ -53,7 +54,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.jpg",
     title: "Deithung Hydroger Site",
     subtitle: "Tuensang district deployment",
-    href: "/gallery/deithung-hydroger-site-deployment",
+    href: SHARED_PATHS.galleryAlbum("deithung-hydroger-site-deployment"),
     category: "Field Site",
   },
   {
@@ -61,7 +62,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/35 Villagers sharpening their daos on a grinder powered by hydroger.jpg",
     title: "Cottage Agricultural Tools",
     subtitle: "Dao sharpening & mechanical power",
-    href: "/gallery/cottage-agricultural-processing",
+    href: SHARED_PATHS.galleryAlbum("cottage-agricultural-processing"),
     category: "Livelihood",
   },
   {
@@ -69,7 +70,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/6 Laying of intake pipes.jpg",
     title: "Intake Penstock Installation",
     subtitle: "Community pipe-laying operations",
-    href: "/gallery/intake-penstock-operations",
+    href: SHARED_PATHS.galleryAlbum("intake-penstock-operations"),
     category: "Engineering",
   },
   {
@@ -77,7 +78,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/forest.png",
     title: "Pristine Catchment Preserves",
     subtitle: "Preserving river baseloads",
-    href: "/gallery/pristine-catchment-conservation",
+    href: SHARED_PATHS.galleryAlbum("pristine-catchment-conservation"),
     category: "Watersheds",
   },
   {
@@ -85,7 +86,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/microgrid.png",
     title: "CERD Fabrication & ELC Systems",
     subtitle: "Precision engineering workshop",
-    href: "/gallery/indigenous-cerd-fabrication-hub",
+    href: SHARED_PATHS.galleryAlbum("indigenous-cerd-fabrication-hub"),
     category: "Technology",
   },
   {
@@ -93,7 +94,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/mountain-windmills.png",
     title: "Mountain Ridges of Nagaland",
     subtitle: "High-altitude watershed catchments",
-    href: "/gallery/pristine-catchment-conservation",
+    href: SHARED_PATHS.galleryAlbum("pristine-catchment-conservation"),
     category: "Highlands",
   },
   {
@@ -101,7 +102,7 @@ const DEFAULT_CARDS: CardItem[] = [
     url: "/solar-field.png",
     title: "Decentralized Village Microgrids",
     subtitle: "Hybrid clean power systems",
-    href: "/gallery/indigenous-cerd-fabrication-hub",
+    href: SHARED_PATHS.galleryAlbum("indigenous-cerd-fabrication-hub"),
     category: "Microgrids",
   },
 ];
@@ -109,7 +110,7 @@ const DEFAULT_CARDS: CardItem[] = [
 const Card = ({ card, className }: { card: CardItem; className?: string }) => {
   return (
     <Link
-      to={card.href || "/gallery"}
+      to={card.href || SHARED_PATHS.gallery}
       className={cn(
         "group relative h-[220px] sm:h-[260px] md:h-[300px] w-[300px] sm:w-[350px] md:w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-[8px] border border-white/10 bg-[#070707] transition-all duration-300 hover:border-[#b75928] hover:shadow-2xl block",
         className,

@@ -9,6 +9,7 @@ import {
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { Search } from "lucide-react";
+import { NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 export function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -209,7 +210,7 @@ export function ProjectsPage() {
                   transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                 >
                   <Link
-                    to={`/neped-economic/project/${proj.slug}`}
+                    to={NEPED_PATHS.project(proj.slug)}
                     className="group h-full rounded-[8px] border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25"
                   >
                     {/* Image banner with phase tag + period */}
@@ -290,10 +291,10 @@ export function ProjectsPage() {
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
-              <TextArrowButton to="/neped-economic" dark={true} variant="pill">
+              <TextArrowButton to={NEPED_PATHS.home} dark={true} variant="pill">
                 30-Year Heritage Archive
               </TextArrowButton>
-              <TextArrowButton to="/gallery" dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
+              <TextArrowButton to={SHARED_PATHS.gallery} dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
                 Field Exhibit Gallery
               </TextArrowButton>
             </div>

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { loadAllBlogs } from "@/lib/contentLoader";
-import { type BlogPostData } from "@/data/blogData";
+import { type BlogPostData } from "@/data/shared/blogData";
 import {
   SectionLabel,
   SectionHeading,
 } from "@/components/ui/AkerPrimitives";
+import { SHARED_PATHS } from "@/routes/paths";
 
 export function BlogPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -102,7 +103,7 @@ export function BlogPage() {
           {filteredPosts.map((post) => (
             <Link
               key={post.id}
-              to={`/blog/${post.slug}`}
+              to={SHARED_PATHS.blogPost(post.slug)}
               className="group bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-[#000000] hover:shadow-xl cursor-pointer"
             >
               {/* 4:3 Photographic Thumbnail */}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import microgrid from "@/assets/microgrid.png";
 import solarField from "@/assets/solar-field.png";
+import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 
 interface Card {
   id: number;
@@ -23,7 +24,7 @@ const cardData = {
       "Synchronizer for coupling parallel hydrogers & larger turbines",
     ],
     image: "/elc-device.png",
-    path: "/technology#elc",
+    path: `${NEPED_ENERGY_PATHS.technology}#elc`,
     cta: "ELC Specs",
   },
   2: {
@@ -39,7 +40,7 @@ const cardData = {
       "15+ years continuous operational life in mountain conditions",
     ],
     image: microgrid,
-    path: "/technology#specs",
+    path: `${NEPED_ENERGY_PATHS.technology}#specs`,
     cta: "Turbine Specs",
   },
   3: {
@@ -55,8 +56,8 @@ const cardData = {
       "Zero damming or ecological flooding of mountain riverbeds",
     ],
     image: solarField,
-    path: "/impact",
-    cta: "Village Impact",
+    path: "",
+    cta: "",
   },
 };
 
@@ -134,6 +135,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
           <span className="text-[11px] text-[#8d8d8d] font-mono">
             NEPeD Product Ecosystem
           </span>
+          {data.path && (
           <button
             onClick={() => navigate(data.path)}
             className="flex h-9 cursor-pointer select-none items-center gap-1.5 rounded-[80px] bg-[#1c1c1c] text-[#ffffff] px-4 text-xs font-normal tracking-[0.15px] hover:bg-[#070707] transition-all"
@@ -141,6 +143,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
             <span>{data.cta}</span>
             <span>→</span>
           </button>
+          )}
         </div>
       </div>
     </div>

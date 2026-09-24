@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { loadAllProjects } from "@/lib/contentLoader";
-import { type NepedProject } from "@/data/nepedProjectsData";
+import { type NepedProject } from "@/data/neped/nepedProjectsData";
 import {
   SectionLabel,
   SectionHeading,
   PillBadge,
 } from "@/components/ui/AkerPrimitives";
 import { fadeUpOnView } from "@/lib/motionVariants";
+import { NEPED_PATHS } from "@/routes/paths";
 
 export function NepedProjectDetailPage() {
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
@@ -40,7 +41,7 @@ export function NepedProjectDetailPage() {
         </p>
         <div className="pt-4">
           <Link
-            to="/neped-economic#projects"
+            to={`${NEPED_PATHS.home}#projects`}
             className="inline-flex items-center gap-2 bg-[#1c1c1c] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#070707] transition-all"
           >
             ← Return to All {totalProjects} Projects
@@ -64,11 +65,11 @@ export function NepedProjectDetailPage() {
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6 pt-24 sm:pt-28">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#e5e4e4] pb-4">
           <div className="flex items-center gap-2 text-[12px] text-[#8d8d8d] font-mono">
-            <Link to="/neped-economic" className="hover:text-[#000000] transition-colors">
+            <Link to={NEPED_PATHS.home} className="hover:text-[#000000] transition-colors">
               NEPED Heritage
             </Link>
             <span>/</span>
-            <Link to="/neped-economic#projects" className="hover:text-[#000000] transition-colors">
+            <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#000000] transition-colors">
               Projects Archive
             </Link>
             <span>/</span>
@@ -78,7 +79,7 @@ export function NepedProjectDetailPage() {
           </div>
 
           <Link
-            to="/neped-economic#projects"
+            to={`${NEPED_PATHS.home}#projects`}
             className="text-[12px] text-[#b75928] hover:text-[#000000] font-medium flex items-center gap-1 transition-colors"
           >
             <span>← All {totalProjects} Projects</span>
@@ -143,7 +144,7 @@ export function NepedProjectDetailPage() {
         <div className="border-t border-b border-[#e5e4e4] py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {prevProject ? (
             <Link
-              to={`/neped-economic/project/${prevProject.slug}`}
+              to={NEPED_PATHS.project(prevProject.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -159,7 +160,7 @@ export function NepedProjectDetailPage() {
 
           {nextProject ? (
             <Link
-              to={`/neped-economic/project/${nextProject.slug}`}
+              to={NEPED_PATHS.project(nextProject.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -185,7 +186,7 @@ export function NepedProjectDetailPage() {
             </SectionHeading>
           </div>
           <Link
-            to="/neped-economic#projects"
+            to={`${NEPED_PATHS.home}#projects`}
             className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium"
           >
             View All {totalProjects} Projects →
@@ -196,7 +197,7 @@ export function NepedProjectDetailPage() {
           {relatedProjects.map((proj) => (
             <Link
               key={proj.id}
-              to={`/neped-economic/project/${proj.slug}`}
+              to={NEPED_PATHS.project(proj.slug)}
               className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] rounded-[8px] p-6 flex flex-col justify-between transition-all duration-200"
             >
               <div>

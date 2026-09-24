@@ -3,13 +3,14 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { loadAllGalleryAlbums } from "@/lib/contentLoader";
-import { type GalleryAlbum, type GalleryPhoto } from "@/data/galleryData";
+import { type GalleryAlbum, type GalleryPhoto } from "@/data/shared/galleryData";
 import {
   SectionLabel,
   SectionHeading,
   PillBadge,
 } from "@/components/ui/AkerPrimitives";
 import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { NEPED_ENERGY_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 export function GalleryAlbumDetailPage() {
   const { albumSlug } = useParams<{ albumSlug: string }>();
@@ -60,7 +61,7 @@ export function GalleryAlbumDetailPage() {
         </p>
         <div className="pt-4">
           <Link
-            to="/gallery"
+            to={SHARED_PATHS.gallery}
             className="inline-flex items-center gap-2 bg-[#1c1c1c] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#070707] transition-all"
           >
             ← Return to All Gallery Albums
@@ -92,7 +93,7 @@ export function GalleryAlbumDetailPage() {
               NEPeD
             </Link>
             <span>/</span>
-            <Link to="/gallery" className="hover:text-[#000000] transition-colors">
+            <Link to={SHARED_PATHS.gallery} className="hover:text-[#000000] transition-colors">
               Field Gallery
             </Link>
             <span>/</span>
@@ -102,7 +103,7 @@ export function GalleryAlbumDetailPage() {
           </div>
 
           <Link
-            to="/gallery"
+            to={SHARED_PATHS.gallery}
             className="text-[12px] text-[#b75928] hover:text-[#000000] font-medium flex items-center gap-1 transition-colors"
           >
             <span>← All Event Albums</span>
@@ -299,7 +300,7 @@ export function GalleryAlbumDetailPage() {
               </p>
               <div className="pt-1">
                 <Link
-                  to="/technology"
+                  to={NEPED_ENERGY_PATHS.technology}
                   className="text-[12px] text-[#b75928] hover:text-white underline font-medium transition-colors"
                 >
                   View Hydroger Specifications →
@@ -315,7 +316,7 @@ export function GalleryAlbumDetailPage() {
         <div className="border-t border-b border-[#e5e4e4] py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {prevAlbum ? (
             <Link
-              to={`/gallery/${prevAlbum.slug}`}
+              to={SHARED_PATHS.galleryAlbum(prevAlbum.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -331,7 +332,7 @@ export function GalleryAlbumDetailPage() {
 
           {nextAlbum ? (
             <Link
-              to={`/gallery/${nextAlbum.slug}`}
+              to={SHARED_PATHS.galleryAlbum(nextAlbum.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
             >
               <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
@@ -356,7 +357,7 @@ export function GalleryAlbumDetailPage() {
               Explore Other Event Galleries
             </SectionHeading>
           </div>
-          <Link to="/gallery" className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium">
+          <Link to={SHARED_PATHS.gallery} className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium">
             View All Albums →
           </Link>
         </div>
@@ -365,7 +366,7 @@ export function GalleryAlbumDetailPage() {
           {relatedAlbums.map((rel) => (
             <Link
               key={rel.id}
-              to={`/gallery/${rel.slug}`}
+              to={SHARED_PATHS.galleryAlbum(rel.slug)}
               className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-200"
             >
               <div className="aspect-[16/10] w-full overflow-hidden bg-[#070707] relative">

@@ -210,3 +210,24 @@
 .smooth-hover {
   transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+/* Brand theme tokens — NEPeD (default) and NEPED (.theme-neped). Used by shared components. */
+:root {
+  --brand-accent: #b75928;
+  --brand-accent-hover: #a04d22;
+  --brand-accent-on-dark: #e8a47f;
+  --brand-surface: #002934;
+}
+.theme-neped {
+  --brand-accent: #2d7d3a;
+  --brand-accent-hover: #256a31;
+  --brand-accent-on-dark: #9fd68f;
+  --brand-surface: #193f32;
+}
+/* Restores the NEPeD tokens inside a NEPED page (e.g. a banner linking to NEPeD) */
+.theme-neped-energy {
+  --brand-accent: #b75928;
+  --brand-accent-hover: #a04d22;
+  --brand-accent-on-dark: #e8a47f;
+  --brand-surface: #002934;
+}

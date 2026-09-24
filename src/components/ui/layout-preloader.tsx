@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 
 type HeroImage = {
   src: string;
@@ -83,7 +84,7 @@ export function LayoutPreloader({
   subtitle = "NEPeD builds indigenous micro-hydro and off-grid energy systems that help rural communities power livelihoods, learning and local resilience.",
   primaryHref = "#projects",
   primaryLabel = "Explore Projects",
-  secondaryHref = "/technology",
+  secondaryHref = NEPED_ENERGY_PATHS.technology,
   heroImage = {
     src: "/hero-windmill.png",
     alt: "Wind turbines along a mountain ridge in Nagaland",
