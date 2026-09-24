@@ -1,15 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  SectionLabel,
-  TextArrowButton,
-  PillBadge,
-} from "@/components/ui/AkerPrimitives";
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { Search } from "lucide-react";
-import { NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { NEPED_PATHS } from "@/routes/paths";
+import { ProjectTile } from "@/components/neped/ProjectTile";
+import { SectionPill } from "@/components/shared/SectionPill";
+import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
+
+const GLASS_CARD =
+  "rounded-[16px] bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
 export function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -46,119 +46,92 @@ export function ProjectsPage() {
     });
   }, [allProjects, activeCategory, searchQuery]);
 
+  const stats = [
+    { value: `${allProjects.length} Projects`, label: "Documented Archive" },
+    { value: "854", label: "Villages Reached" },
+    { value: "7.8M+", label: "Trees Planted" },
+    { value: "1995 – 2026", label: "Operational Span" },
+  ];
+
   return (
-    <div className="w-full space-y-16 sm:space-y-24 pb-20">
-      {/* 1. FULL-BLEED HERO BANNER */}
-      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden">
-        {/* Full-bleed background photo with vignette */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <img
-            src="/forest.png"
-            alt="Nagaland Agroforestry & Ecology"
-            className="w-full h-full object-cover opacity-45 filter brightness-[0.7] contrast-[1.1]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/30 to-[#070707]/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/70 via-transparent to-[#070707]/60" />
+    <div className="theme-neped w-full space-y-16 sm:space-y-20 pb-24">
+      {/* 1. HERO — inset rounded photo panel with glass stat cards (NEPED homepage style) */}
+      <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] text-[#ffffff]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <img src="/forest.png" alt="Nagaland Agroforestry & Ecology" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/85 via-[#0b1f18]/50 to-[#0b1f18]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f18]/80 via-transparent to-[#0b1f18]/40" />
+          </div>
+
+          <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-6 sm:pb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+              className="max-w-[820px] space-y-6"
+            >
+              <span className="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-[1584px] border border-white/45 text-[12px] sm:text-[13px]">
+                <span>Autonomous Registered Society • Govt. of Nagaland</span>
+                <span className="hidden sm:inline text-white/40">|</span>
+                <span className="hidden sm:inline text-white/75">Official Project Registry</span>
+              </span>
+              <h1 className="text-[40px] sm:text-[64px] lg:text-[76px] font-light tracking-[-2px] leading-[1.02]">
+                Projects Implemented Under NEPED
+              </h1>
+              <p className="max-w-[640px] text-[15px] sm:text-[17px] text-[#ffffff]/90 leading-relaxed">
+                Three decades of landmark interventions in community agroforestry, shifting cultivation transformation, clean micro-hydro engineering, biodiversity conservation, and artisan economic empowerment across Nagaland.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label} className={`${GLASS_CARD} p-5 sm:p-6 space-y-2`}>
+                  <span className="text-[24px] sm:text-[32px] font-light tracking-[-0.6px] leading-none block">{stat.value}</span>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#ffffff]/70 block">{stat.label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
-
-        {/* Hero Top Content */}
-        <div className="relative z-10 pt-16 sm:pt-20 lg:pt-24 max-w-[800px]">
-          <motion.div
-            initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md mb-4"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#b75928] animate-pulse" />
-            <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.14em] text-[#e5e4e4] font-mono font-medium">
-              Autonomous Registered Society • Govt. of Nagaland
-            </span>
-            <span className="hidden sm:inline text-white/30 font-mono">|</span>
-            <span className="hidden sm:inline text-[11px] uppercase tracking-[0.1em] text-[#e5e4e4]/70 font-mono">
-              Official Project Registry
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.5, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
-            className="text-[36px] sm:text-[56px] md:text-[68px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]"
-          >
-            Projects Implemented Under NEPED
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.5, delay: 0.16, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-4 text-[15px] sm:text-[16px] text-[#e5e4e4]/90 font-normal leading-relaxed max-w-[680px]"
-          >
-            Three decades of landmark interventions in community agroforestry, shifting cultivation transformation, clean micro-hydro engineering, biodiversity conservation, and artisan economic empowerment across Nagaland.
-          </motion.p>
-        </div>
-
-        {/* Hero Bottom Bar with Live Statistics */}
-        <motion.div
-          initial={{ opacity: 0, filter: "blur(6px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.5, delay: 0.28, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 mt-auto pt-6 border-t border-white/12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-[#ffffff]"
-        >
-          <div>
-            <div className="text-[20px] sm:text-[24px] font-light tracking-tight">{allProjects.length} Projects</div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Documented Archive</div>
-          </div>
-          <div>
-            <div className="text-[20px] sm:text-[24px] font-light tracking-tight">854</div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Villages Reached</div>
-          </div>
-          <div>
-            <div className="text-[20px] sm:text-[24px] font-light tracking-tight">7.8M+</div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Trees Planted</div>
-          </div>
-          <div>
-            <div className="text-[20px] sm:text-[24px] font-light tracking-tight">1995 – 2026</div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Operational Span</div>
-          </div>
-        </motion.div>
       </section>
 
-      {/* 2. FILTER & SEARCH CONTROL BAR */}
+      {/* 2. FILTER & SEARCH */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] p-4 sm:p-6 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-          {/* Search Box */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8d8d8d]" size={16} />
+        <div className="bg-[#f5f5f5] rounded-[20px] p-3 sm:p-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+          <div className="relative flex-1 lg:max-w-md">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8d8d8d]" size={16} />
             <input
               type="text"
               placeholder="Search by project name, agency, or keywords..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-[#e5e4e4]/30 hover:bg-[#e5e4e4]/50 focus:bg-[#ffffff] border border-[#e5e4e4] focus:border-[#000000] rounded-[80px] text-[13.5px] text-[#000000] placeholder:text-[#8d8d8d] outline-none transition-all"
+              className="w-full pl-11 pr-16 py-3 bg-[#ffffff] border border-transparent focus:border-(--brand-accent) rounded-[1584px] text-[14px] text-[#000000] placeholder:text-[#8d8d8d] outline-none transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono text-[#8d8d8d] hover:text-[#000000] bg-black/5 px-2 py-0.5 rounded-full"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono text-[#666666] hover:text-[#000000] bg-[#f5f5f5] px-2.5 py-1 rounded-full cursor-pointer"
               >
                 Clear
               </button>
             )}
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-[1584px] text-[12px] font-medium transition-all active:scale-[0.97] cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-[#1c1c1c] text-[#ffffff] shadow-sm"
-                    : "bg-[#e5e4e4]/50 text-[#494949] hover:bg-[#e5e4e4] hover:text-[#000000]"
+                className={`px-4 py-2 rounded-[1584px] text-[13px] font-medium transition-all active:scale-[0.97] cursor-pointer ${
+                  activeCategory === cat ? "bg-(--brand-accent) text-[#ffffff]" : "text-[#494949] hover:text-[#000000] hover:bg-[#ffffff]"
                 }`}
               >
                 {cat}
@@ -167,15 +140,14 @@ export function ProjectsPage() {
           </div>
         </div>
 
-        {/* Results Metadata indicator */}
-        <div className="mt-4 flex items-center justify-between text-[12px] font-mono text-[#8d8d8d] px-1">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12px] font-mono text-[#8d8d8d] px-2">
           <span>
-            Showing <strong className="text-[#000000]">{filteredProjects.length}</strong> of {allProjects.length} official projects
+            Showing <strong className="text-[#000000] font-medium">{filteredProjects.length}</strong> of {allProjects.length} official projects
             {activeCategory !== "All" && ` in ${activeCategory}`}
           </span>
           {searchQuery && (
             <span>
-              Keyword: <span className="text-[#b75928]">"{searchQuery}"</span>
+              Keyword: <span className="text-(--brand-accent)">"{searchQuery}"</span>
             </span>
           )}
         </div>
@@ -184,7 +156,7 @@ export function ProjectsPage() {
       {/* 3. PROJECT CARDS GRID */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
         {filteredProjects.length === 0 ? (
-          <div className="bg-[#e5e4e4]/20 border border-[#e5e4e4] rounded-[8px] p-12 text-center space-y-3">
+          <div className="bg-[#f5f5f5] rounded-[20px] p-12 text-center flex flex-col items-center gap-4">
             <p className="text-[16px] text-[#666666]">No projects match your search or filter criteria.</p>
             <button
               type="button"
@@ -192,13 +164,13 @@ export function ProjectsPage() {
                 setActiveCategory("All");
                 setSearchQuery("");
               }}
-              className="text-[13px] font-medium text-[#b75928] hover:underline cursor-pointer"
+              className="px-5 py-2.5 rounded-[1584px] bg-(--brand-accent) hover:bg-(--brand-accent-hover) text-[14px] font-medium text-[#ffffff] cursor-pointer transition-colors"
             >
               Reset filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((proj) => (
                 <motion.div
@@ -208,65 +180,9 @@ export function ProjectsPage() {
                   animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                   exit={{ opacity: 0, scale: 0.96, filter: "blur(4px)" }}
                   transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="h-full [&>a]:h-full"
                 >
-                  <Link
-                    to={NEPED_PATHS.project(proj.slug)}
-                    className="group h-full rounded-[8px] border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25"
-                  >
-                    {/* Image banner with phase tag + period */}
-                    <div className="relative h-[130px] overflow-hidden bg-[#1c1c1c]">
-                      <img
-                        src={proj.heroImage}
-                        alt={proj.name}
-                        className="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.04]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/20 to-transparent" />
-                      <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
-                        <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
-                          {proj.phase}
-                        </span>
-                      </div>
-                      <div className="absolute right-3.5 top-3.5">
-                        <PillBadge dark={true}>{proj.category}</PillBadge>
-                      </div>
-                      <div className="absolute left-3.5 bottom-3 text-[10px] font-mono text-[#e5e4e4]/70 uppercase">
-                        {proj.period}
-                      </div>
-                    </div>
-
-                    {/* Card Body */}
-                    <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
-                      <div className="space-y-2">
-                        <h3 className="text-[17px] font-light leading-[1.25] text-[#ffffff] tracking-[-0.2px] group-hover:text-white transition-colors">
-                          {proj.name}
-                        </h3>
-
-                        {proj.objective ? (
-                          <p className="text-[13px] leading-relaxed text-[#e5e4e4]/75 line-clamp-4">
-                            {proj.objective}
-                          </p>
-                        ) : (
-                          <p className="text-[12.5px] italic leading-relaxed text-[#8d8d8d]">
-                            No objective statement recorded in the source register for this project.
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="pt-3 border-t border-white/10 space-y-3">
-                        <div className="text-[11px] text-[#8d8d8d]">
-                          <span className="font-mono uppercase tracking-wider text-[10px] text-[#8d8d8d]/80 block">
-                            Funding Agency
-                          </span>
-                          <span className="text-[#e5e4e4]/90 font-medium">{proj.fundingAgency}</span>
-                        </div>
-
-                        <div className="pt-1 flex items-center justify-between text-[12.5px] sm:text-[13px] text-[#ffffff] group-hover:text-[#b75928] transition-colors">
-                          <span className="font-medium">View Project Details</span>
-                          <span className="text-[15px] transition-transform duration-200 group-hover:translate-x-1">→</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                  <ProjectTile project={proj} />
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -274,30 +190,19 @@ export function ProjectsPage() {
         )}
       </section>
 
-      {/* 4. CROSS-NAVIGATION EDITORIAL BANNER */}
+      {/* 4. CROSS-NAVIGATION BANNER — dark green CTA */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <SectionLabel dark={true} className="text-[#b75928]">
-                Master Archives & Governance
-              </SectionLabel>
-              <h2 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-tight leading-tight">
-                Explore the Complete 30-Year History of NEPED
-              </h2>
-              <p className="text-[14.5px] text-[#e5e4e4]/80 leading-relaxed max-w-2xl">
-                Read the inception mandate, honor roll of 11 Team Leaders, multidisciplinary Project Operations Unit (POU) governance culture, and foundational ICEF/CIDA milestones.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
-              <TextArrowButton to={NEPED_PATHS.home} dark={true} variant="pill">
-                30-Year Heritage Archive
-              </TextArrowButton>
-              <TextArrowButton to={SHARED_PATHS.gallery} dark={true} variant="pill" className="bg-white/5 border-white/15 hover:bg-white/10">
-                Field Exhibit Gallery
-              </TextArrowButton>
-            </div>
+        <div className="relative rounded-[24px] overflow-hidden bg-(--brand-surface) px-6 py-14 sm:px-12 sm:py-16 text-center">
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative max-w-[760px] mx-auto flex flex-col items-center gap-6">
+            <SectionPill dark>Master Archives & Governance</SectionPill>
+            <h2 className="text-[28px] sm:text-[44px] font-light text-[#ffffff] tracking-[-1px] leading-[1.1]">
+              Explore the Complete 30-Year History of NEPED
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/85 leading-relaxed">
+              Read the inception mandate, honor roll of 11 Team Leaders, multidisciplinary Project Operations Unit (POU) governance culture, and foundational ICEF/CIDA milestones.
+            </p>
+            <ArrowPillButton to={NEPED_PATHS.home} arrow="up-right">30-Year Heritage Archive</ArrowPillButton>
           </div>
         </div>
       </motion.section>

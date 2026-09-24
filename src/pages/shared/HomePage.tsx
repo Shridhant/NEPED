@@ -47,10 +47,7 @@ export function HomePage() {
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md"
             >
               <span className="w-2 h-2 rounded-full bg-[#b75928] animate-pulse" />
-              <span className="text-[11px] sm:text-[12px] uppercase tracking-[0.14em] text-[#e5e4e4] font-mono font-medium">
-                Autonomous Registered Society • Govt. of Nagaland
-              </span>
-              <span className="hidden sm:inline text-white/30 font-mono">|</span>
+              
               <span className="hidden sm:inline text-[11px] uppercase tracking-[0.1em] text-[#e5e4e4]/70 font-mono">
                 Est. 1994
               </span>

@@ -1,7 +1,7 @@
 /**
  * Single source of truth for every internal URL.
- * NEPED pages live under /neped, NEPeD pages under /neped-energy,
- * pages covering both entities (landing, blog, gallery) stay at the root.
+ * The NEPED overview is the site's homepage ("/"); other NEPED pages live under /neped,
+ * NEPeD pages under /neped-energy, pages covering both entities (blog, gallery) stay at the root.
  */
 
 export const SHARED_PATHS = {
@@ -14,10 +14,15 @@ export const SHARED_PATHS = {
 } as const;
 
 export const NEPED_PATHS = {
-  home: "/neped",
+  /** The NEPED overview is the homepage */
+  home: "/",
+  /** Old address of the NEPED overview (redirects to home) */
+  legacyHome: "/neped",
   about: "/neped/about",
   projects: "/neped/projects",
   project: (slug: string) => `/neped/projects/${slug}`,
+  phase: (slug: string) => `/neped/phases/${slug}`,
+  successStory: (slug: string) => `/neped/success-stories/${slug}`,
 } as const;
 
 export const NEPED_ENERGY_PATHS = {
@@ -28,9 +33,13 @@ export const NEPED_ENERGY_PATHS = {
   impact: "/neped-energy/impact",
 } as const;
 
-/** True when the pathname belongs to the NEPED section (not NEPeD, whose prefix also starts with "/neped"). */
+/** True when the pathname belongs to the NEPED section: the homepage and /neped/* (not NEPeD, whose prefix also starts with "/neped"). */
 export function isNepedPath(pathname: string) {
-  return pathname === NEPED_PATHS.home || pathname.startsWith(`${NEPED_PATHS.home}/`);
+  return (
+    pathname === NEPED_PATHS.home ||
+    pathname === NEPED_PATHS.legacyHome ||
+    pathname.startsWith(`${NEPED_PATHS.legacyHome}/`)
+  );
 }
 
 /** True when the pathname belongs to the NEPeD section. */

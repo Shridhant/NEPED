@@ -1,61 +1,15 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
-import {
-  SectionLabel,
-  SectionHeading,
-} from "@/components/ui/AkerPrimitives";
+import { SectionPill } from "@/components/shared/SectionPill";
+import { NEPED_PRESENT_TEAM as presentTeam, type TeamMember } from "@/data/neped/nepedTeamData";
 
-interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  image: string;
-}
 
 export function NepedAboutPage() {
   useEffect(() => {
-    document.title = "About NEPED — History, Vision & Leadership";
+    document.title = "About Us • NEPED";
   }, []);
 
-  const presentTeam: TeamMember[] = [
-    {
-      id: "1",
-      name: "Atheo Ezung",
-      role: "POU Member",
-      image: "/POU/Atheo Ezung - POU member.jpg.jpeg",
-    },
-    {
-      id: "2",
-      name: "Asa Tep",
-      role: "POU Member",
-      image: "/POU/Asa Tep - POU member.jpg.jpeg",
-    },
-    {
-      id: "3",
-      name: "Dr. Kezevituo Metha",
-      role: "POU Member",
-      image: "/POU/Dr. Kezevituo Metha - POU member.jpg.jpeg",
-    },
-    {
-      id: "4",
-      name: "Dr. Savio Krocha",
-      role: "POU Member",
-      image: "/POU/Dr. Savio Krocha - POU member.jpg.jpeg",
-    },
-    {
-      id: "5",
-      name: "Er. Renbenthung Humtsoe",
-      role: "POU Member",
-      image: "/POU/Er. Renbenthung Humtsoe - POU member.jpg.jpeg",
-    },
-    {
-      id: "6",
-      name: "Er. Moamanen Imchen",
-      role: "POU Member",
-      image: "/POU/Er. Moamanen Imchen - POU member.jpg.jpeg",
-    },
-  ];
 
   const teamLeaders = [
     { name: "Padmashree A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.png" },
@@ -72,102 +26,70 @@ export function NepedAboutPage() {
   ];
 
   return (
-    <div className="w-full space-y-20 sm:space-y-28 pt-28 sm:pt-32">
-      {/* NEPED HERITAGE & ECONOMIC DEVELOPMENT HISTORICAL BRIDGE */}
-      <motion.section {...fadeUpOnView} id="neped-economic" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-8 sm:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left">
-              <div className="w-full max-w-[280px] aspect-square rounded-[8px] overflow-hidden border border-[#e5e4e4] p-4 bg-[#ffffff] flex items-center justify-center">
-                <img
-                  src="/NEPED Logo.jpg.jpeg"
-                  alt="NEPED Heritage & Economic Development Logo"
-                  className="max-h-full max-w-full object-contain"
-                />
-              </div>
-              <span className="text-[11px] font-mono text-[#8d8d8d] mt-3 uppercase tracking-wider">
-                Foundational Heritage • Established 1994
-              </span>
-            </div>
-
-            <div className="lg:col-span-8 space-y-4">
-              <SectionLabel>Heritage & Evolutionary Lineage</SectionLabel>
-              <h3 className="text-[28px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] leading-tight">
-                NEPED Heritage to NEPeD Clean Energy Development
-              </h3>
-              <p className="text-[15px] text-[#666666] leading-relaxed">
-                The landmark foundational program, <strong>NEPED (Nagaland Empowerment of People through Economic Development)</strong>, with its revolutionary focus on agroforestry, biodiversity, participatory village land-use, and community livelihoods, transformed rural Nagaland.
+    <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-24">
+      {/* 1. HERO — About Us (text verbatim as provided) */}
+      <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-(--brand-surface) text-[#ffffff]">
+          <div className="absolute inset-0 z-0">
+            <img src="/forest.png" alt="" className="w-full h-full object-cover opacity-35" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/90 via-[#0b1f18]/60 to-[#0b1f18]/30" />
+          </div>
+          <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+              className="lg:col-span-8 space-y-6"
+            >
+              <h1 className="text-[44px] sm:text-[72px] font-light tracking-[-2px] leading-[1.02]">About Us</h1>
+              <p className="max-w-[680px] text-[16px] sm:text-[19px] text-[#ffffff]/90 leading-relaxed">
+                Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1995. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.
               </p>
-              <p className="font-serif italic text-[16px] text-[#262626] leading-relaxed border-l-2 border-[#b75928] pl-4">
-                “The tremendous agricultural and economic success of NEPED created an essential requirement for decentralized clean energy to process, grind, and add value to farmer produce right in the villages. Thus, retaining and evolving the well-established acronym, NEPeD (Clean Energy Development) was constituted in 2007.”
-              </p>
-              <div className="pt-2 flex flex-wrap items-center gap-6 text-[13px] text-[#8d8d8d]">
-                <span>NEPED Heritage: 1994 – Present (Agroforestry & Eco-Enterprises)</span>
-                <span>•</span>
-                <span className="text-[#000000] font-medium">NEPeD Energy: 2007 – Present (Hydrogers & Rural Micro-Grids)</span>
+            </motion.div>
+            <div className="lg:col-span-4 flex lg:justify-end">
+              <div className="h-40 w-40 sm:h-48 sm:w-48 rounded-[24px] bg-[#ffffff] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
+                <img src="/NEPED Logo.jpg.jpeg" alt="NEPED Logo" className="max-h-full max-w-full object-contain" />
               </div>
             </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* 4. PRESENT MULTIDISCIPLINARY TEAM (Gallery Wall of Portraits) */}
       <motion.section {...fadeUpOnView} id="team" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-          <div>
-            <SectionLabel>04 / Leadership & Officers</SectionLabel>
-            <SectionHeading size="lg" className="mt-1">
-              Multidisciplinary Team
-            </SectionHeading>
-          </div>
-          <p className="text-[14px] text-[#666666] max-w-sm">
+        <div className="max-w-[760px] mx-auto text-center flex flex-col items-center gap-5 mb-10 sm:mb-14">
+          <SectionPill> Leadership & Officers</SectionPill>
+          <h2 className="text-[34px] sm:text-[56px] font-light text-[#000000] tracking-[-1.4px] leading-[1.05]">
+            Multidisciplinary Team
+          </h2>
+          <p className="text-[15px] text-[#666666] max-w-md leading-relaxed">
             Project Operations Unit (POU) members combining administrative leadership, electrical engineering, and rural outreach.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {presentTeam.map((member) => (
-            <div
-              key={member.id}
-              className="group bg-[#ffffff] border border-[#e5e4e4] rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-200 hover:border-[#000000]"
-            >
-              <div className="w-full aspect-[4/5] bg-[#e5e4e4] overflow-hidden relative">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = "none";
-                  }}
-                />
-              </div>
-              <div className="p-4 bg-[#ffffff]">
-                <div className="text-[11px] uppercase tracking-wider text-[#8d8d8d]">
-                  POU Member
-                </div>
-                <h3 className="text-[16px] font-medium text-[#000000] mt-1 tracking-tight">
-                  {member.name}
-                </h3>
-                <p className="text-[12px] text-[#666666] mt-1 leading-snug">
-                  {member.role}
-                </p>
-              </div>
+        {/* 3 columns: two cards | tall featured card + short card | two cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {[presentTeam.slice(0, 2), presentTeam.slice(2, 4), presentTeam.slice(4, 6)].map((column, col) => (
+            <div key={col} className="flex flex-col gap-5">
+              {column.map((member, i) => (
+                <TeamCard key={member.id} member={member} variant={col === 1 ? (i === 0 ? "featured" : "short") : "regular"} />
+              ))}
             </div>
           ))}
         </div>
       </motion.section>
 
-      <motion.section {...fadeUpOnView} id="leaders" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <motion.section {...fadeUpOnView} id="leaders" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="grid grid-cols-1">
           {/* Past Team Leaders */}
-          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 space-y-6">
+          <div className="bg-[#f5f5f5] rounded-[16px] p-7 sm:p-10 space-y-6">
             <div>
-              <SectionLabel>Historical Archive</SectionLabel>
+              <SectionPill>Historical Archive</SectionPill>
               <h3 className="text-[28px] font-light text-[#000000] tracking-[-0.72px] mt-1">
                 Past Team Leaders
               </h3>
             </div>
-            <div className="space-y-4 pt-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12 gap-y-4 pt-2">
               {teamLeaders.map((lead) => (
                 <div
                   key={lead.name}
@@ -202,6 +124,60 @@ export function NepedAboutPage() {
           </div>
         </div>
       </motion.section>
+    </div>
+  );
+}
+
+/** Team card — regular (photo bottom-right), featured (tall, dark, photo centred on a glow), short (compact). */
+function TeamCard({ member, variant }: { member: TeamMember; variant: "regular" | "featured" | "short" }) {
+  const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    (e.target as HTMLElement).style.display = "none";
+  };
+
+  if (variant === "featured") {
+    return (
+      <div className="relative h-[340px] lg:h-[450px] rounded-[20px] overflow-hidden bg-(--brand-surface) text-[#ffffff] p-7 sm:p-8">
+        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 w-[420px] h-[420px] rounded-full bg-(--brand-accent)/60 blur-3xl pointer-events-none" />
+        <div className="relative z-10">
+          <h3 className="text-[22px] sm:text-[24px] font-medium tracking-[-0.3px]">{member.name}</h3>
+          <p className="text-[14px] text-[#ffffff]/75 mt-1">{member.role}</p>
+        </div>
+        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[58%] max-w-[240px] h-[62%] rounded-t-[16px] overflow-hidden">
+          {/* scale crops the white border of the passport-style photos */}
+          <img src={member.image} alt={member.name} onError={hideOnError} className="w-full h-full object-cover object-top scale-[1.12] origin-top" />
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "short") {
+    return (
+      <div className="h-[150px] rounded-[20px] bg-[#f5f5f5] p-7 sm:p-8 flex items-center justify-between gap-4">
+        <div>
+          <h3 className="text-[20px] sm:text-[22px] font-medium text-[#000000] tracking-[-0.3px]">{member.name}</h3>
+          <p className="text-[14px] text-[#666666] mt-1">{member.role}</p>
+        </div>
+        <div className="h-20 w-20 shrink-0 rounded-full overflow-hidden">
+          <img src={member.image} alt={member.name} onError={hideOnError} className="w-full h-full object-cover object-top scale-[1.15]" />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="group relative h-[300px] rounded-[20px] overflow-hidden bg-[#f5f5f5] p-7 sm:p-8">
+      <div className="relative z-10">
+        <h3 className="text-[20px] sm:text-[22px] font-medium text-[#000000] tracking-[-0.3px]">{member.name}</h3>
+        <p className="text-[14px] text-[#666666] mt-1">{member.role}</p>
+      </div>
+      <div className="absolute right-0 bottom-0 w-[44%] h-[64%] rounded-tl-[16px] overflow-hidden">
+        <img
+          src={member.image}
+          alt={member.name}
+          onError={hideOnError}
+          className="w-full h-full object-cover object-top scale-[1.12] origin-top transition-transform duration-500 group-hover:scale-[1.18]"
+        />
+      </div>
     </div>
   );
 }

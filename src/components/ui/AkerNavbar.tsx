@@ -13,28 +13,17 @@ const nepedMasterDropdownItems = [
   },
   {
     num: "02",
-    label: "About Mandate & Leadership",
+    label: "About Us",
     href: NEPED_PATHS.about,
   },
   {
     num: "03",
-    label: "Field Gallery & Event Logs",
-    href: SHARED_PATHS.gallery,
-  },
-  {
-    num: "04",
-    label: "Stories & Field Reports",
-    href: SHARED_PATHS.blog,
-  },
-  {
-    num: "05",
-    label: "30-Year Heritage Archives",
-    href: NEPED_PATHS.home,
-  },
-  {
-    num: "06",
     label: "Projects Archive",
     href: NEPED_PATHS.projects,
+  },  {
+    num: "04",
+    label: "Gallery",
+    href: SHARED_PATHS.gallery,
   },
 ];
 
@@ -58,6 +47,11 @@ const nepedEnergyDropdownItems = [
     num: "03",
     label: "Impact",
     href: NEPED_ENERGY_PATHS.impact,
+  },
+  {
+    num: "04",
+    label: "Gallery",
+    href: SHARED_PATHS.gallery,
   },
 ];
 

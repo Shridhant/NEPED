@@ -2,17 +2,16 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { Layout } from "./components/shared/Layout";
 // Shared pages (both entities)
-import { HomePage } from "./pages/shared/HomePage";
-import { BlogPage } from "./pages/shared/BlogPage";
-import { BlogDetailPage } from "./pages/shared/BlogDetailPage";
-import { GalleryPage } from "./pages/shared/GalleryPage";
-import { GalleryAlbumDetailPage } from "./pages/shared/GalleryAlbumDetailPage";
 import { LandingPage } from "./pages/landing/LandingPage";
+import { GalleryPage } from "./pages/shared/GalleryPage";
 // NEPED pages
 import { NepedEconomicPage } from "./pages/neped/NepedEconomicPage";
 import { NepedAboutPage } from "./pages/neped/NepedAboutPage";
 import { ProjectsPage } from "./pages/neped/ProjectsPage";
 import { NepedProjectDetailPage } from "./pages/neped/NepedProjectDetailPage";
+import { NepedArticlePage } from "./pages/neped/NepedArticlePage";
+import { NEPED_PHASES } from "./data/neped/nepedPhasesData";
+import { NEPED_SUCCESS_STORIES } from "./data/neped/nepedSuccessStoriesData";
 // NEPeD pages
 import { NepedEnergyPage } from "./pages/neped-energy/NepedEnergyPage";
 import { NepedEnergyAboutPage } from "./pages/neped-energy/NepedEnergyAboutPage";
@@ -65,18 +64,18 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Shared */}
-          <Route index element={<HomePage />} />
+          {/* Homepage = NEPED overview */}
+          <Route index element={<NepedEconomicPage />} />
           <Route path={SHARED_PATHS.landingPreview} element={<LandingPage />} />
-          <Route path={SHARED_PATHS.blog} element={<BlogPage />} />
-          <Route path="blog/:idOrSlug" element={<BlogDetailPage />} />
           <Route path={SHARED_PATHS.gallery} element={<GalleryPage />} />
-          <Route path="gallery/:albumSlug" element={<GalleryAlbumDetailPage />} />
 
           {/* NEPED */}
-          <Route path={NEPED_PATHS.home} element={<NepedEconomicPage />} />
+          <Route path={NEPED_PATHS.legacyHome} element={<LegacyRedirect to={NEPED_PATHS.home} />} />
           <Route path={NEPED_PATHS.about} element={<NepedAboutPage />} />
           <Route path={NEPED_PATHS.projects} element={<ProjectsPage />} />
           <Route path="neped/projects/:idOrSlug" element={<NepedProjectDetailPage />} />
+          <Route path="neped/phases/:slug" element={<NepedArticlePage items={NEPED_PHASES} pathFor={NEPED_PATHS.phase} />} />
+          <Route path="neped/success-stories/:slug" element={<NepedArticlePage items={NEPED_SUCCESS_STORIES} pathFor={NEPED_PATHS.successStory} />} />
 
           {/* NEPeD */}
           <Route path={NEPED_ENERGY_PATHS.home} element={<NepedEnergyPage />} />

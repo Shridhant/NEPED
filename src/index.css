@@ -231,3 +231,21 @@
   --brand-accent-on-dark: #e8a47f;
   --brand-surface: #002934;
 }
+
+/* BookDemoButton dot shimmer (components/ui/book-demo-button.tsx) */
+@keyframes bd-dot-wave {
+  0%, 65%, 100% { opacity: 0.3; transform: translateX(0) scale(0.8); }
+  32% { opacity: 1; transform: translateX(0.5px) scale(1.08); }
+}
+.bd-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bd-dot-wave 1.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+.bd-root:hover .bd-dot,
+.bd-root:focus-visible .bd-dot {
+  animation-duration: 0.95s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bd-dot { animation: none; opacity: 1; transform: none; }
+}

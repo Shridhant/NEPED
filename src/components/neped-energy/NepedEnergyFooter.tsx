@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail } from "lucide-react";
-import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS } from "@/routes/paths";
 
 const TOP_LINKS = [
   { label: "NEPeD Energy Overview", to: NEPED_ENERGY_PATHS.home },
@@ -11,7 +11,6 @@ const TOP_LINKS = [
 const ORGANIZATION_LINKS = [
   { label: "About NEPED", to: NEPED_PATHS.about },
   { label: "Heritage Archives", to: NEPED_PATHS.home },
-  { label: "Field Gallery & Logs", to: SHARED_PATHS.gallery },
 ];
 
 /**

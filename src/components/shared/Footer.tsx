@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Mail } from "lucide-react";
 import { TextArrowButton } from "@/components/ui/AkerPrimitives";
-import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS, isNepedPath, isNepedEnergyPath } from "@/routes/paths";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS, isNepedPath, isNepedEnergyPath } from "@/routes/paths";
 import { NepedEnergyFooter } from "@/components/neped-energy/NepedEnergyFooter";
 import { NepedFooter } from "@/components/neped/NepedFooter";
 
@@ -85,11 +85,6 @@ function NepedMasterFooter({ onOpenContact }: { onOpenContact: () => void }) {
                   <li>
                     <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#b75928] transition-colors">
                       Past Team Leaders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={SHARED_PATHS.gallery} className="hover:text-[#b75928] transition-colors">
-                      Field Gallery & Logs
                     </Link>
                   </li>
                   <li>

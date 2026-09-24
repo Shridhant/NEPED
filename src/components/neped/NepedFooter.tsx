@@ -44,7 +44,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 <p>Regd. NO. HOME/SRC-6751 (07-07-2014)</p>
               </div>
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <TextArrowButton to={`${NEPED_PATHS.home}#history`} dark={true} variant="pill">
+                <TextArrowButton to={NEPED_PATHS.projects} dark={true} variant="pill">
                   Explore 30-Year Archives
                 </TextArrowButton>
                 <Link
@@ -73,27 +73,27 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 </span>
                 <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#history`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-i")} className="hover:text-[#b75928] transition-colors">
                       NEPED I (Agroforestry)
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#history`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-ii")} className="hover:text-[#b75928] transition-colors">
                       NEPED II (Micro-Credit)
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#history`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-iii")} className="hover:text-[#b75928] transition-colors">
                       NEPED III (Watersheds)
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.project("neped-4-forest-biodiversity-management-kfw")} className="hover:text-[#b75928] transition-colors">
                       NEPED IV (KfW FBMP)
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-scen")} className="hover:text-[#b75928] transition-colors">
                       NEPED-SCEN (SACON)
                     </Link>
                   </li>
@@ -121,7 +121,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#team`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#b75928] transition-colors">
                       11 Team Leaders Roll
                     </Link>
                   </li>
