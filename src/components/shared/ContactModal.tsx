@@ -92,8 +92,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <MapPin size={16} className="text-[#b75928] mt-0.5 shrink-0" />
                   <div className="text-[13px] text-[#e5e4e4]/80 leading-relaxed">
                     <p className="text-white font-medium">NEPED Secretariat</p>
-                    <p>Old Secretariat Complex,</p>
-                    <p>Kohima — 797001, Nagaland</p>
+                    <p>Capital Convention Centre</p>
+                    <p>Near Nagaland Civil Secretariat</p>
+                    <p>Post Box-231,</p>
+                    <p>Kohima-797001, Nagaland</p>
                   </div>
                 </div>
                 <a

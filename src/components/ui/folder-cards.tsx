@@ -7,8 +7,8 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 /*
  * Adapted from the "FolderCards" component: a folder that slides down on hover to
  * reveal a floating object. Site changes: the background photo is replaced by a soft
- * gradient, the floating object is a lucide icon (no third-party images), and the card
- * fills its grid cell instead of a fixed 300px width.
+ * gradient, the floating object is a lucide icon — or, when `images` is given, a small stack of
+ * photos that rises and fans out — and the card fills its grid cell instead of a fixed 300px width.
  */
 
 export interface FolderCardItem {
@@ -23,6 +23,8 @@ export interface FolderCardItem {
   textColor: string;
   subTextColor: string;
   iconColor: string;
+  /** Photos shown (up to 2, first in front) instead of the icon */
+  images?: { src: string; alt: string }[];
   /** Page the card opens (keyboard and mouse) */
   to?: string;
 }
@@ -69,20 +71,51 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
         transition={gpuSpringTransition}
       />
 
-      {/* Floating icon, revealed when the folder slides down */}
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-[130px] z-10 flex -translate-x-1/2 justify-center transform-gpu will-change-[transform]"
-        variants={{ initial: { y: 0, scale: 0.96 }, hover: { y: -110, scale: 1.05 } }}
-        transition={gpuSpringTransition}
-      >
+      {card.images?.length ? (
+        /* Floating photos, revealed when the folder slides down; they fan out as they rise */
         <motion.div
-          animate={{ y: [0, -6, 0], rotate: [0, 1.5, -1.5, 0] }}
-          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-24 w-24 items-center justify-center rounded-[24px] bg-white/70 backdrop-blur-md shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
+          className="pointer-events-none absolute left-1/2 top-[118px] z-10 -translate-x-1/2 transform-gpu will-change-[transform]"
+          variants={{ initial: { y: 0, scale: 0.96 }, hover: { y: -104, scale: 1.04 } }}
+          transition={gpuSpringTransition}
         >
-          <Icon size={44} strokeWidth={1.5} color={card.iconColor} />
+          <div className="relative h-[124px] w-[184px]">
+            {card.images.slice(0, 2).reverse().map((img, i, arr) => {
+              const front = i === arr.length - 1;
+              const single = arr.length === 1;
+              return (
+                <motion.img
+                  key={img.src}
+                  src={img.src}
+                  alt={img.alt}
+                  draggable={false}
+                  className="absolute inset-0 h-full w-full rounded-[14px] border-[5px] border-white object-cover shadow-[0_18px_28px_rgba(0,0,0,0.18)]"
+                  variants={
+                    single || front
+                      ? { initial: { rotate: single ? -2 : 3, x: 0 }, hover: { rotate: single ? 0 : 6, x: single ? 0 : 22 } }
+                      : { initial: { rotate: -5, x: 0 }, hover: { rotate: -10, x: -26 } }
+                  }
+                  transition={gpuSpringTransition}
+                />
+              );
+            })}
+          </div>
         </motion.div>
-      </motion.div>
+      ) : (
+        /* Floating icon, revealed when the folder slides down */
+        <motion.div
+          className="pointer-events-none absolute left-1/2 top-[130px] z-10 flex -translate-x-1/2 justify-center transform-gpu will-change-[transform]"
+          variants={{ initial: { y: 0, scale: 0.96 }, hover: { y: -110, scale: 1.05 } }}
+          transition={gpuSpringTransition}
+        >
+          <motion.div
+            animate={{ y: [0, -6, 0], rotate: [0, 1.5, -1.5, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex h-24 w-24 items-center justify-center rounded-[24px] bg-white/70 backdrop-blur-md shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
+          >
+            <Icon size={44} strokeWidth={1.5} color={card.iconColor} />
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Folder */}
       <motion.div

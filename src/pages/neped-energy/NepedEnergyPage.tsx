@@ -4,7 +4,6 @@ import { fadeUpOnView } from "@/lib/motionVariants";
 import {
   Zap,
   Users,
-  ArrowRight,
   MapPin,
   Gauge,
   Layers,
@@ -143,17 +142,15 @@ export function NepedEnergyPage() {
           transition={{ duration: 0.5, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 w-full max-w-[1320px] mx-auto px-4 sm:px-6 pb-6 sm:pb-10 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4"
         >
-          {/* NEPED ↔ NEPeD lineage card */}
+          {/* NEPeD card: logo + Hydroger (text verbatim from NEPeD/data.txt) */}
           <div className="col-span-2 md:col-span-6 rounded-[16px] bg-gradient-to-br from-white/25 to-white/[0.06] border border-white/30 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35)] p-3 flex flex-col sm:flex-row gap-5">
-            <div className="sm:w-[42%] shrink-0 rounded-[10px] bg-[#ffffff]/95 flex items-center justify-center gap-4 p-4 sm:p-5 aspect-[16/6] sm:aspect-auto">
-              <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="h-12 sm:h-20 w-auto object-contain" />
-              <ArrowRight size={16} className="text-[#8d8d8d] shrink-0" />
-              <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="h-12 sm:h-20 w-auto object-contain" />
+            <div className="sm:w-[42%] shrink-0 rounded-[10px] bg-[#ffffff]/95 flex items-center justify-center p-4 sm:p-5 aspect-[16/6] sm:aspect-auto">
+              <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="h-14 sm:h-24 w-auto object-contain" />
             </div>
             <div className="flex flex-col justify-center gap-2 px-2 pb-3 sm:py-3 sm:pr-4 text-left">
-              <span className="font-mono text-[13px] text-[#ffffff] font-medium">NEPeD vs NEPED:</span>
+              <span className="font-mono text-[13px] text-[#ffffff] font-medium">Hydroger</span>
               <p className="text-[15px] text-[#ffffff]/85 leading-relaxed">
-                Retaining the trusted acronym, evolved from Economic (1994) to Energy (2007) Development.
+                NEPeD coined the term ‘Hydroger’ (derived from the amalgamation of Hydro and Generator).
               </p>
             </div>
           </div>

@@ -1,26 +1,43 @@
-import { lazy, useEffect } from "react";
+import { lazy, useEffect, type ComponentType } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { Layout } from "./components/shared/Layout";
+
+// Pages are split into their own files; after the first page has loaded, the rest are fetched in the
+// background (see preloadPages) so opening another page doesn't flash blank while its code downloads.
+const pageLoaders: Array<() => Promise<unknown>> = [];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- same constraint as React.lazy
+function lazyPage<T extends ComponentType<any>>(load: () => Promise<{ default: T }>) {
+  pageLoaders.push(load);
+  return lazy(load);
+}
+function preloadPages() {
+  const run = () => pageLoaders.forEach((load) => load().catch(() => {}));
+  // requestIdleCallback is missing in older Safari
+  const idle = (cb: () => void) =>
+    typeof window.requestIdleCallback === "function" ? window.requestIdleCallback(cb, { timeout: 3000 }) : setTimeout(cb, 1500);
+  if (document.readyState === "complete") idle(run);
+  else window.addEventListener("load", () => idle(run), { once: true });
+}
 // Shared pages (both entities)
-const LandingPage = lazy(() => import("./pages/landing/LandingPage").then((m) => ({ default: m.LandingPage })));
-const GalleryPage = lazy(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
+const LandingPage = lazyPage(() => import("./pages/landing/LandingPage").then((m) => ({ default: m.LandingPage })));
+const GalleryPage = lazyPage(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
 // NEPED pages
-const NepedEconomicPage = lazy(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
-const NepedStructurePage = lazy(() => import("./pages/neped/NepedStructurePage").then((m) => ({ default: m.NepedStructurePage })));
-const NepedAboutPage = lazy(() => import("./pages/neped/NepedAboutPage").then((m) => ({ default: m.NepedAboutPage })));
-const ProjectsPage = lazy(() => import("./pages/neped/ProjectsPage").then((m) => ({ default: m.ProjectsPage })));
-const NepedProjectDetailPage = lazy(() => import("./pages/neped/NepedProjectDetailPage").then((m) => ({ default: m.NepedProjectDetailPage })));
-const NepedArticlePage = lazy(() => import("./pages/neped/NepedArticlePage").then((m) => ({ default: m.NepedArticlePage })));
+const NepedEconomicPage = lazyPage(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
+const NepedStructurePage = lazyPage(() => import("./pages/neped/NepedStructurePage").then((m) => ({ default: m.NepedStructurePage })));
+const NepedAboutPage = lazyPage(() => import("./pages/neped/NepedAboutPage").then((m) => ({ default: m.NepedAboutPage })));
+const ProjectsPage = lazyPage(() => import("./pages/neped/ProjectsPage").then((m) => ({ default: m.ProjectsPage })));
+const NepedProjectDetailPage = lazyPage(() => import("./pages/neped/NepedProjectDetailPage").then((m) => ({ default: m.NepedProjectDetailPage })));
+const NepedArticlePage = lazyPage(() => import("./pages/neped/NepedArticlePage").then((m) => ({ default: m.NepedArticlePage })));
 import { NEPED_PHASES } from "./data/neped/nepedPhasesData";
 import { NEPED_SUCCESS_STORIES } from "./data/neped/nepedSuccessStoriesData";
 // NEPeD pages
-const NepedEnergyPage = lazy(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
-const NepedEnergyAboutPage = lazy(() => import("./pages/neped-energy/NepedEnergyAboutPage").then((m) => ({ default: m.NepedEnergyAboutPage })));
-const TechnologyPage = lazy(() => import("./pages/neped-energy/TechnologyPage").then((m) => ({ default: m.TechnologyPage })));
-const TechProductDetailPage = lazy(() => import("./pages/neped-energy/TechProductDetailPage").then((m) => ({ default: m.TechProductDetailPage })));
-const CaseStudiesPage = lazy(() => import("./pages/neped-energy/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage })));
-const CaseStudyDetailPage = lazy(() => import("./pages/neped-energy/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage })));
-const NepedEnergyImpactPage = lazy(() => import("./pages/neped-energy/NepedEnergyImpactPage").then((m) => ({ default: m.NepedEnergyImpactPage })));
+const NepedEnergyPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
+const NepedEnergyAboutPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyAboutPage").then((m) => ({ default: m.NepedEnergyAboutPage })));
+const TechnologyPage = lazyPage(() => import("./pages/neped-energy/TechnologyPage").then((m) => ({ default: m.TechnologyPage })));
+const TechProductDetailPage = lazyPage(() => import("./pages/neped-energy/TechProductDetailPage").then((m) => ({ default: m.TechProductDetailPage })));
+const CaseStudiesPage = lazyPage(() => import("./pages/neped-energy/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage })));
+const CaseStudyDetailPage = lazyPage(() => import("./pages/neped-energy/CaseStudyDetailPage").then((m) => ({ default: m.CaseStudyDetailPage })));
+const NepedEnergyImpactPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyImpactPage").then((m) => ({ default: m.NepedEnergyImpactPage })));
 import { SHARED_PATHS, NEPED_PATHS, NEPED_ENERGY_PATHS } from "./routes/paths";
 
 function ScrollToHash() {
@@ -61,6 +78,8 @@ function LegacyAboutRedirect() {
 }
 
 export default function App() {
+  useEffect(preloadPages, []);
+
   return (
     <Router>
       <ScrollToHash />

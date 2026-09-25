@@ -32,10 +32,24 @@ import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 import { BlurReveal } from "@/components/ui/blur-reveal";
+import { BorderGlow } from "@/components/ui/border-glow";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]";
-const DARK_CARD = "relative rounded-[16px] overflow-hidden bg-(--brand-surface) text-[#ffffff]";
-const GLOW = "absolute top-0 right-0 w-[320px] h-[320px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none";
+// Innovation cards: white washed with soft NEPED greens; border glow follows the pointer (BorderGlow)
+// const INNOVATION_CARD_BG = [
+//   "radial-gradient(70% 60% at 0% 0%, rgba(159,214,143,0.45) 0%, transparent 70%), linear-gradient(160deg, #eef7ea 0%, #ffffff 60%, #f3f9f0 100%)",
+//   "radial-gradient(70% 60% at 100% 0%, rgba(126,200,178,0.40) 0%, transparent 70%), linear-gradient(200deg, #ebf6f1 0%, #ffffff 60%, #f1f8f4 100%)",
+// ];
+const INNOVATION_GLOW = {
+  light: true,
+  borderRadius: 20,
+  glowColor: "130 50 45",
+  glowRadius: 40,
+  glowIntensity: 1.2,
+  edgeSensitivity: 28,
+  coneSpread: 25,
+  colors: ["#2d7d3a", "#9fd68f", "#2f9aa0"] as [string, string, string],
+};
 // Aims cards: light gradients in matched greens / earth tones (NEPED palette)
 const AIM_PALETTES = [
   { background: "linear-gradient(145deg, #e4f2d6 0%, #b9dca3 100%)", folderColor: "#f1f8ea", borderColor: "#d6ebc6", textColor: "#23452a", subTextColor: "rgba(35,69,42,0.72)", iconColor: "#2d7d3a" },
@@ -54,7 +68,7 @@ const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album
     href: SHARED_PATHS.gallery,
   })),
 );
-const GLASS_ROW = "rounded-[12px] bg-white/[0.07] border border-white/15 p-4";
+const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#193f32]/10 p-4";
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
@@ -266,66 +280,68 @@ export function NepedEconomicPage() {
 
    
 
-      {/* 4. INNOVATIONS SPOTLIGHT: FODDORIZER, LSPs, & SACON BLYTH'S TRAGOPAN — dark green cards */}
+      {/* 4. INNOVATIONS SPOTLIGHT: FODDORIZER, LSPs, & SACON BLYTH'S TRAGOPAN — light green cards with a pointer-following border glow */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
           {/* Foddorizer & Livestock Innovation */}
-          <div className={`${DARK_CARD} p-7 sm:p-10 flex flex-col justify-between`}>
-            <div className={GLOW} />
+          <BorderGlow {...INNOVATION_GLOW} background={"white"} className="h-full">
+          <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
             <div className="relative space-y-5">
-              <SectionPill dark>Indigenous Hardware Innovation</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#ffffff] tracking-[-0.72px] leading-tight">
+              <SectionPill>Indigenous Hardware Innovation</SectionPill>
+              <h3 className="text-[28px] sm:text-[34px] font-light text-[#193f32] tracking-[-0.72px] leading-tight">
                 The 'Foddorizer' & Livestock Service Providers (LSPs)
               </h3>
-              <p className="text-[15px] text-[#e5e4e4]/80 leading-relaxed">
-                Assisted 4,200 resource-poor families with breeding stock, fattening stock, and low-cost scientific pig sties. To solve feed boiling and firewood depletion, NEPED designed and fabricated the <strong className="font-medium text-[#ffffff]">‘Foddorizer’</strong>:
+              <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
+                Assisted 4,200 resource-poor families with breeding stock, fattening stock, and low-cost scientific pig sties. To solve feed boiling and firewood depletion, NEPED designed and fabricated the <strong className="font-medium text-[#193f32]">‘Foddorizer’</strong>:
               </p>
-              <div className="space-y-3 text-[14px] text-[#e5e4e4]">
+              <div className="space-y-3 text-[14px] text-[#3f5a4f]">
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <Check size={16} className="text-(--brand-accent-on-dark) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#ffffff]">1.5 Lakh Trees Saved Annually:</strong> Drastically cuts domestic firewood consumption for boiling animal feed.</span>
+                  <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
+                  <span><strong className="font-medium text-[#193f32]">1.5 Lakh Trees Saved Annually:</strong> Drastically cuts domestic firewood consumption for boiling animal feed.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <Check size={16} className="text-(--brand-accent-on-dark) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#ffffff]">LSP Veterinary Model:</strong> Village youth trained as Livestock Service Providers contained Classical Swine Fever (CSF), preventing millions in annual losses.</span>
+                  <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
+                  <span><strong className="font-medium text-[#193f32]">LSP Veterinary Model:</strong> Village youth trained as Livestock Service Providers contained Classical Swine Fever (CSF), preventing millions in annual losses.</span>
                 </div>
               </div>
             </div>
-            <div className="relative pt-6 border-t border-white/10 mt-8 text-[11px] font-mono text-[#e5e4e4]/60">
+            <div className="relative pt-6 border-t border-[#193f32]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
               Supported by Navajbhai Ratan Tata Trust (NRTT) & State Plan
             </div>
           </div>
+          </BorderGlow>
 
           {/* SACON & Community Conservation Areas */}
-          <div className={`${DARK_CARD} p-7 sm:p-10 flex flex-col justify-between`}>
-            <div className={GLOW} />
+          <BorderGlow {...INNOVATION_GLOW} background={"white"} className="h-full">
+          <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
             <div className="relative space-y-5">
-              <SectionPill dark>Community Conservation & SACON</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#ffffff] tracking-[-0.72px] leading-tight">
+              <SectionPill>Community Conservation & SACON</SectionPill>
+              <h3 className="text-[28px] sm:text-[34px] font-light text-[#193f32] tracking-[-0.72px] leading-tight">
                 Community Conservation Areas (CCAs) & Blyth's Tragopan
               </h3>
-              <p className="text-[15px] text-[#e5e4e4]/80 leading-relaxed">
-                In collaboration with the <strong className="font-medium text-[#ffffff]">Salim Ali Center for Ornithology & Natural History (SACON)</strong> and Sir Dorabji Tata Trust, NEPED guided Village Councils in passing resolutions to restrict hunting, fishing, and logging:
+              <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
+                In collaboration with the <strong className="font-medium text-[#193f32]">Salim Ali Center for Ornithology & Natural History (SACON)</strong> and Sir Dorabji Tata Trust, NEPED guided Village Councils in passing resolutions to restrict hunting, fishing, and logging:
               </p>
-              <div className="space-y-3 text-[14px] text-[#e5e4e4]">
+              <div className="space-y-3 text-[14px] text-[#3f5a4f]">
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent-on-dark) shrink-0">1.</span>
-                  <span>Developing legally protected <strong className="font-medium text-[#ffffff]">People's Biodiversity Registers (PBRs)</strong> and resource maps.</span>
+                  <span className="font-mono text-(--brand-accent) shrink-0">1.</span>
+                  <span>Developing legally protected <strong className="font-medium text-[#193f32]">People's Biodiversity Registers (PBRs)</strong> and resource maps.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent-on-dark) shrink-0">2.</span>
-                  <span>Documentation of <strong className="font-medium text-[#ffffff]">Indigenous Ecological Knowledge (IEK)</strong>.</span>
+                  <span className="font-mono text-(--brand-accent) shrink-0">2.</span>
+                  <span>Documentation of <strong className="font-medium text-[#193f32]">Indigenous Ecological Knowledge (IEK)</strong>.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent-on-dark) shrink-0">3.</span>
-                  <span>Using <strong className="font-medium text-[#ffffff]">Blyth’s Tragopan</strong> (State Bird of Nagaland) as the flagship conservation umbrella species.</span>
+                  <span className="font-mono text-(--brand-accent) shrink-0">3.</span>
+                  <span>Using <strong className="font-medium text-[#193f32]">Blyth’s Tragopan</strong> (State Bird of Nagaland) as the flagship conservation umbrella species.</span>
                 </div>
               </div>
             </div>
-            <div className="relative pt-6 border-t border-white/10 mt-8 text-[11px] font-mono text-[#e5e4e4]/60">
+            <div className="relative pt-6 border-t border-[#193f32]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
               Sir Dorabji Ratan Tata Trust (SDTT) • NEPED-SCEN
             </div>
           </div>
+          </BorderGlow>
         </div>
       </motion.section>
 

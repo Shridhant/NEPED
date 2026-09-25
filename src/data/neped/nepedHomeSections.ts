@@ -31,15 +31,15 @@ export const NEPED_SECTION_3 = {
 
 /** PLACEHOLDER CONTENT — header of the phases carousel section. */
 export const NEPED_PHASES_SECTION = {
-  label: "Lorem ipsum",
-  heading: "Lorem ipsum dolor sit amet",
-  intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  label: "Major Projects",
+  heading: "",
+  intro: "Major Projects Implemented by NEPED",
 };
 
 /** PLACEHOLDER CONTENT — header of the milestones (numbers) section. */
 export const NEPED_MILESTONES_SECTION = {
-  label: "Lorem ipsum dolor",
-  heading: "Lorem ipsum dolor sit amet",
+  label: "Major Milestones",
+  heading: "Milestones Achieved by NEPED",
 };
 
 /**

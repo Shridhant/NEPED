@@ -1,6 +1,7 @@
 import { Lightbulb, Mountain, Waves, Users, Leaf, type LucideIcon } from "lucide-react";
 import type { FolderCardItem } from "@/components/ui/folder-cards";
 import { CASE_STUDIES, type CaseStudy } from "@/data/neped-energy/caseStudiesData";
+import { CASE_STUDY_PHOTOS } from "@/data/neped-energy/caseStudyPhotos";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 
 // Light gradients in NEPeD tones (teal, sand, terracotta)
@@ -19,6 +20,7 @@ export function caseStudyCard(study: CaseStudy, index: number): FolderCardItem {
     title: study.title,
     description: study.overview,
     icon: ICONS[index % ICONS.length],
+    images: CASE_STUDY_PHOTOS[study.slug],
     to: NEPED_ENERGY_PATHS.caseStudy(study.slug),
     ...PALETTES[index % PALETTES.length],
   };

@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
+import { CASE_STUDY_PHOTOS } from "@/data/neped-energy/caseStudyPhotos";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
-/** One NEPeD case study — all text from caseStudiesData.ts. */
+/** One NEPeD case study — all text from caseStudiesData.ts, photos from caseStudyPhotos.ts. */
 export function CaseStudyDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const index = CASE_STUDIES.findIndex((s) => s.slug === slug);
@@ -31,6 +32,7 @@ export function CaseStudyDetailPage() {
   const prev = index > 0 ? CASE_STUDIES[index - 1] : null;
   const next = index < CASE_STUDIES.length - 1 ? CASE_STUDIES[index + 1] : null;
   const [intro, ...rest] = study.sections;
+  const photos = CASE_STUDY_PHOTOS[study.slug] ?? [];
 
   return (
     <div className="w-full space-y-16 sm:space-y-24 pb-24">
@@ -53,6 +55,19 @@ export function CaseStudyDetailPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Photos (public/<slug>/) */}
+      {photos.length > 0 && (
+        <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+          <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
+            {photos.map((photo) => (
+              <div key={photo.src} className="overflow-hidden rounded-[20px] bg-[#f5f5f5] ring-1 ring-black/5">
+                <img src={photo.src} alt={photo.alt} className="aspect-[3/2] h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </motion.section>
+      )}
 
       {/* Sections */}
       {rest.map((section) => (

@@ -135,8 +135,10 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 <div className="space-y-2 text-[13px] text-[#e5e4e4]/80 leading-relaxed">
                   <p className="text-[#ffffff] font-medium">NEPED Society</p>
                   <p className="text-[12px] text-[#e5e4e4]/70">Govt. of Nagaland</p>
-                  <p>Old Secretariat Complex,</p>
-                  <p>Kohima — 797001, Nagaland</p>
+                  <p>Capital Convention Centre</p>
+                  <p>Near Nagaland Civil Secretariat</p>
+                  <p>Post Box-231,</p>
+                  <p>Kohima-797001, Nagaland</p>
                   <p className="pt-2 text-[12px] text-[#8d8d8d]">
                     Email: <span className="text-[#ffffff]">nepednagaland@gmail.com</span>
                   </p>

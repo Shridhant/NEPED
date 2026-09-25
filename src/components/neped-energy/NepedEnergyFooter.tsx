@@ -66,8 +66,10 @@ export function NepedEnergyFooter({ onOpenContact }: { onOpenContact: () => void
               <h3 className="text-[16px] text-[#000000] mb-4">Directorate</h3>
               <div className="space-y-2 text-[14px] text-[#494949] leading-relaxed">
                 <p className="text-[#000000]">NEPED Secretariat</p>
-                <p>Old Secretariat Complex,</p>
-                <p>Kohima — 797001, Nagaland</p>
+                <p>Capital Convention Centre</p>
+                <p>Near Nagaland Civil Secretariat</p>
+                <p>Post Box-231,</p>
+                <p>Kohima-797001, Nagaland</p>
                 <p className="pt-2">
                   Email: <span className="text-[#000000]">nepednagaland<wbr />@gmail.com</span>
                 </p>
