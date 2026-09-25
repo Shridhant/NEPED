@@ -33,6 +33,8 @@ import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 import { BorderGlow } from "@/components/ui/border-glow";
+import { DotGrid } from "@/components/ui/dot-grid";
+import { useOpenContact } from "@/lib/contact";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]";
 // Innovation cards: white washed with soft NEPED greens; border glow follows the pointer (BorderGlow)
@@ -72,6 +74,7 @@ const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#193f32]/10 p-4";
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
+  const openContact = useOpenContact();
 
   useEffect(() => {
     document.title = "NEPED — Heritage & Economic Development (1994–Present) • Master Archives";
@@ -113,12 +116,12 @@ export function NepedEconomicPage() {
                 Nagaland Empowerment of People through Economic Development (NEPED) — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-3">
-                <a
-                  href="#history"
+                <Link
+                  to={NEPED_PATHS.structure}
                   className="inline-flex items-center px-6 py-3.5 rounded-[1584px] bg-(--brand-accent) hover:bg-(--brand-accent-hover) text-[15px] font-medium text-[#ffffff] transition-colors"
                 >
-                  Explore 30-Year History
-                </a>
+                  Organisational Structure
+                </Link>
                 <Link
                   to={NEPED_PATHS.projects}
                   className="inline-flex items-center px-6 py-3.5 rounded-[1584px] border border-white/60 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-[15px] font-medium text-[#ffffff] transition-colors"
@@ -203,9 +206,13 @@ export function NepedEconomicPage() {
             imageClassName="scale-[1.15] object-top"
             interactiveCenterLabel
             centerLabel={
-              <div className="flex flex-col items-center gap-5">
+              <div className="flex flex-col items-center gap-5 text-center">
                 <span className="text-[30px] sm:text-[52px] font-light tracking-[-1.2px] leading-none text-[#000000] whitespace-nowrap">About Us</span>
-                <BookDemoButton to={NEPED_PATHS.about} variant="emerald">Click to see more</BookDemoButton>
+                {/* Verbatim from "NEPED PDF.pdf" (About Us); hidden on phones, where the space beside the ring is too narrow */}
+                <p className="hidden sm:block max-w-[400px] text-[15px] text-[#666666] leading-relaxed">
+                  NEPED is made up of a team of multi-disciplinary government officers drawn from various government departments, who are called the Project Operations Unit (POU) Members, formed by the Government of Nagaland, with full autonomy.
+                </p>
+                <BookDemoButton to={NEPED_PATHS.about} variant="emerald">Read more</BookDemoButton>
               </div>
             }
             className="h-[420px] sm:h-[520px]"
@@ -407,24 +414,26 @@ export function NepedEconomicPage() {
         </div>
       </motion.section>
 
-      {/* 9. THE EVOLUTIONARY BRIDGE: NEPED → NEPeD — NEPeD CTA style, in NEPeD colours */}
+      {/* 9. THE EVOLUTIONARY BRIDGE: NEPED → NEPeD — light dot-grid card, NEPeD accent colours */}
       <motion.section {...fadeUpOnView} className="theme-neped-energy mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-(--brand-surface) px-6 py-16 sm:px-12 sm:py-20 text-center">
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-(--brand-accent)/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative rounded-[24px] overflow-hidden bg-[#f7f9f7] border border-[#e5e4e4] px-6 py-16 sm:px-12 sm:py-20 text-center">
+          <DotGrid dotSize={4} gap={22} color="#d8e3dc" />
+          {/* Soft white centre so the text stays easy to read over the dots */}
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.7)_40%,rgba(255,255,255,0)_75%)]" />
           <div className="relative max-w-[820px] mx-auto flex flex-col items-center gap-6">
-            <SectionPill dark>The Energy Nexus • 108 Hydrogers Deployed</SectionPill>
-            <h2 className="text-[30px] sm:text-[48px] font-light text-[#ffffff] tracking-[-1.2px] leading-[1.1]">
+            <SectionPill>The Energy Nexus • 108 Hydrogers Deployed</SectionPill>
+            <h2 className="text-[30px] sm:text-[48px] font-light text-[#000000] tracking-[-1.2px] leading-[1.1]">
               From NEPED Agroforestry to NEPeD Clean Energy
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/85 leading-relaxed max-w-[680px]">
+            <p className="text-[15px] sm:text-[16px] text-[#494949] leading-relaxed max-w-[680px]">
               As agro-enterprises expanded across Nagaland, the emerging need was clean, affordable energy to power post-harvest processing, mechanical grain mills, and cold storage to enable Naga farmers to compete globally.
             </p>
-            <p className="text-[15px] text-[#e5e4e4]/75 leading-relaxed font-serif italic max-w-[680px]">
-              “This direct requirement gave birth to <strong className="font-medium not-italic text-[#ffffff]">NEPeD Energy Division</strong> in 2007, which has now installed 108 indigenous hydrogers across remote mountain rivers.”
+            <p className="text-[15px] text-[#666666] leading-relaxed font-serif italic max-w-[680px]">
+              “This direct requirement gave birth to <strong className="font-medium not-italic text-[#000000]">NEPeD Energy Division</strong> in 2007, which has now installed 108 indigenous hydrogers across remote mountain rivers.”
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <ArrowPillButton to={NEPED_ENERGY_PATHS.home} arrow="up-right">Explore NEPeD Energy Portal</ArrowPillButton>
-              <ArrowPillButton to={NEPED_ENERGY_PATHS.technology} variant="link">Hydroger Technology & Specs</ArrowPillButton>
+              <ArrowPillButton onClick={openContact} variant="outline" arrow="mail">Contact Us</ArrowPillButton>
             </div>
           </div>
         </div>

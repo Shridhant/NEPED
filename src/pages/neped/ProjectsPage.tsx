@@ -189,19 +189,16 @@ export function ProjectsPage() {
         )}
       </section>
 
-      {/* 4. CROSS-NAVIGATION BANNER — dark green CTA */}
+      {/* 4. CROSS-NAVIGATION BANNER — dark green CTA to About Us */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="relative rounded-[24px] overflow-hidden bg-(--brand-surface) px-6 py-14 sm:px-12 sm:py-16 text-center">
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none" />
           <div className="relative max-w-[760px] mx-auto flex flex-col items-center gap-6">
-            <SectionPill dark>Master Archives & Governance</SectionPill>
+            <SectionPill dark>NEPED</SectionPill>
             <h2 className="text-[28px] sm:text-[44px] font-light text-[#ffffff] tracking-[-1px] leading-[1.1]">
-              Explore the Complete 30-Year History of NEPED
+              About NEPED
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/85 leading-relaxed">
-              Read the inception mandate, honor roll of 11 Team Leaders, multidisciplinary Project Operations Unit (POU) governance culture, and foundational ICEF/CIDA milestones.
-            </p>
-            <ArrowPillButton to={NEPED_PATHS.home} arrow="up-right">30-Year Heritage Archive</ArrowPillButton>
+            <ArrowPillButton to={NEPED_PATHS.about} arrow="up-right">About Us</ArrowPillButton>
           </div>
         </div>
       </motion.section>

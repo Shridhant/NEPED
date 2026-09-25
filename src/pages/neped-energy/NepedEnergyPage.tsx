@@ -29,6 +29,8 @@ import { BookDemoButton } from "@/components/ui/book-demo-button";
 import { ScrollStackDeck, type ProjectItem } from "@/components/ui/scroll-stack-deck";
 import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
 import { BlurReveal } from "@/components/ui/blur-reveal";
+import { useOpenContact } from "@/lib/contact";
+import { DotGrid } from "@/components/ui/dot-grid";
 
 // Case studies deck: NEPeD tones; village photos where the site has one, gradient panel otherwise
 const CASE_DECK_STYLE: Record<string, { color: string; panel: string; image?: string; imageAlt?: string }> = {
@@ -48,6 +50,7 @@ const CASE_STUDY_DECK: ProjectItem[] = CASE_STUDIES.map((study, i) => ({
 }));
 
 export function NepedEnergyPage() {
+  const openContact = useOpenContact();
   useEffect(() => {
     document.title =
       "NEPeD — Nagaland Empowerment of People through Energy Development • Clean Energy Division (Est. 2007)";
@@ -313,20 +316,25 @@ export function NepedEnergyPage() {
         </div>
       </motion.section>
 
-      {/* 7. CTA — CERES (centred dark banner, reference-inspired) */}
+      {/* 7. CTA — CERES (centred light dot-grid banner) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-[#002934] px-6 py-16 sm:px-12 sm:py-20 md:py-24 text-center">
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-[#b75928]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative rounded-[24px] overflow-hidden bg-[#f6f9fa] border border-[#e5e4e4] px-6 py-16 sm:px-12 sm:py-20 md:py-24 text-center">
+          <DotGrid dotSize={4} gap={22} color="#d5e3e6" />
+          {/* Soft white centre so the text stays easy to read over the dots */}
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.7)_40%,rgba(255,255,255,0)_75%)]" />
           <div className="relative max-w-[820px] mx-auto flex flex-col items-center gap-6">
-            <SectionPill dark>Core Engineering Facility</SectionPill>
-            <h2 className="text-[30px] sm:text-[48px] font-light text-[#ffffff] tracking-[-1.2px] leading-[1.1]">
+            <SectionPill>Core Engineering Facility</SectionPill>
+            <h2 className="text-[30px] sm:text-[48px] font-light text-[#000000] tracking-[-1.2px] leading-[1.1]">
               CERES — Centre of Excellence for Renewable Energy Studies
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/80 leading-relaxed max-w-[680px]">
+            <p className="text-[15px] sm:text-[16px] text-[#494949] leading-relaxed max-w-[680px]">
               Located at Industrial Estate, Dimapur, CERES is NEPeD’s dedicated engineering and manufacturing laboratory. It anchors the mass production of indigenous hydrogers, Electronic Load Controllers (ELC), and the technical skilling of local "Rural Engineers".
             </p>
-            <div className="mt-2 inline-flex p-1.5 rounded-[1584px] bg-white/[0.08] border border-white/15">
-              <ArrowPillButton to={NEPED_ENERGY_PATHS.technology} arrow="up-right">Visit CERES Tech & Hardware Page</ArrowPillButton>
+            <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="inline-flex p-1.5 rounded-[1584px] bg-[#000000]/[0.04] border border-[#e5e4e4]">
+                <ArrowPillButton to={NEPED_ENERGY_PATHS.technology} arrow="up-right">Visit CERES Tech & Hardware Page</ArrowPillButton>
+              </div>
+              <ArrowPillButton onClick={openContact} variant="outline" arrow="mail">Contact Us</ArrowPillButton>
             </div>
           </div>
         </div>

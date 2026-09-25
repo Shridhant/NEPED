@@ -6,10 +6,12 @@ import { Footer } from "./Footer";
 import { ContactModal } from "./ContactModal";
 import { SitePreloader } from "./SitePreloader";
 import { pageTransitionVariants } from "@/lib/motionVariants";
+import type { LayoutContext } from "@/lib/contact";
 
 export function Layout() {
   const location = useLocation();
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const outletContext: LayoutContext = { openContact: () => setIsContactOpen(true) };
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-[#000000] font-sans selection:bg-[#b75928] selection:text-[#ffffff]">
@@ -25,7 +27,7 @@ export function Layout() {
             exit="exit"
           >
             <Suspense fallback={<div className="min-h-screen" />}>
-              <Outlet />
+              <Outlet context={outletContext} />
             </Suspense>
           </motion.div>
         </AnimatePresence>

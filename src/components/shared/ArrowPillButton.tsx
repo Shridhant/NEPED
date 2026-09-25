@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
 
 type Variant = "primary" | "glass" | "outline" | "link";
-type Arrow = "right" | "down" | "up-right";
+type Arrow = "right" | "down" | "up-right" | "mail";
 
-const ARROWS = { right: ArrowRight, down: ArrowDown, "up-right": ArrowUpRight };
+const ARROWS = { right: ArrowRight, down: ArrowDown, "up-right": ArrowUpRight, mail: Mail };
 
 const STYLES: Record<Variant, { button: string; circle: string }> = {
   primary: {
@@ -26,11 +26,12 @@ const STYLES: Record<Variant, { button: string; circle: string }> = {
   },
 };
 
-/** Pill button with a round arrow, as used in the NEPeD hero. Renders a router Link for `to`, an anchor for `href`. */
+/** Pill button with a round arrow, as used in the NEPeD hero. Renders a router Link for `to`, an anchor for `href`, a button for `onClick`. */
 export function ArrowPillButton({
   children,
   to,
   href,
+  onClick,
   variant = "primary",
   arrow = "right",
   className = "",
@@ -38,6 +39,7 @@ export function ArrowPillButton({
   children: ReactNode;
   to?: string;
   href?: string;
+  onClick?: () => void;
   variant?: Variant;
   arrow?: Arrow;
   className?: string;
@@ -58,6 +60,7 @@ export function ArrowPillButton({
       )}
     </>
   );
+  if (onClick) return <button type="button" onClick={onClick} className={`${classes} cursor-pointer`}>{content}</button>;
   if (to) return <Link to={to} className={classes}>{content}</Link>;
   return <a href={href} className={classes}>{content}</a>;
 }
