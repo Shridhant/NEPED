@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 export type StaggeredCardItem = { title: string; text: string; to: string };
 
@@ -26,7 +27,7 @@ export function StaggeredCards({ items, className }: { items: StaggeredCardItem[
           <div className="flex items-start justify-between gap-4">
             <h3 className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.6px] leading-tight">
               <span className="block font-mono text-[14px] text-(--brand-accent) mb-2">{String(idx + 1).padStart(2, "0")}</span>
-              {item.title}
+              <BlurReveal as="span" inView>{item.title}</BlurReveal>
             </h3>
             <span className="w-11 h-11 rounded-full bg-(--brand-accent) text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:rotate-45">
               <ArrowUpRight size={18} />

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  ArrowDown,
   Check,
   Wallet,
   Briefcase,
@@ -32,6 +31,7 @@ import { NEPED_SUCCESS_STORIES } from "@/data/neped/nepedSuccessStoriesData";
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]";
 const DARK_CARD = "relative rounded-[16px] overflow-hidden bg-(--brand-surface) text-[#ffffff]";
@@ -55,7 +55,6 @@ const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album
   })),
 );
 const GLASS_ROW = "rounded-[12px] bg-white/[0.07] border border-white/15 p-4";
-const GLASS_TIER = "p-4 sm:p-5 rounded-[16px] bg-white/[0.07] border border-white/15 backdrop-blur-md text-center";
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
@@ -71,7 +70,7 @@ export function NepedEconomicPage() {
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-4">
       {/* 1. HERO — inset rounded photo panel with a floating society card (inspired by inspo.webp) */}
       <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
-        <div className="relative w-full min-h-[calc(100svh-20px)] sm:min-h-[calc(100svh-32px)] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] flex flex-col">
+        <div data-intro-hero className="relative w-full min-h-[calc(100svh-20px)] sm:min-h-[calc(100svh-32px)] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] flex flex-col">
           {/* Background photo with a minimal dark overlay */}
           <div className="absolute inset-0 z-0">
             <img
@@ -87,17 +86,15 @@ export function NepedEconomicPage() {
           <div className="relative z-10 flex-1 w-full max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-28 sm:pt-36 pb-6 sm:pb-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
             {/* Headline block */}
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-7 lg:self-center space-y-6"
             >
               <span className="inline-flex items-center px-4 py-2 rounded-[1584px] border border-white/40 bg-white/10 backdrop-blur-sm text-[12px] sm:text-[13px] text-[#ffffff]">
                 Foundational Heritage • Govt. of Nagaland (Est. 1994)
               </span>
-              <h1 className="text-[44px] sm:text-[68px] lg:text-[84px] font-light text-[#ffffff] tracking-[-2px] leading-[1.02] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">
-                NEPED — Heritage & Ecology
-              </h1>
+              <BlurReveal as="h1" className="text-[44px] sm:text-[68px] lg:text-[84px] font-light text-[#ffffff] tracking-[-2px] leading-[1.02] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">{"NEPED"}</BlurReveal>
               <p className="max-w-[560px] text-[15px] sm:text-[17px] text-[#ffffff]/95 leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.25)]">
                 Nagaland Empowerment of People through Economic Development (NEPED) — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
               </p>
@@ -361,62 +358,6 @@ export function NepedEconomicPage() {
         </div>
       </motion.section>
 
-      {/* 6. ORGANIZATIONAL STRUCTURE — dark green panel with glass tiers */}
-      <motion.section {...fadeUpOnView} id="structure" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className={`${DARK_CARD} rounded-[24px] px-5 py-12 sm:px-12 sm:py-16`}>
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative max-w-[720px] mx-auto text-center flex flex-col items-center gap-5 mb-10 sm:mb-12">
-            <SectionPill dark>Governance Architecture</SectionPill>
-            <h2 className="text-[30px] sm:text-[44px] font-light text-[#ffffff] tracking-[-1px] leading-[1.1]">
-              NEPED Organizational Structure
-            </h2>
-            <p className="text-[15px] text-[#e5e4e4]/80 leading-relaxed">
-              A streamlined hierarchical and participatory governance model linking apex state leadership with grassroots village councils.
-            </p>
-          </div>
-
-          <div className="relative space-y-3 max-w-3xl mx-auto">
-            <div className={`${GLASS_TIER}`}>
-              <span className="text-[11px] font-mono text-[#e5e4e4]/60 uppercase block">Apex Authority</span>
-              <span className="text-[16px] sm:text-[17px] text-[#ffffff]">Chief Minister of Nagaland</span>
-            </div>
-            <TierArrow />
-            <div className={`${GLASS_TIER}`}>
-              <span className="text-[11px] font-mono text-[#e5e4e4]/60 uppercase block">Administrative Head</span>
-              <span className="text-[16px] sm:text-[17px] text-[#ffffff]">Chief Secretary, Govt. of Nagaland</span>
-            </div>
-            <TierArrow />
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className={`${GLASS_TIER}`}>
-                <span className="text-[11px] font-mono text-[#e5e4e4]/60 uppercase block">Executive Director</span>
-                <span className="text-[15px] sm:text-[16px] text-[#ffffff]">APC / Mission Director</span>
-              </div>
-              <div className={`${GLASS_TIER} bg-white/[0.12]`}>
-                <span className="text-[11px] font-mono text-[#e5e4e4]/60 uppercase block">Advisory Body</span>
-                <span className="text-[15px] sm:text-[16px] text-[#ffffff]">Project Steering Committee (PSC)</span>
-              </div>
-            </div>
-            <TierArrow />
-            <div className={`${GLASS_TIER} border-(--brand-accent-on-dark)/50`}>
-              <span className="text-[11px] font-mono text-(--brand-accent-on-dark) uppercase block">Operational Head</span>
-              <span className="text-[16px] sm:text-[17px] text-[#ffffff]">Team Leader (Secretary Level & Above)</span>
-            </div>
-            <TierArrow />
-            <div className={`${GLASS_TIER}`}>
-              <span className="text-[11px] font-mono text-[#e5e4e4]/60 uppercase block">Multidisciplinary Officers</span>
-              <span className="text-[16px] sm:text-[17px] text-[#ffffff]">Project Operations Unit (POU) Members</span>
-            </div>
-            <TierArrow />
-            <div className="p-5 sm:p-6 bg-[#ffffff] text-[#000000] rounded-[16px] text-center">
-              <span className="text-[11px] font-mono text-[#666666] uppercase block">Grassroots Partners</span>
-              <span className="text-[14px] sm:text-[15px] block mt-1 leading-relaxed">
-                Village Councils • Village Development Boards (VDBs) • Farmers • NGOs • Women Groups • SHGs • Youth • Local Entrepreneurs
-              </span>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
       {/* 7. PROJECTS ARCHIVE */}
       <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4] flex flex-col lg:flex-row lg:items-end justify-between gap-6">
@@ -472,16 +413,6 @@ export function NepedEconomicPage() {
           </div>
         </div>
       </motion.section>
-    </div>
-  );
-}
-
-function TierArrow() {
-  return (
-    <div className="flex justify-center">
-      <span className="w-8 h-8 rounded-full bg-white/10 text-[#e5e4e4]/70 flex items-center justify-center">
-        <ArrowDown size={14} />
-      </span>
     </div>
   );
 }

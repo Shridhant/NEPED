@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/AkerPrimitives";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_PATHS } from "@/routes/paths";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 export function NepedProjectDetailPage() {
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
@@ -33,9 +34,7 @@ export function NepedProjectDetailPage() {
         <span className="text-[12px] font-mono uppercase text-[#8d8d8d]">
           404 • Project Not Found
         </span>
-        <h1 className="text-[32px] font-light text-[#000000]">
-          Archive Record Unavailable
-        </h1>
+        <BlurReveal as="h1" className="text-[32px] font-light text-[#000000]">{"Archive Record Unavailable"}</BlurReveal>
         <p className="text-[15px] text-[#666666]">
           The project record you are looking for could not be located in the NEPED historical archive index.
         </p>
@@ -111,9 +110,7 @@ export function NepedProjectDetailPage() {
 
           {/* Card Body */}
           <div className="p-6 sm:p-8 space-y-5">
-            <h1 className="text-[24px] sm:text-[30px] font-light leading-[1.2] text-[#ffffff] tracking-[-0.5px]">
-              {project.name}
-            </h1>
+            <BlurReveal as="h1" className="text-[24px] sm:text-[30px] font-light leading-[1.2] text-[#ffffff] tracking-[-0.5px]">{project.name}</BlurReveal>
 
             {project.objective ? (
               <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/85 font-light leading-relaxed">

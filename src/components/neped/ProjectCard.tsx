@@ -3,6 +3,7 @@ import { PillBadge } from "@/components/ui/AkerPrimitives";
 import type { NepedProject } from "@/data/neped/nepedProjectsData";
 import { NEPED_PATHS } from "@/routes/paths";
 import { cn } from "@/lib/utils";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** Dark NEPED project card (image banner with phase / category / period, objective, funding agency). */
 /** tone "glass" = lighter frosted version for use over photos (e.g. the hero) */
@@ -43,9 +44,7 @@ export function ProjectCard({ project: proj, className, tone = "dark" }: { proje
       {/* Card Body */}
       <div className="p-5 space-y-3.5 flex-1 flex flex-col justify-between">
         <div className="space-y-2">
-          <h3 className="text-[17px] font-light leading-[1.25] text-[#ffffff] tracking-[-0.2px] group-hover:text-white transition-colors">
-            {proj.name}
-          </h3>
+          <BlurReveal as="h3" inView className="text-[17px] font-light leading-[1.25] text-[#ffffff] tracking-[-0.2px] group-hover:text-white transition-colors">{proj.name}</BlurReveal>
 
           {proj.objective ? (
             <p className="text-[13px] leading-relaxed text-[#e5e4e4]/75 line-clamp-4">

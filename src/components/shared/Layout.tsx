@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ContactModal } from "./ContactModal";
+import { SitePreloader } from "./SitePreloader";
 import { pageTransitionVariants } from "@/lib/motionVariants";
 
 export function Layout() {
@@ -12,6 +13,7 @@ export function Layout() {
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-[#000000] font-sans selection:bg-[#b75928] selection:text-[#ffffff]">
+      <SitePreloader />
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
       <main className="w-full">
         <AnimatePresence mode="wait" initial={true}>

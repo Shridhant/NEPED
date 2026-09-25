@@ -6,6 +6,7 @@ import { fadeUpOnView } from "@/lib/motionVariants";
 import type { NepedArticle } from "@/data/neped/nepedPhasesData";
 import { NEPED_PATHS } from "@/routes/paths";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /**
  * Reusable NEPED detail page (phases, success stories, …) — all text comes from the items passed in.
@@ -24,7 +25,7 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
   if (!phase) {
     return (
       <div className="theme-neped mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
-        <h1 className="text-[32px] sm:text-[44px] font-light text-[#000000]">Page not found</h1>
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000]">{"Page not found"}</BlurReveal>
         <ArrowPillButton to={NEPED_PATHS.home}>Back to NEPED</ArrowPillButton>
       </div>
     );
@@ -48,7 +49,7 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
               {phase.years && (
                 <span className="inline-block px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/20 text-[12px] font-mono">{phase.years}</span>
               )}
-              <h1 className="text-[44px] sm:text-[68px] font-light tracking-[-1.8px] leading-[1.02]">{phase.title}</h1>
+              <BlurReveal as="h1" className="text-[44px] sm:text-[68px] font-light tracking-[-1.8px] leading-[1.02]">{phase.title}</BlurReveal>
               <p className="text-[16px] sm:text-[18px] text-[#e5e4e4]/85 leading-relaxed max-w-2xl">{phase.funded ?? phase.overview}</p>
             </motion.div>
             <div className="lg:col-span-5">

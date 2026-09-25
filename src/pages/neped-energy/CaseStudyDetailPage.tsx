@@ -6,6 +6,7 @@ import { fadeUpOnView } from "@/lib/motionVariants";
 import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** One NEPeD case study — all text from caseStudiesData.ts. */
 export function CaseStudyDetailPage() {
@@ -21,7 +22,7 @@ export function CaseStudyDetailPage() {
   if (!study) {
     return (
       <div className="mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
-        <h1 className="text-[32px] sm:text-[44px] font-light text-[#000000]">Page not found</h1>
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000]">{"Page not found"}</BlurReveal>
         <ArrowPillButton to={NEPED_ENERGY_PATHS.caseStudies}>Case Studies</ArrowPillButton>
       </div>
     );
@@ -45,7 +46,7 @@ export function CaseStudyDetailPage() {
             <span>Case Studies</span>
           </Link>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }} className="mt-10 max-w-[900px] space-y-6">
-            <h1 className="text-[40px] sm:text-[64px] font-light tracking-[-1.8px] leading-[1.04]">{study.title}</h1>
+            <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light tracking-[-1.8px] leading-[1.04]">{study.title}</BlurReveal>
             {intro.paragraphs.map((p) => (
               <p key={p} className="text-[16px] sm:text-[18px] text-[#e5e4e4]/85 leading-relaxed">{p}</p>
             ))}

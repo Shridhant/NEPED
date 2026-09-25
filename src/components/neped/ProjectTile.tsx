@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import type { NepedProject } from "@/data/neped/nepedProjectsData";
 import { NEPED_PATHS } from "@/routes/paths";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** Light NEPED project card (photo with phase / category / period, name, objective, funding agency). */
 export function ProjectTile({ project: proj }: { project: NepedProject }) {
@@ -27,7 +28,7 @@ export function ProjectTile({ project: proj }: { project: NepedProject }) {
       </div>
 
       <div className="p-5 sm:p-6 flex-1 flex flex-col gap-4">
-        <h3 className="text-[18px] sm:text-[20px] font-light leading-snug text-[#000000] tracking-[-0.3px]">{proj.name}</h3>
+        <BlurReveal as="h3" inView className="text-[18px] sm:text-[20px] font-light leading-snug text-[#000000] tracking-[-0.3px]">{proj.name}</BlurReveal>
         {proj.objective ? (
           <p className="text-[14px] leading-relaxed text-[#666666] line-clamp-4 flex-1">{proj.objective}</p>
         ) : (

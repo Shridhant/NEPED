@@ -4,6 +4,7 @@ import { fadeUpOnView } from "@/lib/motionVariants";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { RegionMapExplorer } from "@/components/ui/region-map-explorer";
 import { HYDROGER_SITE_GROUPS } from "@/data/neped-energy/hydrogerSitesData";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 // Impacts description (verbatim from NEPeD/data.txt)
 const IMPACT_PARAGRAPHS = [
@@ -31,7 +32,7 @@ export function NepedEnergyImpactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7 space-y-6">
             <SectionPill>NEPeD</SectionPill>
-            <h1 className="text-[40px] sm:text-[64px] font-light text-[#000000] tracking-[-1.55px] leading-[1.05]">Impact</h1>
+            <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#000000] tracking-[-1.55px] leading-[1.05]">{"Impact"}</BlurReveal>
             <div className="space-y-4">
               {IMPACT_PARAGRAPHS.map((paragraph) => (
                 <p key={paragraph} className="text-[15px] sm:text-[17px] text-[#494949] leading-relaxed">

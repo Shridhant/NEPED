@@ -79,11 +79,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 25, filter: "blur(12px)" },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         duration: 0.8,
         ease: [0.23, 1, 0.32, 1] as const, // Emil Kowalski's custom ease-out curve
@@ -126,12 +125,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
                   initial={{
                     opacity: 0,
                     transform: "translate(-50%, 65%) scale(0.95)",
-                    filter: "blur(10px)",
                   }}
                   animate={{
                     opacity: 1,
                     transform: "translate(-50%, 50%) scale(1)",
-                    filter: "blur(0px)",
                   }}
                   transition={{
                     type: "spring",

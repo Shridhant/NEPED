@@ -23,6 +23,7 @@ import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { ProductImageCard } from "@/components/shared/ProductImageCard";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 const GLASS_CARD =
   "rounded-[16px] bg-gradient-to-br from-white/25 to-white/[0.06] border border-white/30 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35)]";
@@ -133,8 +134,8 @@ export function TechnologyPage() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-28 sm:pt-32 pb-10"
         >
@@ -154,9 +155,7 @@ export function TechnologyPage() {
             </div>
           </div>
 
-          <h1 className="max-w-[980px] text-[36px] sm:text-[56px] md:text-[64px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]">
-            CERES — Centre of Excellence
-          </h1>
+          <BlurReveal as="h1" className="max-w-[980px] text-[36px] sm:text-[56px] md:text-[64px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]">{"CERES — Centre of Excellence"}</BlurReveal>
 
           <p className="mt-6 max-w-[760px] text-[15px] sm:text-[17px] text-[#ffffff]/90 font-normal leading-relaxed">
             NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.
@@ -175,8 +174,8 @@ export function TechnologyPage() {
 
         {/* Glass info cards (from the former hero bottom bar) */}
         <motion.div
-          initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 w-full max-w-[1320px] mx-auto px-4 sm:px-6 pb-6 sm:pb-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
         >

@@ -41,8 +41,8 @@ export function HomePage() {
           <div className="lg:col-span-7 xl:col-span-7 space-y-5 sm:space-y-6">
             {/* Authority Eyebrow Pill */}
             <motion.div
-              initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md"
             >
@@ -55,8 +55,8 @@ export function HomePage() {
 
             {/* Monumental Brand Heading & Expansion */}
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
               className="space-y-2 sm:space-y-3"
             >
@@ -70,8 +70,8 @@ export function HomePage() {
 
             {/* Core Narrative / Value Proposition */}
             <motion.p
-              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.16, ease: [0.23, 1, 0.32, 1] }}
               className="text-[15px] sm:text-[16px] text-[#ffffff]/90 font-normal leading-[1.6] max-w-[560px] tracking-[0.15px]"
             >
@@ -80,8 +80,8 @@ export function HomePage() {
 
             {/* Action CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.24, ease: [0.23, 1, 0.32, 1] }}
               className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
             >
@@ -96,8 +96,8 @@ export function HomePage() {
 
           {/* Right Column: Refined Glassmorphic Featured Project Spotlight & Live Metrics */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-5 xl:col-span-5 flex lg:justify-end"
           >
@@ -158,8 +158,8 @@ export function HomePage() {
 
         {/* Bottom Dock Bar (Clean hairlined metadata & navigation anchors) */}
         <motion.div
-          initial={{ opacity: 0, filter: "blur(4px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.45, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 pt-4 sm:pt-6 border-t border-white/12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12px] sm:text-[13px] text-[#e5e4e4]/70"
         >

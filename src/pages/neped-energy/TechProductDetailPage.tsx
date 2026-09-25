@@ -8,6 +8,7 @@ import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
 import { HYDROGER_PAGE, ELC_PAGE, PRODUCT_PAGES } from "@/data/neped-energy/productPagesData";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 // All product text comes from productPagesData.ts (verbatim from NEPeD/data.txt).
 
@@ -32,9 +33,7 @@ export function TechProductDetailPage() {
     return (
       <div className="mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
         <SectionPill>404 • Product Not Found</SectionPill>
-        <h1 className="text-[32px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-tight">
-          Hardware Specification Unavailable
-        </h1>
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-tight">{"Hardware Specification Unavailable"}</BlurReveal>
         <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
           The hardware product or model you are searching for could not be found in the NEPeD clean energy technology catalog.
         </p>
@@ -128,16 +127,16 @@ function ProductHero({
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-7 space-y-6"
           >
             {children}
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, filter: "blur(6px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-5 flex justify-center"
           >
@@ -177,7 +176,7 @@ function HydrogerContent() {
           </div>
         }
       >
-        <h1 className="text-[40px] sm:text-[60px] font-light text-[#ffffff] tracking-[-1.4px] leading-[1.05]">{page.name}</h1>
+        <BlurReveal as="h1" className="text-[40px] sm:text-[60px] font-light text-[#ffffff] tracking-[-1.4px] leading-[1.05]">{page.name}</BlurReveal>
         <h2 className="text-[20px] sm:text-[24px] font-light text-[#ffffff]/90">{page.what.heading}</h2>
         <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/80 leading-relaxed max-w-2xl">{page.what.text}</p>
         <div className="pt-2">
@@ -250,7 +249,7 @@ function ElcContent() {
   return (
     <>
       <ProductHero name={page.name} image={page.heroImage}>
-        <h1 className="text-[36px] sm:text-[52px] md:text-[60px] font-light text-[#ffffff] tracking-[-1.4px] leading-[1.05]">{page.name}</h1>
+        <BlurReveal as="h1" className="text-[36px] sm:text-[52px] md:text-[60px] font-light text-[#ffffff] tracking-[-1.4px] leading-[1.05]">{page.name}</BlurReveal>
         <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/80 leading-relaxed max-w-2xl">{page.intro}</p>
       </ProductHero>
 

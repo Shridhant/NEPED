@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { NEPED_PRESENT_TEAM as presentTeam, type TeamMember } from "@/data/neped/nepedTeamData";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 
 export function NepedAboutPage() {
@@ -36,14 +37,14 @@ export function NepedAboutPage() {
           </div>
           <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-8 space-y-6"
             >
-              <h1 className="text-[44px] sm:text-[72px] font-light tracking-[-2px] leading-[1.02]">About Us</h1>
+              <BlurReveal as="h1" className="text-[44px] sm:text-[72px] font-light tracking-[-2px] leading-[1.02]">{"About Us"}</BlurReveal>
               <p className="max-w-[680px] text-[16px] sm:text-[19px] text-[#ffffff]/90 leading-relaxed">
-                Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1995. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.
+                Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1994. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.
               </p>
             </motion.div>
             <div className="lg:col-span-4 flex lg:justify-end">

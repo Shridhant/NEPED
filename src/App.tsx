@@ -6,6 +6,7 @@ const LandingPage = lazy(() => import("./pages/landing/LandingPage").then((m) =>
 const GalleryPage = lazy(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
 // NEPED pages
 const NepedEconomicPage = lazy(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
+const NepedStructurePage = lazy(() => import("./pages/neped/NepedStructurePage").then((m) => ({ default: m.NepedStructurePage })));
 const NepedAboutPage = lazy(() => import("./pages/neped/NepedAboutPage").then((m) => ({ default: m.NepedAboutPage })));
 const ProjectsPage = lazy(() => import("./pages/neped/ProjectsPage").then((m) => ({ default: m.ProjectsPage })));
 const NepedProjectDetailPage = lazy(() => import("./pages/neped/NepedProjectDetailPage").then((m) => ({ default: m.NepedProjectDetailPage })));
@@ -74,6 +75,7 @@ export default function App() {
           {/* NEPED */}
           <Route path={NEPED_PATHS.legacyHome} element={<LegacyRedirect to={NEPED_PATHS.home} />} />
           <Route path={NEPED_PATHS.about} element={<NepedAboutPage />} />
+          <Route path={NEPED_PATHS.structure} element={<NepedStructurePage />} />
           <Route path={NEPED_PATHS.projects} element={<ProjectsPage />} />
           <Route path="neped/projects/:idOrSlug" element={<NepedProjectDetailPage />} />
           <Route path="neped/phases/:slug" element={<NepedArticlePage items={NEPED_PHASES} pathFor={NEPED_PATHS.phase} />} />

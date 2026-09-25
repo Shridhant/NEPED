@@ -214,7 +214,7 @@ export function LayoutPreloader({
             initial="initial"
             exit="exit"
             className="fixed left-0 top-0 z-[9999] flex h-[100dvh] w-screen flex-col items-center justify-center overflow-hidden text-white"
-            style={{ background: "oklch(0.22 0.018 40)" }}
+           
             aria-label="Loading NEPeD homepage"
           >
             {dimension.width > 0 && (
@@ -325,8 +325,8 @@ export function LayoutPreloader({
 
         <div className="relative z-10 flex min-h-[76vh] flex-col items-center justify-center px-5 py-16 text-center sm:min-h-[82vh] sm:px-10 lg:min-h-[740px]">
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="mx-auto flex w-full max-w-[900px] flex-col items-center"
           >
@@ -349,8 +349,8 @@ export function LayoutPreloader({
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="mt-12 grid w-full max-w-[900px] grid-cols-1 gap-4 text-left md:grid-cols-2"
           >

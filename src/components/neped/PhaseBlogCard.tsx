@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ImageIcon } from "lucide-react";
 import type { NepedPhase } from "@/data/neped/nepedPhasesData";
 import { NEPED_PATHS } from "@/routes/paths";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** Blog-style card for a NEPED phase: image, years, title, overview; opens the phase page. */
 export function PhaseBlogCard({ phase }: { phase: NepedPhase }) {
@@ -24,7 +25,7 @@ export function PhaseBlogCard({ phase }: { phase: NepedPhase }) {
         </span>
       </div>
       <div className="flex-1 flex flex-col gap-4 px-4 pt-5 pb-4">
-        <h3 className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.6px] leading-tight">{phase.title}</h3>
+        <BlurReveal as="h3" inView className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.6px] leading-tight">{phase.title}</BlurReveal>
         <p className="text-[15px] text-[#494949] leading-relaxed line-clamp-4">{phase.overview}</p>
         <div className="mt-auto pt-4 flex items-center justify-between text-[14px] font-medium text-[#000000]">
           <span>Read More</span>

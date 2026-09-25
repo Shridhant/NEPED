@@ -18,10 +18,16 @@ const nepedMasterDropdownItems = [
   },
   {
     num: "03",
+    label: "Organisational Structure",
+    href: NEPED_PATHS.structure,
+  },
+  {
+    num: "04",
     label: "Projects Archive",
     href: NEPED_PATHS.projects,
-  },  {
-    num: "04",
+  },
+  {
+    num: "05",
     label: "Gallery",
     href: SHARED_PATHS.gallery,
   },

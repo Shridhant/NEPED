@@ -6,6 +6,7 @@ import {
   SectionHeading,
   NumberedItem,
 } from "@/components/ui/AkerPrimitives";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 export function NepedEnergyAboutPage() {
   useEffect(() => {
@@ -53,25 +54,23 @@ export function NepedEnergyAboutPage() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 pt-16 sm:pt-20 max-w-[480px]"
         >
           <SectionLabel dark={true} className="mb-2">
             01 / Background & Heritage
           </SectionLabel>
-          <h1 className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">
-            Empowerment Through Energy
-          </h1>
+          <BlurReveal as="h1" className="text-[36px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-tight">{"Empowerment Through Energy"}</BlurReveal>
           <p className="mt-4 text-[15px] text-[#e5e4e4]/80 leading-relaxed">
             Formed in 2007 as a specialized multidisciplinary team, NEPeD evolved from economic development to green power generation for sustainable village self-reliance.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, filter: "blur(4px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.45, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 mt-auto pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12px] text-[#e5e4e4]/70"
         >

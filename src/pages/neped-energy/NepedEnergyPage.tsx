@@ -29,6 +29,7 @@ import { ProductImageCard } from "@/components/shared/ProductImageCard";
 import { BookDemoButton } from "@/components/ui/book-demo-button";
 import { ScrollStackDeck, type ProjectItem } from "@/components/ui/scroll-stack-deck";
 import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 // Case studies deck: NEPeD tones; village photos where the site has one, gradient panel otherwise
 const CASE_DECK_STYLE: Record<string, { color: string; panel: string; image?: string; imageAlt?: string }> = {
@@ -104,8 +105,8 @@ export function NepedEnergyPage() {
 
         {/* Centred headline block */}
         <motion.div
-          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-28 sm:pt-32 pb-10"
         >
@@ -122,9 +123,7 @@ export function NepedEnergyPage() {
             </span>
           </div>
 
-          <h1 className="max-w-[980px] text-[36px] sm:text-[56px] md:text-[64px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]">
-            Nagaland Empowerment of People through Energy Development
-          </h1>
+          <BlurReveal as="h1" className="max-w-[980px] text-[36px] sm:text-[56px] md:text-[64px] font-light text-[#ffffff] tracking-[-1.55px] leading-[1.05]">{"Nagaland Empowerment of People through Energy Development"}</BlurReveal>
 
           <p className="mt-6 max-w-[760px] text-[15px] sm:text-[17px] text-[#ffffff]/90 font-normal leading-relaxed">
             The “Nagaland Empowerment of People through Energy Development” (NEPeD) was formed in 2007 by the Government of Nagaland, with full autonomy as an independent registered society (NGO), to address the energy challenges in the state. 
@@ -139,8 +138,8 @@ export function NepedEnergyPage() {
 
         {/* Glass info cards */}
         <motion.div
-          initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
           className="relative z-10 w-full max-w-[1320px] mx-auto px-4 sm:px-6 pb-6 sm:pb-10 grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-4"
         >

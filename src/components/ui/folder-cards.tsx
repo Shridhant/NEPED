@@ -2,6 +2,7 @@ import type React from "react";
 import { motion, type Transition } from "motion/react";
 import type { LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /*
  * Adapted from the "FolderCards" component: a folder that slides down on hover to
@@ -122,9 +123,7 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
 
       {/* Text */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 flex flex-col gap-2 p-5 pb-[22px]">
-        <h3 className="select-none text-[17px] font-medium leading-snug tracking-tight" style={{ color: card.textColor }}>
-          {card.title}
-        </h3>
+        <BlurReveal as="h3" inView className="select-none text-[17px] font-medium leading-snug tracking-tight" style={{ color: card.textColor }}>{card.title}</BlurReveal>
         <p className="select-none text-[14px] leading-relaxed" style={{ color: card.subTextColor }}>
           {card.description}
         </p>

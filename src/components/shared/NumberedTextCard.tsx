@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /**
  * Text card: icon, two-digit number and a statement — used for objectives, aims and similar lists.
@@ -52,7 +53,7 @@ export function NumberedTextCard({
       </div>
       <div className="relative z-[1] space-y-4">
         {title && (
-          <h3 className={`${text ? "text-[18px] sm:text-[20px]" : "text-[22px] sm:text-[26px]"} font-light ${dark ? "text-[#ffffff]" : "text-[#000000]"} tracking-[-0.5px] leading-tight`}>{title}</h3>
+          <BlurReveal as="h3" inView className={`${text ? "text-[18px] sm:text-[20px]" : "text-[22px] sm:text-[26px]"} font-light ${dark ? "text-[#ffffff]" : "text-[#000000]"} tracking-[-0.5px] leading-tight`}>{title}</BlurReveal>
         )}
         {text && (
           <p className={title ? `text-[14px] sm:text-[15px] leading-relaxed ${dark ? "text-[#ffffff]/80" : "text-[#666666]"}` : `text-[17px] sm:text-[19px] leading-snug tracking-[-0.2px] ${dark ? "text-[#ffffff]" : "text-[#000000]"}`}>

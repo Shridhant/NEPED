@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** Large photo card with the title at the bottom and a round arrow notched into the bottom-right corner. */
 export function ProductImageCard({
@@ -29,7 +30,7 @@ export function ProductImageCard({
         </span>
       )}
       <div className="absolute left-6 bottom-6 sm:left-8 sm:bottom-8 pr-24">
-        <h3 className="text-[24px] sm:text-[32px] font-light text-[#ffffff] tracking-[-0.6px] leading-tight">{title}</h3>
+        <BlurReveal as="h3" inView className="text-[24px] sm:text-[32px] font-light text-[#ffffff] tracking-[-0.6px] leading-tight">{title}</BlurReveal>
         {subtitle && <p className="mt-1 text-[14px] sm:text-[15px] text-[#ffffff]/75">{subtitle}</p>}
       </div>
       <span className="absolute right-0 bottom-0 w-[76px] h-[76px] sm:w-[88px] sm:h-[88px] rounded-tl-[24px] bg-[#ffffff] flex items-center justify-center">

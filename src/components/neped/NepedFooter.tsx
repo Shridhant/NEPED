@@ -111,7 +111,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#structure`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.structure} className="hover:text-[#b75928] transition-colors">
                       Society Structure
                     </Link>
                   </li>

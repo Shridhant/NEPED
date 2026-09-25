@@ -7,6 +7,7 @@ import { NEPED_PATHS } from "@/routes/paths";
 import { ProjectTile } from "@/components/neped/ProjectTile";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
+import { BlurReveal } from "@/components/ui/blur-reveal";
 
 const GLASS_CARD =
   "rounded-[16px] bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
@@ -66,8 +67,8 @@ export function ProjectsPage() {
 
           <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-6 sm:pb-10">
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
               className="max-w-[820px] space-y-6"
             >
@@ -76,17 +77,15 @@ export function ProjectsPage() {
                 <span className="hidden sm:inline text-white/40">|</span>
                 <span className="hidden sm:inline text-white/75">Official Project Registry</span>
               </span>
-              <h1 className="text-[40px] sm:text-[64px] lg:text-[76px] font-light tracking-[-2px] leading-[1.02]">
-                Projects Implemented Under NEPED
-              </h1>
+              <BlurReveal as="h1" className="text-[40px] sm:text-[64px] lg:text-[76px] font-light tracking-[-2px] leading-[1.02]">{"Projects Implemented Under NEPED"}</BlurReveal>
               <p className="max-w-[640px] text-[15px] sm:text-[17px] text-[#ffffff]/90 leading-relaxed">
                 Three decades of landmark interventions in community agroforestry, shifting cultivation transformation, clean micro-hydro engineering, biodiversity conservation, and artisan economic empowerment across Nagaland.
               </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
               className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
             >
@@ -176,9 +175,9 @@ export function ProjectsPage() {
                 <motion.div
                   key={proj.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.96, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, scale: 0.96, filter: "blur(4px)" }}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   className="h-full [&>a]:h-full"
                 >

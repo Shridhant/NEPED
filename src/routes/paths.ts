@@ -19,6 +19,7 @@ export const NEPED_PATHS = {
   /** Old address of the NEPED overview (redirects to home) */
   legacyHome: "/neped",
   about: "/neped/about",
+  structure: "/neped/organisational-structure",
   projects: "/neped/projects",
   project: (slug: string) => `/neped/projects/${slug}`,
   phase: (slug: string) => `/neped/phases/${slug}`,
