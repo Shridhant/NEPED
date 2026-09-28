@@ -1,8 +1,10 @@
 import * as React from "react";
 import {
+  AnimatePresence,
   animate,
   motion,
   useMotionValue,
+  useMotionValueEvent,
   useReducedMotion,
   useTransform,
   type MotionValue,
@@ -19,7 +21,9 @@ import { cn } from "@/lib/utils";
  * transform from it through `useTransform`, so a spin never re-renders React.
  *
  * Site changes: `cardClassName` / `imageClassName` (e.g. circular cards, cropping
- * photo borders) and `interactiveCenterLabel` (lets a button in the label be clicked).
+ * photo borders), `interactiveCenterLabel` (lets a button in the label be clicked) and
+ * `caption` (a name under each card that fades in as it comes to the front, or — with
+ * `captionPlacement="ring"` — the front card's name shown in the empty space inside the ring).
  * ─────────────────────────────────────────────────────────────── */
 
 export type HaloReelItem = {
@@ -30,6 +34,8 @@ export type HaloReelItem = {
   textColor?: string;
   title?: string;
   subtitle?: string;
+  /** Text shown under the card, fading in as the card nears the front of the ring. */
+  caption?: string;
 };
 
 export interface HaloReelProps
@@ -73,6 +79,12 @@ export interface HaloReelProps
   cardClassName?: string;
   /** Extra classes for every card image. */
   imageClassName?: string;
+  /** Extra classes for every card caption. */
+  captionClassName?: string;
+  /** "card": caption under each card. "ring": front card's caption inside the ring. @default "card" */
+  captionPlacement?: "card" | "ring";
+  /** Extra classes for the caption shown inside the ring. */
+  ringCaptionClassName?: string;
 }
 
 const TAU = Math.PI * 2;
@@ -100,6 +112,9 @@ export function HaloReel({
   interactiveCenterLabel = false,
   cardClassName,
   imageClassName,
+  captionClassName,
+  captionPlacement = "card",
+  ringCaptionClassName,
   className,
   style,
   ...props
@@ -139,6 +154,18 @@ export function HaloReel({
     : 1;
   const cardW = cardWidth * fit;
   const cardH = cardHeight * fit;
+
+  // Slot currently at the front of the ring (card i sits at θ = i·step + rotation, front is θ = 0)
+  const [frontSlot, setFrontSlot] = React.useState(0);
+  useMotionValueEvent(rotation, "change", (r) => {
+    if (captionPlacement !== "ring" || !step) return;
+    const slot = ((Math.round(-r / step) % slots) + slots) % slots;
+    setFrontSlot((prev) => (prev === slot ? prev : slot));
+  });
+  const frontCaption = count ? items[frontSlot % count]?.caption : undefined;
+  // Visible inside of the ring: from the ellipse's left edge (or the stage edge) to the front card
+  const ringLeft = Math.max(0, size.w * centerXRatio - radiusX + cardW / 2);
+  const ringRight = size.w * centerXRatio + radiusX - cardW / 2;
 
   React.useEffect(() => {
     if (!autoPlay || reduceMotion || !count) return;
@@ -263,6 +290,29 @@ export function HaloReel({
         </div>
       ) : null}
 
+      {captionPlacement === "ring" ? (
+        <div
+          aria-live="polite"
+          className="pointer-events-none absolute inset-y-0 z-0 flex items-center justify-center px-4 text-center"
+          style={{ left: ringLeft, width: Math.max(0, ringRight - ringLeft) }}
+        >
+          <AnimatePresence mode="wait">
+            {frontCaption ? (
+              <motion.span
+                key={frontSlot}
+                initial={reduceMotion ? false : { opacity: 0, y: 8, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8, filter: "blur(4px)" }}
+                transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                className={ringCaptionClassName}
+              >
+                {frontCaption}
+              </motion.span>
+            ) : null}
+          </AnimatePresence>
+        </div>
+      ) : null}
+
       {Array.from({ length: slots }, (_, i) => (
         <WheelCard
           key={i}
@@ -279,6 +329,8 @@ export function HaloReel({
           height={cardH}
           cardClassName={cardClassName}
           imageClassName={imageClassName}
+          captionClassName={captionClassName}
+          showCaption={captionPlacement === "card"}
           onHoverChange={(hovered) => {
             hoverRef.current = hovered;
           }}
@@ -304,6 +356,8 @@ function WheelCard({
   decorative,
   cardClassName,
   imageClassName,
+  captionClassName,
+  showCaption,
   onHoverChange,
 }: {
   item: HaloReelItem;
@@ -319,6 +373,8 @@ function WheelCard({
   decorative: boolean;
   cardClassName?: string;
   imageClassName?: string;
+  captionClassName?: string;
+  showCaption: boolean;
   onHoverChange: (hovered: boolean) => void;
 }) {
   const cos = useTransform(rotation, (r) => Math.cos(index * step + r));
@@ -328,6 +384,8 @@ function WheelCard({
   const y = useTransform(sin, (s) => s * radiusY);
   const scale = useTransform(cos, (c) => minScale + (1 - minScale) * ((c + 1) / 2));
   const zIndex = useTransform(scale, (s) => Math.round(s * 1000));
+  // Caption shows on the front half of the ring only, fully visible near the front
+  const captionOpacity = useTransform(cos, (c) => clamp((c - 0.2) / 0.6, 0, 1));
 
   return (
     <motion.div
@@ -348,26 +406,40 @@ function WheelCard({
         marginLeft: -width / 2,
         marginTop: -height / 2,
       }}
-      className={cn("absolute overflow-hidden shadow-xl", cardClassName)}
+      className="absolute"
     >
-      {item.src ? (
-        <img
-          src={item.src}
-          alt={decorative ? "" : (item.alt ?? "")}
-          draggable={false}
-          className={cn("pointer-events-none absolute inset-0 h-full w-full select-none object-cover", imageClassName)}
-        />
-      ) : (
-        <div
-          className="flex h-full w-full flex-col items-center justify-center gap-1 bg-card p-3 text-center text-card-foreground"
-          style={{ backgroundColor: item.bgColor, color: item.textColor }}
+      <div className={cn("relative h-full w-full overflow-hidden shadow-xl", cardClassName)}>
+        {item.src ? (
+          <img
+            src={item.src}
+            alt={decorative ? "" : (item.alt ?? "")}
+            draggable={false}
+            className={cn("pointer-events-none absolute inset-0 h-full w-full select-none object-cover", imageClassName)}
+          />
+        ) : (
+          <div
+            className="flex h-full w-full flex-col items-center justify-center gap-1 bg-card p-3 text-center text-card-foreground"
+            style={{ backgroundColor: item.bgColor, color: item.textColor }}
+          >
+            {item.title ? <span className="text-2xl font-black leading-none">{item.title}</span> : null}
+            {item.subtitle ? (
+              <span className="text-[0.6rem] uppercase tracking-[0.2em] opacity-70">{item.subtitle}</span>
+            ) : null}
+          </div>
+        )}
+      </div>
+      {showCaption && item.caption ? (
+        <motion.span
+          aria-hidden
+          style={{ opacity: captionOpacity }}
+          className={cn(
+            "pointer-events-none absolute left-1/2 top-full mt-2 w-max max-w-[180%] -translate-x-1/2 text-center",
+            captionClassName,
+          )}
         >
-          {item.title ? <span className="text-2xl font-black leading-none">{item.title}</span> : null}
-          {item.subtitle ? (
-            <span className="text-[0.6rem] uppercase tracking-[0.2em] opacity-70">{item.subtitle}</span>
-          ) : null}
-        </div>
-      )}
+          {item.caption}
+        </motion.span>
+      ) : null}
     </motion.div>
   );
 }

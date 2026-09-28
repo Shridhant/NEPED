@@ -13,12 +13,12 @@ import {
 } from "lucide-react";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
-import { HoverRevealList } from "@/components/shared/HoverRevealList";
+// import { HoverRevealList } from "@/components/shared/HoverRevealList"; // used by the hidden section 1A
 import { ProjectCard } from "@/components/neped/ProjectCard";
-import { NEPED_SECTION_3, NEPED_PHASES_SECTION, NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
-import { NEPED_PHASES } from "@/data/neped/nepedPhasesData";
-import { WideCardCarousel } from "@/components/shared/WideCardCarousel";
-import { PhaseBlogCard } from "@/components/neped/PhaseBlogCard";
+import { /* NEPED_SECTION_3, NEPED_PHASES_SECTION, */ NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
+// import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
+// import { WideCardCarousel } from "@/components/shared/WideCardCarousel"; // used by the hidden section 1C
+// import { PhaseBlogCard } from "@/components/neped/PhaseBlogCard"; // used by the hidden section 1C
 import { StaggeredCards } from "@/components/shared/StaggeredCards";
 import { HaloReel } from "@/components/ui/halo-reel";
 import { NEPED_PRESENT_TEAM } from "@/data/neped/nepedTeamData";
@@ -166,7 +166,30 @@ export function NepedEconomicPage() {
         </div>
       </section>
 
-      {/* 1A. SECTION #3 (inspo) — list + image that changes on hover. PLACEHOLDER CONTENT (see nepedHomeSections.ts) */}
+      {/* PROJECTS ARCHIVE — placed right after the hero */}
+      <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4] flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div className="max-w-[760px] space-y-5">
+            <SectionPill>Official Project Archive</SectionPill>
+            <h2 className={H2}>Projects Implemented Under NEPED</h2>
+            <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+              Comprehensive registry of {allProjects.length} landmark projects across international, national, and state funding agencies.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {allProjects.slice(0, 3).map((proj) => (
+            <ProjectTile key={proj.id} project={proj} />
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <BookDemoButton to={NEPED_PATHS.projects} variant="emerald">See more projects</BookDemoButton>
+        </div>
+      </motion.section>
+
+      {/* 1A. SECTION #3 (list + hover image) — hidden for now; placeholder lorem ipsum content (see nepedHomeSections.ts)
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-[640px] space-y-5">
@@ -179,6 +202,7 @@ export function NepedEconomicPage() {
         </div>
         <HoverRevealList items={NEPED_SECTION_3.items} />
       </motion.section>
+      */}
 
       {/* 1B. ABOUT NEPED SOCIETY — ORIGIN, CHARTER & GOVERNANCE CULTURE (about text verbatim from NepedBige/bigeneped.txt) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -193,17 +217,23 @@ export function NepedEconomicPage() {
         {/* Team members on a rotating ring, with a link to the About Us page */}
         <div className="mt-10 sm:mt-12 rounded-[24px] bg-[#f5f5f5] overflow-hidden">
           <HaloReel
-            items={NEPED_PRESENT_TEAM.map((member) => ({ src: member.image, alt: member.name }))}
+            items={NEPED_PRESENT_TEAM.map((member) => ({ src: member.image, alt: member.name, caption: member.name }))}
             aria-label="NEPED team members"
-            cardWidth={isSmallScreen ? 110 : 150}
-            cardHeight={isSmallScreen ? 110 : 150}
+            cardWidth={isSmallScreen ? 96 : 110}
+            cardHeight={isSmallScreen ? 96 : 110}
             radiusXRatio={isSmallScreen ? 0.3 : 0.45}
             minScale={0.4}
-            radiusYRatio={0.36}
+            radiusYRatio={0.38}
+            // Few slots keep the photos spaced out (on phones, room for each name under its photo)
+            maxCards={isSmallScreen ? NEPED_PRESENT_TEAM.length : 10}
             holdDuration={1400}
             stepDuration={700}
             cardClassName="rounded-full ring-4 ring-[#ffffff]"
             imageClassName="scale-[1.15] object-top"
+            // Phones: name under each photo. Desktop: the front member's name inside the ring
+            captionPlacement={isSmallScreen ? "card" : "ring"}
+            captionClassName="rounded-full bg-[#ffffff] px-2.5 py-1 text-[11px] font-medium leading-tight text-[#23452a] shadow-[0_4px_14px_rgba(14,36,25,0.12)] whitespace-nowrap"
+            ringCaptionClassName="max-w-[340px] text-[28px] lg:text-[34px] font-light tracking-[-0.8px] leading-[1.15] text-[#23452a]"
             interactiveCenterLabel
             centerLabel={
               <div className="flex flex-col items-center gap-5 text-center">
@@ -215,12 +245,12 @@ export function NepedEconomicPage() {
                 <BookDemoButton to={NEPED_PATHS.about} variant="emerald">Read more</BookDemoButton>
               </div>
             }
-            className="h-[420px] sm:h-[520px]"
+            className="h-[460px] sm:h-[600px]"
           />
         </div>
       </motion.section>
 
-      {/* 1C. NEPED PHASES — wide blog-card carousel (cards verbatim from bigeneped.txt; header PLACEHOLDER) */}
+      {/* 1C. NEPED PHASES carousel — hidden for now; the Official Project Archive section is used instead
       <motion.section {...fadeUpOnView}>
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-[640px] space-y-5">
@@ -235,6 +265,7 @@ export function NepedEconomicPage() {
           ))}
         </WideCardCarousel>
       </motion.section>
+      */}
 
       {/* 1D. SUCCESS STORIES — staggered cards (inspo: "Why Axure"); text verbatim from bigeneped.txt */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -378,29 +409,6 @@ export function NepedEconomicPage() {
               card={{ number: String(idx + 1).padStart(2, "0"), title: aim.title, description: aim.text, icon: aim.icon, ...AIM_PALETTES[idx % AIM_PALETTES.length] }}
             />
           ))}
-        </div>
-      </motion.section>
-
-      {/* 7. PROJECTS ARCHIVE */}
-      <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4] flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="max-w-[760px] space-y-5">
-            <SectionPill>Official Project Archive</SectionPill>
-            <h2 className={H2}>Projects Implemented Under NEPED</h2>
-            <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
-              Comprehensive registry of {allProjects.length} landmark projects across international, national, and state funding agencies.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {allProjects.slice(0, 3).map((proj) => (
-            <ProjectTile key={proj.id} project={proj} />
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <BookDemoButton to={NEPED_PATHS.projects} variant="emerald">See more projects</BookDemoButton>
         </div>
       </motion.section>
 
