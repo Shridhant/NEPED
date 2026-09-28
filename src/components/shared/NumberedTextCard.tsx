@@ -30,7 +30,7 @@ export function NumberedTextCard({
   return (
     <div
       className={`relative overflow-hidden h-full rounded-[12px] p-6 sm:p-7 flex flex-col gap-10 border transition-colors ${
-        dark ? "bg-[#1c1c1c] border-white/10 hover:border-white/25" : "bg-[#f5f5f5] border-transparent hover:border-[#e5e4e4]"
+        dark ? "bg-[#12432E] border-white/10 hover:border-white/25" : "bg-[#F3F6F3] border-transparent hover:border-[#e5e4e4]"
       }`}
     >
       {blurBackground && (
@@ -46,26 +46,26 @@ export function NumberedTextCard({
         </div>
       )}
       <div className="relative z-[1] flex items-center justify-between">
-        <span className={`w-12 h-12 rounded-full flex items-center justify-center ${dark ? "bg-white/15 text-[#ffffff] backdrop-blur-md" : "bg-[#e5e4e4] text-[#1c1c1c]"}`}>
+        <span className={`w-12 h-12 rounded-full flex items-center justify-center ${dark ? "bg-white/15 text-[#ffffff] backdrop-blur-md" : "bg-[#e5e4e4] text-[#1A2E23]"}`}>
           <Icon size={20} />
         </span>
-        <span className={`text-[12px] font-mono ${dark ? "text-[#ffffff]/70" : "text-[#8d8d8d]"}`}>{String(index + 1).padStart(2, "0")}</span>
+        <span className={`text-[12px] font-mono ${dark ? "text-[#ffffff]/70" : "text-[#5B6660]"}`}>{String(index + 1).padStart(2, "0")}</span>
       </div>
       <div className="relative z-[1] space-y-4">
         {title && (
-          <BlurReveal as="h3" inView className={`${text ? "text-[18px] sm:text-[20px]" : "text-[22px] sm:text-[26px]"} font-light ${dark ? "text-[#ffffff]" : "text-[#000000]"} tracking-[-0.5px] leading-tight`}>{title}</BlurReveal>
+          <BlurReveal as="h3" inView className={`${text ? "text-[18px] sm:text-[20px]" : "text-[22px] sm:text-[26px]"} font-light ${dark ? "text-[#ffffff]" : "text-[#1A2E23]"} tracking-[-0.5px] leading-tight`}>{title}</BlurReveal>
         )}
         {text && (
-          <p className={title ? `text-[14px] sm:text-[15px] leading-relaxed ${dark ? "text-[#ffffff]/80" : "text-[#666666]"}` : `text-[17px] sm:text-[19px] leading-snug tracking-[-0.2px] ${dark ? "text-[#ffffff]" : "text-[#000000]"}`}>
+          <p className={title ? `text-[14px] sm:text-[15px] leading-relaxed ${dark ? "text-[#ffffff]/80" : "text-[#5B6660]"}` : `text-[17px] sm:text-[19px] leading-snug tracking-[-0.2px] ${dark ? "text-[#ffffff]" : "text-[#1A2E23]"}`}>
             {text}
           </p>
         )}
         {points && (
           <ul className="space-y-3">
             {points.map((point, pointIndex) => (
-              <li key={point} className="flex items-start gap-3 text-[15px] sm:text-[16px] text-[#262626] leading-relaxed">
+              <li key={point} className="flex items-start gap-3 text-[15px] sm:text-[16px] text-[#1A2E23] leading-relaxed">
                 {ordered ? (
-                  <span className="min-w-[1.5em] text-[#8d8d8d] font-mono text-[13px] pt-[3px] shrink-0">{pointIndex + 1}.</span>
+                  <span className="min-w-[1.5em] text-[#5B6660] font-mono text-[13px] pt-[3px] shrink-0">{pointIndex + 1}.</span>
                 ) : (
                   <span className="mt-[9px] w-1.5 h-1.5 rounded-full bg-[#8d8d8d] shrink-0" />
                 )}

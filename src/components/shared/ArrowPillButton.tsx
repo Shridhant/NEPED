@@ -10,14 +10,14 @@ const ARROWS = { right: ArrowRight, down: ArrowDown, "up-right": ArrowUpRight, m
 const STYLES: Record<Variant, { button: string; circle: string }> = {
   primary: {
     button: "pl-6 pr-1.5 py-1.5 bg-(--brand-accent) text-[#ffffff] hover:bg-(--brand-accent-hover)",
-    circle: "w-9 h-9 rounded-full bg-[#ffffff] text-[#000000]",
+    circle: "w-9 h-9 rounded-full bg-[#ffffff] text-[#1A2E23]",
   },
   glass: {
     button: "pl-6 pr-1.5 py-1.5 bg-white/10 border border-white/25 text-[#ffffff] hover:bg-white/20 backdrop-blur-md",
     circle: "w-9 h-9 rounded-full bg-white/15",
   },
   outline: {
-    button: "pl-6 pr-1.5 py-1.5 border border-[#e5e4e4] text-[#000000] hover:border-[#000000]",
+    button: "pl-6 pr-1.5 py-1.5 border border-[#e5e4e4] text-[#1A2E23] hover:border-[#000000]",
     circle: "w-9 h-9 rounded-full bg-(--brand-accent) text-[#ffffff]",
   },
   link: {

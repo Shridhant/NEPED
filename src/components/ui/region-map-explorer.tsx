@@ -116,7 +116,7 @@ export function RegionMapExplorer({
   return (
     <div
       className={cn(
-        "relative grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden rounded-[24px] bg-[#002934] text-[#ffffff]",
+        "relative grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden rounded-[24px] bg-[#12432E] text-[#ffffff]",
         className,
       )}
     >
@@ -133,7 +133,7 @@ export function RegionMapExplorer({
               <span
                 className={cn(
                   "block pb-1 text-[11px] font-mono tracking-[0.14em] transition-colors duration-300",
-                  groupActive ? "text-[#b75928]" : "text-[#e5e4e4]/45",
+                  groupActive ? "text-[#E8A33D]" : "text-[#e5e4e4]/45",
                 )}
               >
                 {group.name}
@@ -155,7 +155,7 @@ export function RegionMapExplorer({
                     className={cn(
                       "block w-full py-1 text-left text-[22px] font-light tracking-[-0.4px] leading-tight transition-all duration-300 ease-out md:text-[26px] lg:text-[30px] cursor-pointer",
                       isActive
-                        ? "translate-x-1 text-[#b75928]"
+                        ? "translate-x-1 text-[#E8A33D]"
                         : groupActive
                           ? "text-[#ffffff]/85 hover:text-[#ffffff]"
                           : "text-[#ffffff]/25 hover:text-[#ffffff]/55",
@@ -181,7 +181,7 @@ export function RegionMapExplorer({
             style={{ transform: `translate(${tx}%, ${ty}%) scale(${scale})` }}
           >
             <img src={imageUrl} alt={imageAlt} className="absolute inset-0 w-full h-full object-fill select-none" draggable={false} />
-            <div className="absolute inset-0 bg-[#002934]/15" />
+            <div className="absolute inset-0 bg-[#12432E]/15" />
 
             {groups.map((group) => {
               const { x, y } = position(group);
@@ -202,11 +202,11 @@ export function RegionMapExplorer({
                     style={{ transform: `translate(-50%, -50%) scale(${1 / scale})` }}
                   >
                     <span className="relative flex items-center justify-center w-8 h-8">
-                      {isActive && <span className="absolute inset-0 rounded-full bg-[#b75928]/50 animate-ping" />}
+                      {isActive && <span className="absolute inset-0 rounded-full bg-[#1E6F4C]/50 animate-ping" />}
                       <span
                         className={cn(
                           "relative rounded-full border-2 transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.45)]",
-                          isActive ? "w-4 h-4 bg-[#b75928] border-[#ffffff]" : "w-3 h-3 bg-[#ffffff] border-[#002934]/40 group-hover/marker:bg-[#b75928]",
+                          isActive ? "w-4 h-4 bg-[#1E6F4C] border-[#ffffff]" : "w-3 h-3 bg-[#ffffff] border-[#12432E]/40 group-hover/marker:bg-[#1E6F4C]",
                         )}
                       />
                     </span>

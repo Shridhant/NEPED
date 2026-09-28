@@ -16,9 +16,9 @@ const variantStyles: Record<BookDemoVariant, { from: string; to: string; dot: st
   sky: { from: "#a5e0ff", to: "#6bc8f5", dot: "#0a1f3a" },
   rose: { from: "#ffc4d3", to: "#f590a5", dot: "#3a0a1f" },
   amber: { from: "#ffd66e", to: "#f5a82e", dot: "#3a210a" },
-  emerald: { from: "#a8efc5", to: "#5fd49a", dot: "#0a2a1a" },
+  emerald: { from: "#2f8a62", to: "#1e6f4c", dot: "#f3f6f3" }, // site palette: Forest Green
   violet: { from: "#d4b9ff", to: "#a07bf5", dot: "#1f0a3a" },
-  orange: { from: "#ffb88a", to: "#f57a3a", dot: "#3a190a" },
+  orange: { from: "#f0b95e", to: "#e8a33d", dot: "#12432e" }, // site palette: Harvest Gold
   magenta: { from: "#f5a8e0", to: "#e060c5", dot: "#3a0a2a" },
 };
 
@@ -57,11 +57,11 @@ export function BookDemoButton(props: AsLink | AsButton) {
   const v = variantStyles[variant];
 
   const classes = cn(
-    "group/btn bd-root relative inline-flex h-11 items-center rounded-[12px] overflow-hidden transition-transform active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5fd49a]",
+    "group/btn bd-root relative inline-flex h-11 items-center rounded-[12px] overflow-hidden transition-transform active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1e6f4c]",
     className,
   );
   const style: React.CSSProperties = {
-    background: "linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%)",
+    background: "linear-gradient(180deg, #185a3e 0%, #12432e 100%)", // Deep Forest
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), 0 4px 12px rgba(0,0,0,0.18)",
   };
 

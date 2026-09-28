@@ -84,12 +84,12 @@ function AlbumCard({ album, onClick }: { album: GalleryAlbumData; onClick: () =>
       </div>
       <motion.h3
         layoutId={`title-${album.id}`}
-        className="px-2 text-center text-[17px] sm:text-[19px] font-light tracking-[-0.3px] text-[#000000]"
+        className="px-2 text-center text-[17px] sm:text-[19px] font-light tracking-[-0.3px] text-[#1A2E23]"
         transition={transition}
       >
         {album.title}
       </motion.h3>
-      <span className="mt-1 text-[12px] font-mono text-[#8d8d8d]">{album.photos.length}</span>
+      <span className="mt-1 text-[12px] font-mono text-[#5B6660]">{album.photos.length}</span>
     </motion.button>
   );
 }
@@ -118,7 +118,7 @@ function ExpandedAlbum({
         </button>
         <motion.h2
           layoutId={`title-${album.id}`}
-          className="text-[30px] sm:text-[40px] font-light leading-tight tracking-[-1px] text-[#000000]"
+          className="text-[30px] sm:text-[40px] font-light leading-tight tracking-[-1px] text-[#1A2E23]"
           transition={transition}
         >
           {album.title}

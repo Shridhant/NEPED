@@ -17,13 +17,13 @@ export function ProductImageCard({
   tag?: string;
 }) {
   return (
-    <Link to={to} className="group relative block rounded-[16px] overflow-hidden aspect-[4/3] bg-[#1c1c1c]">
+    <Link to={to} className="group relative block rounded-[16px] overflow-hidden aspect-[4/3] bg-[#12432E]">
       <img
         src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/80 via-[#070707]/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/80 via-[#12432E]/10 to-transparent" />
       {tag && (
         <span className="absolute top-4 left-4 sm:top-5 sm:left-5 px-3 py-1 rounded-[1584px] bg-black/55 backdrop-blur-md border border-white/20 text-[11px] font-mono text-[#ffffff] uppercase tracking-wider">
           {tag}

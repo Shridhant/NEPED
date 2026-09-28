@@ -22,8 +22,8 @@ export function CaseStudyDetailPage() {
 
   if (!study) {
     return (
-      <div className="mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
-        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000]">{"Page not found"}</BlurReveal>
+      <div className="mx-auto max-w-[800px] px-6 pt-16 pb-28 text-center flex flex-col items-center gap-6">
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#1A2E23]">{"Page not found"}</BlurReveal>
         <ArrowPillButton to={NEPED_ENERGY_PATHS.caseStudies}>Case Studies</ArrowPillButton>
       </div>
     );
@@ -37,9 +37,9 @@ export function CaseStudyDetailPage() {
   return (
     <div className="w-full space-y-16 sm:space-y-24 pb-24">
       {/* Header — dark teal band */}
-      <section className="relative w-full overflow-hidden bg-[#002934] text-[#ffffff]">
-        <div className="absolute top-0 right-0 w-[640px] h-[640px] bg-[#b75928]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-28 sm:pt-32 pb-14 sm:pb-20">
+      <section className="relative w-full overflow-hidden bg-[#12432E] text-[#ffffff]">
+        <div className="absolute top-0 right-0 w-[640px] h-[640px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-10 sm:pt-12 pb-14 sm:pb-20">
           <Link
             to={NEPED_ENERGY_PATHS.caseStudies}
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] hover:bg-white/15 border border-white/20 text-[12px] font-medium transition-colors"
@@ -61,7 +61,7 @@ export function CaseStudyDetailPage() {
         <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
           <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
             {photos.map((photo) => (
-              <div key={photo.src} className="overflow-hidden rounded-[20px] bg-[#f5f5f5] ring-1 ring-black/5">
+              <div key={photo.src} className="overflow-hidden rounded-[20px] bg-[#F3F6F3] ring-1 ring-black/5">
                 <img src={photo.src} alt={photo.alt} className="aspect-[3/2] h-full w-full object-cover" />
               </div>
             ))}
@@ -73,16 +73,16 @@ export function CaseStudyDetailPage() {
       {rest.map((section) => (
         <motion.section key={section.heading} {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
-            <h2 className="lg:col-span-4 text-[30px] sm:text-[40px] font-light text-[#000000] tracking-[-1px] leading-[1.1]">{section.heading}</h2>
+            <h2 className="lg:col-span-4 text-[30px] sm:text-[40px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.1]">{section.heading}</h2>
             <div className="lg:col-span-8 space-y-5">
               {section.paragraphs.map((p) => (
-                <p key={p} className="text-[15px] sm:text-[17px] text-[#494949] leading-relaxed">{p}</p>
+                <p key={p} className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">{p}</p>
               ))}
               {section.list.length > 0 && (
                 <ol className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {section.list.map((item, i) => (
-                    <li key={item} className="bg-[#f5f5f5] rounded-[14px] p-5 flex gap-3 text-[15px] text-[#262626] leading-relaxed">
-                      <span className="font-mono text-[13px] text-[#b75928] pt-[3px] shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                    <li key={item} className="bg-[#F3F6F3] rounded-[14px] p-5 flex gap-3 text-[15px] text-[#1A2E23] leading-relaxed">
+                      <span className="font-mono text-[13px] text-[#1E6F4C] pt-[3px] shrink-0">{String(i + 1).padStart(2, "0")}</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -97,15 +97,15 @@ export function CaseStudyDetailPage() {
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {prev ? (
-            <Link to={NEPED_ENERGY_PATHS.caseStudy(prev.slug)} className="group flex items-center gap-4 bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
-              <span className="w-12 h-12 rounded-full bg-[#b75928] text-[#ffffff] flex items-center justify-center shrink-0"><ArrowLeft size={18} /></span>
-              <span className="text-[17px] sm:text-[19px] font-light text-[#000000]">{prev.title}</span>
+            <Link to={NEPED_ENERGY_PATHS.caseStudy(prev.slug)} className="group flex items-center gap-4 bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
+              <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0"><ArrowLeft size={18} /></span>
+              <span className="text-[17px] sm:text-[19px] font-light text-[#1A2E23]">{prev.title}</span>
             </Link>
           ) : <div className="hidden sm:block" />}
           {next ? (
-            <Link to={NEPED_ENERGY_PATHS.caseStudy(next.slug)} className="group flex items-center justify-end gap-4 text-right bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
-              <span className="text-[17px] sm:text-[19px] font-light text-[#000000]">{next.title}</span>
-              <span className="w-12 h-12 rounded-full bg-[#b75928] text-[#ffffff] flex items-center justify-center shrink-0"><ArrowRight size={18} /></span>
+            <Link to={NEPED_ENERGY_PATHS.caseStudy(next.slug)} className="group flex items-center justify-end gap-4 text-right bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
+              <span className="text-[17px] sm:text-[19px] font-light text-[#1A2E23]">{next.title}</span>
+              <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0"><ArrowRight size={18} /></span>
             </Link>
           ) : <div className="hidden sm:block" />}
         </div>

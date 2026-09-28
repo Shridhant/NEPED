@@ -32,7 +32,6 @@ import { NEPED_PHASES } from "./data/neped/nepedPhasesData";
 import { NEPED_SUCCESS_STORIES } from "./data/neped/nepedSuccessStoriesData";
 // NEPeD pages
 const NepedEnergyPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
-const NepedEnergyAboutPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyAboutPage").then((m) => ({ default: m.NepedEnergyAboutPage })));
 const TechnologyPage = lazyPage(() => import("./pages/neped-energy/TechnologyPage").then((m) => ({ default: m.TechnologyPage })));
 const TechProductDetailPage = lazyPage(() => import("./pages/neped-energy/TechProductDetailPage").then((m) => ({ default: m.TechProductDetailPage })));
 const CaseStudiesPage = lazyPage(() => import("./pages/neped-energy/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage })));
@@ -70,11 +69,11 @@ function LegacyRedirect({ to }: { to: string | ((params: Record<string, string |
   return <Navigate to={`${target}${hash}`} replace />;
 }
 
-/** The old About page was split; #vision now lives on the NEPeD About page. */
+/** The old About page was split; #vision pointed to the NEPeD About page, which has been removed (goes to the NEPeD home). */
 function LegacyAboutRedirect() {
   const { hash } = useLocation();
-  const target = hash === "#vision" ? NEPED_ENERGY_PATHS.about : NEPED_PATHS.about;
-  return <Navigate to={`${target}${hash}`} replace />;
+  if (hash === "#vision") return <Navigate to={NEPED_ENERGY_PATHS.home} replace />;
+  return <Navigate to={`${NEPED_PATHS.about}${hash}`} replace />;
 }
 
 export default function App() {
@@ -102,7 +101,8 @@ export default function App() {
 
           {/* NEPeD */}
           <Route path={NEPED_ENERGY_PATHS.home} element={<NepedEnergyPage />} />
-          <Route path={NEPED_ENERGY_PATHS.about} element={<NepedEnergyAboutPage />} />
+          {/* NEPeD About page removed; old links go to the NEPeD home */}
+          <Route path={NEPED_ENERGY_PATHS.about} element={<Navigate to={NEPED_ENERGY_PATHS.home} replace />} />
           <Route path={NEPED_ENERGY_PATHS.technology} element={<TechnologyPage />} />
           <Route path="neped-energy/technology/:slug" element={<TechProductDetailPage />} />
           <Route path={NEPED_ENERGY_PATHS.impact} element={<NepedEnergyImpactPage />} />

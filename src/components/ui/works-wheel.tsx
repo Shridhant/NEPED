@@ -200,7 +200,7 @@ export function WorksWheel({ items, label = "Works '26", action = "View", classN
   return (
     <section
       aria-label={label}
-      className={cn("bg-[#ffffff] text-[#000000] relative h-full min-h-[24rem] w-full overflow-hidden select-none", className)}
+      className={cn("bg-[#ffffff] text-[#1A2E23] relative h-full min-h-[24rem] w-full overflow-hidden select-none", className)}
       {...props}
     >
       <div
@@ -255,7 +255,7 @@ export function WorksWheel({ items, label = "Works '26", action = "View", classN
                 <span className="bg-[#e5e4e4] shadow-black/12 relative block size-full overflow-hidden rounded-lg shadow-[0_18px_40px_-18px_var(--tw-shadow-color)]">
                   <img src={item.image} alt={item.title} draggable={false} className="size-full object-cover" />
                   {action && item.href ? (
-                    <span className="bg-white/80 text-[#000000] pointer-events-none absolute right-3 bottom-3 flex translate-y-1 items-center gap-1 rounded-full px-2.5 py-1 text-[0.7rem] opacity-0 backdrop-blur-sm transition group-hover:translate-y-0 group-hover:opacity-100">
+                    <span className="bg-white/80 text-[#1A2E23] pointer-events-none absolute right-3 bottom-3 flex translate-y-1 items-center gap-1 rounded-full px-2.5 py-1 text-[0.7rem] opacity-0 backdrop-blur-sm transition group-hover:translate-y-0 group-hover:opacity-100">
                       <svg viewBox="0 0 12 12" className="size-2.5" aria-hidden="true">
                         <path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -284,7 +284,7 @@ export function WorksWheel({ items, label = "Works '26", action = "View", classN
         {items[active]?.title}
       </div>
 
-      <ol className="text-[#8d8d8d] absolute top-[7.5%] right-[2.5%] text-right leading-[1.75]" style={{ fontSize: metrics.index }}>
+      <ol className="text-[#5B6660] absolute top-[7.5%] right-[2.5%] text-right leading-[1.75]" style={{ fontSize: metrics.index }}>
         {items.map((item, i) => (
           <li key={i}>
             <button
@@ -292,7 +292,7 @@ export function WorksWheel({ items, label = "Works '26", action = "View", classN
               onClick={() => to(i + 1)}
               className={cn(
                 "focus-visible:outline-[#000000] cursor-pointer transition-colors outline-none focus-visible:outline-1",
-                i === active && "text-[#000000] font-medium",
+                i === active && "text-[#1A2E23] font-medium",
               )}
             >
               {item.title}

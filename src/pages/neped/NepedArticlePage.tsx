@@ -24,8 +24,8 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
 
   if (!phase) {
     return (
-      <div className="theme-neped mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
-        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000]">{"Page not found"}</BlurReveal>
+      <div className="theme-neped mx-auto max-w-[800px] px-6 pt-16 pb-28 text-center flex flex-col items-center gap-6">
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#1A2E23]">{"Page not found"}</BlurReveal>
         <ArrowPillButton to={NEPED_PATHS.home}>Back to NEPED</ArrowPillButton>
       </div>
     );
@@ -39,7 +39,7 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
       {/* Header — dark green band */}
       <section className="relative w-full overflow-hidden bg-(--brand-surface) text-[#ffffff]">
         <div className="absolute top-0 right-0 w-[640px] h-[640px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-28 sm:pt-32 pb-12 sm:pb-16">
+        <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-10 sm:pt-12 pb-12 sm:pb-16">
           <Link to={NEPED_PATHS.home} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] hover:bg-white/15 border border-white/20 text-[12px] font-medium transition-colors">
             <ArrowLeft size={13} />
             <span>NEPED</span>
@@ -58,7 +58,7 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
                   {phase.image ? (
                     <img src={phase.image.src} alt={phase.image.alt} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#193f32] to-[#2d7d3a] flex flex-col items-center justify-center gap-2 text-[#ffffff]/75">
+                    <div className="w-full h-full bg-gradient-to-br from-[#12432E] to-[#1E6F4C] flex flex-col items-center justify-center gap-2 text-[#ffffff]/75">
                       <ImageIcon size={36} strokeWidth={1.25} />
                       <span className="text-[11px] font-mono uppercase tracking-[0.14em]">Image placeholder</span>
                     </div>
@@ -73,7 +73,7 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
       {/* Full description + amount */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-          <p className={`${phase.amount ? "lg:col-span-8" : "lg:col-span-10"} text-[16px] sm:text-[19px] text-[#262626] leading-relaxed`}>{phase.description}</p>
+          <p className={`${phase.amount ? "lg:col-span-8" : "lg:col-span-10"} text-[16px] sm:text-[19px] text-[#1A2E23] leading-relaxed`}>{phase.description}</p>
           {phase.amount && (
             <div className="lg:col-span-4 rounded-[16px] bg-(--brand-accent) text-[#ffffff] p-7">
               <p className="text-[20px] sm:text-[24px] font-light leading-snug tracking-[-0.3px]">{phase.amount}</p>
@@ -86,14 +86,14 @@ export function NepedArticlePage({ items, pathFor }: { items: NepedArticle[]; pa
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {prev ? (
-            <Link to={pathFor(prev.slug)} className="group flex items-center gap-4 bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
+            <Link to={pathFor(prev.slug)} className="group flex items-center gap-4 bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
               <span className="w-12 h-12 rounded-full bg-(--brand-accent) text-[#ffffff] flex items-center justify-center shrink-0"><ArrowLeft size={18} /></span>
-              <span className="text-[19px] font-light text-[#000000]">{prev.title}</span>
+              <span className="text-[19px] font-light text-[#1A2E23]">{prev.title}</span>
             </Link>
           ) : <div className="hidden sm:block" />}
           {next ? (
-            <Link to={pathFor(next.slug)} className="group flex items-center justify-end gap-4 bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
-              <span className="text-[19px] font-light text-[#000000]">{next.title}</span>
+            <Link to={pathFor(next.slug)} className="group flex items-center justify-end gap-4 bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors">
+              <span className="text-[19px] font-light text-[#1A2E23]">{next.title}</span>
               <span className="w-12 h-12 rounded-full bg-(--brand-accent) text-[#ffffff] flex items-center justify-center shrink-0"><ArrowRight size={18} /></span>
             </Link>
           ) : <div className="hidden sm:block" />}

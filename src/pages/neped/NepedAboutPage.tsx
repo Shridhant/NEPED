@@ -12,6 +12,9 @@ export function NepedAboutPage() {
   }, []);
 
 
+  // Team Leader first, then the POU members in their listed order
+  const teamInOrder = [...presentTeam].sort((a, b) => Number(b.role === "Team Leader") - Number(a.role === "Team Leader"));
+
   const teamLeaders = [
     { name: "Late A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.webp" },
     { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader" },
@@ -33,9 +36,9 @@ export function NepedAboutPage() {
         <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-(--brand-surface) text-[#ffffff]">
           <div className="absolute inset-0 z-0">
             <img src="/forest.webp" alt="" className="w-full h-full object-cover opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/90 via-[#0b1f18]/60 to-[#0b1f18]/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#12432E]/90 via-[#12432E]/60 to-[#12432E]/30" />
           </div>
-          <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-14 pt-14 sm:pt-20 pb-16 sm:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,27 +63,19 @@ export function NepedAboutPage() {
       <motion.section {...fadeUpOnView} id="team" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="max-w-[760px] mx-auto text-center flex flex-col items-center gap-5 mb-10 sm:mb-14">
           <SectionPill> Leadership & Officers</SectionPill>
-          <h2 className="text-[34px] sm:text-[56px] font-light text-[#000000] tracking-[-1.4px] leading-[1.05]">
+          <h2 className="text-[34px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05]">
             Multidisciplinary Team
           </h2>
-          <p className="text-[15px] text-[#666666] max-w-md leading-relaxed">
+          <p className="text-[15px] text-[#5B6660] max-w-md leading-relaxed">
             Project Operations Unit (POU) members combining administrative leadership, electrical engineering, and rural outreach.
           </p>
         </div>
 
-        {/* 3 columns: 2 regular cards | featured card + short cards (rest of the team) | last 2 regular cards.
-            Middle column heights are set so all three columns end on the same line. */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {[presentTeam.slice(0, 2), presentTeam.slice(2, Math.max(2, presentTeam.length - 2)), presentTeam.slice(Math.max(2, presentTeam.length - 2))].map((column, col) => (
-            <div key={col} className="flex flex-col gap-5">
-              {column.map((member, i) => (
-                <TeamCard
-                  key={member.id}
-                  member={member}
-                  variant={col === 1 ? (i === 0 ? "featured" : "short") : "regular"}
-                  shortCount={col === 1 ? column.length - 1 : 0}
-                />
-              ))}
+        {/* Equal-size cards, Team Leader first; a short last row is centred */}
+        <div className="flex flex-wrap justify-center gap-5">
+          {teamInOrder.map((member) => (
+            <div key={member.id} className="w-full sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-40px)/3)]">
+              <TeamCard member={member} highlight={member.role === "Team Leader"} />
             </div>
           ))}
         </div>
@@ -89,10 +84,10 @@ export function NepedAboutPage() {
       <motion.section {...fadeUpOnView} id="leaders" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1">
           {/* Past Team Leaders */}
-          <div className="bg-[#f5f5f5] rounded-[16px] p-7 sm:p-10 space-y-6">
+          <div className="bg-[#F3F6F3] rounded-[16px] p-7 sm:p-10 space-y-6">
             <div>
               <SectionPill>Historical Archive</SectionPill>
-              <h3 className="text-[28px] font-light text-[#000000] tracking-[-0.72px] mt-1">
+              <h3 className="text-[28px] font-light text-[#1A2E23] tracking-[-0.72px] mt-1">
                 Past Team Leaders
               </h3>
             </div>
@@ -114,17 +109,17 @@ export function NepedAboutPage() {
                           }}
                         />
                       ) : (
-                        <span className="text-[11px] font-medium text-[#8d8d8d]">
+                        <span className="text-[11px] font-medium text-[#5B6660]">
                           {lead.name.replace(/^(Shri\.?|Late|Padmashree)\s*/i, "").charAt(0)}
                         </span>
                       )}
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-[15px] font-medium text-[#000000] truncate">{lead.name}</h4>
-                      <span className="text-[12px] text-[#666666]">{lead.title}</span>
+                      <h4 className="text-[15px] font-medium text-[#1A2E23] truncate">{lead.name}</h4>
+                      <span className="text-[12px] text-[#5B6660]">{lead.title}</span>
                     </div>
                   </div>
-                  <span className="text-[12px] font-mono text-[#8d8d8d] shrink-0">{lead.period}</span>
+                  <span className="text-[12px] font-mono text-[#5B6660] shrink-0">{lead.period}</span>
                 </div>
               ))}
             </div>
@@ -135,53 +130,27 @@ export function NepedAboutPage() {
   );
 }
 
-/** Team card — regular (photo bottom-right), featured (tall, dark, photo centred on a glow), short (compact). */
-const SHORT_H = 125;
-const COLUMN_H = 2 * 300 + 20;
-
-function TeamCard({ member, variant, shortCount = 0 }: { member: TeamMember; variant: "regular" | "featured" | "short"; shortCount?: number }) {
-  const featuredH = COLUMN_H - shortCount * (SHORT_H + 20);
+/** Team card — photo bottom-right; the Team Leader's card is dark (same size as the rest). */
+function TeamCard({ member, highlight = false }: { member: TeamMember; highlight?: boolean }) {
   const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     (e.target as HTMLElement).style.display = "none";
   };
 
-  if (variant === "featured") {
-    return (
-      <div className="relative h-[340px] lg:h-(--featured-h) rounded-[20px] overflow-hidden bg-(--brand-surface) text-[#ffffff] p-7 sm:p-8" style={{ "--featured-h": `${featuredH}px` } as React.CSSProperties}>
-        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/3 w-[420px] h-[420px] rounded-full bg-(--brand-accent)/60 blur-3xl pointer-events-none" />
-        <div className="relative z-10">
-          <h3 className="text-[22px] sm:text-[24px] font-medium tracking-[-0.3px]">{member.name}</h3>
-          <p className="text-[14px] text-[#ffffff]/75 mt-1">{member.role}</p>
-        </div>
-        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[58%] max-w-[240px] h-[62%] rounded-t-[16px] overflow-hidden">
-          {/* scale crops the white border of the passport-style photos */}
-          <img src={member.image} alt={member.name} onError={hideOnError} className="w-full h-full object-cover object-top scale-[1.12] origin-top" />
-        </div>
-      </div>
-    );
-  }
-
-  if (variant === "short") {
-    return (
-      <div className="h-[125px] rounded-[20px] bg-[#f5f5f5] px-6 sm:px-7 flex items-center justify-between gap-4">
-        <div>
-          <h3 className="text-[20px] sm:text-[22px] font-medium text-[#000000] tracking-[-0.3px]">{member.name}</h3>
-          <p className="text-[14px] text-[#666666] mt-1">{member.role}</p>
-        </div>
-        <div className="h-[72px] w-[72px] shrink-0 rounded-full overflow-hidden">
-          <img src={member.image} alt={member.name} onError={hideOnError} className="w-full h-full object-cover object-top scale-[1.15]" />
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="group relative h-[300px] rounded-[20px] overflow-hidden bg-[#f5f5f5] p-7 sm:p-8">
+    <div
+      className={`group relative h-[300px] rounded-[20px] overflow-hidden p-7 sm:p-8 ${
+        highlight ? "bg-(--brand-surface) text-[#ffffff]" : "bg-[#F3F6F3] text-[#1A2E23]"
+      }`}
+    >
+      {highlight ? (
+        <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/3 w-[320px] h-[320px] rounded-full bg-(--brand-accent)/60 blur-3xl pointer-events-none" />
+      ) : null}
       <div className="relative z-10">
-        <h3 className="text-[20px] sm:text-[22px] font-medium text-[#000000] tracking-[-0.3px]">{member.name}</h3>
-        <p className="text-[14px] text-[#666666] mt-1">{member.role}</p>
+        <h3 className="text-[20px] sm:text-[22px] font-medium tracking-[-0.3px]">{member.name}</h3>
+        <p className={`text-[14px] mt-1 ${highlight ? "text-[#ffffff]/75" : "text-[#5B6660]"}`}>{member.role}</p>
       </div>
       <div className="absolute right-0 bottom-0 w-[44%] h-[64%] rounded-tl-[16px] overflow-hidden">
+        {/* scale crops the white border of the passport-style photos */}
         <img
           src={member.image}
           alt={member.name}

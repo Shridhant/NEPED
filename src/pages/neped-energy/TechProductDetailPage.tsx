@@ -15,7 +15,7 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 const GLASS_CARD =
   "rounded-[16px] bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
-const H2 = "text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]";
+const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
 
 export function TechProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -31,10 +31,10 @@ export function TechProductDetailPage() {
 
   if (!product) {
     return (
-      <div className="mx-auto max-w-[800px] px-6 pt-36 pb-28 text-center flex flex-col items-center gap-6">
+      <div className="mx-auto max-w-[800px] px-6 pt-16 pb-28 text-center flex flex-col items-center gap-6">
         <SectionPill>404 • Product Not Found</SectionPill>
-        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-tight">{"Hardware Specification Unavailable"}</BlurReveal>
-        <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+        <BlurReveal as="h1" className="text-[32px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-tight">{"Hardware Specification Unavailable"}</BlurReveal>
+        <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
           The hardware product or model you are searching for could not be found in the NEPeD clean energy technology catalog.
         </p>
         <div className="pt-2">
@@ -57,14 +57,14 @@ export function TechProductDetailPage() {
           {prevProduct ? (
             <Link
               to={NEPED_ENERGY_PATHS.product(prevProduct.slug)}
-              className="group flex items-center gap-4 bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
+              className="group flex items-center gap-4 bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
             >
-              <span className="w-12 h-12 rounded-full bg-[#b75928] text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:-translate-x-0.5">
+              <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:-translate-x-0.5">
                 <ArrowLeft size={18} />
               </span>
               <span className="min-w-0">
-                <span className="text-[11px] font-mono text-[#8d8d8d] block uppercase">Previous Product</span>
-                <span className="text-[17px] sm:text-[19px] font-light text-[#000000] block leading-snug">{prevProduct.name}</span>
+                <span className="text-[11px] font-mono text-[#5B6660] block uppercase">Previous Product</span>
+                <span className="text-[17px] sm:text-[19px] font-light text-[#1A2E23] block leading-snug">{prevProduct.name}</span>
               </span>
             </Link>
           ) : (
@@ -73,13 +73,13 @@ export function TechProductDetailPage() {
           {nextProduct ? (
             <Link
               to={NEPED_ENERGY_PATHS.product(nextProduct.slug)}
-              className="group flex items-center justify-end gap-4 text-right bg-[#f5f5f5] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
+              className="group flex items-center justify-end gap-4 text-right bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
             >
               <span className="min-w-0">
-                <span className="text-[11px] font-mono text-[#8d8d8d] block uppercase">Next Product</span>
-                <span className="text-[17px] sm:text-[19px] font-light text-[#000000] block leading-snug">{nextProduct.name}</span>
+                <span className="text-[11px] font-mono text-[#5B6660] block uppercase">Next Product</span>
+                <span className="text-[17px] sm:text-[19px] font-light text-[#1A2E23] block leading-snug">{nextProduct.name}</span>
               </span>
-              <span className="w-12 h-12 rounded-full bg-[#b75928] text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-0.5">
+              <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:translate-x-0.5">
                 <ArrowRight size={18} />
               </span>
             </Link>
@@ -105,9 +105,9 @@ function ProductHero({
   footer?: ReactNode;
 }) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#002934] text-[#ffffff]">
-      <div className="absolute top-0 right-0 w-[640px] h-[640px] bg-[#b75928]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-28 sm:pt-32 pb-10 sm:pb-14">
+    <section className="relative w-full overflow-hidden bg-[#12432E] text-[#ffffff]">
+      <div className="absolute top-0 right-0 w-[640px] h-[640px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-10 sm:pt-12 pb-10 sm:pb-14">
         <div className="flex flex-wrap items-center justify-between gap-4 pb-8 sm:pb-10">
           <div className="flex items-center gap-2 text-[12px] text-[#e5e4e4]/60 font-mono">
             <Link to={NEPED_ENERGY_PATHS.technology} className="hover:text-[#ffffff] transition-colors">
@@ -189,16 +189,16 @@ function HydrogerContent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           <h2 className={`lg:col-span-4 ${H2}`}>{page.indigenization.heading}</h2>
           <div className="lg:col-span-8 space-y-5">
-            <p className="text-[15px] sm:text-[17px] text-[#494949] leading-relaxed">{page.indigenization.paragraphs[0]}</p>
-            <div className="bg-[#f5f5f5] rounded-[16px] p-6 sm:p-8 border-l-2 border-[#b75928]">
-              <p className="text-[15px] sm:text-[17px] text-[#262626] leading-relaxed">{page.indigenization.paragraphs[1]}</p>
+            <p className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">{page.indigenization.paragraphs[0]}</p>
+            <div className="bg-[#F3F6F3] rounded-[16px] p-6 sm:p-8 border-l-2 border-[#1E6F4C]">
+              <p className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">{page.indigenization.paragraphs[1]}</p>
             </div>
           </div>
         </div>
       </motion.section>
 
       {/* Specifications — dark teal band */}
-      <section id="specifications" className="w-full bg-[#002934] scroll-mt-20">
+      <section id="specifications" className="w-full bg-[#12432E] scroll-mt-20">
         <motion.div {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6 py-20 sm:py-28">
           <h2 className="text-center text-[34px] sm:text-[52px] font-light text-[#ffffff] tracking-[-1.2px] leading-[1.1]">
             {page.specifications.heading}
@@ -232,8 +232,8 @@ function HydrogerContent() {
         <h2 className={H2}>{page.expectedBenefits.heading}</h2>
         <div className="mt-10 sm:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
           {page.expectedBenefits.paragraphs.map((paragraph, idx) => (
-            <div key={paragraph} className="relative rounded-[16px] overflow-hidden bg-[#002934] p-6 sm:p-8 flex flex-col gap-8">
-              <div className="absolute top-0 right-0 w-[220px] h-[220px] bg-[#b75928]/15 rounded-full blur-3xl pointer-events-none" />
+            <div key={paragraph} className="relative rounded-[16px] overflow-hidden bg-[#12432E] p-6 sm:p-8 flex flex-col gap-8">
+              <div className="absolute top-0 right-0 w-[220px] h-[220px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
               <span className="relative text-[12px] font-mono text-[#e5e4e4]/60">{String(idx + 1).padStart(2, "0")}</span>
               <p className="relative text-[15px] sm:text-[16px] text-[#ffffff] leading-relaxed">{paragraph}</p>
             </div>
@@ -255,15 +255,15 @@ function ElcContent() {
 
       {/* R&D story */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#f5f5f5] rounded-[16px] p-7 sm:p-10 border-l-2 border-[#b75928]">
-          <p className="text-[16px] sm:text-[19px] text-[#262626] leading-relaxed max-w-4xl">{page.development}</p>
+        <div className="bg-[#F3F6F3] rounded-[16px] p-7 sm:p-10 border-l-2 border-[#1E6F4C]">
+          <p className="text-[16px] sm:text-[19px] text-[#1A2E23] leading-relaxed max-w-4xl">{page.development}</p>
         </div>
       </motion.section>
 
       {/* Controlled parameters — dark teal card with glass tiles */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-[#002934] text-[#ffffff] p-7 sm:p-12">
-          <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#b75928]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative rounded-[24px] overflow-hidden bg-[#12432E] text-[#ffffff] p-7 sm:p-12">
+          <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
           <div className="relative space-y-8">
             <h2 className="max-w-3xl text-[24px] sm:text-[32px] font-light text-[#ffffff] tracking-[-0.6px] leading-snug">
               {page.parameters.intro}
@@ -271,7 +271,7 @@ function ElcContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {page.parameters.items.map((param) => (
                 <div key={param} className={`${GLASS_CARD} p-5 flex items-start gap-3`}>
-                  <CheckCircle2 size={18} className="text-[#e8a47f] shrink-0 mt-0.5" />
+                  <CheckCircle2 size={18} className="text-[#E8A33D] shrink-0 mt-0.5" />
                   <span className="text-[15px] text-[#ffffff] leading-snug">{param}</span>
                 </div>
               ))}
@@ -282,7 +282,7 @@ function ElcContent() {
 
       {/* Synchronizer / weight */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <p className="max-w-4xl text-[20px] sm:text-[28px] font-light text-[#000000] tracking-[-0.4px] leading-snug">{page.closing}</p>
+        <p className="max-w-4xl text-[20px] sm:text-[28px] font-light text-[#1A2E23] tracking-[-0.4px] leading-snug">{page.closing}</p>
       </motion.section>
     </>
   );

@@ -18,12 +18,12 @@ export function LandingPage() {
   }, []);
 
   return (
-    <div className="w-full space-y-16 sm:space-y-24 pt-28 sm:pt-32 pb-20">
+    <div className="w-full space-y-16 sm:space-y-24 pt-10 sm:pt-12 pb-20">
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="max-w-[720px] space-y-4">
           <SectionLabel>{LANDING_CONTENT.eyebrow}</SectionLabel>
           <SectionHeading size="lg">{LANDING_CONTENT.heading}</SectionHeading>
-          <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+          <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
             {LANDING_CONTENT.intro}
           </p>
         </div>
@@ -45,12 +45,12 @@ export function LandingPage() {
                   />
                 </div>
                 <div>
-                  <h2 className="text-[36px] sm:text-[48px] font-light text-[#000000] tracking-[-1.2px] leading-none">
+                  <h2 className="text-[36px] sm:text-[48px] font-light text-[#1A2E23] tracking-[-1.2px] leading-none">
                     {entity.acronym}
                   </h2>
-                  <p className="text-[14px] text-[#262626] mt-3 leading-snug">{entity.fullName}</p>
+                  <p className="text-[14px] text-[#1A2E23] mt-3 leading-snug">{entity.fullName}</p>
                 </div>
-                <p className="text-[15px] text-[#666666] leading-relaxed">{entity.summary}</p>
+                <p className="text-[15px] text-[#5B6660] leading-relaxed">{entity.summary}</p>
               </div>
               <div>
                 <TextArrowButton to={entity.to} variant="pill">

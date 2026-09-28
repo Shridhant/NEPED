@@ -31,7 +31,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
               onMouseEnter={() => setActive(idx)}
               className={cn(
                 "rounded-[14px] border transition-colors duration-300",
-                isActive ? "bg-[#f5f5f5] border-transparent" : "bg-[#ffffff] border-[#e5e4e4] hover:border-[#cfcfcf]",
+                isActive ? "bg-[#F3F6F3] border-transparent" : "bg-[#ffffff] border-[#e5e4e4] hover:border-[#cfcfcf]",
               )}
             >
               <button
@@ -41,10 +41,10 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
                 onClick={() => setActive(idx)}
                 className="w-full text-left px-5 sm:px-6 py-5 flex items-baseline gap-3 cursor-pointer"
               >
-                <span className={cn("font-mono text-[14px] transition-colors", isActive ? "text-(--brand-accent)" : "text-[#8d8d8d]")}>
+                <span className={cn("font-mono text-[14px] transition-colors", isActive ? "text-(--brand-accent)" : "text-[#5B6660]")}>
                   {idx + 1}.
                 </span>
-                <span className="text-[19px] sm:text-[22px] font-light text-[#000000] tracking-[-0.3px] leading-snug">{item.title}</span>
+                <span className="text-[19px] sm:text-[22px] font-light text-[#1A2E23] tracking-[-0.3px] leading-snug">{item.title}</span>
               </button>
               <div
                 className={cn(
@@ -54,7 +54,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
               >
                 <div className="overflow-hidden">
                   <div className="px-5 sm:px-6 pb-6 space-y-4">
-                    <p className="text-[15px] text-[#494949] leading-relaxed">{item.text}</p>
+                    <p className="text-[15px] text-[#1A2E23] leading-relaxed">{item.text}</p>
                     {item.link && (
                       <Link
                         to={item.link.to}
@@ -94,7 +94,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
   );
 }
 
-const PLACEHOLDER_TINTS = ["from-[#193f32] to-[#2d7d3a]", "from-[#2d7d3a] to-[#9fd68f]", "from-[#0f2a21] to-[#193f32]", "from-[#256a31] to-[#193f32]"];
+const PLACEHOLDER_TINTS = ["from-[#12432E] to-[#1E6F4C]", "from-[#1E6F4C] to-[#E8A33D]", "from-[#12432E] to-[#12432E]", "from-[#185A3E] to-[#12432E]"];
 
 function RevealImage({ item, index }: { item: HoverRevealItem; index: number }) {
   if (item.image) {

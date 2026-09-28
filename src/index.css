@@ -3,19 +3,26 @@
 @import "shadcn/tailwind.css";
 
 @theme {
+  /* Site palette */
+  --color-forest: #1e6f4c;
+  --color-deep-forest: #12432e;
+  --color-gold: #e8a33d;
+  --color-stone: #5b6660;
+  --color-mist-wash: #f3f6f3;
+
   /* Colors */
-  --color-ink: #000000;
+  --color-ink: #1a2e23;
   --color-paper: #ffffff;
-  --color-char: #1c1c1c;
-  --color-midnight: #070707;
+  --color-char: #1a2e23;
+  --color-midnight: #12432e;
   --color-iron: #262626;
   --color-slate: #38464a;
   --color-mist: #e5e4e4;
-  --color-smoke: #8d8d8d;
-  --color-pewter: #666666;
-  --color-ember: #b75928;
-  --color-pine: #193f32;
-  --color-tide: #002934;
+  --color-smoke: #5b6660;
+  --color-pewter: #5b6660;
+  --color-ember: #1e6f4c;
+  --color-pine: #12432e;
+  --color-tide: #12432e;
   --color-driftwood: #537179;
   --color-cedar: #776157;
   --color-coral: #df6a6b;
@@ -59,18 +66,18 @@
 
 :root {
   /* Colors */
-  --color-ink: #000000;
+  --color-ink: #1a2e23;
   --color-paper: #ffffff;
-  --color-char: #1c1c1c;
-  --color-midnight: #070707;
+  --color-char: #1a2e23;
+  --color-midnight: #12432e;
   --color-iron: #262626;
   --color-slate: #38464a;
   --color-mist: #e5e4e4;
-  --color-smoke: #8d8d8d;
-  --color-pewter: #666666;
-  --color-ember: #b75928;
-  --color-pine: #193f32;
-  --color-tide: #002934;
+  --color-smoke: #5b6660;
+  --color-pewter: #5b6660;
+  --color-ember: #1e6f4c;
+  --color-pine: #12432e;
+  --color-tide: #12432e;
   --color-driftwood: #537179;
   --color-cedar: #776157;
   --color-coral: #df6a6b;
@@ -124,10 +131,10 @@
   /* Surfaces */
   --surface-paper: #ffffff;
   --surface-mist: #e5e4e4;
-  --surface-pine: #193f32;
-  --surface-tide: #002934;
-  --surface-char: #1c1c1c;
-  --surface-midnight: #070707;
+  --surface-pine: #12432e;
+  --surface-tide: #12432e;
+  --surface-char: #12432e;
+  --surface-midnight: #12432e;
 }
 
 @layer base {
@@ -211,25 +218,15 @@
   transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* Brand theme tokens — NEPeD (default) and NEPED (.theme-neped). Used by shared components. */
-:root {
-  --brand-accent: #b75928;
-  --brand-accent-hover: #a04d22;
-  --brand-accent-on-dark: #e8a47f;
-  --brand-surface: #002934;
-}
-.theme-neped {
-  --brand-accent: #2d7d3a;
-  --brand-accent-hover: #256a31;
-  --brand-accent-on-dark: #9fd68f;
-  --brand-surface: #193f32;
-}
-/* Restores the NEPeD tokens inside a NEPED page (e.g. a banner linking to NEPeD) */
+/* Brand theme tokens — one palette for NEPED and NEPeD (Forest Green / Deep Forest / Harvest Gold).
+   .theme-neped and .theme-neped-energy are kept so pages can still scope tokens. */
+:root,
+.theme-neped,
 .theme-neped-energy {
-  --brand-accent: #b75928;
-  --brand-accent-hover: #a04d22;
-  --brand-accent-on-dark: #e8a47f;
-  --brand-surface: #002934;
+  --brand-accent: #1e6f4c;
+  --brand-accent-hover: #185a3e;
+  --brand-accent-on-dark: #e8a33d;
+  --brand-surface: #12432e;
 }
 
 /* BookDemoButton dot shimmer (components/ui/book-demo-button.tsx) */

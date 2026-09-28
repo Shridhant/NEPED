@@ -91,7 +91,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
   return (
     <div className="flex h-full w-full flex-col md:flex-row gap-5 md:gap-7 p-4 sm:p-6 justify-between">
       {/* Left side: Hardware Image with badge */}
-      <div className="w-full md:w-[260px] lg:w-[290px] h-[180px] sm:h-[220px] md:h-full shrink-0 rounded-[6px] overflow-hidden bg-[#070707] border border-[#e5e4e4]/60 relative group">
+      <div className="w-full md:w-[260px] lg:w-[290px] h-[180px] sm:h-[220px] md:h-full shrink-0 rounded-[6px] overflow-hidden bg-[#12432E] border border-[#e5e4e4]/60 relative group">
         <img
           src={data.image}
           alt={data.title}
@@ -100,7 +100,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
             (e.target as HTMLElement).style.opacity = "0.8";
           }}
         />
-        <span className="absolute top-2.5 left-2.5 text-[10px] font-mono bg-[#070707]/90 text-[#ffffff] px-2.5 py-1 rounded-[1584px] border border-white/15">
+        <span className="absolute top-2.5 left-2.5 text-[10px] font-mono bg-[#12432E]/90 text-[#ffffff] px-2.5 py-1 rounded-[1584px] border border-white/15">
           {data.badge}
         </span>
       </div>
@@ -109,22 +109,22 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
       <div className="flex flex-col justify-between flex-1 min-w-0">
         <div className="space-y-2.5">
           <div>
-            <span className="text-[11px] font-mono text-[#b75928] uppercase tracking-wider block">
+            <span className="text-[11px] font-mono text-[#E8A33D] uppercase tracking-wider block">
               {data.origin}
             </span>
-            <h3 className="text-[20px] sm:text-[24px] font-light text-[#000000] tracking-tight leading-tight mt-0.5">
+            <h3 className="text-[20px] sm:text-[24px] font-light text-[#1A2E23] tracking-tight leading-tight mt-0.5">
               {data.title}
             </h3>
           </div>
 
-          <p className="text-[13px] text-[#666666] leading-relaxed line-clamp-2 sm:line-clamp-3">
+          <p className="text-[13px] text-[#5B6660] leading-relaxed line-clamp-2 sm:line-clamp-3">
             {data.story}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-[12px] text-[#262626]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-[12px] text-[#1A2E23]">
             {data.points.map((pt, i) => (
               <div key={i} className="flex items-start gap-1.5 leading-snug">
-                <span className="text-[#b75928] font-bold shrink-0">✓</span>
+                <span className="text-[#E8A33D] font-bold shrink-0">✓</span>
                 <span className="line-clamp-1">{pt}</span>
               </div>
             ))}
@@ -132,13 +132,13 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
         </div>
 
         <div className="pt-4 mt-2 border-t border-[#e5e4e4] flex items-center justify-between">
-          <span className="text-[11px] text-[#8d8d8d] font-mono">
+          <span className="text-[11px] text-[#5B6660] font-mono">
             NEPeD Product Ecosystem
           </span>
           {data.path && (
           <button
             onClick={() => navigate(data.path)}
-            className="flex h-9 cursor-pointer select-none items-center gap-1.5 rounded-[80px] bg-[#1c1c1c] text-[#ffffff] px-4 text-xs font-normal tracking-[0.15px] hover:bg-[#070707] transition-all"
+            className="flex h-9 cursor-pointer select-none items-center gap-1.5 rounded-[80px] bg-[#12432E] text-[#ffffff] px-4 text-xs font-normal tracking-[0.15px] hover:bg-[#12432E] transition-all"
           >
             <span>{data.cta}</span>
             <span>→</span>
@@ -220,7 +220,7 @@ export default function AnimatedCardStack() {
       <div className="relative z-10 -mt-px flex w-full items-center justify-center border-t border-[#e5e4e4] py-4">
         <button
           onClick={handleAnimate}
-          className="flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-[80px] border border-[#e5e4e4] bg-[#ffffff] px-7 text-xs sm:text-sm font-medium text-[#000000] hover:bg-[#e5e4e4] transition-all"
+          className="flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-[80px] border border-[#e5e4e4] bg-[#ffffff] px-7 text-xs sm:text-sm font-medium text-[#1A2E23] hover:bg-[#e5e4e4] transition-all"
         >
           <span>Cycle Product Deck</span>
           <span>→</span>

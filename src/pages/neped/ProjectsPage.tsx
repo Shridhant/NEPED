@@ -58,14 +58,14 @@ export function ProjectsPage() {
     <div className="theme-neped w-full space-y-16 sm:space-y-20 pb-24">
       {/* 1. HERO — inset rounded photo panel with glass stat cards (NEPED homepage style) */}
       <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
-        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] text-[#ffffff]">
+        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#12432E] text-[#ffffff]">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <img src="/forest.webp" alt="Nagaland Agroforestry & Ecology" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/85 via-[#0b1f18]/50 to-[#0b1f18]/20" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f18]/80 via-transparent to-[#0b1f18]/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#12432E]/85 via-[#12432E]/50 to-[#12432E]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/80 via-transparent to-[#12432E]/40" />
           </div>
 
-          <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-32 sm:pt-40 pb-6 sm:pb-10">
+          <div className="relative z-10 max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-14 sm:pt-20 pb-6 sm:pb-10">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -102,21 +102,21 @@ export function ProjectsPage() {
 
       {/* 2. FILTER & SEARCH */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#f5f5f5] rounded-[20px] p-3 sm:p-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+        <div className="bg-[#F3F6F3] rounded-[20px] p-3 sm:p-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
           <div className="relative flex-1 lg:max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8d8d8d]" size={16} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5B6660]" size={16} />
             <input
               type="text"
               placeholder="Search by project name, agency, or keywords..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-16 py-3 bg-[#ffffff] border border-transparent focus:border-(--brand-accent) rounded-[1584px] text-[14px] text-[#000000] placeholder:text-[#8d8d8d] outline-none transition-colors"
+              className="w-full pl-11 pr-16 py-3 bg-[#ffffff] border border-transparent focus:border-(--brand-accent) rounded-[1584px] text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] outline-none transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono text-[#666666] hover:text-[#000000] bg-[#f5f5f5] px-2.5 py-1 rounded-full cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono text-[#5B6660] hover:text-[#1A2E23] bg-[#F3F6F3] px-2.5 py-1 rounded-full cursor-pointer"
               >
                 Clear
               </button>
@@ -130,7 +130,7 @@ export function ProjectsPage() {
                 type="button"
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-[1584px] text-[13px] font-medium transition-all active:scale-[0.97] cursor-pointer ${
-                  activeCategory === cat ? "bg-(--brand-accent) text-[#ffffff]" : "text-[#494949] hover:text-[#000000] hover:bg-[#ffffff]"
+                  activeCategory === cat ? "bg-(--brand-accent) text-[#ffffff]" : "text-[#1A2E23] hover:text-[#1A2E23] hover:bg-[#ffffff]"
                 }`}
               >
                 {cat}
@@ -139,9 +139,9 @@ export function ProjectsPage() {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12px] font-mono text-[#8d8d8d] px-2">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12px] font-mono text-[#5B6660] px-2">
           <span>
-            Showing <strong className="text-[#000000] font-medium">{filteredProjects.length}</strong> of {allProjects.length} official projects
+            Showing <strong className="text-[#1A2E23] font-medium">{filteredProjects.length}</strong> of {allProjects.length} official projects
             {activeCategory !== "All" && ` in ${activeCategory}`}
           </span>
           {searchQuery && (
@@ -155,8 +155,8 @@ export function ProjectsPage() {
       {/* 3. PROJECT CARDS GRID */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
         {filteredProjects.length === 0 ? (
-          <div className="bg-[#f5f5f5] rounded-[20px] p-12 text-center flex flex-col items-center gap-4">
-            <p className="text-[16px] text-[#666666]">No projects match your search or filter criteria.</p>
+          <div className="bg-[#F3F6F3] rounded-[20px] p-12 text-center flex flex-col items-center gap-4">
+            <p className="text-[16px] text-[#5B6660]">No projects match your search or filter criteria.</p>
             <button
               type="button"
               onClick={() => {

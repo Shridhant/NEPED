@@ -27,15 +27,15 @@ export function NepedEnergyImpactPage() {
   }, []);
 
   return (
-    <div className="w-full space-y-14 sm:space-y-20 pt-28 sm:pt-36 pb-20">
+    <div className="w-full space-y-14 sm:space-y-20 pt-10 sm:pt-14 pb-20">
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7 space-y-6">
             <SectionPill>NEPeD</SectionPill>
-            <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#000000] tracking-[-1.55px] leading-[1.05]">{"Impact"}</BlurReveal>
+            <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#1A2E23] tracking-[-1.55px] leading-[1.05]">{"Impact"}</BlurReveal>
             <div className="space-y-4">
               {IMPACT_PARAGRAPHS.map((paragraph) => (
-                <p key={paragraph} className="text-[15px] sm:text-[17px] text-[#494949] leading-relaxed">
+                <p key={paragraph} className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">
                   {paragraph}
                 </p>
               ))}

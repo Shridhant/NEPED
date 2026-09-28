@@ -31,17 +31,17 @@ export function NepedProjectDetailPage() {
   if (!project) {
     return (
       <div className="mx-auto max-w-[800px] px-6 py-28 text-center space-y-6">
-        <span className="text-[12px] font-mono uppercase text-[#8d8d8d]">
+        <span className="text-[12px] font-mono uppercase text-[#5B6660]">
           404 • Project Not Found
         </span>
-        <BlurReveal as="h1" className="text-[32px] font-light text-[#000000]">{"Archive Record Unavailable"}</BlurReveal>
-        <p className="text-[15px] text-[#666666]">
+        <BlurReveal as="h1" className="text-[32px] font-light text-[#1A2E23]">{"Archive Record Unavailable"}</BlurReveal>
+        <p className="text-[15px] text-[#5B6660]">
           The project record you are looking for could not be located in the NEPED historical archive index.
         </p>
         <div className="pt-4">
           <Link
             to={`${NEPED_PATHS.home}#projects`}
-            className="inline-flex items-center gap-2 bg-[#1c1c1c] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#070707] transition-all"
+            className="inline-flex items-center gap-2 bg-[#12432E] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#12432E] transition-all"
           >
             ← Return to All {totalProjects} Projects
           </Link>
@@ -61,25 +61,25 @@ export function NepedProjectDetailPage() {
   return (
     <div className="w-full space-y-16 sm:space-y-24">
       {/* 1. BREADCRUMBS & TOP NAVIGATION BAR */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6 pt-24 sm:pt-28">
+      <section className="mx-auto max-w-[1200px] px-4 sm:px-6 pt-8 sm:pt-10">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#e5e4e4] pb-4">
-          <div className="flex items-center gap-2 text-[12px] text-[#8d8d8d] font-mono">
-            <Link to={NEPED_PATHS.home} className="hover:text-[#000000] transition-colors">
+          <div className="flex items-center gap-2 text-[12px] text-[#5B6660] font-mono">
+            <Link to={NEPED_PATHS.home} className="hover:text-[#1A2E23] transition-colors">
               NEPED Heritage
             </Link>
             <span>/</span>
-            <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#000000] transition-colors">
+            <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#1A2E23] transition-colors">
               Projects Archive
             </Link>
             <span>/</span>
-            <span className="text-[#000000] font-medium truncate max-w-[200px] sm:max-w-none">
+            <span className="text-[#1A2E23] font-medium truncate max-w-[200px] sm:max-w-none">
               {project.phase}
             </span>
           </div>
 
           <Link
             to={`${NEPED_PATHS.home}#projects`}
-            className="text-[12px] text-[#b75928] hover:text-[#000000] font-medium flex items-center gap-1 transition-colors"
+            className="text-[12px] text-[#1E6F4C] hover:text-[#1A2E23] font-medium flex items-center gap-1 transition-colors"
           >
             <span>← All {totalProjects} Projects</span>
           </Link>
@@ -88,15 +88,15 @@ export function NepedProjectDetailPage() {
 
       {/* 2. PROJECT RECORD CARD — same glassmorphic hero-card language as the homepage spotlight */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[820px] px-4 sm:px-6">
-        <div className="rounded-[8px] border border-white/18 bg-[#070707] shadow-2xl shadow-black/30 overflow-hidden">
+        <div className="rounded-[8px] border border-white/18 bg-[#12432E] shadow-2xl shadow-black/30 overflow-hidden">
           {/* Image banner with phase/category/period tags */}
-          <div className="relative h-[160px] sm:h-[190px] overflow-hidden bg-[#1c1c1c]">
+          <div className="relative h-[160px] sm:h-[190px] overflow-hidden bg-[#12432E]">
             <img
               src={project.heroImage}
               alt={project.name}
               className="h-full w-full object-cover opacity-80"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#12432E] via-[#12432E]/25 to-transparent" />
             <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
               <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
                 {project.phase}
@@ -117,7 +117,7 @@ export function NepedProjectDetailPage() {
                 {project.objective}
               </p>
             ) : (
-              <p className="text-[14px] italic text-[#8d8d8d] leading-relaxed">
+              <p className="text-[14px] italic text-[#5B6660] leading-relaxed">
                 No objective statement is recorded in the source register for this project.
               </p>
             )}
@@ -144,10 +144,10 @@ export function NepedProjectDetailPage() {
               to={NEPED_PATHS.project(prevProject.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors"
             >
-              <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
+              <span className="text-[11px] font-mono text-[#5B6660] block mb-1">
                 ← Previous Project ({prevProject.phase})
               </span>
-              <h4 className="text-[16px] font-medium text-[#000000] group-hover:text-[#b75928] transition-colors">
+              <h4 className="text-[16px] font-medium text-[#1A2E23] group-hover:text-[#1E6F4C] transition-colors">
                 {prevProject.name}
               </h4>
             </Link>
@@ -160,10 +160,10 @@ export function NepedProjectDetailPage() {
               to={NEPED_PATHS.project(nextProject.slug)}
               className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
             >
-              <span className="text-[11px] font-mono text-[#8d8d8d] block mb-1">
+              <span className="text-[11px] font-mono text-[#5B6660] block mb-1">
                 Next Project ({nextProject.phase}) →
               </span>
-              <h4 className="text-[16px] font-medium text-[#000000] group-hover:text-[#b75928] transition-colors">
+              <h4 className="text-[16px] font-medium text-[#1A2E23] group-hover:text-[#1E6F4C] transition-colors">
                 {nextProject.name}
               </h4>
             </Link>
@@ -184,7 +184,7 @@ export function NepedProjectDetailPage() {
           </div>
           <Link
             to={`${NEPED_PATHS.home}#projects`}
-            className="text-[13px] text-[#b75928] hover:text-[#000000] font-medium"
+            className="text-[13px] text-[#1E6F4C] hover:text-[#1A2E23] font-medium"
           >
             View All {totalProjects} Projects →
           </Link>
@@ -199,26 +199,26 @@ export function NepedProjectDetailPage() {
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[11px] font-mono text-[#8d8d8d]">{proj.period}</span>
+                  <span className="text-[11px] font-mono text-[#5B6660]">{proj.period}</span>
                   <PillBadge>{proj.category}</PillBadge>
                 </div>
-                <h3 className="text-[17px] font-medium text-[#000000] group-hover:text-[#b75928] transition-colors tracking-tight leading-snug">
+                <h3 className="text-[17px] font-medium text-[#1A2E23] group-hover:text-[#1E6F4C] transition-colors tracking-tight leading-snug">
                   {proj.name}
                 </h3>
                 {proj.objective ? (
-                  <p className="text-[13px] text-[#666666] mt-2 line-clamp-3 leading-relaxed">
+                  <p className="text-[13px] text-[#5B6660] mt-2 line-clamp-3 leading-relaxed">
                     {proj.objective}
                   </p>
                 ) : (
-                  <p className="text-[13px] italic text-[#8d8d8d] mt-2">
+                  <p className="text-[13px] italic text-[#5B6660] mt-2">
                     No objective statement recorded.
                   </p>
                 )}
               </div>
 
-              <div className="pt-4 mt-4 border-t border-[#e5e4e4] flex items-center justify-between text-[11px] text-[#8d8d8d]">
+              <div className="pt-4 mt-4 border-t border-[#e5e4e4] flex items-center justify-between text-[11px] text-[#5B6660]">
                 <span>{proj.phase}</span>
-                <span className="text-[#000000] font-medium group-hover:translate-x-1 transition-transform">
+                <span className="text-[#1A2E23] font-medium group-hover:translate-x-1 transition-transform">
                   Read Dossier →
                 </span>
               </div>

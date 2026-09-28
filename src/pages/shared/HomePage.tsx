@@ -23,7 +23,7 @@ export function HomePage() {
   return (
     <div className="w-full space-y-20 sm:space-y-28">
       {/* 1. FULL-BLEED HERO SECTION (Elevated Brand Identity & Viewport Fit) */}
-      <section className="relative w-full min-h-[92vh] sm:min-h-screen bg-[#070707] flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden">
+      <section className="relative w-full min-h-[92vh] sm:min-h-screen bg-[#12432E] flex flex-col justify-between p-6 sm:p-10 md:p-14 lg:p-16 overflow-hidden">
         {/* Full-bleed background photo with multi-stop vignette gradients */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
@@ -31,8 +31,8 @@ export function HomePage() {
             alt="Nagaland Mountain Landscape"
             className="w-full h-full object-cover opacity-55 filter brightness-[0.72] contrast-[1.08]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/30 to-[#070707]/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/70 via-transparent to-[#070707]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#12432E] via-[#12432E]/30 to-[#12432E]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#12432E]/70 via-transparent to-[#12432E]/60" />
         </div>
 
         {/* Main Hero Content Grid (Vertically centered & balanced) */}
@@ -46,7 +46,7 @@ export function HomePage() {
               transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md"
             >
-              <span className="w-2 h-2 rounded-full bg-[#b75928] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#1E6F4C] animate-pulse" />
               
               <span className="hidden sm:inline text-[11px] uppercase tracking-[0.1em] text-[#e5e4e4]/70 font-mono">
                 Est. 1994
@@ -101,15 +101,15 @@ export function HomePage() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-5 xl:col-span-5 flex lg:justify-end"
           >
-            <div className="w-full max-w-[360px] rounded-[8px] border border-white/18 bg-[#070707]/60 shadow-2xl shadow-black/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-white/30">
+            <div className="w-full max-w-[360px] rounded-[8px] border border-white/18 bg-[#12432E]/60 shadow-2xl shadow-black/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-white/30">
               {/* Image banner with phase tag */}
-              <div className="relative h-[115px] sm:h-[125px] overflow-hidden bg-[#1c1c1c]">
+              <div className="relative h-[115px] sm:h-[125px] overflow-hidden bg-[#12432E]">
                 <img
                   src="/forest.webp"
                   alt="NEPED agroforestry project landscape"
                   className="h-full w-full object-cover opacity-85 transition-transform duration-500 hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/90 via-transparent to-transparent" />
                 <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
                   <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
                     Featured Heritage
@@ -146,7 +146,7 @@ export function HomePage() {
                 {/* Bottom link */}
                 <Link
                   to={NEPED_PATHS.project("neped-1-agroforestry-shifting-cultivation")}
-                  className="pt-1 flex items-center justify-between text-[12px] sm:text-[13px] text-[#ffffff] hover:text-[#b75928] transition-colors group cursor-pointer"
+                  className="pt-1 flex items-center justify-between text-[12px] sm:text-[13px] text-[#ffffff] hover:text-[#1E6F4C] transition-colors group cursor-pointer"
                 >
                   <span className="font-medium">Explore Project Case Study</span>
                   <span className="text-[15px] transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -174,7 +174,7 @@ export function HomePage() {
             <a href="#initiatives" className="hover:text-white transition-colors">
               View Initiatives ↓
             </a>
-            <Link to={NEPED_PATHS.home} className="text-[#b75928] hover:text-white transition-colors">
+            <Link to={NEPED_PATHS.home} className="text-[#1E6F4C] hover:text-white transition-colors">
               30-Year Archives →
             </Link>
           </div>
@@ -189,7 +189,7 @@ export function HomePage() {
             <SectionHeading size="md">
               A shifting paradigm in community power
             </SectionHeading>
-            <p className="text-[15px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] text-[#5B6660] leading-relaxed">
               Formed in 1994 as an autonomous Government of Nagaland society, NEPED set out to close developmental gaps across the state. Energy became the catalyst — by replacing dependency with self-governed local generation, NEPeD lets remote Himalayan communities thrive on their own terms.
             </p>
           </div>
@@ -210,10 +210,10 @@ export function HomePage() {
 
             <div className="pt-6 mt-2 border-t border-[#e5e4e4]">
               <Link to={NEPED_PATHS.home} className="group inline-block">
-                <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider block group-hover:text-[#000000] transition-colors">
+                <span className="text-[12px] font-mono text-[#5B6660] uppercase tracking-wider block group-hover:text-[#1A2E23] transition-colors">
                   1994 → NEPED Founded
                 </span>
-                <span className="text-[13px] text-[#666666] block mt-1 max-w-[420px]">
+                <span className="text-[13px] text-[#5B6660] block mt-1 max-w-[420px]">
                   Autonomous Govt. of Nagaland society bridging developmental gaps statewide.
                 </span>
               </Link>
@@ -235,11 +235,11 @@ export function HomePage() {
           {/* Left Card: Mist background (#e5e4e4) with 8px radius */}
           <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
             <div>
-              <SectionLabel className="text-[#666666]">Indigenous Technology</SectionLabel>
-              <h3 className="text-[32px] sm:text-[40px] font-light text-[#000000] tracking-[-0.72px] leading-[1.15] mt-4">
+              <SectionLabel className="text-[#5B6660]">Indigenous Technology</SectionLabel>
+              <h3 className="text-[32px] sm:text-[40px] font-light text-[#1A2E23] tracking-[-0.72px] leading-[1.15] mt-4">
                 The Hydroger System
               </h3>
-              <p className="text-[15px] text-[#494949] mt-4 leading-relaxed max-w-md">
+              <p className="text-[15px] text-[#1A2E23] mt-4 leading-relaxed max-w-md">
                 Locally developed 3kW to 10kW pico-hydro turbines fabricated right in Nagaland. Designed to generate reliable baseload electricity from steep mountain streams.
               </p>
             </div>
@@ -248,18 +248,18 @@ export function HomePage() {
               <TextArrowButton to={NEPED_ENERGY_PATHS.technology} variant="pill">
                 Technical Specifications
               </TextArrowButton>
-              <span className="text-[12px] font-mono text-[#666666]">01 / TECH</span>
+              <span className="text-[12px] font-mono text-[#5B6660]">01 / TECH</span>
             </div>
           </div>
 
           {/* Right Card: Full-bleed photo with 8px radius and overlaid text */}
-          <div className="relative rounded-[8px] overflow-hidden min-h-[400px] flex flex-col justify-between p-8 sm:p-10 bg-[#1c1c1c]">
+          <div className="relative rounded-[8px] overflow-hidden min-h-[400px] flex flex-col justify-between p-8 sm:p-10 bg-[#12432E]">
             <img
               src="/microgrid.webp"
               alt="Electronic Load Controller Microgrid"
               className="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-[0.7]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#12432E] via-transparent to-[#12432E]/30" />
 
             <div className="relative z-10">
               <SectionLabel dark={true} className="text-[#e5e4e4]">
@@ -291,7 +291,7 @@ export function HomePage() {
             <SectionHeading size="md">
               A comprehensive rural electrification pipeline
             </SectionHeading>
-            <p className="text-[15px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] text-[#5B6660] leading-relaxed">
               Every project integrates indigenous engineering, community water rights, forest catchment preservation, and artisan capacity building.
             </p>
           </div>
@@ -326,8 +326,8 @@ export function HomePage() {
       {/* 5. TONAL CARD VARIANT ROW (Pine & Tide card surfaces from design.md) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          {/* Pine (#193f32) Dark Green Feature Card */}
-          <div className="bg-[#193f32] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+          {/* Pine (#12432E) Dark Green Feature Card */}
+          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70">
@@ -344,8 +344,8 @@ export function HomePage() {
             </div>
           </div>
 
-          {/* Tide (#002934) Deep Teal Card */}
-          <div className="bg-[#002934] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+          {/* Tide (#12432E) Deep Teal Card */}
+          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70">
@@ -370,13 +370,13 @@ export function HomePage() {
       </motion.section>
 
       {/* 6. FULL-BLEED PHOTOGRAPHIC TRANSITION BAND */}
-      <motion.section {...fadeUpOnView} className="relative w-full h-[450px] sm:h-[550px] bg-[#070707] flex items-center justify-center p-6 text-center overflow-hidden">
+      <motion.section {...fadeUpOnView} className="relative w-full h-[450px] sm:h-[550px] bg-[#12432E] flex items-center justify-center p-6 text-center overflow-hidden">
         <img
           src="/forest.webp"
           alt="Nagaland Pristine Forest Catchment"
           className="absolute inset-0 w-full h-full object-cover opacity-45 filter brightness-[0.7]"
         />
-        <div className="absolute inset-0 bg-[#070707]/30" />
+        <div className="absolute inset-0 bg-[#12432E]/30" />
 
         <div className="relative z-10 max-w-2xl mx-auto space-y-6">
           <SectionLabel dark={true}>Ecological Stewardship</SectionLabel>
@@ -398,7 +398,7 @@ export function HomePage() {
               Glimpses from the Himalayan Frontier
             </SectionHeading>
           </div>
-          <p className="text-[14px] text-[#666666] max-w-sm">
+          <p className="text-[14px] text-[#5B6660] max-w-sm">
             Dynamic field installations, mountain watershed streams, village committees, and micro-hydro deployments captured across Nagaland.
           </p>
         </div>
@@ -415,7 +415,7 @@ export function HomePage() {
             <SectionHeading size="md" className="mt-2">
               The Hydroger & ELC Hardware Deck
             </SectionHeading>
-            <p className="mt-2 text-[14px] text-[#666666]">
+            <p className="mt-2 text-[14px] text-[#5B6660]">
               Cycle through the cards to inspect the Electronic Load Controller (ELC), indigenous Hydroger turbines, and decentralized village microgrids.
             </p>
           </div>

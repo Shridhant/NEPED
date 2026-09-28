@@ -91,7 +91,7 @@ function AnimatedCard({
       style={{ y, scale, zIndex: 20 + index, transformOrigin: "center top", willChange: "transform", backfaceVisibility: "hidden" }}
       className="absolute inset-x-0 top-0 w-full select-none"
     >
-      <Link to={project.to} className="group block cursor-pointer text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-[#b75928] rounded-2xl">
+      <Link to={project.to} className="group block cursor-pointer text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-[#1E6F4C] rounded-2xl">
         <article className="relative box-border w-full pt-12 sm:pt-14">
           <div
             style={{ backgroundColor: project.color }}

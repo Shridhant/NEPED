@@ -76,7 +76,7 @@ export function OrgStructureChart() {
       ref={(el) => {
         boxRefs.current[id] = el;
       }}
-      className={`relative z-10 rounded-[12px] sm:rounded-[14px] bg-white/85 border border-white shadow-[0_8px_24px_-12px_rgba(25,63,50,0.35)] px-2.5 py-2.5 sm:px-5 sm:py-3.5 text-center text-[12px] sm:text-[16px] font-medium leading-snug text-[#193f32] ${className}`}
+      className={`relative z-10 rounded-[12px] sm:rounded-[14px] bg-white/85 border border-white shadow-[0_8px_24px_-12px_rgba(25,63,50,0.35)] px-2.5 py-2.5 sm:px-5 sm:py-3.5 text-center text-[12px] sm:text-[16px] font-medium leading-snug text-[#12432E] ${className}`}
     >
       <span className="absolute left-3 right-3 top-0 h-[3px] rounded-b-full" style={{ background: NODES[id].color }} aria-hidden />
       {NODES[id].label}
@@ -88,14 +88,14 @@ export function OrgStructureChart() {
       <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-visible" aria-hidden>
         <defs>
           <marker id="org-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0 0 L10 5 L0 10 z" fill="#193f32" />
+            <path d="M0 0 L10 5 L0 10 z" fill="#12432E" />
           </marker>
         </defs>
         {lines.map(({ both, ...xy }, i) => (
           <line
             key={i}
             {...xy}
-            stroke="#193f32"
+            stroke="#12432E"
             strokeOpacity={0.7}
             strokeWidth={1.5}
             markerEnd="url(#org-arrow)"

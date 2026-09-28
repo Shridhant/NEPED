@@ -14,9 +14,9 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
   return (
     <footer id="contact" className="mt-20 border-t border-[#e5e4e4] pt-16 pb-12 bg-[#ffffff]">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#121f1a] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-[#193f32]">
+        <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-[#12432E]">
           {/* Subtle background ambient line */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.03] rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E8A33D]/[0.05] rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
             {/* Brand column */}
@@ -39,7 +39,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
               <p className="text-[15px] text-[#e5e4e4]/80 max-w-md leading-relaxed font-normal">
                 Nagaland Empowerment of People through Economic Development — 30+ years of landmark community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation.
               </p>
-              <div className="text-[11px] font-mono text-[#8d8d8d] space-y-0.5">
+              <div className="text-[11px] font-mono text-[#ffffff]/55 space-y-0.5">
                 <p>Regd. NO. H/RS-4238 (19-04-2005)</p>
                 <p>Regd. NO. HOME/SRC-6751 (07-07-2014)</p>
               </div>
@@ -49,7 +49,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 </TextArrowButton>
                 <Link
                   to={NEPED_ENERGY_PATHS.home}
-                  className="text-[13px] text-[#b75928] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
+                  className="text-[13px] text-[#E8A33D] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <span>Explore NEPeD Clean Energy Wing</span>
                   <span>→</span>
@@ -73,27 +73,27 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 </span>
                 <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
                   <li>
-                    <Link to={NEPED_PATHS.phase("neped-i")} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-i")} className="hover:text-[#E8A33D] transition-colors">
                       NEPED I (Agroforestry)
                     </Link>
                   </li>
                   <li>
-                    <Link to={NEPED_PATHS.phase("neped-ii")} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-ii")} className="hover:text-[#E8A33D] transition-colors">
                       NEPED II (Micro-Credit)
                     </Link>
                   </li>
                   <li>
-                    <Link to={NEPED_PATHS.phase("neped-iii")} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-iii")} className="hover:text-[#E8A33D] transition-colors">
                       NEPED III (Watersheds)
                     </Link>
                   </li>
                   <li>
-                    <Link to={NEPED_PATHS.project("neped-4-forest-biodiversity-management-kfw")} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.project("neped-4-forest-biodiversity-management-kfw")} className="hover:text-[#E8A33D] transition-colors">
                       NEPED IV (KfW FBMP)
                     </Link>
                   </li>
                   <li>
-                    <Link to={NEPED_PATHS.phase("neped-scen")} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.phase("neped-scen")} className="hover:text-[#E8A33D] transition-colors">
                       NEPED-SCEN (SACON)
                     </Link>
                   </li>
@@ -106,22 +106,22 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 </span>
                 <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#aims`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={`${NEPED_PATHS.home}#aims`} className="hover:text-[#E8A33D] transition-colors">
                       7 Core Objectives
                     </Link>
                   </li>
                   <li>
-                    <Link to={NEPED_PATHS.structure} className="hover:text-[#b75928] transition-colors">
+                    <Link to={NEPED_PATHS.structure} className="hover:text-[#E8A33D] transition-colors">
                       Society Structure
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#E8A33D] transition-colors">
                       {totalProjects} Official Projects
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#b75928] transition-colors">
+                    <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#E8A33D] transition-colors">
                       11 Team Leaders Roll
                     </Link>
                   </li>
@@ -139,7 +139,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                   <p>Near Nagaland Civil Secretariat</p>
                   <p>Post Box-231,</p>
                   <p>Kohima-797001, Nagaland</p>
-                  <p className="pt-2 text-[12px] text-[#8d8d8d]">
+                  <p className="pt-2 text-[12px] text-[#ffffff]/55">
                     Email: <span className="text-[#ffffff]">nepednagaland@gmail.com</span>
                   </p>
                 </div>
@@ -148,12 +148,12 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
           </div>
 
           {/* Bottom Hairline & Legal */}
-          <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#8d8d8d]">
+          <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#ffffff]/55">
             <div>
               © 2026 NEPED Society — Autonomous Registered Society under Government of Nagaland
             </div>
             <div className="flex items-center gap-6">
-              <span className="text-[#8d8d8d]">CIDA • ICEF • GoI • KfW Germany</span>
+              <span className="text-[#ffffff]/55">CIDA • ICEF • GoI • KfW Germany</span>
               <a href="#root" className="hover:text-[#ffffff] transition-colors">
                 Back to Top ↑
               </a>

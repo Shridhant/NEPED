@@ -10,11 +10,11 @@ import {
   PiggyBank,
   RefreshCw,
   Leaf,
+  ArrowRight,
 } from "lucide-react";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 // import { HoverRevealList } from "@/components/shared/HoverRevealList"; // used by the hidden section 1A
-import { ProjectCard } from "@/components/neped/ProjectCard";
 import { /* NEPED_SECTION_3, NEPED_PHASES_SECTION, */ NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
 // import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
 // import { WideCardCarousel } from "@/components/shared/WideCardCarousel"; // used by the hidden section 1C
@@ -31,12 +31,11 @@ import { NEPED_SUCCESS_STORIES } from "@/data/neped/nepedSuccessStoriesData";
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
-import { BlurReveal } from "@/components/ui/blur-reveal";
 import { BorderGlow } from "@/components/ui/border-glow";
 import { DotGrid } from "@/components/ui/dot-grid";
 import { useOpenContact } from "@/lib/contact";
 
-const H2 = "text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]";
+const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
 // Innovation cards: white washed with soft NEPED greens; border glow follows the pointer (BorderGlow)
 // const INNOVATION_CARD_BG = [
 //   "radial-gradient(70% 60% at 0% 0%, rgba(159,214,143,0.45) 0%, transparent 70%), linear-gradient(160deg, #eef7ea 0%, #ffffff 60%, #f3f9f0 100%)",
@@ -50,18 +49,17 @@ const INNOVATION_GLOW = {
   glowIntensity: 1.2,
   edgeSensitivity: 28,
   coneSpread: 25,
-  colors: ["#2d7d3a", "#9fd68f", "#2f9aa0"] as [string, string, string],
+  colors: ["#1E6F4C", "#E8A33D", "#12432E"] as [string, string, string],
 };
-// Aims cards: light gradients in matched greens / earth tones (NEPED palette)
-const AIM_PALETTES = [
-  { background: "linear-gradient(145deg, #e4f2d6 0%, #b9dca3 100%)", folderColor: "#f1f8ea", borderColor: "#d6ebc6", textColor: "#23452a", subTextColor: "rgba(35,69,42,0.72)", iconColor: "#2d7d3a" },
-  { background: "linear-gradient(145deg, #dcf1ea 0%, #a9d9c6 100%)", folderColor: "#eef8f4", borderColor: "#c9e8dc", textColor: "#1e4a3c", subTextColor: "rgba(30,74,60,0.72)", iconColor: "#2a7a5f" },
-  { background: "linear-gradient(145deg, #eef2d4 0%, #d3dea0 100%)", folderColor: "#f7f9ea", borderColor: "#e2e8bf", textColor: "#3e4a1a", subTextColor: "rgba(62,74,26,0.72)", iconColor: "#6b7f22" },
-  { background: "linear-gradient(145deg, #f5ecd9 0%, #e2cfa4 100%)", folderColor: "#faf5ea", borderColor: "#ecdfc2", textColor: "#4d3e22", subTextColor: "rgba(77,62,34,0.72)", iconColor: "#8a6a2c" },
-  { background: "linear-gradient(145deg, #e2efe0 0%, #b6d4b2 100%)", folderColor: "#f0f7ef", borderColor: "#cfe3cc", textColor: "#24442a", subTextColor: "rgba(36,68,42,0.72)", iconColor: "#3f7a45" },
-  { background: "linear-gradient(145deg, #daefec 0%, #a6d5cf 100%)", folderColor: "#edf7f6", borderColor: "#c6e6e2", textColor: "#1c4a47", subTextColor: "rgba(28,74,71,0.72)", iconColor: "#237a72" },
-  { background: "linear-gradient(145deg, #e8f4da 0%, #c4e2a3 100%)", folderColor: "#f3f9ec", borderColor: "#d8ebc3", textColor: "#2c4a1c", subTextColor: "rgba(44,74,28,0.72)", iconColor: "#4a8a2a" },
-];
+// Aims cards: one uniform style from the site palette (Mist Wash card, Forest Green icon)
+const AIM_CARD_STYLE = {
+  background: "linear-gradient(145deg, #f3f6f3 0%, #dcebe1 100%)",
+  folderColor: "#ffffff",
+  borderColor: "#dbe5de",
+  textColor: "#1a2e23",
+  subTextColor: "#5b6660",
+  iconColor: "#1e6f4c",
+};
 // Gallery preview: every photo in public/gallery, titled "<State> 01, 02…"; each opens the Gallery page
 const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album) =>
   album.photos.map((photo, i) => ({
@@ -70,7 +68,7 @@ const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album
     href: SHARED_PATHS.gallery,
   })),
 );
-const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#193f32]/10 p-4";
+const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#12432E]/10 p-4";
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
@@ -85,84 +83,71 @@ export function NepedEconomicPage() {
 
   return (
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-4">
-      {/* 1. HERO — inset rounded photo panel with a floating society card (inspired by inspo.webp) */}
-      <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
-        <div data-intro-hero className="relative w-full min-h-[calc(100svh-20px)] sm:min-h-[calc(100svh-32px)] rounded-[24px] sm:rounded-[32px] overflow-hidden bg-[#0f2a21] flex flex-col">
-          {/* Background photo with a minimal dark overlay */}
-          <div className="absolute inset-0 z-0">
-            <img
-              src="/bg2.webp"
-              alt=""
-              className="w-full h-full object-cover saturate-[0.9]"
-            />
-            {/* Minimal dark overlay: just enough for white text */}
-            <div className="absolute inset-0 bg-[#0b1f18]/20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/45 via-[#0b1f18]/15 to-transparent" />
-          </div>
+      {/* 1. HERO — split layout (after cleanenergycouncil.org.au): dark panel with the headline, photo on the right.
+          Phones / tablets: text first, photo below. Text verbatim from the previous hero. */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 bg-(--brand-surface) lg:min-h-[calc(100svh-84px)]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className="lg:col-span-7 flex flex-col justify-center px-4 sm:px-6 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))] lg:pr-12 xl:pr-20 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-16 xl:py-20"
+        >
+          <span className="text-[12px] sm:text-[13px] tracking-[0.04em] text-[#ffffff]/70">
+            Foundational Heritage • Govt. of Nagaland (Est. 1994)
+          </span>
+          <h1 className="mt-5 sm:mt-6 max-w-[760px] font-serif font-normal text-[40px] sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px] leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance">
+            Nagaland Empowerment of People through Economic Development
+          </h1>
+          <p className="mt-6 sm:mt-8 max-w-[620px] text-[17px] sm:text-[19px] xl:text-[21px] leading-[1.45] text-[#ffffff]/90">
+            NEPED — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
+          </p>
 
-          <div className="relative z-10 flex-1 w-full max-w-[1320px] mx-auto px-5 sm:px-10 lg:px-14 pt-28 sm:pt-36 pb-6 sm:pb-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
-            {/* Headline block */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-              className="lg:col-span-7 lg:self-center space-y-6"
-            >
-              <span className="inline-flex items-center px-4 py-2 rounded-[1584px] border border-white/40 bg-white/10 backdrop-blur-sm text-[12px] sm:text-[13px] text-[#ffffff]">
-                Foundational Heritage • Govt. of Nagaland (Est. 1994)
+          <div className="mt-9 sm:mt-10 xl:mt-12 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+            <Link to={NEPED_PATHS.structure} className="group inline-flex items-center gap-5 w-fit">
+              <span className="h-16 w-16 sm:h-20 sm:w-20 2xl:h-24 2xl:w-24 shrink-0 rounded-full bg-(--brand-accent-on-dark) text-(--brand-surface) flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
+                <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-500 ease-in-out group-hover:translate-x-1" strokeWidth={1.5} />
               </span>
-              <BlurReveal as="h1" className="text-[44px] sm:text-[68px] lg:text-[84px] font-light text-[#ffffff] tracking-[-2px] leading-[1.02] [text-shadow:0_2px_24px_rgba(0,0,0,0.18)]">{"NEPED"}</BlurReveal>
-              <p className="max-w-[560px] text-[15px] sm:text-[17px] text-[#ffffff]/95 leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.25)]">
-                Nagaland Empowerment of People through Economic Development (NEPED) — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
-              </p>
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <Link
-                  to={NEPED_PATHS.structure}
-                  className="inline-flex items-center px-6 py-3.5 rounded-[1584px] bg-(--brand-accent) hover:bg-(--brand-accent-hover) text-[15px] font-medium text-[#ffffff] transition-colors"
-                >
-                  Organisational Structure
-                </Link>
-                <Link
-                  to={NEPED_PATHS.projects}
-                  className="inline-flex items-center px-6 py-3.5 rounded-[1584px] border border-white/60 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-[15px] font-medium text-[#ffffff] transition-colors"
-                >
-                  {allProjects.length} Official Projects Archive
-                </Link>
-              </div>
-
-              {/* Society registration details */}
-              <div className="pt-5 mt-2 border-t border-white/25 flex items-center gap-3.5 max-w-[620px]">
-                <div className="h-12 w-12 rounded-[12px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(14,36,25,0.12)]">
-                  <img
-                    src="/NEPED Logo.jpg.webp"
-                    alt="NEPED Heritage & Economic Development Logo"
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <div className="min-w-0 space-y-0.5">
-                  <span className="block text-[14px] font-medium text-[#ffffff]">NEPED Society (Govt. of Nagaland)</span>
-                  <span className="block text-[11.5px] font-mono text-[#ffffff]/80 leading-snug">
-                    Regd. NO. H/RS-4238 (19-04-2005) • Regd. NO. HOME/SRC-6751 (07-07-2014)
-                  </span>
-                  <span className="block text-[12px] text-[#ffffff]/75 leading-snug">
-                    Phase-I: <em>Nagaland Environment Protection and Economic Development through People's Action</em> (CIDA / ICEF)
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Floating project card (same card as the Projects page) */}
-            {allProjects[0] && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="lg:col-span-5 lg:justify-self-end w-full max-w-[400px]"
-              >
-                <ProjectCard project={allProjects[0]} tone="glass" className="shadow-[0_24px_60px_rgba(14,36,25,0.25)]" />
-              </motion.div>
-            )}
+              <span className="text-[16px] sm:text-[18px] text-[#ffffff]">Organisational Structure</span>
+            </Link>
+            <Link
+              to={NEPED_PATHS.projects}
+              className="w-fit text-[15px] sm:text-[16px] text-[#ffffff]/85 underline decoration-white/35 underline-offset-[6px] hover:text-[#ffffff] hover:decoration-white transition-colors duration-300 ease-in-out"
+            >
+              {allProjects.length} Official Projects Archive
+            </Link>
           </div>
+
+          {/* Society registration details */}
+          <div className="mt-12 sm:mt-12 xl:mt-14 pt-6 border-t border-white/15 flex items-start sm:items-center gap-3.5 max-w-[640px]">
+            <div className="h-11 w-11 rounded-[10px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0">
+              <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="max-h-full max-w-full object-contain" />
+            </div>
+            <div className="min-w-0 space-y-0.5">
+              <span className="block text-[14px] font-medium text-[#ffffff]">NEPED Society (Govt. of Nagaland)</span>
+              <span className="block text-[11.5px] font-mono text-[#ffffff]/70 leading-snug">
+                Regd. NO. H/RS-4238 (19-04-2005) • Regd. NO. HOME/SRC-6751 (07-07-2014)
+              </span>
+              <span className="block text-[12px] text-[#ffffff]/65 leading-snug">
+                Phase-I: <em>Nagaland Environment Protection and Economic Development through People's Action</em> (CIDA / ICEF)
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Photo: Dzukou Valley. Resized WebP copies; the browser picks the size for the screen */}
+        <div className="lg:col-span-5 relative overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto">
+          <motion.img
+            src="/dzukou-valley-1400.webp"
+            srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
+            sizes="(min-width: 1024px) 42vw, 100vw"
+            alt="Dzukou Valley, Nagaland"
+            fetchPriority="high"
+            decoding="async"
+            initial={{ scale: 1.06, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.1, ease: [0.23, 1, 0.32, 1] }}
+            className="absolute inset-0 h-full w-full object-cover object-[28%_50%] lg:object-[22%_50%]"
+          />
         </div>
       </section>
 
@@ -172,7 +157,7 @@ export function NepedEconomicPage() {
           <div className="max-w-[760px] space-y-5">
             <SectionPill>Official Project Archive</SectionPill>
             <h2 className={H2}>Projects Implemented Under NEPED</h2>
-            <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
               Comprehensive registry of {allProjects.length} landmark projects across international, national, and state funding agencies.
             </p>
           </div>
@@ -198,7 +183,7 @@ export function NepedEconomicPage() {
             </span>
             <h2 className={H2}>{NEPED_SECTION_3.heading}</h2>
           </div>
-          <p className="max-w-[460px] text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">{NEPED_SECTION_3.intro}</p>
+          <p className="max-w-[460px] text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">{NEPED_SECTION_3.intro}</p>
         </div>
         <HoverRevealList items={NEPED_SECTION_3.items} />
       </motion.section>
@@ -209,13 +194,13 @@ export function NepedEconomicPage() {
         <div className="space-y-5">
           <SectionPill>Origin & Charter</SectionPill>
           <h2 className={H2}>About the NEPED Society</h2>
-          <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+          <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
             Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Govt. of Nagaland in 1994 as an autonomous Government registered society vide Regd.NO.H/RS-4238 Dated 19-04-2005 and Regd.NO.HOME/SRC-6751 Dated 07-07-2014. It was established to bridge developmental gaps in various sectors for economic development and empowerment with a team of multi-disciplinary government employees known as Project Operations Unit (POU) with the aim to carry out studies across Nagaland and identify major issues and to encourage and spread new ideas for sustainable development of the state. The overall aim was envisaged at building a strong resilience towards the emerging Climate Change issues.
           </p>
         </div>
 
         {/* Team members on a rotating ring, with a link to the About Us page */}
-        <div className="mt-10 sm:mt-12 rounded-[24px] bg-[#f5f5f5] overflow-hidden">
+        <div className="mt-10 sm:mt-12 rounded-[24px] bg-[#F3F6F3] overflow-hidden">
           <HaloReel
             items={NEPED_PRESENT_TEAM.map((member) => ({ src: member.image, alt: member.name, caption: member.name }))}
             aria-label="NEPED team members"
@@ -237,9 +222,9 @@ export function NepedEconomicPage() {
             interactiveCenterLabel
             centerLabel={
               <div className="flex flex-col items-center gap-5 text-center">
-                <span className="text-[30px] sm:text-[52px] font-light tracking-[-1.2px] leading-none text-[#000000] whitespace-nowrap">About Us</span>
+                <span className="text-[30px] sm:text-[52px] font-light tracking-[-1.2px] leading-none text-[#1A2E23] whitespace-nowrap">About Us</span>
                 {/* Verbatim from "NEPED PDF.pdf" (About Us); hidden on phones, where the space beside the ring is too narrow */}
-                <p className="hidden sm:block max-w-[400px] text-[15px] text-[#666666] leading-relaxed">
+                <p className="hidden sm:block max-w-[400px] text-[15px] text-[#5B6660] leading-relaxed">
                   NEPED is made up of a team of multi-disciplinary government officers drawn from various government departments, who are called the Project Operations Unit (POU) Members, formed by the Government of Nagaland, with full autonomy.
                 </p>
                 <BookDemoButton to={NEPED_PATHS.about} variant="emerald">Read more</BookDemoButton>
@@ -257,7 +242,7 @@ export function NepedEconomicPage() {
             <SectionPill>{NEPED_PHASES_SECTION.label}</SectionPill>
             <h2 className={H2}>{NEPED_PHASES_SECTION.heading}</h2>
           </div>
-          <p className="max-w-[460px] text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">{NEPED_PHASES_SECTION.intro}</p>
+          <p className="max-w-[460px] text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">{NEPED_PHASES_SECTION.intro}</p>
         </div>
         <WideCardCarousel label="NEPED phases">
           {NEPED_PHASES.map((phase) => (
@@ -269,7 +254,7 @@ export function NepedEconomicPage() {
 
       {/* 1D. SUCCESS STORIES — staggered cards (inspo: "Why Axure"); text verbatim from bigeneped.txt */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <h2 className="text-center text-[36px] sm:text-[56px] font-light text-[#000000] tracking-[-1.4px] leading-[1.05] mb-10 sm:mb-14">
+        <h2 className="text-center text-[36px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05] mb-10 sm:mb-14">
           Success stories
         </h2>
         <StaggeredCards
@@ -296,19 +281,17 @@ export function NepedEconomicPage() {
             {[
               { value: "7.8 million", label: "economic trees", text: "More than 7.8 million economic trees were planted in 5500 hectares with replication ratio of 1:6." },
               { value: "1794", label: "test plots", text: "The project has established 1794 test plots (2 test plots each, measuring 3 hectares per village) in jhum fields in 854 villages across all (8) the districts covering all 16 tribes of Nagaland." },
-              { value: "30", label: "plots of lands", text: "The women, for the first time in the history of Nagaland, had purchased 30 plots of lands by breaking the barriers of the traditional laws.", accent: true },
+              { value: "30", label: "plots of lands", text: "The women, for the first time in the history of Nagaland, had purchased 30 plots of lands by breaking the barriers of the traditional laws." },
               { value: "1.5 lac", label: "trees per year", text: "Another innovation, designed and developed by NEPED is ‘Foddorizer’ which is helping rural farmers in improving feed and feeding practices of pig and reduction in firewood consumption to a tune of 1.5 lac trees per year." },
             ].map((stat) => (
               <div
                 key={stat.label}
-                className={`rounded-[16px] p-7 flex flex-col gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] ${
-                  stat.accent ? "bg-(--brand-accent) text-[#ffffff]" : "bg-[#ffffff] text-[#000000]"
-                }`}
+                className="rounded-[16px] p-7 flex flex-col gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#ffffff] text-[#1A2E23]"
               >
-                <span className={`text-[12px] uppercase font-mono ${stat.accent ? "text-[#ffffff]/80" : "text-[#8d8d8d]"}`}>{stat.label}</span>
+                <span className="text-[12px] uppercase font-mono text-[#5B6660]">{stat.label}</span>
                 <div className="space-y-3">
                   <span className="text-[44px] sm:text-[52px] font-light tracking-[-1.2px] leading-none block">{stat.value}</span>
-                  <p className={`text-[13.5px] leading-relaxed ${stat.accent ? "text-[#ffffff]/85" : "text-[#666666]"}`}>{stat.text}</p>
+                  <p className="text-[13.5px] leading-relaxed text-[#5B6660]">{stat.text}</p>
                 </div>
               </div>
             ))}
@@ -326,24 +309,24 @@ export function NepedEconomicPage() {
           <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
             <div className="relative space-y-5">
               <SectionPill>Indigenous Hardware Innovation</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#193f32] tracking-[-0.72px] leading-tight">
+              <h3 className="text-[28px] sm:text-[34px] font-light text-[#12432E] tracking-[-0.72px] leading-tight">
                 The 'Foddorizer' & Livestock Service Providers (LSPs)
               </h3>
               <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
-                Assisted 4,200 resource-poor families with breeding stock, fattening stock, and low-cost scientific pig sties. To solve feed boiling and firewood depletion, NEPED designed and fabricated the <strong className="font-medium text-[#193f32]">‘Foddorizer’</strong>:
+                Assisted 4,200 resource-poor families with breeding stock, fattening stock, and low-cost scientific pig sties. To solve feed boiling and firewood depletion, NEPED designed and fabricated the <strong className="font-medium text-[#12432E]">‘Foddorizer’</strong>:
               </p>
               <div className="space-y-3 text-[14px] text-[#3f5a4f]">
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
                   <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#193f32]">1.5 Lakh Trees Saved Annually:</strong> Drastically cuts domestic firewood consumption for boiling animal feed.</span>
+                  <span><strong className="font-medium text-[#12432E]">1.5 Lakh Trees Saved Annually:</strong> Drastically cuts domestic firewood consumption for boiling animal feed.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
                   <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#193f32]">LSP Veterinary Model:</strong> Village youth trained as Livestock Service Providers contained Classical Swine Fever (CSF), preventing millions in annual losses.</span>
+                  <span><strong className="font-medium text-[#12432E]">LSP Veterinary Model:</strong> Village youth trained as Livestock Service Providers contained Classical Swine Fever (CSF), preventing millions in annual losses.</span>
                 </div>
               </div>
             </div>
-            <div className="relative pt-6 border-t border-[#193f32]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
+            <div className="relative pt-6 border-t border-[#12432E]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
               Supported by Navajbhai Ratan Tata Trust (NRTT) & State Plan
             </div>
           </div>
@@ -354,28 +337,28 @@ export function NepedEconomicPage() {
           <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
             <div className="relative space-y-5">
               <SectionPill>Community Conservation & SACON</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#193f32] tracking-[-0.72px] leading-tight">
+              <h3 className="text-[28px] sm:text-[34px] font-light text-[#12432E] tracking-[-0.72px] leading-tight">
                 Community Conservation Areas (CCAs) & Blyth's Tragopan
               </h3>
               <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
-                In collaboration with the <strong className="font-medium text-[#193f32]">Salim Ali Center for Ornithology & Natural History (SACON)</strong> and Sir Dorabji Tata Trust, NEPED guided Village Councils in passing resolutions to restrict hunting, fishing, and logging:
+                In collaboration with the <strong className="font-medium text-[#12432E]">Salim Ali Center for Ornithology & Natural History (SACON)</strong> and Sir Dorabji Tata Trust, NEPED guided Village Councils in passing resolutions to restrict hunting, fishing, and logging:
               </p>
               <div className="space-y-3 text-[14px] text-[#3f5a4f]">
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
                   <span className="font-mono text-(--brand-accent) shrink-0">1.</span>
-                  <span>Developing legally protected <strong className="font-medium text-[#193f32]">People's Biodiversity Registers (PBRs)</strong> and resource maps.</span>
+                  <span>Developing legally protected <strong className="font-medium text-[#12432E]">People's Biodiversity Registers (PBRs)</strong> and resource maps.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
                   <span className="font-mono text-(--brand-accent) shrink-0">2.</span>
-                  <span>Documentation of <strong className="font-medium text-[#193f32]">Indigenous Ecological Knowledge (IEK)</strong>.</span>
+                  <span>Documentation of <strong className="font-medium text-[#12432E]">Indigenous Ecological Knowledge (IEK)</strong>.</span>
                 </div>
                 <div className={`${GLASS_ROW} flex items-start gap-3`}>
                   <span className="font-mono text-(--brand-accent) shrink-0">3.</span>
-                  <span>Using <strong className="font-medium text-[#193f32]">Blyth’s Tragopan</strong> (State Bird of Nagaland) as the flagship conservation umbrella species.</span>
+                  <span>Using <strong className="font-medium text-[#12432E]">Blyth’s Tragopan</strong> (State Bird of Nagaland) as the flagship conservation umbrella species.</span>
                 </div>
               </div>
             </div>
-            <div className="relative pt-6 border-t border-[#193f32]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
+            <div className="relative pt-6 border-t border-[#12432E]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
               Sir Dorabji Ratan Tata Trust (SDTT) • NEPED-SCEN
             </div>
           </div>
@@ -388,10 +371,10 @@ export function NepedEconomicPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           <div className="flex flex-col gap-5 px-2 sm:px-0 sm:pr-4 lg:pt-2">
             <SectionPill>02 / Official Objectives</SectionPill>
-            <h2 className="text-[30px] sm:text-[36px] font-light text-[#000000] tracking-[-0.8px] leading-[1.12]">
+            <h2 className="text-[30px] sm:text-[36px] font-light text-[#1A2E23] tracking-[-0.8px] leading-[1.12]">
               Core Aims & Objectives of NEPED
             </h2>
-            <p className="text-[15px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] text-[#5B6660] leading-relaxed">
               These 7 core mandates guide every project implemented by NEPED — shifting the state from subsidy dependence toward self-sustaining community investment.
             </p>
           </div>
@@ -406,7 +389,7 @@ export function NepedEconomicPage() {
           ].map((aim, idx) => (
             <FolderCard
               key={aim.title}
-              card={{ number: String(idx + 1).padStart(2, "0"), title: aim.title, description: aim.text, icon: aim.icon, ...AIM_PALETTES[idx % AIM_PALETTES.length] }}
+              card={{ number: String(idx + 1).padStart(2, "0"), title: aim.title, description: aim.text, icon: aim.icon, ...AIM_CARD_STYLE }}
             />
           ))}
         </div>
@@ -430,14 +413,14 @@ export function NepedEconomicPage() {
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.7)_40%,rgba(255,255,255,0)_75%)]" />
           <div className="relative max-w-[820px] mx-auto flex flex-col items-center gap-6">
             <SectionPill>The Energy Nexus • 108 Hydrogers Deployed</SectionPill>
-            <h2 className="text-[30px] sm:text-[48px] font-light text-[#000000] tracking-[-1.2px] leading-[1.1]">
+            <h2 className="text-[30px] sm:text-[48px] font-light text-[#1A2E23] tracking-[-1.2px] leading-[1.1]">
               From NEPED Agroforestry to NEPeD Clean Energy
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#494949] leading-relaxed max-w-[680px]">
+            <p className="text-[15px] sm:text-[16px] text-[#1A2E23] leading-relaxed max-w-[680px]">
               As agro-enterprises expanded across Nagaland, the emerging need was clean, affordable energy to power post-harvest processing, mechanical grain mills, and cold storage to enable Naga farmers to compete globally.
             </p>
-            <p className="text-[15px] text-[#666666] leading-relaxed font-serif italic max-w-[680px]">
-              “This direct requirement gave birth to <strong className="font-medium not-italic text-[#000000]">NEPeD Energy Division</strong> in 2007, which has now installed 108 indigenous hydrogers across remote mountain rivers.”
+            <p className="text-[15px] text-[#5B6660] leading-relaxed font-serif italic max-w-[680px]">
+              “This direct requirement gave birth to <strong className="font-medium not-italic text-[#1A2E23]">NEPeD Energy Division</strong> in 2007, which has now installed 108 indigenous hydrogers across remote mountain rivers.”
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <ArrowPillButton to={NEPED_ENERGY_PATHS.home} arrow="up-right">Explore NEPeD Energy Portal</ArrowPillButton>

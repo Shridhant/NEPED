@@ -166,7 +166,7 @@ export function SitePreloader() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 0.5, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-8 text-[10px] uppercase tracking-[0.4em] text-[#193f32]"
+              className="mb-8 text-[10px] uppercase tracking-[0.4em] text-[#12432E]"
             >
               NEPED · Nagaland
             </motion.span>
@@ -193,10 +193,10 @@ export function SitePreloader() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.215, 0.61, 0.355, 1], delay: 0.15 } }}
                   exit={{ opacity: 0, y: -20, transition: { duration: 0.3, ease } }}
-                  className={`font-medium text-[#193f32] ${isLast ? "text-5xl md:text-6xl tracking-[-1px]" : "text-3xl md:text-4xl"}`}
+                  className={`font-medium text-[#12432E] ${isLast ? "text-5xl md:text-6xl tracking-[-1px]" : "text-3xl md:text-4xl"}`}
                 >
                   {item.word}
-                  {isLast && <span className="text-[#2d7d3a]">.</span>}
+                  {isLast && <span className="text-[#1E6F4C]">.</span>}
                 </motion.p>
               </AnimatePresence>
             </div>
@@ -205,7 +205,7 @@ export function SitePreloader() {
               {ITEMS.map((_, i) => (
                 <motion.div
                   key={i}
-                  className="h-1.5 rounded-full bg-[#193f32]"
+                  className="h-1.5 rounded-full bg-[#12432E]"
                   animate={{ width: i === index ? 20 : 6, opacity: i <= index ? 0.9 : 0.25 }}
                   transition={{ duration: 0.35 }}
                 />
@@ -229,8 +229,8 @@ export function SitePreloader() {
                 transition={{ duration: MORPH_S, ease }}
                 className="pointer-events-none absolute inset-0"
               >
-                <div className="absolute inset-0 bg-[#0b1f18]/20" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0b1f18]/45 via-[#0b1f18]/15 to-transparent" />
+                <div className="absolute inset-0 bg-[#12432E]/20" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#12432E]/45 via-[#12432E]/15 to-transparent" />
               </motion.div>
             </motion.div>
           )}

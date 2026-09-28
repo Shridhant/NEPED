@@ -28,6 +28,7 @@ export const NEPED_PATHS = {
 
 export const NEPED_ENERGY_PATHS = {
   home: "/neped-energy",
+  /** Page removed; kept only so old links redirect to the NEPeD home */
   about: "/neped-energy/about",
   technology: "/neped-energy/technology",
   product: (slug: string) => `/neped-energy/technology/${slug}`,

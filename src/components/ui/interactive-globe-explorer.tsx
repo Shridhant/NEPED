@@ -42,7 +42,7 @@ export type InteractiveGlobeExplorerProps = {
   className?: string;
 };
 
-const ACCENT = "#b75928";
+const ACCENT = "#1E6F4C";
 
 function useElementSize(ref: React.RefObject<HTMLElement | null>) {
   const [size, setSize] = React.useState(420);
@@ -168,7 +168,7 @@ export function InteractiveGlobeExplorer({
   return (
     <div
       className={cn(
-        "relative flex h-[640px] w-full overflow-hidden rounded-[24px] bg-[#002934] text-[#ffffff]",
+        "relative flex h-[640px] w-full overflow-hidden rounded-[24px] bg-[#12432E] text-[#ffffff]",
         className,
       )}
     >
@@ -185,7 +185,7 @@ export function InteractiveGlobeExplorer({
               <span
                 className={cn(
                   "block pb-1 text-[11px] font-mono tracking-[0.14em] transition-colors duration-300",
-                  groupActive ? "text-[#b75928]" : "text-[#e5e4e4]/45",
+                  groupActive ? "text-[#E8A33D]" : "text-[#e5e4e4]/45",
                 )}
               >
                 {group.name}
@@ -207,7 +207,7 @@ export function InteractiveGlobeExplorer({
                     className={cn(
                       "block w-full py-1 text-left text-[22px] font-light tracking-[-0.4px] leading-tight transition-all duration-300 ease-out md:text-[26px] lg:text-[30px] cursor-pointer",
                       isActive
-                        ? "translate-x-1 text-[#b75928]"
+                        ? "translate-x-1 text-[#E8A33D]"
                         : groupActive
                           ? "text-[#ffffff]/85 hover:text-[#ffffff]"
                           : "text-[#ffffff]/25 hover:text-[#ffffff]/55",
@@ -224,17 +224,17 @@ export function InteractiveGlobeExplorer({
 
       {/* Globe */}
       <div ref={containerRef} className="absolute inset-0 flex items-center justify-center md:relative md:flex-1">
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#002934] via-[#002934]/70 to-[#002934]/20 md:hidden" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#12432E] via-[#12432E]/70 to-[#12432E]/20 md:hidden" />
         <div className="relative">
           <div className="pointer-events-none absolute inset-0 -z-10 blur-3xl">
-            <div className="absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#b75928]/15" />
+            <div className="absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1E6F4C]/15" />
           </div>
           <React.Suspense
             fallback={
               <div className="flex items-center justify-center" style={{ width: globeSize, height: globeSize }}>
                 <div className="relative h-12 w-12">
-                  <div className="absolute inset-0 animate-ping rounded-full bg-[#b75928]/30" />
-                  <div className="absolute inset-2 animate-pulse rounded-full bg-[#b75928]/50" />
+                  <div className="absolute inset-0 animate-ping rounded-full bg-[#1E6F4C]/30" />
+                  <div className="absolute inset-2 animate-pulse rounded-full bg-[#1E6F4C]/50" />
                 </div>
               </div>
             }
@@ -261,7 +261,7 @@ export function InteractiveGlobeExplorer({
               ringsData={activeGroup ? [activeGroup] : []}
               ringLat="lat"
               ringLng="lng"
-              ringColor={() => (t: number) => `rgba(183,89,40,${1 - t})`}
+              ringColor={() => (t: number) => `rgba(30,111,76,${1 - t})`}
               ringMaxRadius={ringRadius}
               ringPropagationSpeed={1.2}
               ringRepeatPeriod={900}

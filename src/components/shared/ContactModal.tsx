@@ -59,7 +59,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-modal-heading"
-            className="relative w-full max-w-[560px] max-h-[90vh] overflow-y-auto bg-[#ffffff] text-[#000000] rounded-[16px] border border-[#e5e4e4] shadow-2xl"
+            className="relative w-full max-w-[560px] max-h-[90vh] overflow-y-auto bg-[#ffffff] text-[#1A2E23] rounded-[16px] border border-[#e5e4e4] shadow-2xl"
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
@@ -69,29 +69,29 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               type="button"
               onClick={onClose}
               aria-label="Close contact form"
-              className="absolute top-5 right-5 h-9 w-9 flex items-center justify-center rounded-full text-[#8d8d8d] hover:text-[#000000] hover:bg-[#f5f5f5] transition-colors cursor-pointer"
+              className="absolute top-5 right-5 h-9 w-9 flex items-center justify-center rounded-full text-[#5B6660] hover:text-[#1A2E23] hover:bg-[#F3F6F3] transition-colors cursor-pointer"
             >
               <X size={18} />
             </button>
 
             <div className="p-8 sm:p-10 space-y-8">
               <div className="space-y-2">
-                <span className="text-[11px] font-mono tracking-wider text-[#8d8d8d]">
+                <span className="text-[11px] font-mono tracking-wider text-[#5B6660]">
                   NEPED SOCIETY &amp; NEPeD ENERGY DIVISION
                 </span>
                 <h2 id="contact-modal-heading" className="text-[28px] sm:text-[32px] font-light tracking-[-0.6px]">
                   Get in Touch
                 </h2>
-                <p className="text-[14px] text-[#666666] leading-relaxed">
+                <p className="text-[14px] text-[#5B6660] leading-relaxed">
                   Reach out about programmes, partnerships, or field deployments — whichever wing your query belongs to.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-[#f5f5f5] border border-[#e5e4e4] rounded-[8px]">
-                  <MapPin size={16} className="text-[#b75928] mt-0.5 shrink-0" />
-                  <div className="text-[13px] text-[#494949] leading-relaxed">
-                    <p className="text-[#000000] font-medium">NEPED Secretariat</p>
+                <div className="flex items-start gap-3 p-4 bg-[#F3F6F3] border border-[#e5e4e4] rounded-[8px]">
+                  <MapPin size={16} className="text-[#1E6F4C] mt-0.5 shrink-0" />
+                  <div className="text-[13px] text-[#1A2E23] leading-relaxed">
+                    <p className="text-[#1A2E23] font-medium">NEPED Secretariat</p>
                     <p>Capital Convention Centre</p>
                     <p>Near Nagaland Civil Secretariat</p>
                     <p>Post Box-231,</p>
@@ -100,11 +100,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </div>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="flex items-start gap-3 p-4 bg-[#f5f5f5] border border-[#e5e4e4] rounded-[8px] hover:border-[#b75928]/50 transition-colors"
+                  className="flex items-start gap-3 p-4 bg-[#F3F6F3] border border-[#e5e4e4] rounded-[8px] hover:border-[#1E6F4C]/50 transition-colors"
                 >
-                  <Mail size={16} className="text-[#b75928] mt-0.5 shrink-0" />
-                  <div className="text-[13px] text-[#494949] leading-relaxed">
-                    <p className="text-[#000000] font-medium">Email Us</p>
+                  <Mail size={16} className="text-[#1E6F4C] mt-0.5 shrink-0" />
+                  <div className="text-[13px] text-[#1A2E23] leading-relaxed">
+                    <p className="text-[#1A2E23] font-medium">Email Us</p>
                     <p className="break-all">{CONTACT_EMAIL}</p>
                   </div>
                 </a>
@@ -118,7 +118,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     placeholder="Your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#000000] placeholder:text-[#8d8d8d] focus:outline-none focus:border-[#b75928] transition-colors"
+                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors"
                   />
                   <input
                     type="email"
@@ -126,7 +126,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     placeholder="Your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#000000] placeholder:text-[#8d8d8d] focus:outline-none focus:border-[#b75928] transition-colors"
+                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors"
                   />
                 </div>
                 <textarea
@@ -135,11 +135,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   placeholder="How can we help?"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#000000] placeholder:text-[#8d8d8d] focus:outline-none focus:border-[#b75928] transition-colors resize-none"
+                  className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors resize-none"
                 />
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#b75928] hover:bg-[#a34e22] text-white text-[14px] font-medium px-6 py-3 rounded-[80px] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1E6F4C] hover:bg-[#185A3E] text-white text-[14px] font-medium px-6 py-3 rounded-[80px] transition-colors cursor-pointer"
                 >
                   <span>Send Message</span>
                   <Send size={14} />

@@ -22,10 +22,10 @@ export function StaggeredCards({ items, className }: { items: StaggeredCardItem[
           key={item.to}
           to={item.to}
           style={{ "--step": idx } as CSSProperties}
-          className="group lg:mt-[calc(var(--step)*6rem)] h-[320px] sm:h-[360px] bg-[#f5f5f5] rounded-[16px] p-6 sm:p-8 flex flex-col justify-between gap-8 border border-transparent hover:border-[#e5e4e4] transition-colors"
+          className="group lg:mt-[calc(var(--step)*6rem)] h-[320px] sm:h-[360px] bg-[#F3F6F3] rounded-[16px] p-6 sm:p-8 flex flex-col justify-between gap-8 border border-transparent hover:border-[#e5e4e4] transition-colors"
         >
           <div className="flex items-start justify-between gap-4">
-            <h3 className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.6px] leading-tight">
+            <h3 className="text-[24px] sm:text-[28px] font-light text-[#1A2E23] tracking-[-0.6px] leading-tight">
               <span className="block font-mono text-[14px] text-(--brand-accent) mb-2">{String(idx + 1).padStart(2, "0")}</span>
               <BlurReveal as="span" inView>{item.title}</BlurReveal>
             </h3>
@@ -33,7 +33,7 @@ export function StaggeredCards({ items, className }: { items: StaggeredCardItem[
               <ArrowUpRight size={18} />
             </span>
           </div>
-          <p className="text-[15px] text-[#494949] leading-relaxed line-clamp-4">{item.text}</p>
+          <p className="text-[15px] text-[#1A2E23] leading-relaxed line-clamp-4">{item.text}</p>
         </Link>
       ))}
     </div>

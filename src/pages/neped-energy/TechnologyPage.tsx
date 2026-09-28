@@ -122,22 +122,22 @@ export function TechnologyPage() {
   return (
     <div className="w-full space-y-20 sm:space-y-28 pb-20">
       {/* 1. HERO — centred headline over full-bleed photo, glass info cards along the bottom (NEPeD overview style) */}
-      <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-[#070707]">
+      <section className="relative w-full min-h-[calc(100svh-64px)] lg:min-h-[calc(100svh-84px)] flex flex-col overflow-hidden bg-[#12432E]">
         <div className="absolute inset-0 z-0">
           <img
             src="/microgrid.webp"
             alt="CERES Centre of Excellence for Renewable Energy Studies"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#070707]/35" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070707]/60 via-[#070707]/15 to-[#070707]/60" />
+          <div className="absolute inset-0 bg-[#12432E]/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#12432E]/60 via-[#12432E]/15 to-[#12432E]/60" />
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-          className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-28 sm:pt-32 pb-10"
+          className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-12 sm:pt-16 pb-10"
         >
           <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
             <Link
@@ -148,7 +148,7 @@ export function TechnologyPage() {
               <span>NEPeD Energy Overview</span>
             </Link>
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.12] border border-white/25 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#b75928] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E6F4C] animate-pulse" />
               <span className="text-[11px] sm:text-[12px] tracking-[0.14em] text-[#ffffff] font-mono">
                 Centre of Excellence for Renewable Energy Studies (CERES)
               </span>
@@ -185,7 +185,7 @@ export function TechnologyPage() {
             { icon: Landmark, text: "Govt. of Nagaland" },
           ].map(({ icon: Icon, text }) => (
             <div key={text} className={`${GLASS_CARD} p-5 sm:p-6 flex items-center gap-4 text-left`}>
-              <span className="w-12 h-12 rounded-full bg-[#b75928] text-[#ffffff] flex items-center justify-center shrink-0">
+              <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0">
                 <Icon size={20} />
               </span>
               <span className="text-[16px] sm:text-[18px] font-light text-[#ffffff] tracking-[-0.3px] leading-snug">{text}</span>
@@ -198,11 +198,11 @@ export function TechnologyPage() {
       <motion.section {...fadeUpOnView} id="ceres-objectives" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="max-w-[760px] space-y-5">
           <SectionPill>Institutional Charter • Industrial Estate, Dimapur</SectionPill>
-          <h2 className="text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]">
+          <h2 className="text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]">
             Objectives of CERES
           </h2>
-          <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
-            <strong className="font-medium text-[#262626]">NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.</strong> CERES was set up with the following objectives:
+          <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
+            <strong className="font-medium text-[#1A2E23]">NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.</strong> CERES was set up with the following objectives:
           </p>
         </div>
 
@@ -218,14 +218,14 @@ export function TechnologyPage() {
         <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4] flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="max-w-[760px] space-y-5">
             <SectionPill>CERES Production Lineup</SectionPill>
-            <h2 className="text-[30px] sm:text-[44px] font-light text-[#000000] tracking-[-1px] leading-[1.12]">
+            <h2 className="text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]">
               Engineered Clean Tech Products
             </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
               Hardware designed, manufactured, and tested at the CERES facility in Dimapur. Click any card to inspect full technical data sheets.
             </p>
           </div>
-          <span className="text-[12px] font-mono text-[#8d8d8d] shrink-0">
+          <span className="text-[12px] font-mono text-[#5B6660] shrink-0">
             {PRODUCT_CARDS.length} Official Hardware Products
           </span>
         </div>
@@ -248,7 +248,7 @@ export function TechnologyPage() {
       </motion.section>
 
       {/* 4. TECHNICAL SPECIFICATIONS — dark band (What is Hydroger? style) */}
-      <section id="specs" className="w-full bg-[#002934]">
+      <section id="specs" className="w-full bg-[#12432E]">
         <motion.div {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6 py-20 sm:py-28">
           <div className="flex flex-col items-center text-center gap-6">
             <SectionPill dark>Turbine Engineering Specs</SectionPill>
@@ -262,7 +262,7 @@ export function TechnologyPage() {
                   type="button"
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 sm:px-5 py-2 rounded-[1584px] text-[13px] font-medium transition-all cursor-pointer ${
-                    activeTab === tab ? "bg-[#b75928] text-[#ffffff]" : "text-[#e5e4e4]/80 hover:text-[#ffffff]"
+                    activeTab === tab ? "bg-[#1E6F4C] text-[#ffffff]" : "text-[#e5e4e4]/80 hover:text-[#ffffff]"
                   }`}
                 >
                   {tab.toUpperCase()} Unit
@@ -273,17 +273,17 @@ export function TechnologyPage() {
 
           <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
             <div className="lg:col-span-5 bg-[#ffffff] rounded-[16px] p-7 sm:p-8 flex flex-col gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
-              <h3 className="text-[24px] sm:text-[28px] font-light text-[#000000] tracking-[-0.5px] leading-tight">{currentSpec.name}</h3>
-              <p className="text-[15px] text-[#666666] leading-relaxed">{currentSpec.ideal}</p>
-              <div className="bg-[#f5f5f5] rounded-[12px] p-5 space-y-2 text-[14px]">
-                <div className="text-[#8d8d8d] uppercase text-[11px] font-mono">Portability Profile</div>
-                <p className="text-[#000000] font-medium">{currentSpec.weight}</p>
-                <p className="text-[#666666]">Designed for remote mountain transport without heavy machinery.</p>
+              <h3 className="text-[24px] sm:text-[28px] font-light text-[#1A2E23] tracking-[-0.5px] leading-tight">{currentSpec.name}</h3>
+              <p className="text-[15px] text-[#5B6660] leading-relaxed">{currentSpec.ideal}</p>
+              <div className="bg-[#F3F6F3] rounded-[12px] p-5 space-y-2 text-[14px]">
+                <div className="text-[#5B6660] uppercase text-[11px] font-mono">Portability Profile</div>
+                <p className="text-[#1A2E23] font-medium">{currentSpec.weight}</p>
+                <p className="text-[#5B6660]">Designed for remote mountain transport without heavy machinery.</p>
               </div>
               <div className="mt-auto pt-2">
                 <Link
                   to={NEPED_ENERGY_PATHS.product("hydroger-turbine-system")}
-                  className="group inline-flex items-center gap-2 text-[14px] font-medium text-[#b75928] hover:underline"
+                  className="group inline-flex items-center gap-2 text-[14px] font-medium text-[#1E6F4C] hover:underline"
                 >
                   <span>Open Full Hydroger Specification Page</span>
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
@@ -340,9 +340,9 @@ export function TechnologyPage() {
           ].map((card: { label: string; title: string; body: string; to?: string; cta?: string }) => (
             <div
               key={card.title}
-              className="relative rounded-[16px] overflow-hidden bg-[#002934] p-7 sm:p-10 flex flex-col justify-between gap-10 min-h-[340px]"
+              className="relative rounded-[16px] overflow-hidden bg-[#12432E] p-7 sm:p-10 flex flex-col justify-between gap-10 min-h-[340px]"
             >
-              <div className="absolute top-0 right-0 w-[260px] h-[260px] bg-[#b75928]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-[260px] h-[260px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
               <div className="relative space-y-4">
                 <SectionPill dark>{card.label}</SectionPill>
                 <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] leading-tight">{card.title}</h3>

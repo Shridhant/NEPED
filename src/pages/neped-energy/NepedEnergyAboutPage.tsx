@@ -43,14 +43,14 @@ export function NepedEnergyAboutPage() {
   return (
     <div className="w-full space-y-20 sm:space-y-28">
       {/* 1. FULL-BLEED SECTION HERO */}
-      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#070707] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
+      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] bg-[#12432E] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/hero-windmill.webp"
             alt="NEPeD Inception History"
             className="w-full h-full object-cover opacity-50 filter brightness-[0.7] contrast-[1.1]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-transparent to-[#070707]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#12432E] via-transparent to-[#12432E]/40" />
         </div>
 
         <motion.div
@@ -92,27 +92,27 @@ export function NepedEnergyAboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Vision Card */}
-          <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+          <div className="bg-[#F3F6F3] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
             <div>
-              <span className="text-[12px] font-mono text-[#666666] uppercase tracking-wider">
+              <span className="text-[12px] font-mono text-[#5B6660] uppercase tracking-wider">
                 Our Vision
               </span>
-              <h3 className="text-[28px] sm:text-[36px] font-light text-[#000000] tracking-[-0.72px] mt-3">
+              <h3 className="text-[28px] sm:text-[36px] font-light text-[#1A2E23] tracking-[-0.72px] mt-3">
                 A Vibrant Himalayan Economy
               </h3>
-              <p className="font-serif italic text-[16px] sm:text-[17px] text-[#262626] leading-[1.6] mt-4">
+              <p className="font-serif italic text-[16px] sm:text-[17px] text-[#1A2E23] leading-[1.6] mt-4">
                 “Nagaland has the unique distinction where people are empowered and have sustainable livelihoods by being part of a vibrant economy, driven by locally generated eco-friendly power that is being used for accelerated development.”
               </p>
             </div>
-            <div className="pt-6 border-t border-[#000000]/10 text-[12px] text-[#666666]">
+            <div className="pt-6 border-t border-[#000000]/10 text-[12px] text-[#5B6660]">
               Leader in Sustainable Development
             </div>
           </div>
 
           {/* Mission Card */}
-          <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
             <div>
-              <span className="text-[12px] font-mono text-[#8d8d8d] uppercase tracking-wider">
+              <span className="text-[12px] font-mono text-[#ffffff]/60 uppercase tracking-wider">
                 Our Mission
               </span>
               <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] mt-3">
@@ -122,7 +122,7 @@ export function NepedEnergyAboutPage() {
                 “To evolve a bottom-up approach to empower stakeholders to become partners in development, create awareness about green-energy utilization, and judiciously create need-based infrastructure that becomes a replicable model.”
               </p>
             </div>
-            <div className="pt-6 border-t border-white/10 text-[12px] text-[#8d8d8d]">
+            <div className="pt-6 border-t border-white/10 text-[12px] text-[#ffffff]/60">
               Transparent & Replicable Development Model
             </div>
           </div>
@@ -137,7 +137,7 @@ export function NepedEnergyAboutPage() {
             <SectionHeading size="md">
               Core Aims & Technology Objectives
             </SectionHeading>
-            <p className="text-[15px] text-[#666666] leading-relaxed">
+            <p className="text-[15px] text-[#5B6660] leading-relaxed">
               Guiding principles framed at inception in 2007 to ensure technical precision, environmental protection, and community sovereignty.
             </p>
           </div>
@@ -178,7 +178,7 @@ export function NepedEnergyAboutPage() {
           <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 space-y-6">
             <div>
               <SectionLabel>2007 Founding Unit</SectionLabel>
-              <h3 className="text-[28px] font-light text-[#000000] tracking-[-0.72px] mt-1">
+              <h3 className="text-[28px] font-light text-[#1A2E23] tracking-[-0.72px] mt-1">
                 Inception POU Cell
               </h3>
             </div>
@@ -188,8 +188,8 @@ export function NepedEnergyAboutPage() {
                   key={mem.name}
                   className="p-3 bg-[#ffffff] border border-[#e5e4e4] rounded-[6px]"
                 >
-                  <h4 className="text-[14px] font-medium text-[#000000]">{mem.name}</h4>
-                  <span className="text-[11px] text-[#8d8d8d]">{mem.role}</span>
+                  <h4 className="text-[14px] font-medium text-[#1A2E23]">{mem.name}</h4>
+                  <span className="text-[11px] text-[#5B6660]">{mem.role}</span>
                 </div>
               ))}
             </div>
@@ -199,9 +199,9 @@ export function NepedEnergyAboutPage() {
 
       {/* 6. IN MEMORIAM EXHIBIT (Dark gallery tribute card) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#1c1c1c] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
+        <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-xl mb-8">
-            <span className="text-[12px] uppercase tracking-[0.12px] text-[#b75928]">
+            <span className="text-[12px] uppercase tracking-[0.12px] text-[#E8A33D]">
               In Memoriam & Dedication
             </span>
             <h3 className="text-[32px] sm:text-[40px] font-light text-[#ffffff] tracking-[-0.72px] mt-2">
@@ -216,11 +216,11 @@ export function NepedEnergyAboutPage() {
             {memoriam.map((item) => (
               <div
                 key={item.name}
-                className="bg-[#262626] border border-white/10 rounded-[8px] p-6 space-y-3"
+                className="bg-[#12432E] border border-white/10 rounded-[8px] p-6 space-y-3"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#b75928]">{item.life}</span>
-                  <span className="text-[11px] text-[#8d8d8d]">Honour Roll</span>
+                  <span className="text-[11px] font-mono text-[#E8A33D]">{item.life}</span>
+                  <span className="text-[11px] text-[#ffffff]/60">Honour Roll</span>
                 </div>
                 <h4 className="text-[18px] font-medium text-[#ffffff]">{item.name}</h4>
                 <p className="text-[12px] text-[#e5e4e4]/70">{item.role}</p>

@@ -13,7 +13,7 @@ export function SectionLabel({
   return (
     <div
       className={`text-[12px] font-normal tracking-[0.12px] uppercase ${
-        dark ? "text-[#8d8d8d]" : "text-[#8d8d8d]"
+        dark ? "text-[#5B6660]" : "text-[#5B6660]"
       } ${className}`}
     >
       {children}
@@ -42,7 +42,7 @@ export function SectionHeading({
   return (
     <h2
       className={`font-light font-sans ${sizeClasses} ${
-        dark ? "text-[#ffffff]" : "text-[#000000]"
+        dark ? "text-[#ffffff]" : "text-[#1A2E23]"
       } ${className}`}
     >
       {children}
@@ -67,7 +67,7 @@ export function TextArrowButton({
   variant?: "pill" | "inline";
   className?: string;
 }) {
-  const colorClass = dark ? "text-[#ffffff]" : "text-[#000000]";
+  const colorClass = dark ? "text-[#ffffff]" : "text-[#1A2E23]";
   const borderClass = variant === "pill" ? (dark ? "border border-white/20 hover:border-white/60" : "border border-black/20 hover:border-black/60") : "";
   const paddingClass = variant === "pill" ? "px-[16px] py-[10px] sm:py-[13px] rounded-[80px]" : "py-1";
 
@@ -104,7 +104,7 @@ export function FilledDarkButton({
 }) {
   const content = (
     <span
-      className={`inline-flex items-center justify-center bg-[#1c1c1c] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px] rounded-[80px] hover:bg-[#070707] transition-all duration-200 active:scale-[0.97] select-none tracking-[0.15px] ${className}`}
+      className={`inline-flex items-center justify-center bg-[#12432E] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px] rounded-[80px] hover:bg-[#12432E] transition-all duration-200 active:scale-[0.97] select-none tracking-[0.15px] ${className}`}
     >
       {children}
     </span>
@@ -135,19 +135,19 @@ export function NumberedItem({
   const content = (
     <div className="group border-t border-[#e5e4e4] py-6 sm:py-7 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 transition-colors duration-200 hover:bg-[#e5e4e4]/20 px-2 rounded-[8px]">
       <div className="flex items-baseline gap-6 sm:gap-10">
-        <span className="text-[12px] text-[#8d8d8d] font-normal w-6 shrink-0">{num}</span>
+        <span className="text-[12px] text-[#5B6660] font-normal w-6 shrink-0">{num}</span>
         <div>
-          <h3 className="text-[18px] sm:text-[20px] font-normal text-[#000000] tracking-[-0.2px] group-hover:text-[#b75928] transition-colors">
+          <h3 className="text-[18px] sm:text-[20px] font-normal text-[#1A2E23] tracking-[-0.2px] group-hover:text-[#1E6F4C] transition-colors">
             {title}
           </h3>
           {subtitle && (
-            <p className="text-[14px] text-[#666666] mt-1 max-w-[500px] leading-relaxed">
+            <p className="text-[14px] text-[#5B6660] mt-1 max-w-[500px] leading-relaxed">
               {subtitle}
             </p>
           )}
         </div>
       </div>
-      <span className="text-[#8d8d8d] text-[16px] group-hover:text-[#000000] group-hover:translate-x-1 transition-all pl-12 sm:pl-0">
+      <span className="text-[#5B6660] text-[16px] group-hover:text-[#1A2E23] group-hover:translate-x-1 transition-all pl-12 sm:pl-0">
         →
       </span>
     </div>
@@ -176,7 +176,7 @@ export function PillBadge({
       className={`inline-flex items-center text-[12px] font-medium px-[14px] py-[6px] rounded-[1584px] tracking-[0.12px] ${
         dark
           ? "bg-white/10 text-[#ffffff] border border-white/15"
-          : "bg-[#e5e4e4] text-[#000000]"
+          : "bg-[#e5e4e4] text-[#1A2E23]"
       } ${className}`}
     >
       {children}
@@ -197,13 +197,13 @@ export function LoraEditorialBlock({
 }) {
   return (
     <div className={`max-w-[640px] ${className}`}>
-      <blockquote className="font-serif italic text-[16px] sm:text-[18px] text-[#000000] leading-[1.6] tracking-[0.011em]">
+      <blockquote className="font-serif italic text-[16px] sm:text-[18px] text-[#1A2E23] leading-[1.6] tracking-[0.011em]">
         “{children}”
       </blockquote>
       {author && (
         <div className="mt-4 pt-3 border-t border-[#e5e4e4] flex items-center justify-between text-[12px]">
-          <span className="font-medium text-[#000000]">{author}</span>
-          <span className="text-[#8d8d8d]">{role}</span>
+          <span className="font-medium text-[#1A2E23]">{author}</span>
+          <span className="text-[#5B6660]">{role}</span>
         </div>
       )}
     </div>

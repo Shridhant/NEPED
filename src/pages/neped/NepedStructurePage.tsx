@@ -20,10 +20,10 @@ export function NepedStructurePage() {
   }, []);
 
   return (
-    <div className="theme-neped w-full space-y-10 sm:space-y-14 pt-28 sm:pt-36 pb-24">
+    <div className="theme-neped w-full space-y-10 sm:space-y-14 pt-10 sm:pt-14 pb-24">
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6 space-y-6">
         <SectionPill>NEPED</SectionPill>
-        <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#000000] tracking-[-1.55px] leading-[1.05]">
+        <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#1A2E23] tracking-[-1.55px] leading-[1.05]">
           {"Organisational Structure"}
         </BlurReveal>
       </section>

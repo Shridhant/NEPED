@@ -15,19 +15,19 @@ export function ProjectCard({ project: proj, className, tone = "dark" }: { proje
       className={cn(
         "group h-full rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1",
         glass
-          ? "rounded-[16px] border border-white/25 bg-[#0b1f18]/55 backdrop-blur-xl backdrop-saturate-150 hover:bg-[#0b1f18]/60"
-          : "border border-[#1c1c1c]/10 bg-[#070707] shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25",
+          ? "rounded-[16px] border border-white/25 bg-[#12432E]/55 backdrop-blur-xl backdrop-saturate-150 hover:bg-[#12432E]/60"
+          : "border border-[#1c1c1c]/10 bg-[#12432E] shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25",
         className,
       )}
     >
       {/* Image banner with phase tag + period */}
-      <div className="relative h-[130px] overflow-hidden bg-[#1c1c1c]">
+      <div className="relative h-[130px] overflow-hidden bg-[#12432E]">
         <img
           src={proj.heroImage}
           alt={proj.name}
           className="h-full w-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <div className={`absolute inset-0 bg-gradient-to-t ${glass ? "from-black/45 via-black/10" : "from-[#070707] via-[#070707]/20"} to-transparent`} />
+        <div className={`absolute inset-0 bg-gradient-to-t ${glass ? "from-black/45 via-black/10" : "from-[#12432E] via-[#12432E]/20"} to-transparent`} />
         <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
           <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
             {proj.phase}
@@ -51,21 +51,21 @@ export function ProjectCard({ project: proj, className, tone = "dark" }: { proje
               {proj.objective}
             </p>
           ) : (
-            <p className="text-[12.5px] italic leading-relaxed text-[#8d8d8d]">
+            <p className="text-[12.5px] italic leading-relaxed text-[#ffffff]/60">
               No objective statement recorded in the source register for this project.
             </p>
           )}
         </div>
 
         <div className="pt-3 border-t border-white/10 space-y-3">
-          <div className="text-[11px] text-[#8d8d8d]">
-            <span className="font-mono uppercase tracking-wider text-[10px] text-[#8d8d8d]/80 block">
+          <div className="text-[11px] text-[#ffffff]/60">
+            <span className="font-mono uppercase tracking-wider text-[10px] text-[#ffffff]/50 block">
               Funding Agency
             </span>
             <span className="text-[#e5e4e4]/90 font-medium">{proj.fundingAgency}</span>
           </div>
 
-          <div className="pt-1 flex items-center justify-between text-[12.5px] sm:text-[13px] text-[#ffffff] group-hover:text-[#b75928] transition-colors">
+          <div className="pt-1 flex items-center justify-between text-[12.5px] sm:text-[13px] text-[#ffffff] group-hover:text-[#E8A33D] transition-colors">
             <span className="font-medium">View Project Details</span>
             <span className="text-[15px] transition-transform duration-200 group-hover:translate-x-1">→</span>
           </div>
