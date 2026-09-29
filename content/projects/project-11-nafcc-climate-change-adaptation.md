@@ -6,6 +6,7 @@ name: "NAFCC – National Adaptation Fund for Climate Change"
 period: "2018 – 26"
 category: "Biodiversity & Climate"
 fundingAgency: "Ministry of Agriculture, Govt. of India"
+implementedBy: "NEPED, NEPeD"
 objective: ""
 heroImage: "/forest.webp"
 ---

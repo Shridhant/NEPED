@@ -6,6 +6,7 @@ name: "Value Addition to Non-Timber Forest Products (NTFP)"
 period: "2022 – 23"
 category: "Agroforestry"
 fundingAgency: "CCS National Institute of Agricultural Marketing (CCS NIAM), Ministry of Agriculture, Govt. of India"
+implementedBy: "NEPED"
 objective: "Sensitize farmers about the marketing activities of NTFP products."
 heroImage: "/mountain-windmills.webp"
 ---

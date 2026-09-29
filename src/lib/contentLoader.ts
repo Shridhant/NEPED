@@ -1,4 +1,4 @@
-import { NEPED_PROJECTS, type NepedProject } from "@/data/neped/nepedProjectsData";
+import { NEPED_PROJECTS, type NepedProject, type ProjectOrg } from "@/data/neped/nepedProjectsData";
 import { BLOG_POSTS, type BlogPostData } from "@/data/shared/blogData";
 import { GALLERY_ALBUMS, type GalleryAlbum } from "@/data/shared/galleryData";
 
@@ -192,6 +192,11 @@ export function loadAllProjects(): NepedProject[] {
         fundingAgency: frontmatter.fundingAgency || "",
         heroImage: frontmatter.heroImage || "/forest.webp",
         objective: frontmatter.objective || "",
+        // "NEPED", "NEPeD" or "NEPED, NEPeD"
+        implementedBy: String(frontmatter.implementedBy || "NEPED")
+          .split(",")
+          .map((o: string) => o.trim())
+          .filter((o: string): o is ProjectOrg => o === "NEPED" || o === "NEPeD"),
       };
     });
 

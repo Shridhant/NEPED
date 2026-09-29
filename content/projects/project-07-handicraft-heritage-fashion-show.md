@@ -6,6 +6,7 @@ name: "Product Promotion Fashion Show"
 period: "2021 – 22"
 category: "Handicrafts & Livelihood"
 fundingAgency: "Ministry of Textiles, Govt. of India"
+implementedBy: "NEPED"
 objective: "To spread awareness about Indian handicrafts, the heritage, culture and tradition associated with it."
 heroImage: "/52 NEPeD members at Nagaland Youth Summit 2016.webp"
 ---

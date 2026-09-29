@@ -11,6 +11,7 @@ import {
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_PATHS } from "@/routes/paths";
 import { BlurReveal } from "@/components/ui/blur-reveal";
+import { ProjectOrgBadges } from "@/components/neped/ProjectOrgBadges";
 
 export function NepedProjectDetailPage() {
   const { idOrSlug } = useParams<{ idOrSlug: string }>();
@@ -110,6 +111,7 @@ export function NepedProjectDetailPage() {
 
           {/* Card Body */}
           <div className="p-6 sm:p-8 space-y-5">
+            <ProjectOrgBadges project={project} dark />
             <BlurReveal as="h1" className="text-[24px] sm:text-[30px] font-light leading-[1.2] text-[#ffffff] tracking-[-0.5px]">{project.name}</BlurReveal>
 
             {project.objective ? (
@@ -202,6 +204,7 @@ export function NepedProjectDetailPage() {
                   <span className="text-[11px] font-mono text-[#5B6660]">{proj.period}</span>
                   <PillBadge>{proj.category}</PillBadge>
                 </div>
+                <ProjectOrgBadges project={proj} className="mb-3" />
                 <h3 className="text-[17px] font-medium text-[#1A2E23] group-hover:text-[#1E6F4C] transition-colors tracking-tight leading-snug">
                   {proj.name}
                 </h3>

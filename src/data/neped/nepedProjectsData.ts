@@ -8,7 +8,11 @@ export interface NepedProject {
   category: "Agroforestry" | "Biodiversity & Climate" | "Handicrafts & Livelihood" | "Conservation";
   objective: string;
   heroImage: string;
+  /** Who implemented it, per "NEPED PDF.pdf" ("Projects Implemented under NEPED" / "under NEPeD"). Missing = NEPED. */
+  implementedBy?: ProjectOrg[];
 }
+
+export type ProjectOrg = "NEPED" | "NEPeD";
 
 // Verbatim from "Projects Implemented under NEPED" (source document table).
 // Only fields present in that table are stored here — no invented stats, milestones, or narrative.

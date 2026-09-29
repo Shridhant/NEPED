@@ -11,6 +11,8 @@ import {
   RefreshCw,
   Leaf,
   ArrowRight,
+  Zap,
+  FlaskConical,
 } from "lucide-react";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
@@ -34,6 +36,7 @@ import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 import { BorderGlow } from "@/components/ui/border-glow";
 import { DotGrid } from "@/components/ui/dot-grid";
 import { useOpenContact } from "@/lib/contact";
+import { PartnerBand } from "@/components/shared/PartnerBand";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
 // Innovation cards: white washed with soft NEPED greens; border glow follows the pointer (BorderGlow)
@@ -68,6 +71,19 @@ const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album
     href: SHARED_PATHS.gallery,
   })),
 );
+// Homepage stat strip and themed grid — text verbatim from the homepage copy supplied by the NEPED team
+const HOME_STATS = [
+  { value: "1994", label: "Established by the Govt. of Nagaland" },
+  { value: "7.8M", label: "Economic trees planted" },
+  { value: "108", label: "Hydrogers installed (3 kW pico)" },
+  { value: "854", label: "Villages reached in NEPED-I alone" },
+];
+const HOME_THEMES = [
+  { title: "Livelihoods & Enterprise", text: "helping Naga farmers move from subsidy to self-reliance through cash crops, micro-credit and rural enterprise.", icon: Wallet, to: NEPED_PATHS.projects },
+  { title: "Land, Water & Biodiversity", text: "agro-forestry on jhum land, watershed restoration, and community-led conservation.", icon: Leaf, to: NEPED_PATHS.projects },
+  { title: "Energy", text: "'Made in Nagaland' Hydrogers bringing 24×7 clean power to off-grid and border villages.", icon: Zap, to: NEPED_ENERGY_PATHS.home },
+  { title: "CERES", text: "our Centre of Excellence in Dimapur, where renewable technology is researched and built.", icon: FlaskConical, to: NEPED_ENERGY_PATHS.technology },
+];
 const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#12432E]/10 p-4";
 
 export function NepedEconomicPage() {
@@ -84,7 +100,7 @@ export function NepedEconomicPage() {
   return (
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-4">
       {/* 1. HERO — split layout (after cleanenergycouncil.org.au): dark panel with the headline, photo on the right.
-          Phones / tablets: text first, photo below. Text verbatim from the previous hero. */}
+          Phones / tablets: text first, photo below. Text verbatim from the homepage copy supplied by the NEPED team. */}
       <section className="grid grid-cols-1 lg:grid-cols-12 bg-(--brand-surface) lg:min-h-[calc(100svh-84px)]">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -92,46 +108,19 @@ export function NepedEconomicPage() {
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="lg:col-span-7 flex flex-col justify-center px-4 sm:px-6 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))] lg:pr-12 xl:pr-20 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-16 xl:py-20"
         >
-          <span className="text-[12px] sm:text-[13px] tracking-[0.04em] text-[#ffffff]/70">
-            Foundational Heritage • Govt. of Nagaland (Est. 1994)
-          </span>
-          <h1 className="mt-5 sm:mt-6 max-w-[760px] font-serif font-normal text-[40px] sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px] leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance">
-            Nagaland Empowerment of People through Economic Development
+          <h1 className="max-w-[760px] font-serif font-normal text-[40px] sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px] leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance">
+            Nagaland's communities hold the solutions — we help them build.
           </h1>
           <p className="mt-6 sm:mt-8 max-w-[620px] text-[17px] sm:text-[19px] xl:text-[21px] leading-[1.45] text-[#ffffff]/90">
-            NEPED — 30+ years of pioneering community agroforestry, shifting cultivation transformation, women's land equity, and biodiversity conservation under the NEPeD umbrella.
+            Since 1994, NEPED has worked alongside Naga communities to build livelihoods, protect biodiversity, and bring clean, home-grown energy to the villages that need it most.
           </p>
 
-          <div className="mt-9 sm:mt-10 xl:mt-12 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
-            <Link to={NEPED_PATHS.structure} className="group inline-flex items-center gap-5 w-fit">
-              <span className="h-16 w-16 sm:h-20 sm:w-20 2xl:h-24 2xl:w-24 shrink-0 rounded-full bg-(--brand-accent-on-dark) text-(--brand-surface) flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
-                <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-500 ease-in-out group-hover:translate-x-1" strokeWidth={1.5} />
-              </span>
-              <span className="text-[16px] sm:text-[18px] text-[#ffffff]">Organisational Structure</span>
-            </Link>
-            <Link
-              to={NEPED_PATHS.projects}
-              className="w-fit text-[15px] sm:text-[16px] text-[#ffffff]/85 underline decoration-white/35 underline-offset-[6px] hover:text-[#ffffff] hover:decoration-white transition-colors duration-300 ease-in-out"
-            >
-              {allProjects.length} Official Projects Archive
-            </Link>
-          </div>
-
-          {/* Society registration details */}
-          <div className="mt-12 sm:mt-12 xl:mt-14 pt-6 border-t border-white/15 flex items-start sm:items-center gap-3.5 max-w-[640px]">
-            <div className="h-11 w-11 rounded-[10px] bg-[#ffffff] p-1 flex items-center justify-center shrink-0">
-              <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="max-h-full max-w-full object-contain" />
-            </div>
-            <div className="min-w-0 space-y-0.5">
-              <span className="block text-[14px] font-medium text-[#ffffff]">NEPED Society (Govt. of Nagaland)</span>
-              <span className="block text-[11.5px] font-mono text-[#ffffff]/70 leading-snug">
-                Regd. NO. H/RS-4238 (19-04-2005) • Regd. NO. HOME/SRC-6751 (07-07-2014)
-              </span>
-              <span className="block text-[12px] text-[#ffffff]/65 leading-snug">
-                Phase-I: <em>Nagaland Environment Protection and Economic Development through People's Action</em> (CIDA / ICEF)
-              </span>
-            </div>
-          </div>
+          <a href="#what-we-do" className="mt-9 sm:mt-10 xl:mt-12 group inline-flex items-center gap-5 w-fit">
+            <span className="h-16 w-16 sm:h-20 sm:w-20 2xl:h-24 2xl:w-24 shrink-0 rounded-full bg-(--brand-accent-on-dark) text-(--brand-surface) flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
+              <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-500 ease-in-out group-hover:translate-x-1" strokeWidth={1.5} />
+            </span>
+            <span className="text-[16px] sm:text-[18px] text-[#ffffff]">Discover our work</span>
+          </a>
         </motion.div>
 
         {/* Photo: Dzukou Valley. Resized WebP copies; the browser picks the size for the screen */}
@@ -150,6 +139,88 @@ export function NepedEconomicPage() {
           />
         </div>
       </section>
+
+      {/* HOMEPAGE STORY — mission line, stat strip, what we do, featured case study, across borders.
+          All text verbatim from the homepage copy supplied by the NEPED team ("NEPeD Hydrogers" per the team). */}
+
+      {/* MISSION LINE */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className="max-w-[980px] font-serif text-[28px] sm:text-[40px] lg:text-[46px] leading-[1.18] tracking-[-0.3px] text-[#1A2E23] text-balance">
+          We are an autonomous Government of Nagaland society with one purpose: to bridge the state's development gaps through ideas, technology and partnership that put communities in charge of their own future.
+        </p>
+      </motion.section>
+
+      {/* STAT STRIP — headline numbers */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <dl className="grid grid-cols-2 lg:grid-cols-4 border-t border-[#dbe5de]">
+          {HOME_STATS.map((stat, i) => (
+            <div
+              key={stat.value}
+              className={`pt-7 pb-2 pr-4 sm:pr-8 ${i % 2 === 1 ? "pl-4 sm:pl-8 border-l border-[#dbe5de]" : ""} ${i >= 2 ? "mt-8 lg:mt-0" : ""} ${i === 2 ? "lg:pl-8 lg:border-l" : ""}`}
+            >
+              <dt className="sr-only">{stat.label}</dt>
+              <dd className="text-[44px] sm:text-[60px] font-light leading-none tracking-[-1.5px] text-[#1E6F4C]">{stat.value}</dd>
+              <dd className="mt-3 text-[14px] sm:text-[15px] leading-snug text-[#5B6660]">{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </motion.section>
+
+      {/* WHAT WE DO — themed grid */}
+      <motion.section {...fadeUpOnView} id="what-we-do" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <h2 className={H2}>One society, many kinds of work.</h2>
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {HOME_THEMES.map(({ title, text, icon: Icon, to }) => (
+            <Link
+              key={title}
+              to={to}
+              className="group rounded-[20px] bg-[#F3F6F3] p-6 sm:p-7 flex flex-col gap-5 border border-transparent hover:border-[#dbe5de] transition-colors duration-300 ease-in-out"
+            >
+              <span className="h-11 w-11 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center">
+                <Icon size={20} strokeWidth={1.75} />
+              </span>
+              <h3 className="text-[20px] font-normal tracking-[-0.3px] text-[#1A2E23]">{title}</h3>
+              <p className="text-[15px] leading-relaxed text-[#5B6660] flex-1">{text}</p>
+              <ArrowRight size={18} strokeWidth={1.5} className="text-[#1E6F4C] transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+            </Link>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* FEATURED CASE STUDY — Kingjung */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[24px] overflow-hidden bg-[#F3F6F3]">
+          <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px]">
+            <img
+              src="/20 Kingjung Village Energy Committee (2).webp"
+              alt="Kingjung Village Energy Committee"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+          <div className="p-7 sm:p-10 lg:p-14 flex flex-col justify-center gap-6">
+            <h2 className="font-serif text-[32px] sm:text-[44px] leading-[1.08] tracking-[-0.3px] text-[#1A2E23] text-balance">
+              Kingjung: a village powered by its own river
+            </h2>
+            <p className="text-[16px] sm:text-[17px] leading-relaxed text-[#5B6660]">
+              A community-managed 3 kW Hydroger delivers 24×7 off-grid power to Kingjung, Thonoknyu — run by a seven-member village energy committee and driving mills, blacksmithing and daily life.
+            </p>
+            <Link to={NEPED_ENERGY_PATHS.caseStudy("kingjung")} className="group inline-flex items-center gap-4 w-fit">
+              <span className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
+                <ArrowRight className="h-5 w-5 transition-transform duration-500 ease-in-out group-hover:translate-x-0.5" strokeWidth={1.5} />
+              </span>
+              <span className="text-[16px] text-[#1A2E23]">Read the Kingjung story</span>
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ACROSS BORDERS BAND */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className="max-w-[1000px] text-[22px] sm:text-[30px] lg:text-[34px] font-light leading-[1.3] tracking-[-0.5px] text-[#5B6660]">
+          <span className="text-[#1A2E23]">Made in Nagaland, working beyond it.</span> NEPeD Hydrogers now run in Arunachal Pradesh, Meghalaya, Sikkim and as far as Ladakh — and Meghalaya has ordered 100 units.
+        </p>
+      </motion.section>
 
       {/* PROJECTS ARCHIVE — placed right after the hero */}
       <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -429,6 +500,9 @@ export function NepedEconomicPage() {
           </div>
         </div>
       </motion.section>
+
+      {/* PARTNER CTA — closing band (shared with the About page) */}
+      <PartnerBand />
     </div>
   );
 }

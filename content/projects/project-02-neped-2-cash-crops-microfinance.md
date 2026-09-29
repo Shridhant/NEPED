@@ -6,6 +6,7 @@ name: "NEPED II"
 period: "2001 – 2006"
 category: "Agroforestry"
 fundingAgency: "Indo-Canada Environment Facility (ICEF) under Canadian International Development Agency (CIDA)"
+implementedBy: "NEPED"
 objective: "Reinforced Jhum through cash crop plantation (Micro Finance)."
 heroImage: "/mountain-windmills.webp"
 ---

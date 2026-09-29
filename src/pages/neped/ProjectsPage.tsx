@@ -1,10 +1,9 @@
-import { useEffect, useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
-import { Search } from "lucide-react";
 import { NEPED_PATHS } from "@/routes/paths";
-import { ProjectTile } from "@/components/neped/ProjectTile";
+import { ProjectsTable } from "@/components/neped/ProjectsTable";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { BlurReveal } from "@/components/ui/blur-reveal";
@@ -13,39 +12,11 @@ const GLASS_CARD =
   "rounded-[16px] bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
 export function ProjectsPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
   useEffect(() => {
     document.title = "NEPED Projects Archive — Official Registry of Implemented Programs (1995–Present)";
   }, []);
 
   const allProjects = useMemo(() => loadAllProjects(), []);
-
-  const categories = [
-    "All",
-    "Agroforestry",
-    "Biodiversity & Climate",
-    "Handicrafts & Livelihood",
-    "Conservation",
-  ];
-
-  const filteredProjects = useMemo(() => {
-    return allProjects.filter((p) => {
-      const matchesCategory =
-        activeCategory === "All" || p.category === activeCategory;
-      const q = searchQuery.toLowerCase().trim();
-      const matchesSearch =
-        !q ||
-        p.name.toLowerCase().includes(q) ||
-        p.fundingAgency.toLowerCase().includes(q) ||
-        p.phase.toLowerCase().includes(q) ||
-        p.period.toLowerCase().includes(q) ||
-        (p.objective && p.objective.toLowerCase().includes(q));
-
-      return matchesCategory && matchesSearch;
-    });
-  }, [allProjects, activeCategory, searchQuery]);
 
   const stats = [
     { value: `${allProjects.length} Projects`, label: "Documented Archive" },
@@ -100,93 +71,9 @@ export function ProjectsPage() {
         </div>
       </section>
 
-      {/* 2. FILTER & SEARCH */}
+      {/* 2. PROJECTS IMPLEMENTED — one table for NEPED and NEPeD projects, filterable by lineage and searchable */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#F3F6F3] rounded-[20px] p-3 sm:p-4 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-          <div className="relative flex-1 lg:max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5B6660]" size={16} />
-            <input
-              type="text"
-              placeholder="Search by project name, agency, or keywords..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-16 py-3 bg-[#ffffff] border border-transparent focus:border-(--brand-accent) rounded-[1584px] text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] outline-none transition-colors"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-mono text-[#5B6660] hover:text-[#1A2E23] bg-[#F3F6F3] px-2.5 py-1 rounded-full cursor-pointer"
-              >
-                Clear
-              </button>
-            )}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-[1584px] text-[13px] font-medium transition-all active:scale-[0.97] cursor-pointer ${
-                  activeCategory === cat ? "bg-(--brand-accent) text-[#ffffff]" : "text-[#1A2E23] hover:text-[#1A2E23] hover:bg-[#ffffff]"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[12px] font-mono text-[#5B6660] px-2">
-          <span>
-            Showing <strong className="text-[#1A2E23] font-medium">{filteredProjects.length}</strong> of {allProjects.length} official projects
-            {activeCategory !== "All" && ` in ${activeCategory}`}
-          </span>
-          {searchQuery && (
-            <span>
-              Keyword: <span className="text-(--brand-accent)">"{searchQuery}"</span>
-            </span>
-          )}
-        </div>
-      </section>
-
-      {/* 3. PROJECT CARDS GRID */}
-      <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        {filteredProjects.length === 0 ? (
-          <div className="bg-[#F3F6F3] rounded-[20px] p-12 text-center flex flex-col items-center gap-4">
-            <p className="text-[16px] text-[#5B6660]">No projects match your search or filter criteria.</p>
-            <button
-              type="button"
-              onClick={() => {
-                setActiveCategory("All");
-                setSearchQuery("");
-              }}
-              className="px-5 py-2.5 rounded-[1584px] bg-(--brand-accent) hover:bg-(--brand-accent-hover) text-[14px] font-medium text-[#ffffff] cursor-pointer transition-colors"
-            >
-              Reset filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((proj) => (
-                <motion.div
-                  key={proj.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                  className="h-full [&>a]:h-full"
-                >
-                  <ProjectTile project={proj} />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        )}
+        <ProjectsTable projects={allProjects} />
       </section>
 
       {/* 4. CROSS-NAVIGATION BANNER — dark green CTA to About Us */}

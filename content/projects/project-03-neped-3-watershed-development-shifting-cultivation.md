@@ -6,6 +6,7 @@ name: "NEPED III – Watershed Development Project in Shifting Cultivation Areas
 period: "2006 – 2012"
 category: "Conservation"
 fundingAgency: "Ministry of Agriculture, Govt. of India"
+implementedBy: "NEPED"
 objective: "Consolidating the achievements of NEPED-I and NEPED-II through watershed development."
 heroImage: "/forest.webp"
 ---

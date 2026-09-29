@@ -10,6 +10,7 @@ name: "Official Full Project Name"
 period: "YYYY – YYYY (e.g. 2024 – 2026)"
 category: "Agroforestry" # Options: "Agroforestry" | "Biodiversity & Climate" | "Handicrafts & Livelihood" | "Conservation"
 fundingAgency: "Name of Primary Funding Department or International Body"
+implementedBy: "NEPED" # Options: "NEPED" | "NEPeD" | "NEPED, NEPeD" (as listed in the source document)
 budgetOrScale: "e.g. ₹15 Crores or 5,000 Families"
 targetDistricts: "Districts or Village Clusters covered"
 heroImage: "/forest.webp" # Photo path or name of attached image
