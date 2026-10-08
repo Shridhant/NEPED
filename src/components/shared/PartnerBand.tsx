@@ -9,7 +9,7 @@ export function PartnerBand() {
 
   return (
     <motion.section {...fadeUpOnView} className="px-2.5 sm:px-4">
-      <div className="relative overflow-hidden rounded-[24px] sm:rounded-[32px] bg-(--brand-surface) px-6 py-16 sm:px-12 sm:py-20 lg:py-24">
+      <div className="relative overflow-hidden bg-(--brand-surface) px-6 py-16 sm:px-12 sm:py-20 lg:py-24">
         <svg viewBox="0 0 1440 440" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
           <path d="M0 360 C240 300 420 380 720 320 C1000 262 1200 330 1440 280" fill="none" stroke="#E8A33D" strokeOpacity="0.2" strokeWidth="2" />
           <path d="M0 400 C260 340 460 420 740 360 C1020 300 1220 370 1440 320" fill="none" stroke="#FFFFFF" strokeOpacity="0.06" strokeWidth="2" />

@@ -91,35 +91,35 @@ function AnimatedCard({
       style={{ y, scale, zIndex: 20 + index, transformOrigin: "center top", willChange: "transform", backfaceVisibility: "hidden" }}
       className="absolute inset-x-0 top-0 w-full select-none"
     >
-      <Link to={project.to} className="group block cursor-pointer text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-[#1E6F4C] rounded-2xl">
+      <Link to={project.to} className="group block cursor-pointer text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-[#1E6F4C] ">
         <article className="relative box-border w-full pt-12 sm:pt-14">
           <div
             style={{ backgroundColor: project.color }}
-            className="absolute left-0 top-0 flex h-12 w-48 items-center rounded-t-2xl px-4 text-[15px] font-medium tracking-tight text-black sm:h-14 sm:w-64 sm:px-6"
+            className="absolute left-0 top-0 flex h-12 w-48 items-center px-4 text-[15px] font-medium tracking-tight text-black sm:h-14 sm:w-64 sm:px-6"
           >
             <span className="truncate">{project.tabTitle}</span>
           </div>
 
           <div
             style={{ backgroundColor: project.color }}
-            className="relative grid min-h-[26rem] grid-cols-1 items-center gap-6 overflow-hidden rounded-b-2xl rounded-tr-2xl p-6 shadow-[0_4px_8px_-4px_rgba(0,0,0,0.12),inset_0_-2px_4px_-2px_rgba(0,0,0,0.25)] sm:p-8 md:min-h-[33rem] md:grid-cols-[minmax(0,1.12fr)_minmax(16rem,0.88fr)] md:gap-14"
+            className="relative grid min-h-[26rem] grid-cols-1 items-center gap-6 overflow-hidden p-6 shadow-[0_4px_8px_-4px_rgba(0,0,0,0.12),inset_0_-2px_4px_-2px_rgba(0,0,0,0.25)] sm:p-8 md:min-h-[33rem] md:grid-cols-[minmax(0,1.12fr)_minmax(16rem,0.88fr)] md:gap-14"
           >
             <div className="z-10 flex flex-col items-start gap-3.5">
               <h3 className="m-0 text-[24px] sm:text-[32px] font-light leading-tight tracking-[-0.6px] text-black">{project.title}</h3>
               <p className="m-0 text-[15px] sm:text-[17px] leading-relaxed text-black/65 line-clamp-5">{project.description}</p>
             </div>
 
-            <div className="relative h-52 w-full overflow-hidden rounded-xl bg-white/25 sm:h-72 md:h-96 lg:h-[25rem]">
+            <div className="relative h-52 w-full overflow-hidden bg-white/25 sm:h-72 md:h-96 lg:h-[25rem]">
               {project.image ? (
                 <img
                   src={project.image}
                   alt={project.imageAlt ?? ""}
                   decoding="async"
                   loading={index === 0 ? "eager" : "lazy"}
-                  className="block h-full w-full rounded-xl object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                  className="block h-full w-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
                 />
               ) : (
-                <div className="h-full w-full rounded-xl transition-transform duration-500 group-hover:scale-105" style={{ background: project.panel }} />
+                <div className="h-full w-full transition-transform duration-500 group-hover:scale-105" style={{ background: project.panel }} />
               )}
             </div>
           </div>

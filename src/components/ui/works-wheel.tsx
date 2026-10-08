@@ -252,10 +252,10 @@ export function WorksWheel({ items, label = "Works '26", action = "View", classN
                   marginTop: -metrics.cardH / 2,
                 }}
               >
-                <span className="bg-[#e5e4e4] shadow-black/12 relative block size-full overflow-hidden rounded-lg shadow-[0_18px_40px_-18px_var(--tw-shadow-color)]">
+                <span className="bg-[#e5e4e4] shadow-black/12 relative block size-full overflow-hidden shadow-[0_18px_40px_-18px_var(--tw-shadow-color)]">
                   <img src={item.image} alt={item.title} draggable={false} className="size-full object-cover" />
                   {action && item.href ? (
-                    <span className="bg-white/80 text-[#1A2E23] pointer-events-none absolute right-3 bottom-3 flex translate-y-1 items-center gap-1 rounded-full px-2.5 py-1 text-[0.7rem] opacity-0 backdrop-blur-sm transition group-hover:translate-y-0 group-hover:opacity-100">
+                    <span className="bg-white/80 text-[#1A2E23] pointer-events-none absolute right-3 bottom-3 flex translate-y-1 items-center gap-1 px-2.5 py-1 text-[0.7rem] opacity-0 backdrop-blur-sm transition group-hover:translate-y-0 group-hover:opacity-100">
                       <svg viewBox="0 0 12 12" className="size-2.5" aria-hidden="true">
                         <path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>

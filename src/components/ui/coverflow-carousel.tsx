@@ -205,7 +205,7 @@ export function CoverflowCarousel({
                   duration: 0.5,
                   ease: [0.25, 1, 0.5, 1],
                 }}
-                className={`absolute cursor-pointer rounded-3xl overflow-hidden shadow-2xl bg-white border border-ink/10 ${
+                className={`absolute cursor-pointer  overflow-hidden shadow-2xl bg-white border border-ink/10 ${
                   isActive ? "ring-2 ring-accent-amber/60 ring-offset-2" : ""
                 }`}
                 style={{
@@ -225,7 +225,7 @@ export function CoverflowCarousel({
 
                 {/* Badge on Card */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-ink text-[11px] font-semibold shadow-sm">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur text-ink text-[11px] font-semibold shadow-sm">
                     {item.year}
                   </span>
                 </div>
@@ -244,7 +244,7 @@ export function CoverflowCarousel({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-            className="bg-white/90 backdrop-blur-md rounded-3xl border border-ink/5 p-6 shadow-lg"
+            className="bg-white/90 backdrop-blur-md border border-ink/5 p-6 shadow-lg"
           >
             {/* Active Card Title & Subtitle */}
             <h3 className="text-2xl font-extrabold text-ink tracking-tight">
@@ -295,7 +295,7 @@ export function CoverflowCarousel({
               <div className="mt-6 pt-2">
                 <Link
                   to={activeItem.href}
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-ink/90 active-scale"
+                  className="inline-flex items-center gap-2 bg-ink px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-ink/90 active-scale"
                 >
                   Explore Initiative <ArrowUpRight className="h-4 w-4" />
                 </Link>
@@ -311,7 +311,7 @@ export function CoverflowCarousel({
           <button
             key={idx}
             onClick={() => setActiveIndex(idx)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2  transition-all duration-300 ${
               activeIndex === idx
                 ? "w-8 bg-ink"
                 : "w-2 bg-ink/20 hover:bg-ink/40"

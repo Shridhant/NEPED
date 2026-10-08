@@ -240,7 +240,7 @@ export function LayoutPreloader({
                       initial="initial"
                       animate="enter"
                       exit="exit"
-                      className="h-full w-full overflow-hidden rounded-sm border border-[oklch(0.97_0.012_80)]/15 bg-[oklch(0.28_0.025_35)] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]"
+                      className="h-full w-full overflow-hidden border border-[oklch(0.97_0.012_80)]/15 bg-[oklch(0.28_0.025_35)] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]"
                     >
                       <img
                         src={preloaderItems[preloaderIndex].image}
@@ -288,7 +288,7 @@ export function LayoutPreloader({
                             : "oklch(0.97 0.012 80)",
                       }}
                       transition={{ duration: 0.4 }}
-                      className="h-1 rounded-full"
+                      className="h-1 "
                     />
                   ))}
                 </div>
@@ -309,7 +309,7 @@ export function LayoutPreloader({
       </AnimatePresence>
 
       <section
-        className={`relative isolate overflow-hidden rounded-[2rem] bg-ink text-white sm:rounded-[2.5rem] [font-family:'Inter',sans-serif] ${className}`}
+        className={`relative isolate overflow-hidden  bg-ink text-white  [font-family:'Inter',sans-serif] ${className}`}
       >
         <div className="absolute inset-0">
           <img
@@ -339,7 +339,7 @@ export function LayoutPreloader({
 
             <a
               href={primaryHref}
-              className="mt-8 inline-flex items-center gap-4 rounded-full bg-white px-[22px] py-3 text-[15px] font-medium tracking-[-0.02em] text-[#111] shadow-[0_10px_30px_rgba(0,0,0,0.16)] transition hover:bg-white/92 active-scale"
+              className="mt-8 inline-flex items-center gap-4 bg-white px-[22px] py-3 text-[15px] font-medium tracking-[-0.02em] text-[#111] shadow-[0_10px_30px_rgba(0,0,0,0.16)] transition hover:bg-white/92 active-scale"
             >
               {primaryLabel}
               <span className="grid h-9 w-9 place-items-center rounded-full bg-[#111] text-white">
@@ -354,11 +354,11 @@ export function LayoutPreloader({
             transition={{ duration: 0.8, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="mt-12 grid w-full max-w-[900px] grid-cols-1 gap-4 text-left md:grid-cols-2"
           >
-            <article className="grid grid-cols-[112px_1fr] gap-4 rounded-2xl bg-black/34 p-4 text-white backdrop-blur-xl">
+            <article className="grid grid-cols-[112px_1fr] gap-4 bg-black/34 p-4 text-white backdrop-blur-xl">
               <img
                 src={galleryImages[0]?.src}
                 alt={galleryImages[0]?.alt}
-                className="h-24 w-28 rounded-xl object-cover"
+                className="h-24 w-28 object-cover"
                 draggable={false}
               />
               <div className="min-w-0">
@@ -374,7 +374,7 @@ export function LayoutPreloader({
               </div>
             </article>
 
-            <article className="rounded-2xl bg-black/34 p-5 text-white backdrop-blur-xl">
+            <article className=" bg-black/34 p-5 text-white backdrop-blur-xl">
               <p className="text-[15px] font-normal leading-[1.6] text-white/80">
                 Every installation is a step toward clean energy access, local livelihoods, and stronger village infrastructure.
               </p>

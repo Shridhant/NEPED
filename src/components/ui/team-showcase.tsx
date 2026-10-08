@@ -151,7 +151,7 @@ function PhotoCard({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-400',
+        'overflow-hidden  cursor-pointer flex-shrink-0 transition-opacity duration-400',
         className,
         isDimmed ? 'opacity-60' : 'opacity-100',
       )}
@@ -200,7 +200,7 @@ function MemberRow({
       <div className="flex items-center gap-2.5">
         <span
           className={cn(
-            'w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300',
+            'w-4 h-3  flex-shrink-0 transition-all duration-300',
             isActive ? 'bg-ink w-5' : 'bg-ink/25',
           )}
         />
@@ -229,7 +229,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
+                className="p-1 text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
                 title="X / Twitter"
               >
                 <FaTwitter size={10} />
@@ -241,7 +241,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
+                className="p-1 text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
                 title="LinkedIn"
               >
                 <FaLinkedinIn size={10} />
@@ -253,7 +253,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
+                className="p-1 text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
                 title="Instagram"
               >
                 <FaInstagram size={10} />
@@ -265,7 +265,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
+                className="p-1 text-ink-soft hover:text-ink hover:bg-ink/10 transition-all duration-150 hover:scale-110"
                 title="Behance"
               >
                 <FaBehance size={10} />

@@ -77,7 +77,7 @@ export function NepedEnergyFooter({ onOpenContact }: { onOpenContact: () => void
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="mt-5 inline-flex items-center gap-2 text-[13px] text-[#ffffff] bg-[#1E6F4C] hover:bg-[#185A3E] px-4 py-2.5 rounded-[80px] transition-colors cursor-pointer"
+                className="mt-5 inline-flex items-center gap-2 text-[13px] text-[#ffffff] bg-[#1E6F4C] hover:bg-[#185A3E] px-4 py-2.5 transition-colors cursor-pointer"
               >
                 <Mail size={13} />
                 <span>Contact Us</span>

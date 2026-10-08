@@ -13,9 +13,9 @@ export function ProjectCard({ project: proj, className, tone = "dark" }: { proje
     <Link
       to={NEPED_PATHS.project(proj.slug)}
       className={cn(
-        "group h-full rounded-[8px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1",
+        "group h-full  overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1",
         glass
-          ? "rounded-[16px] border border-white/25 bg-[#12432E]/55 backdrop-blur-xl backdrop-saturate-150 hover:bg-[#12432E]/60"
+          ? " border border-white/25 bg-[#12432E]/55 backdrop-blur-xl backdrop-saturate-150 hover:bg-[#12432E]/60"
           : "border border-[#1c1c1c]/10 bg-[#12432E] shadow-lg shadow-black/10 hover:shadow-2xl hover:shadow-black/30 hover:border-white/25",
         className,
       )}
@@ -29,7 +29,7 @@ export function ProjectCard({ project: proj, className, tone = "dark" }: { proje
         />
         <div className={`absolute inset-0 bg-gradient-to-t ${glass ? "from-black/45 via-black/10" : "from-[#12432E] via-[#12432E]/20"} to-transparent`} />
         <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
-          <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
+          <span className=" border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
             {proj.phase}
           </span>
         </div>

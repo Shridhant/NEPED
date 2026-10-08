@@ -57,7 +57,7 @@ export function BookDemoButton(props: AsLink | AsButton) {
   const v = variantStyles[variant];
 
   const classes = cn(
-    "group/btn bd-root relative inline-flex h-11 items-center rounded-[12px] overflow-hidden transition-transform active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1e6f4c]",
+    "group/btn bd-root relative inline-flex h-11 items-center  overflow-hidden transition-transform active:scale-[0.97] outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1e6f4c]",
     className,
   );
   const style: React.CSSProperties = {
@@ -72,7 +72,7 @@ export function BookDemoButton(props: AsLink | AsButton) {
         {children || "Book a demo"}
       </span>
       <span
-        className="absolute top-1 left-1 bottom-1 z-10 w-9 group-hover/btn:w-[calc(100%-0.5rem)] group-focus-visible/btn:w-[calc(100%-0.5rem)] group-active/btn:w-[calc(100%-0.5rem)] flex items-center justify-start overflow-hidden rounded-md pl-3 pr-2.5 gap-2.5 transition-[width,gap] duration-260 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+        className="absolute top-1 left-1 bottom-1 z-10 w-9 group-hover/btn:w-[calc(100%-0.5rem)] group-focus-visible/btn:w-[calc(100%-0.5rem)] group-active/btn:w-[calc(100%-0.5rem)] flex items-center justify-start overflow-hidden pl-3 pr-2.5 gap-2.5 transition-[width,gap] duration-260 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
         style={{
           background: `linear-gradient(180deg, ${v.from} 0%, ${v.to} 100%)`,
           boxShadow: "inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)",

@@ -92,7 +92,7 @@ export function NepedEnergyAboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Vision Card */}
-          <div className="bg-[#F3F6F3] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+          <div className="bg-[#F3F6F3] p-8 sm:p-10 flex flex-col justify-between">
             <div>
               <span className="text-[12px] font-mono text-[#5B6660] uppercase tracking-wider">
                 Our Vision
@@ -110,7 +110,7 @@ export function NepedEnergyAboutPage() {
           </div>
 
           {/* Mission Card */}
-          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between">
+          <div className="bg-[#12432E] text-[#ffffff] p-8 sm:p-10 flex flex-col justify-between">
             <div>
               <span className="text-[12px] font-mono text-[#ffffff]/60 uppercase tracking-wider">
                 Our Mission
@@ -175,7 +175,7 @@ export function NepedEnergyAboutPage() {
       <motion.section {...fadeUpOnView} id="inception" className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Inception Members */}
-          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] rounded-[8px] p-8 sm:p-10 space-y-6">
+          <div className="bg-[#e5e4e4]/30 border border-[#e5e4e4] p-8 sm:p-10 space-y-6">
             <div>
               <SectionLabel>2007 Founding Unit</SectionLabel>
               <h3 className="text-[28px] font-light text-[#1A2E23] tracking-[-0.72px] mt-1">
@@ -186,7 +186,7 @@ export function NepedEnergyAboutPage() {
               {inceptionTeam.map((mem) => (
                 <div
                   key={mem.name}
-                  className="p-3 bg-[#ffffff] border border-[#e5e4e4] rounded-[6px]"
+                  className="p-3 bg-[#ffffff] border border-[#e5e4e4] "
                 >
                   <h4 className="text-[14px] font-medium text-[#1A2E23]">{mem.name}</h4>
                   <span className="text-[11px] text-[#5B6660]">{mem.role}</span>
@@ -199,7 +199,7 @@ export function NepedEnergyAboutPage() {
 
       {/* 6. IN MEMORIAM EXHIBIT (Dark gallery tribute card) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-12 relative overflow-hidden">
+        <div className="bg-[#12432E] text-[#ffffff] p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-xl mb-8">
             <span className="text-[12px] uppercase tracking-[0.12px] text-[#E8A33D]">
               In Memoriam & Dedication
@@ -216,7 +216,7 @@ export function NepedEnergyAboutPage() {
             {memoriam.map((item) => (
               <div
                 key={item.name}
-                className="bg-[#12432E] border border-white/10 rounded-[8px] p-6 space-y-3"
+                className="bg-[#12432E] border border-white/10 p-6 space-y-3"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-mono text-[#E8A33D]">{item.life}</span>

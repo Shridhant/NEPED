@@ -154,7 +154,7 @@ export function NepedEnergyPage() {
           >
             <Link
               to={NEPED_ENERGY_PATHS.product("hydroger-turbine-system")}
-              className="group block rounded-[20px] overflow-hidden bg-[#ffffff] p-2.5 shadow-[0_24px_60px_rgba(18,67,46,0.18)]"
+              className="group block overflow-hidden bg-[#ffffff] p-2.5 shadow-[0_24px_60px_rgba(18,67,46,0.18)]"
             >
               <img
                 src="/Hydroger (Impulse).jpeg"
@@ -162,7 +162,7 @@ export function NepedEnergyPage() {
                 width={432}
                 height={482}
                 fetchPriority="high"
-                className="w-full h-auto rounded-[14px] transition-transform duration-700 ease-in-out group-hover:scale-[1.02]"
+                className="w-full h-auto transition-transform duration-700 ease-in-out group-hover:scale-[1.02]"
               />
             </Link>
             <figcaption className="mt-5 space-y-1.5">
@@ -216,7 +216,7 @@ export function NepedEnergyPage() {
 
           <motion.div {...fadeUpOnView} className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
             {/* Capacity */}
-            <div className="bg-[#ffffff] rounded-[16px] p-7 sm:p-8 flex flex-col justify-between gap-10 min-h-[240px] shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+            <div className="bg-[#ffffff] p-7 sm:p-8 flex flex-col justify-between gap-10 min-h-[240px] shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
               <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center">
                 <Gauge size={20} />
               </span>
@@ -227,7 +227,7 @@ export function NepedEnergyPage() {
             </div>
 
             {/* Voltage */}
-            <div className="bg-[#1E6F4C] rounded-[16px] p-7 sm:p-8 flex flex-col justify-between gap-10 min-h-[240px] shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
+            <div className="bg-[#1E6F4C] p-7 sm:p-8 flex flex-col justify-between gap-10 min-h-[240px] shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
               <span className="w-12 h-12 rounded-full bg-white/20 text-[#ffffff] flex items-center justify-center">
                 <Zap size={20} />
               </span>
@@ -238,8 +238,8 @@ export function NepedEnergyPage() {
             </div>
 
             {/* Gross Weight with Hydroger photo */}
-            <div className="bg-[#ffffff] rounded-[16px] p-3 flex flex-col gap-5 min-h-[300px] shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
-              <div className="rounded-[12px] overflow-hidden aspect-[4/3] bg-[#e5e4e4]">
+            <div className="bg-[#ffffff] p-3 flex flex-col gap-5 min-h-[300px] shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+              <div className=" overflow-hidden aspect-[4/3] bg-[#e5e4e4]">
                 <img
                   src="/Hydroger (Impulse).jpeg"
                   alt="Hydroger (Impulse)"
@@ -319,7 +319,7 @@ export function NepedEnergyPage() {
 
       {/* 7. CTA — CERES (centred light dot-grid banner) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-[#F3F6F3] border border-[#e5e4e4] px-6 py-16 sm:px-12 sm:py-20 md:py-24 text-center">
+        <div className="relative overflow-hidden bg-[#F3F6F3] border border-[#e5e4e4] px-6 py-16 sm:px-12 sm:py-20 md:py-24 text-center">
           <DotGrid dotSize={4} gap={22} color="#d3e2d8" />
           {/* Soft white centre so the text stays easy to read over the dots */}
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.7)_40%,rgba(255,255,255,0)_75%)]" />
@@ -332,7 +332,7 @@ export function NepedEnergyPage() {
               Located at Industrial Estate, Dimapur, CERES is NEPeD’s dedicated engineering and manufacturing laboratory. It anchors the mass production of indigenous hydrogers, Electronic Load Controllers (ELC), and the technical skilling of local "Rural Engineers".
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <div className="inline-flex p-1.5 rounded-[1584px] bg-[#000000]/[0.04] border border-[#e5e4e4]">
+              <div className="inline-flex p-1.5 bg-[#000000]/[0.04] border border-[#e5e4e4]">
                 <ArrowPillButton to={NEPED_ENERGY_PATHS.technology} arrow="up-right">Visit CERES Tech & Hardware Page</ArrowPillButton>
               </div>
               <ArrowPillButton onClick={openContact} variant="outline" arrow="mail">Contact Us</ArrowPillButton>

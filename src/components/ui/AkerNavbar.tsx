@@ -107,7 +107,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
       {/* Left Side: NEPED Master Umbrella Pill */}
       <div className="pointer-events-auto relative" ref={masterDropdownRef}>
         <div
-          className={`flex items-center h-[42px] sm:h-[46px] rounded-[1584px] border transition-all duration-200 shadow-md ${
+          className={`flex items-center h-[42px] sm:h-[46px]  border transition-all duration-200 shadow-md ${
             isMasterDropdownOpen
               ? "bg-[#262626] text-[#ffffff] border-white/40 ring-1 ring-white/20"
               : "bg-[#1c1c1c]/90 backdrop-blur-md text-[#ffffff] border-white/15 hover:border-white/35 hover:bg-[#262626]"
@@ -118,7 +118,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
             to="/"
             onClick={() => setIsMasterDropdownOpen(false)}
             aria-label="Go to NEPED Master Homepage"
-            className="flex items-center gap-2.5 sm:gap-3 pl-1.5 pr-2 h-full rounded-l-[1584px] group cursor-pointer"
+            className="flex items-center gap-2.5 sm:gap-3 pl-1.5 pr-2 h-full group cursor-pointer"
             title="NEPED Master Umbrella Homepage"
           >
             <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white p-0.5 border border-white/20 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 transition-transform duration-200">
@@ -145,7 +145,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               if (isEnergyDropdownOpen) setIsEnergyDropdownOpen(false);
             }}
             aria-label="Toggle NEPED Master Umbrella Sections"
-            className="pr-3 sm:pr-3.5 pl-1.5 h-full flex items-center justify-center cursor-pointer text-[#8d8d8d] hover:text-white transition-colors rounded-r-[1584px]"
+            className="pr-3 sm:pr-3.5 pl-1.5 h-full flex items-center justify-center cursor-pointer text-[#8d8d8d] hover:text-white transition-colors "
             title="Toggle NEPED Sections"
           >
             <ChevronDown
@@ -165,7 +165,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.96 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute left-0 top-[50px] w-[280px] sm:w-[320px] bg-[#1c1c1c] border border-white/15 rounded-[8px] p-2 shadow-2xl z-50 overflow-hidden"
+              className="absolute left-0 top-[50px] w-[280px] sm:w-[320px] bg-[#1c1c1c] border border-white/15 p-2 shadow-2xl z-50 overflow-hidden"
             >
               {/* Dropdown Header */}
               <div className="px-3 py-2 border-b border-white/10 mb-1 flex items-center justify-between">
@@ -177,7 +177,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     NEPED (Society & Programs)
                   </span>
                 </div>
-                <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 rounded-[3.2px]">
+                <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 ">
                   6 Portals
                 </span>
               </div>
@@ -189,7 +189,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     key={item.num}
                     to={item.href}
                     onClick={() => setIsMasterDropdownOpen(false)}
-                    className="group flex items-center justify-between px-3 py-2 rounded-[6px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[13px]"
+                    className="group flex items-center justify-between px-3 py-2 text-[#e5e4e4] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[13px]"
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <span className="text-[11px] font-mono text-[#8d8d8d] group-hover:text-[#b75928] transition-colors">
@@ -209,7 +209,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 <Link
                   to="/"
                   onClick={() => setIsMasterDropdownOpen(false)}
-                  className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors"
+                  className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 font-medium transition-colors"
                 >
                   <span>Visit Master NEPED Homepage</span>
                   <span>↗</span>
@@ -220,7 +220,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     setIsMasterDropdownOpen(false);
                     onOpenContact();
                   }}
-                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 font-medium transition-colors cursor-pointer"
                 >
                   <span>Contact Us</span>
                   <Mail size={12} />
@@ -234,7 +234,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
       {/* Right Side: NEPeD Clean Energy Pill */}
       <div className="pointer-events-auto relative" ref={energyDropdownRef}>
         <div
-          className={`flex items-center h-[42px] sm:h-[46px] rounded-[1584px] border transition-all duration-200 shadow-md ${
+          className={`flex items-center h-[42px] sm:h-[46px]  border transition-all duration-200 shadow-md ${
             isEnergyDropdownOpen
               ? "bg-[#262626] text-[#ffffff] border-white/40 ring-1 ring-white/20"
               : "bg-[#1c1c1c]/90 backdrop-blur-md text-[#ffffff] border-white/15 hover:bg-[#262626] hover:border-white/35"
@@ -245,7 +245,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
             to={NEPED_ENERGY_PATHS.home}
             onClick={() => setIsEnergyDropdownOpen(false)}
             aria-label="Go to NEPeD Clean Energy and Technology"
-            className="flex items-center gap-2.5 pl-1.5 pr-2 h-full rounded-l-[1584px] group cursor-pointer"
+            className="flex items-center gap-2.5 pl-1.5 pr-2 h-full group cursor-pointer"
             title="NEPeD Clean Energy Wing (Since 2007)"
           >
             <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/10 p-0.5 border border-white/20 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 transition-transform duration-200">
@@ -269,7 +269,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               if (isMasterDropdownOpen) setIsMasterDropdownOpen(false);
             }}
             aria-label="Toggle NEPeD Clean Energy Sections"
-            className="pr-3 sm:pr-3.5 pl-1.5 h-full flex items-center justify-center cursor-pointer text-[#8d8d8d] hover:text-white transition-colors rounded-r-[1584px]"
+            className="pr-3 sm:pr-3.5 pl-1.5 h-full flex items-center justify-center cursor-pointer text-[#8d8d8d] hover:text-white transition-colors "
             title="Toggle NEPeD Sections"
           >
             <ChevronDown
@@ -289,7 +289,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.96 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute right-0 top-[50px] w-[270px] sm:w-[300px] bg-[#1c1c1c] border border-white/15 rounded-[8px] p-2 shadow-2xl z-50 overflow-hidden"
+              className="absolute right-0 top-[50px] w-[270px] sm:w-[300px] bg-[#1c1c1c] border border-white/15 p-2 shadow-2xl z-50 overflow-hidden"
             >
               {/* Dropdown Header */}
               <div className="px-3 py-2 border-b border-white/10 mb-1 flex items-center justify-between">
@@ -301,7 +301,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     NEPeD (Energy Division)
                   </span>
                 </div>
-                <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 rounded-[3.2px]">
+                <span className="text-[10px] font-mono bg-white/10 text-[#8d8d8d] px-1.5 py-0.5 ">
                   6 Sections
                 </span>
               </div>
@@ -310,7 +310,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               <div className="space-y-0.5">
                 {nepedEnergyDropdownItems.map((item) => (
                   <div key={item.num}>
-                    <div className="group flex items-center justify-between rounded-[6px] text-[#e5e4e4] hover:bg-[#262626] transition-all text-[13px]">
+                    <div className="group flex items-center justify-between text-[#e5e4e4] hover:bg-[#262626] transition-all text-[13px]">
                       <Link
                         to={item.href}
                         onClick={() => setIsEnergyDropdownOpen(false)}
@@ -357,7 +357,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                               key={child.label}
                               to={child.href}
                               onClick={() => setIsEnergyDropdownOpen(false)}
-                              className="group flex items-center justify-between px-3 py-1.5 rounded-[6px] text-[#8d8d8d] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[12px]"
+                              className="group flex items-center justify-between px-3 py-1.5 text-[#8d8d8d] hover:text-[#ffffff] hover:bg-[#262626] transition-all text-[12px]"
                             >
                               <span className="truncate">{child.label}</span>
                               <span className="text-[11px] text-[#8d8d8d] group-hover:text-[#ffffff] group-hover:translate-x-0.5 transition-all">
@@ -377,7 +377,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 <Link
                   to={NEPED_ENERGY_PATHS.home}
                   onClick={() => setIsEnergyDropdownOpen(false)}
-                  className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors"
+                  className="flex items-center justify-between px-3 py-1.5 text-[11px] text-[#b75928] hover:text-[#ffffff] hover:bg-white/5 font-medium transition-colors"
                 >
                   <span>Visit NEPeD Clean Energy Portal</span>
                   <span>↗</span>
@@ -388,7 +388,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     setIsEnergyDropdownOpen(false);
                     onOpenContact();
                   }}
-                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 rounded-[4px] font-medium transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-between px-3 py-1.5 text-[11px] text-[#e5e4e4] hover:text-[#ffffff] hover:bg-white/5 font-medium transition-colors cursor-pointer"
                 >
                   <span>Contact Us</span>
                   <Mail size={12} />

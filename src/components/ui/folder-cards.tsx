@@ -45,7 +45,7 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
 
   return (
     <motion.div
-      className={`group relative isolate block h-[420px] w-full ${card.to ? "cursor-pointer" : "cursor-default"} select-none outline-none focus-visible:ring-2 focus-visible:ring-(--brand-accent) focus-visible:ring-offset-2 overflow-hidden rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] transform-gpu [backface-visibility:hidden] [contain:paint]`}
+      className={`group relative isolate block h-[420px] w-full ${card.to ? "cursor-pointer" : "cursor-default"} select-none outline-none focus-visible:ring-2 focus-visible:ring-(--brand-accent) focus-visible:ring-offset-2 overflow-hidden  shadow-[0_10px_30px_rgba(0,0,0,0.08)] transform-gpu [backface-visibility:hidden] [contain:paint]`}
       style={{ border: `10px solid ${card.borderColor}`, boxSizing: "border-box" }}
       initial="initial"
       whileHover="hover"
@@ -88,7 +88,7 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
                   src={img.src}
                   alt={img.alt}
                   draggable={false}
-                  className="absolute inset-0 h-full w-full rounded-[14px] border-[5px] border-white object-cover shadow-[0_18px_28px_rgba(0,0,0,0.18)]"
+                  className="absolute inset-0 h-full w-full border-[5px] border-white object-cover shadow-[0_18px_28px_rgba(0,0,0,0.18)]"
                   variants={
                     single || front
                       ? { initial: { rotate: single ? -2 : 3, x: 0 }, hover: { rotate: single ? 0 : 6, x: single ? 0 : 22 } }
@@ -110,7 +110,7 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
           <motion.div
             animate={{ y: [0, -6, 0], rotate: [0, 1.5, -1.5, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-            className="flex h-24 w-24 items-center justify-center rounded-[24px] bg-white/70 backdrop-blur-md shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
+            className="flex h-24 w-24 items-center justify-center bg-white/70 backdrop-blur-md shadow-[0_18px_24px_rgba(0,0,0,0.12)]"
           >
             <Icon size={44} strokeWidth={1.5} color={card.iconColor} />
           </motion.div>
@@ -130,7 +130,7 @@ export function FolderCard({ card }: { card: FolderCardItem }) {
           className="absolute inset-0 h-full w-full drop-shadow-[0_-10px_20px_rgba(0,0,0,0.08)]"
         >
           <path
-            d="M 0,20 C 0,9 9,0 20,0 L 122,0 C 133,0 140,5.5 143.5,15 C 147,24.5 154,30 164,30 L 262,30 C 272,30 280,38 280,48 L 280,380 L 0,380 Z"
+            d="M 0,0 L 130,0 L 160,30 L 280,30 L 280,380 L 0,380 Z" /* square corners, straight tab slope (site-wide square design) */
             fill={card.folderColor}
           />
         </svg>

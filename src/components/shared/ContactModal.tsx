@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail, MapPin, Send } from "lucide-react";
+import { X } from "lucide-react";
 import { easeOut } from "@/lib/motionVariants";
-
-const CONTACT_EMAIL = "nepednagaland@gmail.com";
+import { ContactDetails, ContactForm } from "./ContactContent";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -11,10 +10,6 @@ interface ContactModalProps {
 }
 
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
   useEffect(() => {
     if (!isOpen) return;
 
@@ -29,13 +24,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const subject = encodeURIComponent(`Website Enquiry from ${name || "Website Visitor"}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-  }
 
   return (
     <AnimatePresence>
@@ -59,7 +47,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-modal-heading"
-            className="relative w-full max-w-[560px] max-h-[90vh] overflow-y-auto bg-[#ffffff] text-[#1A2E23] rounded-[16px] border border-[#e5e4e4] shadow-2xl"
+            className="relative w-full max-w-[560px] max-h-[90vh] overflow-y-auto bg-[#ffffff] text-[#1A2E23] border border-[#e5e4e4] shadow-2xl"
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
@@ -87,64 +75,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-4 bg-[#F3F6F3] border border-[#e5e4e4] rounded-[8px]">
-                  <MapPin size={16} className="text-[#1E6F4C] mt-0.5 shrink-0" />
-                  <div className="text-[13px] text-[#1A2E23] leading-relaxed">
-                    <p className="text-[#1A2E23] font-medium">NEPED Secretariat</p>
-                    <p>Capital Convention Centre</p>
-                    <p>Near Nagaland Civil Secretariat</p>
-                    <p>Post Box-231,</p>
-                    <p>Kohima-797001, Nagaland</p>
-                  </div>
-                </div>
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="flex items-start gap-3 p-4 bg-[#F3F6F3] border border-[#e5e4e4] rounded-[8px] hover:border-[#1E6F4C]/50 transition-colors"
-                >
-                  <Mail size={16} className="text-[#1E6F4C] mt-0.5 shrink-0" />
-                  <div className="text-[13px] text-[#1A2E23] leading-relaxed">
-                    <p className="text-[#1A2E23] font-medium">Email Us</p>
-                    <p className="break-all">{CONTACT_EMAIL}</p>
-                  </div>
-                </a>
-              </div>
+              <ContactDetails />
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors"
-                  />
-                  <input
-                    type="email"
-                    required
-                    placeholder="Your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors"
-                  />
-                </div>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="How can we help?"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-[#ffffff] border border-[#d9d9d9] rounded-[6px] px-4 py-3 text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] focus:outline-none focus:border-[#1E6F4C] transition-colors resize-none"
-                />
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1E6F4C] hover:bg-[#185A3E] text-white text-[14px] font-medium px-6 py-3 rounded-[80px] transition-colors cursor-pointer"
-                >
-                  <span>Send Message</span>
-                  <Send size={14} />
-                </button>
-              </form>
+              <ContactForm idPrefix="contact-modal" />
             </div>
           </motion.div>
         </motion.div>

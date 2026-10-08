@@ -34,7 +34,7 @@ export function LandingPage() {
           {LANDING_CONTENT.entities.map((entity) => (
             <div
               key={entity.key}
-              className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-8 sm:p-10 flex flex-col justify-between gap-8"
+              className="border border-[#e5e4e4] bg-[#ffffff] p-8 sm:p-10 flex flex-col justify-between gap-8"
             >
               <div className="space-y-5">
                 <div className="h-16 w-16 rounded-full border border-[#e5e4e4] bg-[#ffffff] p-1 flex items-center justify-center overflow-hidden">

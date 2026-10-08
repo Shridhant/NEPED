@@ -10,19 +10,19 @@ export function ProjectTile({ project: proj }: { project: NepedProject }) {
   return (
     <Link
             to={NEPED_PATHS.project(proj.slug)}
-      className="group bg-[#F3F6F3] rounded-[16px] overflow-hidden flex flex-col border border-transparent hover:border-[#e5e4e4] transition-colors"
+      className="group bg-[#F3F6F3] overflow-hidden flex flex-col border border-transparent hover:border-[#e5e4e4] transition-colors"
     >
-      <div className="relative m-2.5 mb-0 aspect-[16/9] rounded-[12px] overflow-hidden bg-[#12432E]">
+      <div className="relative m-2.5 mb-0 aspect-[16/9] overflow-hidden bg-[#12432E]">
         <img
           src={proj.heroImage}
           alt={proj.name}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/70 via-transparent to-[#12432E]/20" />
-        <span className="absolute left-3 top-3 rounded-[1584px] border border-white/25 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase text-[#ffffff]">
+        <span className="absolute left-3 top-3 border border-white/25 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase text-[#ffffff]">
           {proj.phase}
         </span>
-        <span className="absolute right-3 top-3 max-w-[55%] truncate rounded-[1584px] border border-white/25 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase text-[#ffffff]">
+        <span className="absolute right-3 top-3 max-w-[55%] truncate border border-white/25 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase text-[#ffffff]">
           {proj.category}
         </span>
         <span className="absolute left-3 bottom-3 text-[11px] font-mono text-[#ffffff]/85 uppercase">{proj.period}</span>

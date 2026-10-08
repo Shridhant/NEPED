@@ -51,8 +51,8 @@ const NAV: NavEntry[] = [
   },
   {
     key: "projects",
-    label: "Projects",
-    home: { label: "Projects Archive", href: NEPED_PATHS.projects },
+    label: "Our Work",
+    home: { label: "Our Work", href: NEPED_PATHS.projects },
     links: projects.slice(0, 4).map((p) => ({ label: p.name, href: NEPED_PATHS.project(p.slug) })),
     // Verbatim from the Projects page
     description:
@@ -90,6 +90,7 @@ const NAV: NavEntry[] = [
     ...NEPED_ENERGY_TEAL,
   },
   { key: "gallery", label: "Gallery", href: SHARED_PATHS.gallery, accent: NEPED_GREEN.accent },
+  { key: "contact", label: "Contact", href: SHARED_PATHS.contact, accent: NEPED_GREEN.accent },
 ];
 
 const isSection = (e: NavEntry): e is NavSection => "home" in e;
@@ -97,6 +98,7 @@ const isSection = (e: NavEntry): e is NavSection => "home" in e;
 /** Which top-level entry the current page belongs to (for the underline). */
 function currentKey(pathname: string) {
   if (pathname.startsWith(SHARED_PATHS.gallery)) return "gallery";
+  if (pathname.startsWith(SHARED_PATHS.contact)) return "contact";
   if (pathname.startsWith(NEPED_ENERGY_PATHS.technology)) return "ceres";
   if (isNepedEnergyPath(pathname)) return "neped-energy";
   if (pathname.startsWith(NEPED_PATHS.projects)) return "projects";
@@ -179,7 +181,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 alt="NEPED Logo"
                 className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <span className="hidden sm:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPED</span>
+              <span className="hidden sm:block lg:hidden xl:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPED</span>
             </Link>
             <span aria-hidden className="h-8 w-px bg-black/10" />
             <Link to={NEPED_ENERGY_PATHS.home} onClick={closeAll} className="group flex items-center gap-2.5" aria-label="NEPeD home">
@@ -188,12 +190,12 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 alt="NEPeD Logo"
                 className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <span className="hidden sm:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPeD</span>
+              <span className="hidden sm:block lg:hidden xl:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPeD</span>
             </Link>
           </div>
 
           {/* Desktop menu */}
-          <nav aria-label="Main" className="hidden lg:flex items-center gap-1 xl:gap-3 h-full">
+          <nav aria-label="Main" className="hidden lg:flex items-center gap-0 xl:gap-2 h-full">
             {NAV.map((entry) => {
               const active = activeKey === entry.key;
               const inner = (
@@ -208,7 +210,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                   {active ? (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute left-3 right-3 -bottom-px h-[2px] rounded-full"
+                      className="absolute left-3 right-3 -bottom-px h-[2px] "
                       style={{ backgroundColor: entry.accent }}
                       transition={{ duration: 0.35, ease: EASE }}
                     />
@@ -216,7 +218,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 </>
               );
               const cls =
-                "relative h-full inline-flex items-center gap-1.5 px-3 text-[16px] text-[#1A2E23] hover:text-[#1A2E23] transition-colors duration-300 ease-in-out cursor-pointer";
+                "relative h-full inline-flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3 text-[15px] xl:text-[16px] whitespace-nowrap text-[#1A2E23] hover:text-[#1A2E23] transition-colors duration-300 ease-in-out cursor-pointer";
               return isSection(entry) ? (
                 <button
                   key={entry.key}
@@ -244,7 +246,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 closeAll();
                 onOpenContact();
               }}
-              className="hidden lg:inline-flex items-center h-11 px-6 rounded-full border border-[#1E6F4C] text-[15px] text-[#1E6F4C] hover:bg-[#1E6F4C] hover:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
+              className="hidden lg:inline-flex items-center h-11 px-4 xl:px-6 whitespace-nowrap border border-[#1E6F4C] text-[15px] text-[#1E6F4C] hover:bg-[#1E6F4C] hover:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
             >
               Contact Us
             </button>
@@ -428,7 +430,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                       closeAll();
                       onOpenContact();
                     }}
-                    className="w-full h-12 rounded-full border border-[#1E6F4C] text-[16px] text-[#1E6F4C] active:bg-[#1E6F4C] active:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
+                    className="w-full h-12 border border-[#1E6F4C] text-[16px] text-[#1E6F4C] active:bg-[#1E6F4C] active:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
                   >
                     Contact Us
                   </button>

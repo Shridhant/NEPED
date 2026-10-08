@@ -30,7 +30,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
               key={item.title + idx}
               onMouseEnter={() => setActive(idx)}
               className={cn(
-                "rounded-[14px] border transition-colors duration-300",
+                " border transition-colors duration-300",
                 isActive ? "bg-[#F3F6F3] border-transparent" : "bg-[#ffffff] border-[#e5e4e4] hover:border-[#cfcfcf]",
               )}
             >
@@ -64,7 +64,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
                       </Link>
                     )}
                     {/* Image inline on small screens */}
-                    <div className="lg:hidden rounded-[12px] overflow-hidden aspect-[16/10]">
+                    <div className="lg:hidden overflow-hidden aspect-[16/10]">
                       <RevealImage item={item} index={idx} />
                     </div>
                   </div>
@@ -76,7 +76,7 @@ export function HoverRevealList({ items, className }: { items: HoverRevealItem[]
       </div>
 
       {/* Image (large screens) */}
-      <div className="hidden lg:block lg:col-span-7 relative rounded-[20px] overflow-hidden min-h-[460px]">
+      <div className="hidden lg:block lg:col-span-7 relative overflow-hidden min-h-[460px]">
         {items.map((item, idx) => (
           <div
             key={item.title + idx}

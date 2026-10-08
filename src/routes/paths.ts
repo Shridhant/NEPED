@@ -10,6 +10,7 @@ export const SHARED_PATHS = {
   blog: "/blog",
   blogPost: (slug: string) => `/blog/${slug}`,
   gallery: "/gallery",
+  contact: "/contact",
   galleryAlbum: (slug: string) => `/gallery/${slug}`,
 } as const;
 

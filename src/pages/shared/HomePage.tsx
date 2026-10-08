@@ -44,7 +44,7 @@ export function HomePage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] border border-white/18 backdrop-blur-md"
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-white/[0.08] border border-white/18 backdrop-blur-md"
             >
               <span className="w-2 h-2 rounded-full bg-[#1E6F4C] animate-pulse" />
               
@@ -101,7 +101,7 @@ export function HomePage() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-5 xl:col-span-5 flex lg:justify-end"
           >
-            <div className="w-full max-w-[360px] rounded-[8px] border border-white/18 bg-[#12432E]/60 shadow-2xl shadow-black/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-white/30">
+            <div className="w-full max-w-[360px] border border-white/18 bg-[#12432E]/60 shadow-2xl shadow-black/40 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-white/30">
               {/* Image banner with phase tag */}
               <div className="relative h-[115px] sm:h-[125px] overflow-hidden bg-[#12432E]">
                 <img
@@ -111,7 +111,7 @@ export function HomePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/90 via-transparent to-transparent" />
                 <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
-                  <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
+                  <span className=" border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
                     Featured Heritage
                   </span>
                   <span className="text-[10px] font-mono text-[#e5e4e4]/70 uppercase">
@@ -133,11 +133,11 @@ export function HomePage() {
 
                 {/* Key Metrics Grid */}
                 <div className="grid grid-cols-2 gap-3 border-t border-white/12 pt-3">
-                  <div className="bg-white/[0.04] p-2.5 rounded-[4px] border border-white/8">
+                  <div className="bg-white/[0.04] p-2.5 border border-white/8">
                     <div className="text-[18px] sm:text-[20px] font-light text-[#ffffff] tracking-tight">7.8M+</div>
                     <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Trees Planted</div>
                   </div>
-                  <div className="bg-white/[0.04] p-2.5 rounded-[4px] border border-white/8">
+                  <div className="bg-white/[0.04] p-2.5 border border-white/8">
                     <div className="text-[18px] sm:text-[20px] font-light text-[#ffffff] tracking-tight">854</div>
                     <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Villages Reached</div>
                   </div>
@@ -233,7 +233,7 @@ export function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Left Card: Mist background (#e5e4e4) with 8px radius */}
-          <div className="bg-[#e5e4e4] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+          <div className="bg-[#e5e4e4] p-8 sm:p-10 flex flex-col justify-between min-h-[400px] relative overflow-hidden">
             <div>
               <SectionLabel className="text-[#5B6660]">Indigenous Technology</SectionLabel>
               <h3 className="text-[32px] sm:text-[40px] font-light text-[#1A2E23] tracking-[-0.72px] leading-[1.15] mt-4">
@@ -253,7 +253,7 @@ export function HomePage() {
           </div>
 
           {/* Right Card: Full-bleed photo with 8px radius and overlaid text */}
-          <div className="relative rounded-[8px] overflow-hidden min-h-[400px] flex flex-col justify-between p-8 sm:p-10 bg-[#12432E]">
+          <div className="relative overflow-hidden min-h-[400px] flex flex-col justify-between p-8 sm:p-10 bg-[#12432E]">
             <img
               src="/microgrid.webp"
               alt="Electronic Load Controller Microgrid"
@@ -327,7 +327,7 @@ export function HomePage() {
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Pine (#12432E) Dark Green Feature Card */}
-          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+          <div className="bg-[#12432E] text-[#ffffff] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70">
@@ -345,7 +345,7 @@ export function HomePage() {
           </div>
 
           {/* Tide (#12432E) Deep Teal Card */}
-          <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
+          <div className="bg-[#12432E] text-[#ffffff] p-8 sm:p-10 flex flex-col justify-between min-h-[340px]">
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70">
@@ -409,7 +409,7 @@ export function HomePage() {
 
       {/* 8. FLAGSHIP HARDWARE PRODUCTS DECK */}
       <motion.section {...fadeUpOnView} id="products" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="border border-[#e5e4e4] rounded-[8px] bg-[#ffffff] p-6 sm:p-12 flex flex-col items-center">
+        <div className="border border-[#e5e4e4] bg-[#ffffff] p-6 sm:p-12 flex flex-col items-center">
           <div className="text-center max-w-xl mb-8">
             <SectionLabel>05 / Indigenous Hardware & Products</SectionLabel>
             <SectionHeading size="md" className="mt-2">

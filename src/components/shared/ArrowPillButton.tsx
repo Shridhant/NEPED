@@ -47,7 +47,7 @@ export function ArrowPillButton({
   const Icon = ARROWS[arrow];
   const style = STYLES[variant];
   const nudge = arrow === "down" ? "group-hover:translate-y-0.5" : "group-hover:translate-x-0.5";
-  const classes = `group inline-flex items-center ${variant === "link" ? "gap-1.5" : "gap-3"} rounded-[1584px] text-[14px] font-medium transition-colors ${style.button} ${className}`;
+  const classes = `group inline-flex items-center ${variant === "link" ? "gap-1.5" : "gap-3"}  text-[14px] font-medium transition-colors ${style.button} ${className}`;
   const content = (
     <>
       <span>{children}</span>

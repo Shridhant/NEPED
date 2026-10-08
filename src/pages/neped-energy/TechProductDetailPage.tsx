@@ -13,7 +13,7 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 // All product text comes from productPagesData.ts (verbatim from NEPeD/data.txt).
 
 const GLASS_CARD =
-  "rounded-[16px] bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
+  " bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
 
@@ -57,7 +57,7 @@ export function TechProductDetailPage() {
           {prevProduct ? (
             <Link
               to={NEPED_ENERGY_PATHS.product(prevProduct.slug)}
-              className="group flex items-center gap-4 bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
+              className="group flex items-center gap-4 bg-[#F3F6F3] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
             >
               <span className="w-12 h-12 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center shrink-0 transition-transform group-hover:-translate-x-0.5">
                 <ArrowLeft size={18} />
@@ -73,7 +73,7 @@ export function TechProductDetailPage() {
           {nextProduct ? (
             <Link
               to={NEPED_ENERGY_PATHS.product(nextProduct.slug)}
-              className="group flex items-center justify-end gap-4 text-right bg-[#F3F6F3] rounded-[16px] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
+              className="group flex items-center justify-end gap-4 text-right bg-[#F3F6F3] p-5 sm:p-6 border border-transparent hover:border-[#e5e4e4] transition-colors"
             >
               <span className="min-w-0">
                 <span className="text-[11px] font-mono text-[#5B6660] block uppercase">Next Product</span>
@@ -118,7 +118,7 @@ function ProductHero({
           </div>
           <Link
             to={NEPED_ENERGY_PATHS.technology}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[1584px] bg-white/[0.08] hover:bg-white/15 border border-white/20 text-[12px] font-medium text-[#ffffff] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/[0.08] hover:bg-white/15 border border-white/20 text-[12px] font-medium text-[#ffffff] transition-colors"
           >
             <ArrowLeft size={13} />
             <span>Back to All Products</span>
@@ -140,11 +140,11 @@ function ProductHero({
             transition={{ duration: 0.55, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="lg:col-span-5 flex justify-center"
           >
-            <div className="w-full max-w-[440px] aspect-[4/3] rounded-[16px] overflow-hidden bg-[#ffffff] p-2.5 shadow-[0_24px_60px_rgba(0,0,0,0.35)] group">
+            <div className="w-full max-w-[440px] aspect-[4/3] overflow-hidden bg-[#ffffff] p-2.5 shadow-[0_24px_60px_rgba(0,0,0,0.35)] group">
               <img
                 src={image}
                 alt={name}
-                className="w-full h-full object-cover rounded-[10px] transition-transform duration-500 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </div>
           </motion.div>
@@ -190,7 +190,7 @@ function HydrogerContent() {
           <h2 className={`lg:col-span-4 ${H2}`}>{page.indigenization.heading}</h2>
           <div className="lg:col-span-8 space-y-5">
             <p className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">{page.indigenization.paragraphs[0]}</p>
-            <div className="bg-[#F3F6F3] rounded-[16px] p-6 sm:p-8 border-l-2 border-[#1E6F4C]">
+            <div className="bg-[#F3F6F3] p-6 sm:p-8 border-l-2 border-[#1E6F4C]">
               <p className="text-[15px] sm:text-[17px] text-[#1A2E23] leading-relaxed">{page.indigenization.paragraphs[1]}</p>
             </div>
           </div>
@@ -203,7 +203,7 @@ function HydrogerContent() {
           <h2 className="text-center text-[34px] sm:text-[52px] font-light text-[#ffffff] tracking-[-1.2px] leading-[1.1]">
             {page.specifications.heading}
           </h2>
-          <div className="mt-12 sm:mt-16 rounded-[16px] bg-white/[0.06] border border-white/15 p-2 sm:p-4">
+          <div className="mt-12 sm:mt-16 bg-white/[0.06] border border-white/15 p-2 sm:p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8">
               {page.specifications.rows.map((row, idx) => (
                 <div key={row.label} className="flex gap-4 px-3 sm:px-4 py-4 border-b border-white/10">
@@ -232,7 +232,7 @@ function HydrogerContent() {
         <h2 className={H2}>{page.expectedBenefits.heading}</h2>
         <div className="mt-10 sm:mt-12 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
           {page.expectedBenefits.paragraphs.map((paragraph, idx) => (
-            <div key={paragraph} className="relative rounded-[16px] overflow-hidden bg-[#12432E] p-6 sm:p-8 flex flex-col gap-8">
+            <div key={paragraph} className="relative overflow-hidden bg-[#12432E] p-6 sm:p-8 flex flex-col gap-8">
               <div className="absolute top-0 right-0 w-[220px] h-[220px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
               <span className="relative text-[12px] font-mono text-[#e5e4e4]/60">{String(idx + 1).padStart(2, "0")}</span>
               <p className="relative text-[15px] sm:text-[16px] text-[#ffffff] leading-relaxed">{paragraph}</p>
@@ -255,14 +255,14 @@ function ElcContent() {
 
       {/* R&D story */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#F3F6F3] rounded-[16px] p-7 sm:p-10 border-l-2 border-[#1E6F4C]">
+        <div className="bg-[#F3F6F3] p-7 sm:p-10 border-l-2 border-[#1E6F4C]">
           <p className="text-[16px] sm:text-[19px] text-[#1A2E23] leading-relaxed max-w-4xl">{page.development}</p>
         </div>
       </motion.section>
 
       {/* Controlled parameters — dark teal card with glass tiles */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-[#12432E] text-[#ffffff] p-7 sm:p-12">
+        <div className="relative overflow-hidden bg-[#12432E] text-[#ffffff] p-7 sm:p-12">
           <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
           <div className="relative space-y-8">
             <h2 className="max-w-3xl text-[24px] sm:text-[32px] font-light text-[#ffffff] tracking-[-0.6px] leading-snug">

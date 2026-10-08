@@ -11,7 +11,7 @@ export default function VideoScrollHeroPage() {
 
       {/* Next Section */}
       <motion.section
-        className="relative bg-muted -mt-8 rounded-t-3xl min-h-screen z-20"
+        className="relative bg-muted -mt-8 min-h-screen z-20"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -62,7 +62,7 @@ export default function VideoScrollHeroPage() {
                 return (
                   <motion.div
                     key={item}
-                    className="bg-card p-6 rounded-xl border border-border/50 shadow-sm text-left"
+                    className="bg-card p-6 border border-border/50 shadow-sm text-left"
                     initial={{ opacity: 0, y: 30, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true }}
@@ -79,7 +79,7 @@ export default function VideoScrollHeroPage() {
                       transition: { type: "spring", stiffness: 400, damping: 25 }
                     }}
                   >
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
+                    <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-4 text-primary">
                       <IconComponent className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2 text-foreground">

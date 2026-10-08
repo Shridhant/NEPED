@@ -1,169 +1,126 @@
-import { Link, useLocation } from "react-router-dom";
-import { Mail } from "lucide-react";
-import { TextArrowButton } from "@/components/ui/AkerPrimitives";
-import { NEPED_ENERGY_PATHS, NEPED_PATHS, isNepedPath, isNepedEnergyPath } from "@/routes/paths";
-import { NepedEnergyFooter } from "@/components/neped-energy/NepedEnergyFooter";
-import { NepedFooter } from "@/components/neped/NepedFooter";
+import { Link } from "react-router-dom";
+import { ArrowUp, Mail } from "lucide-react";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { CONTACT_EMAIL } from "./ContactContent";
 
-/**
- * 1. NEPED Master Umbrella Portal Footer
- * Displayed on shared pages (landing, blog, gallery) — NEPED and NEPeD pages have their own footers
+/*
+ * One footer for NEPED and NEPeD pages (matches the unified navbar): a full-width Deep Forest band,
+ * both logos, link columns that mirror the navbar, the Secretariat address and a bottom bar.
+ * Names and address as used elsewhere on the site. The old per-wing footers (NepedFooter,
+ * NepedEnergyFooter) are no longer used.
  */
-function NepedMasterFooter({ onOpenContact }: { onOpenContact: () => void }) {
+
+const COLUMNS: { title: string; links: { label: string; to: string }[] }[] = [
+  {
+    title: "NEPED",
+    links: [
+      { label: "About Us", to: NEPED_PATHS.about },
+      { label: "Organisational Structure", to: NEPED_PATHS.structure },
+      { label: "Our Work", to: NEPED_PATHS.projects },
+    ],
+  },
+  {
+    title: "NEPeD Clean Energy",
+    links: [
+      { label: "What is a Hydroger?", to: NEPED_ENERGY_PATHS.technology },
+      { label: "Impact", to: NEPED_ENERGY_PATHS.impact },
+      { label: "Case Studies", to: NEPED_ENERGY_PATHS.caseStudies },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Gallery", to: SHARED_PATHS.gallery },
+      { label: "Contact Us", to: SHARED_PATHS.contact },
+    ],
+  },
+];
+
+const LINK = "text-[15px] text-[#ffffff]/80 hover:text-[#E8A33D] transition-colors duration-300 ease-in-out";
+// not uppercased: "NEPeD" must keep its lowercase e
+const HEADING = "text-[14px] font-semibold tracking-[0.04em] text-[#E8A33D]";
+
+export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
   return (
-    <footer id="contact" className="mt-20 border-t border-[#e5e4e4] pt-16 pb-12 bg-[#ffffff]">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden">
-          {/* Subtle background ambient glow */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
+    <footer className="mt-20 sm:mt-28 relative overflow-hidden bg-[#12432E] text-[#ffffff]">
+      {/* faint river lines, as on the page heroes */}
+      <svg viewBox="0 0 1440 440" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
+        <path d="M0 360 C240 300 420 380 720 320 C1000 262 1200 330 1440 280" fill="none" stroke="#E8A33D" strokeOpacity="0.12" strokeWidth="2" />
+        <path d="M0 400 C260 340 460 420 740 360 C1020 300 1220 370 1440 320" fill="none" stroke="#FFFFFF" strokeOpacity="0.05" strokeWidth="2" />
+      </svg>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
-            {/* Brand column */}
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center gap-2.5">
-                <div className="h-8 w-8 rounded-full bg-white p-0.5 border border-white/20 flex items-center justify-center shrink-0 overflow-hidden">
-                  <img
-                    src="/NEPED Logo.jpg.webp"
-                    alt="NEPED Logo"
-                    className="h-full w-full rounded-full object-cover"
-                  />
-                </div>
-                <span className="text-[12px] uppercase tracking-[0.12px] text-[#ffffff]/55 font-mono">
-                  Master Umbrella Organization • Est. 1994
-                </span>
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 pt-16 sm:pt-20 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <div className="flex items-center gap-3">
+              <Link to={NEPED_PATHS.home} aria-label="NEPED home" className="shrink-0">
+                <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
+              </Link>
+              <span aria-hidden className="h-8 w-px bg-white/20" />
+              <Link to={NEPED_ENERGY_PATHS.technology} aria-label="NEPeD" className="shrink-0">
+                <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
+              </Link>
+            </div>
+            <div className="space-y-2 text-[15px] leading-relaxed text-[#ffffff]/85 max-w-[380px]">
+              <p>Nagaland Empowerment of People through Economic Development (NEPED)</p>
+              <p>Nagaland Empowerment of People through Energy Development (NEPeD)</p>
+            </div>
+            <button
+              type="button"
+              onClick={onOpenContact}
+              className="inline-flex w-fit items-center gap-2 h-11 px-5 border border-white/30 text-[14px] hover:border-[#E8A33D] hover:text-[#E8A33D] transition-colors duration-300 ease-in-out cursor-pointer"
+            >
+              <Mail size={15} />
+              Contact Us
+            </button>
+          </div>
+
+          {/* Link columns */}
+          <nav aria-label="Footer" className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {COLUMNS.map((col) => (
+              <div key={col.title}>
+                <h2 className={`${HEADING} mb-5`}>{col.title}</h2>
+                <ul className="space-y-3">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <Link to={l.to} className={LINK}>
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h2 className="text-[42px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-none">
-                NEPED
-              </h2>
-              <p className="text-[15px] text-[#e5e4e4]/80 max-w-md leading-relaxed font-normal">
-                Nagaland Empowerment of People through Economic Development — 30+ years of pioneering community transformation, indigenous hydrogers, agroforestry, and sustainable rural livelihoods.
+            ))}
+          </nav>
+
+          {/* Address */}
+          <div className="lg:col-span-3">
+            <h2 className={`${HEADING} mb-5`}>Directorate</h2>
+            <address className="not-italic space-y-1 text-[15px] leading-relaxed text-[#ffffff]/80">
+              <p className="text-[#ffffff] font-medium">NEPED Secretariat</p>
+              <p>Capital Convention Centre</p>
+              <p>Near Nagaland Civil Secretariat</p>
+              <p>Post Box-231,</p>
+              <p>Kohima-797001, Nagaland</p>
+              <p className="pt-3">
+                <a href={`mailto:${CONTACT_EMAIL}`} className={`${LINK} break-all`}>
+                  {CONTACT_EMAIL}
+                </a>
               </p>
-              <div className="pt-2 flex flex-wrap items-center gap-4">
-                <TextArrowButton to={NEPED_PATHS.about} dark={true} variant="pill">
-                  Explore Society Mandate
-                </TextArrowButton>
-                <Link
-                  to={NEPED_ENERGY_PATHS.home}
-                  className="text-[13px] text-[#E8A33D] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
-                >
-                  <span>NEPeD (Clean Energy Wing)</span>
-                  <span>↗</span>
-                </Link>
-                <button
-                  type="button"
-                  onClick={onOpenContact}
-                  className="inline-flex items-center gap-2 text-[13px] text-[#ffffff] border border-white/20 hover:border-white/60 px-4 py-2.5 rounded-[80px] transition-all cursor-pointer"
-                >
-                  <Mail size={13} />
-                  <span>Contact Us</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Links Columns */}
-            <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              <div>
-                <span className="text-[12px] uppercase tracking-[0.12px] text-[#ffffff]/55 block mb-4">
-                  Organization
-                </span>
-                <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
-                  <li>
-                    <Link to={NEPED_PATHS.about} className="hover:text-[#E8A33D] transition-colors">
-                      About NEPED
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`${NEPED_PATHS.about}#team`} className="hover:text-[#E8A33D] transition-colors">
-                      Multidisciplinary Team
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#E8A33D] transition-colors">
-                      Past Team Leaders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={NEPED_PATHS.home} className="hover:text-[#E8A33D] transition-colors">
-                      Heritage Archives
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <span className="text-[12px] uppercase tracking-[0.12px] text-[#ffffff]/55 block mb-4">
-                  NEPeD Energy
-                </span>
-                <ul className="space-y-3 text-[14px] text-[#e5e4e4]/80">
-                  <li>
-                    <Link to={NEPED_ENERGY_PATHS.home} className="hover:text-[#E8A33D] transition-colors">
-                      NEPeD Energy Overview
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={NEPED_ENERGY_PATHS.technology} className="hover:text-[#E8A33D] transition-colors">
-                      CERES & Hydrogers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`${NEPED_ENERGY_PATHS.technology}#elc`} className="hover:text-[#E8A33D] transition-colors">
-                      Load Controllers (ELC)
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <span className="text-[12px] uppercase tracking-[0.12px] text-[#ffffff]/55 block mb-4">
-                  Directorate
-                </span>
-                <div className="space-y-2 text-[13px] text-[#e5e4e4]/80 leading-relaxed">
-                  <p className="text-[#ffffff] font-medium">NEPED Secretariat</p>
-                  <p>Capital Convention Centre</p>
-                  <p>Near Nagaland Civil Secretariat</p>
-                  <p>Post Box-231,</p>
-                  <p>Kohima-797001, Nagaland</p>
-                  <p className="pt-2 text-[12px] text-[#ffffff]/55">
-                    Email: <span className="text-[#ffffff]">nepednagaland@gmail.com</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+            </address>
           </div>
+        </div>
 
-          {/* Bottom Hairline & Legal */}
-          <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[#ffffff]/55">
-            <div>
-              © 2026 NEPED Society — Nagaland Empowerment of People through Economic Development
-            </div>
-            <div className="flex items-center gap-6">
-              <span className="text-[#ffffff]/55">Built with indigenous excellence in Nagaland</span>
-              <a href="#root" className="hover:text-[#ffffff] transition-colors">
-                Back to Top ↑
-              </a>
-            </div>
-          </div>
+        {/* Bottom bar */}
+        <div className="mt-14 sm:mt-16 pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-[#ffffff]/60">
+          <p>© {new Date().getFullYear()} NEPED Society — Nagaland Empowerment of People through Economic Development</p>
+          <a href="#root" className="inline-flex w-fit items-center gap-1.5 hover:text-[#ffffff] transition-colors">
+            Back to Top
+            <ArrowUp size={14} />
+          </a>
         </div>
       </div>
     </footer>
   );
-}
-
-/**
- * Main Dynamic Footer Switcher
- * Intelligently renders the tailored footer based on the active route
- */
-export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
-  const location = useLocation();
-  const isHeritagePage = isNepedPath(location.pathname);
-
-  if (isHeritagePage) {
-    return <NepedFooter onOpenContact={onOpenContact} />;
-  }
-
-  if (isNepedEnergyPath(location.pathname)) {
-    return <NepedEnergyFooter onOpenContact={onOpenContact} />;
-  }
-
-  return <NepedMasterFooter onOpenContact={onOpenContact} />;
 }

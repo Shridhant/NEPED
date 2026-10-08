@@ -108,7 +108,7 @@ export function NepedAboutPage() {
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-24">
       {/* 1. HERO — Our Story (text verbatim from the About copy supplied by the NEPED team) */}
       <section className="px-2.5 sm:px-4 pt-2.5 sm:pt-4">
-        <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden bg-(--brand-surface) text-[#ffffff]">
+        <div className="relative overflow-hidden bg-(--brand-surface) text-[#ffffff]">
           <div className="absolute inset-0 z-0">
             <img src="/forest.webp" alt="" className="w-full h-full object-cover opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#12432E]/95 via-[#12432E]/70 to-[#12432E]/35" />
@@ -127,7 +127,7 @@ export function NepedAboutPage() {
               </p>
             </motion.div>
             <div className="lg:col-span-4 hidden lg:flex lg:justify-end">
-              <div className="h-48 w-48 rounded-[24px] bg-[#ffffff] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
+              <div className="h-48 w-48 bg-[#ffffff] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
                 <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="max-h-full max-w-full object-contain" />
               </div>
             </div>
@@ -252,7 +252,7 @@ export function NepedAboutPage() {
                       <span className="text-[#1E6F4C]">{i + 1}.</span> {title}
                     </h3>
                     <p className="text-[16px] sm:text-[17px] leading-[1.65] text-[#1A2E23]">{text}</p>
-                    <div className="rounded-[14px] bg-[#ffffff] border-l-[3px] border-[#E8A33D] px-5 py-4 sm:px-6 sm:py-5">
+                    <div className=" bg-[#ffffff] border-l-[3px] border-[#E8A33D] px-5 py-4 sm:px-6 sm:py-5">
                       <p className="text-[15px] sm:text-[16px] leading-[1.6] text-[#1A2E23]">
                         <span className="font-semibold text-[#12432E]">Example: </span>
                         {example}
@@ -300,7 +300,7 @@ export function NepedAboutPage() {
       <motion.section {...fadeUpOnView} id="leaders" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1">
           {/* Past Team Leaders */}
-          <div className="bg-[#F3F6F3] rounded-[16px] p-7 sm:p-10 space-y-6">
+          <div className="bg-[#F3F6F3] p-7 sm:p-10 space-y-6">
             <div>
               <SectionPill>Historical Archive</SectionPill>
               <h3 className="text-[28px] font-light text-[#1A2E23] tracking-[-0.72px] mt-1">
@@ -356,7 +356,7 @@ function TeamCard({ member, highlight = false }: { member: TeamMember; highlight
 
   return (
     <div
-      className={`group relative h-[300px] rounded-[20px] overflow-hidden p-7 sm:p-8 ${
+      className={`group relative h-[300px]  overflow-hidden p-7 sm:p-8 ${
         highlight ? "bg-(--brand-surface) text-[#ffffff]" : "bg-[#F3F6F3] text-[#1A2E23]"
       }`}
     >
@@ -367,7 +367,7 @@ function TeamCard({ member, highlight = false }: { member: TeamMember; highlight
         <h3 className="text-[20px] sm:text-[22px] font-medium tracking-[-0.3px]">{member.name}</h3>
         <p className={`text-[14px] mt-1 ${highlight ? "text-[#ffffff]/75" : "text-[#5B6660]"}`}>{member.role}</p>
       </div>
-      <div className="absolute right-0 bottom-0 w-[44%] h-[64%] rounded-tl-[16px] overflow-hidden">
+      <div className="absolute right-0 bottom-0 w-[44%] h-[64%] overflow-hidden">
         {/* scale crops the white border of the passport-style photos */}
         <img
           src={member.image}

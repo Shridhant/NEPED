@@ -36,7 +36,7 @@ export function SectionSubnav({ items, label }: { items: SubnavItem[]; label: st
           >
             {text}
             {active === id ? (
-              <motion.span layoutId={`subnav-${label}`} className="absolute left-0 right-0 bottom-0 h-[3px] rounded-full bg-[#1E6F4C]" transition={{ duration: 0.35, ease: [0.65, 0, 0.35, 1] }} />
+              <motion.span layoutId={`subnav-${label}`} className="absolute left-0 right-0 bottom-0 h-[3px] bg-[#1E6F4C]" transition={{ duration: 0.35, ease: [0.65, 0, 0.35, 1] }} />
             ) : null}
           </a>
         ))}

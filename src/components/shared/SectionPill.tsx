@@ -13,7 +13,7 @@ export function SectionPill({ children, dark = false }: { children: ReactNode; d
         <ArrowDown size={15} />
       </span>
       <span
-        className={`px-4 py-1.5 rounded-[1584px] text-[13px] font-medium ${
+        className={`px-4 py-1.5  text-[13px] font-medium ${
           dark ? "bg-white/10 text-[#ffffff]" : "bg-(--brand-accent)/10 text-[#1A2E23]"
         }`}
       >

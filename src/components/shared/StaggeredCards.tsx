@@ -22,7 +22,7 @@ export function StaggeredCards({ items, className }: { items: StaggeredCardItem[
           key={item.to}
           to={item.to}
           style={{ "--step": idx } as CSSProperties}
-          className="group lg:mt-[calc(var(--step)*6rem)] h-[320px] sm:h-[360px] bg-[#F3F6F3] rounded-[16px] p-6 sm:p-8 flex flex-col justify-between gap-8 border border-transparent hover:border-[#e5e4e4] transition-colors"
+          className="group lg:mt-[calc(var(--step)*6rem)] h-[320px] sm:h-[360px] bg-[#F3F6F3] p-6 sm:p-8 flex flex-col justify-between gap-8 border border-transparent hover:border-[#e5e4e4] transition-colors"
         >
           <div className="flex items-start justify-between gap-4">
             <h3 className="text-[24px] sm:text-[28px] font-light text-[#1A2E23] tracking-[-0.6px] leading-tight">

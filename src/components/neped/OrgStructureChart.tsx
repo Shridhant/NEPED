@@ -76,9 +76,9 @@ export function OrgStructureChart() {
       ref={(el) => {
         boxRefs.current[id] = el;
       }}
-      className={`relative z-10 rounded-[12px] sm:rounded-[14px] bg-white/85 border border-white shadow-[0_8px_24px_-12px_rgba(25,63,50,0.35)] px-2.5 py-2.5 sm:px-5 sm:py-3.5 text-center text-[12px] sm:text-[16px] font-medium leading-snug text-[#12432E] ${className}`}
+      className={`relative z-10   bg-white/85 border border-white shadow-[0_8px_24px_-12px_rgba(25,63,50,0.35)] px-2.5 py-2.5 sm:px-5 sm:py-3.5 text-center text-[12px] sm:text-[16px] font-medium leading-snug text-[#12432E] ${className}`}
     >
-      <span className="absolute left-3 right-3 top-0 h-[3px] rounded-b-full" style={{ background: NODES[id].color }} aria-hidden />
+      <span className="absolute left-3 right-3 top-0 h-[3px] " style={{ background: NODES[id].color }} aria-hidden />
       {NODES[id].label}
     </div>
   );

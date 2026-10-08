@@ -178,7 +178,7 @@ export function SitePreloader() {
                   initial={{ opacity: 0, scale: 0.9, y: 40, rotate: 0 }}
                   animate={{ opacity: 1, scale: 1, y: item.y, x: item.x, rotate: item.rotate, transition: { duration: 0.55, ease: [0.215, 0.61, 0.355, 1], delay: 0.05 } }}
                   exit={{ opacity: 0, scale: 0.95, y: -30, transition: { duration: 0.35, ease } }}
-                  className="absolute inset-0 overflow-hidden rounded-[10px] border border-black/5 bg-[#e9eee6] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)]"
+                  className="absolute inset-0 overflow-hidden border border-black/5 bg-[#e9eee6] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)]"
                 >
                   <img src={item.image} alt="" className="h-full w-full object-cover" draggable={false} />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -205,7 +205,7 @@ export function SitePreloader() {
               {ITEMS.map((_, i) => (
                 <motion.div
                   key={i}
-                  className="h-1.5 rounded-full bg-[#12432E]"
+                  className="h-1.5 bg-[#12432E]"
                   animate={{ width: i === index ? 20 : 6, opacity: i <= index ? 0.9 : 0.25 }}
                   transition={{ duration: 0.35 }}
                 />

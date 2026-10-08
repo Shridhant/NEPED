@@ -55,12 +55,12 @@
   --tracking-display: -4.2px;
 
   /* Border Radius */
-  --radius-sm: 3.2px;
-  --radius-md: 3.2px;
-  --radius-lg: 8px;
-  --radius-card: 8px;
-  --radius-button: 80px;
-  --radius-pill: 1584px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-card: 0px;
+  --radius-button: 0px;
+  --radius-pill: 0px;
   --radius-full: 80px;
 }
 
@@ -122,11 +122,11 @@
   --element-gap: 16px;
 
   /* Named Radii */
-  --radius-cards: 8px;
-  --radius-small: 3.2px;
-  --radius-badges: 1584px;
-  --radius-images: 8px;
-  --radius-buttons: 80px;
+  --radius-cards: 0px;
+  --radius-small: 0px;
+  --radius-badges: 0px;
+  --radius-images: 0px;
+  --radius-buttons: 0px;
 
   /* Surfaces */
   --surface-paper: #ffffff;
@@ -260,4 +260,14 @@
   80% { transform: translate(-3%, 0); }
   90% { transform: translate(2%, 2%); }
   100% { transform: translate(1%, 0); }
+}
+
+/* Marquee loop (components/ui/marquee.tsx): the track holds two copies, so -50% is one full loop */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
 }

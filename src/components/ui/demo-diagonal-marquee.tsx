@@ -4,7 +4,7 @@ import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-c
 
 export default function DiagonalMarqueeCarouselPreview() {
   return (
-    <div className="relative w-full overflow-hidden rounded-[8px]">
+    <div className="relative w-full overflow-hidden ">
       <DiagonalMarqueeCarousel />
     </div>
   );

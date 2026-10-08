@@ -91,7 +91,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
   return (
     <div className="flex h-full w-full flex-col md:flex-row gap-5 md:gap-7 p-4 sm:p-6 justify-between">
       {/* Left side: Hardware Image with badge */}
-      <div className="w-full md:w-[260px] lg:w-[290px] h-[180px] sm:h-[220px] md:h-full shrink-0 rounded-[6px] overflow-hidden bg-[#12432E] border border-[#e5e4e4]/60 relative group">
+      <div className="w-full md:w-[260px] lg:w-[290px] h-[180px] sm:h-[220px] md:h-full shrink-0 overflow-hidden bg-[#12432E] border border-[#e5e4e4]/60 relative group">
         <img
           src={data.image}
           alt={data.title}
@@ -100,7 +100,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
             (e.target as HTMLElement).style.opacity = "0.8";
           }}
         />
-        <span className="absolute top-2.5 left-2.5 text-[10px] font-mono bg-[#12432E]/90 text-[#ffffff] px-2.5 py-1 rounded-[1584px] border border-white/15">
+        <span className="absolute top-2.5 left-2.5 text-[10px] font-mono bg-[#12432E]/90 text-[#ffffff] px-2.5 py-1 border border-white/15">
           {data.badge}
         </span>
       </div>
@@ -138,7 +138,7 @@ function CardContent({ contentType }: { contentType: 1 | 2 | 3 }) {
           {data.path && (
           <button
             onClick={() => navigate(data.path)}
-            className="flex h-9 cursor-pointer select-none items-center gap-1.5 rounded-[80px] bg-[#12432E] text-[#ffffff] px-4 text-xs font-normal tracking-[0.15px] hover:bg-[#12432E] transition-all"
+            className="flex h-9 cursor-pointer select-none items-center gap-1.5 bg-[#12432E] text-[#ffffff] px-4 text-xs font-normal tracking-[0.15px] hover:bg-[#12432E] transition-all"
           >
             <span>{data.cta}</span>
             <span>→</span>
@@ -182,7 +182,7 @@ function AnimatedCard({
         x: "-50%",
         bottom: 0,
       }}
-      className="absolute flex h-[460px] md:h-[340px] w-[92%] sm:w-[580px] md:w-[720px] lg:w-[780px] items-center justify-center overflow-hidden rounded-[8px] border border-[#e5e4e4] bg-[#ffffff] shadow-sm"
+      className="absolute flex h-[460px] md:h-[340px] w-[92%] sm:w-[580px] md:w-[720px] lg:w-[780px] items-center justify-center overflow-hidden border border-[#e5e4e4] bg-[#ffffff] shadow-sm"
     >
       <CardContent contentType={card.contentType} />
     </motion.div>
@@ -220,7 +220,7 @@ export default function AnimatedCardStack() {
       <div className="relative z-10 -mt-px flex w-full items-center justify-center border-t border-[#e5e4e4] py-4">
         <button
           onClick={handleAnimate}
-          className="flex h-10 cursor-pointer select-none items-center justify-center gap-2 rounded-[80px] border border-[#e5e4e4] bg-[#ffffff] px-7 text-xs sm:text-sm font-medium text-[#1A2E23] hover:bg-[#e5e4e4] transition-all"
+          className="flex h-10 cursor-pointer select-none items-center justify-center gap-2 border border-[#e5e4e4] bg-[#ffffff] px-7 text-xs sm:text-sm font-medium text-[#1A2E23] hover:bg-[#e5e4e4] transition-all"
         >
           <span>Cycle Product Deck</span>
           <span>→</span>

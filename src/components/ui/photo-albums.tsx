@@ -66,19 +66,19 @@ function AlbumCard({ album, onClick }: { album: GalleryAlbumData; onClick: () =>
     <motion.button
       type="button"
       onClick={onClick}
-      className="group flex cursor-pointer flex-col items-center outline-none select-none focus-visible:ring-2 focus-visible:ring-(--brand-accent) rounded-[24px]"
+      className="group flex cursor-pointer flex-col items-center outline-none select-none focus-visible:ring-2 focus-visible:ring-(--brand-accent) "
     >
       <div className="relative mb-4 flex aspect-square w-full items-center justify-center overflow-visible">
         {stack.map((photo, i) => (
           <motion.div
             key={photo.id}
             layoutId={`photo-${photo.id}`}
-            className="absolute w-[62%] aspect-square overflow-visible rounded-[22px] bg-[#e5e4e4] ring-1 ring-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+            className="absolute w-[62%] aspect-square overflow-visible bg-[#e5e4e4] ring-1 ring-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
             animate={{ rotate: rotations[i] }}
             whileHover={{ scale: 1.05, y: -6, transition: { duration: 0.2 } }}
             transition={transition}
           >
-            <img src={photo.src} alt="" className="pointer-events-none h-full w-full rounded-[22px] object-cover select-none" />
+            <img src={photo.src} alt="" className="pointer-events-none h-full w-full object-cover select-none" />
           </motion.div>
         ))}
       </div>
@@ -133,12 +133,12 @@ function ExpandedAlbum({
             layoutId={`photo-${photo.id}`}
             onClick={() => onOpen(idx)}
             aria-label={photo.alt || `Open photo ${idx + 1}`}
-            className="group aspect-square overflow-hidden rounded-[18px] bg-[#e5e4e4] ring-1 ring-black/5 cursor-zoom-in"
+            className="group aspect-square overflow-hidden bg-[#e5e4e4] ring-1 ring-black/5 cursor-zoom-in"
             initial={stacked.has(photo.id) ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={transition}
           >
-            <img src={photo.src} alt={photo.alt} className="h-full w-full rounded-[18px] object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+            <img src={photo.src} alt={photo.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
           </motion.button>
         ))}
       </div>
@@ -195,7 +195,7 @@ function PhotoPreview({
         key={photo.id}
         src={photo.src}
         alt={photo.alt}
-        className="max-h-full max-w-full rounded-[12px] object-contain shadow-2xl"
+        className="max-h-full max-w-full object-contain shadow-2xl"
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.25 }}

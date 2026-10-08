@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  Check,
   Wallet,
   Briefcase,
   GraduationCap,
@@ -15,45 +14,24 @@ import {
   FlaskConical,
 } from "lucide-react";
 import { SectionPill } from "@/components/shared/SectionPill";
-import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 // import { HoverRevealList } from "@/components/shared/HoverRevealList"; // used by the hidden section 1A
 import { /* NEPED_SECTION_3, NEPED_PHASES_SECTION, */ NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
 // import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
 // import { WideCardCarousel } from "@/components/shared/WideCardCarousel"; // used by the hidden section 1C
 // import { PhaseBlogCard } from "@/components/neped/PhaseBlogCard"; // used by the hidden section 1C
-import { StaggeredCards } from "@/components/shared/StaggeredCards";
 import { HaloReel } from "@/components/ui/halo-reel";
 import { NEPED_PRESENT_TEAM } from "@/data/neped/nepedTeamData";
 import { ProjectTile } from "@/components/neped/ProjectTile";
 import { FolderCard } from "@/components/ui/folder-cards";
 import { BookDemoButton } from "@/components/ui/book-demo-button";
-import { WorksWheel, type WorksWheelItem } from "@/components/ui/works-wheel";
+import { Marquee } from "@/components/ui/marquee";
 import { GALLERY_ALBUMS_DATA } from "@/data/shared/galleryAlbumsData";
-import { NEPED_SUCCESS_STORIES } from "@/data/neped/nepedSuccessStoriesData";
 import { loadAllProjects } from "@/lib/contentLoader";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
-import { BorderGlow } from "@/components/ui/border-glow";
-import { DotGrid } from "@/components/ui/dot-grid";
-import { useOpenContact } from "@/lib/contact";
 import { PartnerBand } from "@/components/shared/PartnerBand";
 
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
-// Innovation cards: white washed with soft NEPED greens; border glow follows the pointer (BorderGlow)
-// const INNOVATION_CARD_BG = [
-//   "radial-gradient(70% 60% at 0% 0%, rgba(159,214,143,0.45) 0%, transparent 70%), linear-gradient(160deg, #eef7ea 0%, #ffffff 60%, #f3f9f0 100%)",
-//   "radial-gradient(70% 60% at 100% 0%, rgba(126,200,178,0.40) 0%, transparent 70%), linear-gradient(200deg, #ebf6f1 0%, #ffffff 60%, #f1f8f4 100%)",
-// ];
-const INNOVATION_GLOW = {
-  light: true,
-  borderRadius: 20,
-  glowColor: "130 50 45",
-  glowRadius: 40,
-  glowIntensity: 1.2,
-  edgeSensitivity: 28,
-  coneSpread: 25,
-  colors: ["#1E6F4C", "#E8A33D", "#12432E"] as [string, string, string],
-};
 // Aims cards: one uniform style from the site palette (Mist Wash card, Forest Green icon)
 const AIM_CARD_STYLE = {
   background: "linear-gradient(145deg, #f3f6f3 0%, #dcebe1 100%)",
@@ -64,11 +42,10 @@ const AIM_CARD_STYLE = {
   iconColor: "#1e6f4c",
 };
 // Gallery preview: every photo in public/gallery, titled "<State> 01, 02…"; each opens the Gallery page
-const GALLERY_WHEEL_ITEMS: WorksWheelItem[] = GALLERY_ALBUMS_DATA.flatMap((album) =>
+const GALLERY_MARQUEE_ITEMS = GALLERY_ALBUMS_DATA.flatMap((album) =>
   album.photos.map((photo, i) => ({
     title: `${album.title} ${String(i + 1).padStart(2, "0")}`,
     image: photo.src,
-    href: SHARED_PATHS.gallery,
   })),
 );
 // Homepage stat strip and themed grid — text verbatim from the homepage copy supplied by the NEPED team
@@ -84,11 +61,9 @@ const HOME_THEMES = [
   { title: "Energy", text: "'Made in Nagaland' Hydrogers bringing 24×7 clean power to off-grid and border villages.", icon: Zap, to: NEPED_ENERGY_PATHS.home },
   { title: "CERES", text: "our Centre of Excellence in Dimapur, where renewable technology is researched and built.", icon: FlaskConical, to: NEPED_ENERGY_PATHS.technology },
 ];
-const GLASS_ROW = "rounded-[12px] bg-white/70 border border-[#12432E]/10 p-4";
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
-  const openContact = useOpenContact();
 
   useEffect(() => {
     document.title = "NEPED — Heritage & Economic Development (1994–Present) • Master Archives";
@@ -174,7 +149,7 @@ export function NepedEconomicPage() {
             <Link
               key={title}
               to={to}
-              className="group rounded-[20px] bg-[#F3F6F3] p-6 sm:p-7 flex flex-col gap-5 border border-transparent hover:border-[#dbe5de] transition-colors duration-300 ease-in-out"
+              className="group bg-[#F3F6F3] p-6 sm:p-7 flex flex-col gap-5 border border-transparent hover:border-[#dbe5de] transition-colors duration-300 ease-in-out"
             >
               <span className="h-11 w-11 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center">
                 <Icon size={20} strokeWidth={1.75} />
@@ -189,7 +164,7 @@ export function NepedEconomicPage() {
 
       {/* FEATURED CASE STUDY — Kingjung */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[24px] overflow-hidden bg-[#F3F6F3]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden bg-[#F3F6F3]">
           <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px]">
             <img
               src="/20 Kingjung Village Energy Committee (2).webp"
@@ -249,7 +224,7 @@ export function NepedEconomicPage() {
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-[640px] space-y-5">
-            <span className="inline-flex items-center px-4 py-2 rounded-[1584px] border border-(--brand-accent)/40 text-[13px] text-(--brand-accent)">
+            <span className="inline-flex items-center px-4 py-2 border border-(--brand-accent)/40 text-[13px] text-(--brand-accent)">
               {NEPED_SECTION_3.label}
             </span>
             <h2 className={H2}>{NEPED_SECTION_3.heading}</h2>
@@ -271,7 +246,7 @@ export function NepedEconomicPage() {
         </div>
 
         {/* Team members on a rotating ring, with a link to the About Us page */}
-        <div className="mt-10 sm:mt-12 rounded-[24px] bg-[#F3F6F3] overflow-hidden">
+        <div className="mt-10 sm:mt-12 bg-[#F3F6F3] overflow-hidden">
           <HaloReel
             items={NEPED_PRESENT_TEAM.map((member) => ({ src: member.image, alt: member.name, caption: member.name }))}
             aria-label="NEPED team members"
@@ -288,7 +263,7 @@ export function NepedEconomicPage() {
             imageClassName="scale-[1.15] object-top"
             // Phones: name under each photo. Desktop: the front member's name inside the ring
             captionPlacement={isSmallScreen ? "card" : "ring"}
-            captionClassName="rounded-full bg-[#ffffff] px-2.5 py-1 text-[11px] font-medium leading-tight text-[#23452a] shadow-[0_4px_14px_rgba(14,36,25,0.12)] whitespace-nowrap"
+            captionClassName=" bg-[#ffffff] px-2.5 py-1 text-[11px] font-medium leading-tight text-[#23452a] shadow-[0_4px_14px_rgba(14,36,25,0.12)] whitespace-nowrap"
             ringCaptionClassName="max-w-[340px] text-[28px] lg:text-[34px] font-light tracking-[-0.8px] leading-[1.15] text-[#23452a]"
             interactiveCenterLabel
             centerLabel={
@@ -323,20 +298,6 @@ export function NepedEconomicPage() {
       </motion.section>
       */}
 
-      {/* 1D. SUCCESS STORIES — staggered cards (inspo: "Why Axure"); text verbatim from bigeneped.txt */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <h2 className="text-center text-[36px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05] mb-10 sm:mb-14">
-          Success stories
-        </h2>
-        <StaggeredCards
-          items={NEPED_SUCCESS_STORIES.map((story) => ({
-            title: story.title,
-            text: story.overview,
-            to: NEPED_PATHS.successStory(story.slug),
-          }))}
-        />
-      </motion.section>
-
       {/* 2. MILESTONES — dark green band with stat cards (descriptions verbatim from bigeneped.txt / History PDF; header PLACEHOLDER) */}
       <section className="relative w-full">
         <div className="absolute inset-x-0 top-0 bottom-[120px] sm:bottom-[140px] bg-(--brand-surface)" />
@@ -357,7 +318,7 @@ export function NepedEconomicPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-[16px] p-7 flex flex-col gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#ffffff] text-[#1A2E23]"
+                className=" p-7 flex flex-col gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#ffffff] text-[#1A2E23]"
               >
                 <span className="text-[12px] uppercase font-mono text-[#5B6660]">{stat.label}</span>
                 <div className="space-y-3">
@@ -371,71 +332,6 @@ export function NepedEconomicPage() {
       </section>
 
    
-
-      {/* 4. INNOVATIONS SPOTLIGHT: FODDORIZER, LSPs, & SACON BLYTH'S TRAGOPAN — light green cards with a pointer-following border glow */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
-          {/* Foddorizer & Livestock Innovation */}
-          <BorderGlow {...INNOVATION_GLOW} background={"white"} className="h-full">
-          <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
-            <div className="relative space-y-5">
-              <SectionPill>Indigenous Hardware Innovation</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#12432E] tracking-[-0.72px] leading-tight">
-                The 'Foddorizer' & Livestock Service Providers (LSPs)
-              </h3>
-              <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
-                Assisted 4,200 resource-poor families with breeding stock, fattening stock, and low-cost scientific pig sties. To solve feed boiling and firewood depletion, NEPED designed and fabricated the <strong className="font-medium text-[#12432E]">‘Foddorizer’</strong>:
-              </p>
-              <div className="space-y-3 text-[14px] text-[#3f5a4f]">
-                <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#12432E]">1.5 Lakh Trees Saved Annually:</strong> Drastically cuts domestic firewood consumption for boiling animal feed.</span>
-                </div>
-                <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <Check size={16} className="text-(--brand-accent) shrink-0 mt-0.5" />
-                  <span><strong className="font-medium text-[#12432E]">LSP Veterinary Model:</strong> Village youth trained as Livestock Service Providers contained Classical Swine Fever (CSF), preventing millions in annual losses.</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative pt-6 border-t border-[#12432E]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
-              Supported by Navajbhai Ratan Tata Trust (NRTT) & State Plan
-            </div>
-          </div>
-          </BorderGlow>
-
-          {/* SACON & Community Conservation Areas */}
-          <BorderGlow {...INNOVATION_GLOW} background={"white"} className="h-full">
-          <div className="relative p-7 sm:p-10 flex flex-1 flex-col justify-between">
-            <div className="relative space-y-5">
-              <SectionPill>Community Conservation & SACON</SectionPill>
-              <h3 className="text-[28px] sm:text-[34px] font-light text-[#12432E] tracking-[-0.72px] leading-tight">
-                Community Conservation Areas (CCAs) & Blyth's Tragopan
-              </h3>
-              <p className="text-[15px] text-[#3f5a4f] leading-relaxed">
-                In collaboration with the <strong className="font-medium text-[#12432E]">Salim Ali Center for Ornithology & Natural History (SACON)</strong> and Sir Dorabji Tata Trust, NEPED guided Village Councils in passing resolutions to restrict hunting, fishing, and logging:
-              </p>
-              <div className="space-y-3 text-[14px] text-[#3f5a4f]">
-                <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent) shrink-0">1.</span>
-                  <span>Developing legally protected <strong className="font-medium text-[#12432E]">People's Biodiversity Registers (PBRs)</strong> and resource maps.</span>
-                </div>
-                <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent) shrink-0">2.</span>
-                  <span>Documentation of <strong className="font-medium text-[#12432E]">Indigenous Ecological Knowledge (IEK)</strong>.</span>
-                </div>
-                <div className={`${GLASS_ROW} flex items-start gap-3`}>
-                  <span className="font-mono text-(--brand-accent) shrink-0">3.</span>
-                  <span>Using <strong className="font-medium text-[#12432E]">Blyth’s Tragopan</strong> (State Bird of Nagaland) as the flagship conservation umbrella species.</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative pt-6 border-t border-[#12432E]/10 mt-8 text-[11px] font-mono text-[#3f5a4f]/70">
-              Sir Dorabji Ratan Tata Trust (SDTT) • NEPED-SCEN
-            </div>
-          </div>
-          </BorderGlow>
-        </div>
-      </motion.section>
 
       {/* 5. SEVEN OFFICIAL AIMS & OBJECTIVES — NEPeD Aims grid (heading cell + text cards) */}
       <motion.section {...fadeUpOnView} id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -466,39 +362,33 @@ export function NepedEconomicPage() {
         </div>
       </motion.section>
 
-      {/* 8. GALLERY PREVIEW — works wheel of the photos in public/gallery; links to the Gallery page */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="rounded-[24px] overflow-hidden border border-[#e5e4e4]">
-          <WorksWheel items={GALLERY_WHEEL_ITEMS} label="Gallery" action="View" className="h-[520px] sm:h-[640px]" />
-        </div>
-        <div className="mt-8 flex justify-center">
-          <BookDemoButton to={SHARED_PATHS.gallery} variant="emerald">Click to see more</BookDemoButton>
-        </div>
-      </motion.section>
-
-      {/* 9. THE EVOLUTIONARY BRIDGE: NEPED → NEPeD — light dot-grid card, NEPeD accent colours */}
-      <motion.section {...fadeUpOnView} className="theme-neped-energy mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative rounded-[24px] overflow-hidden bg-[#f7f9f7] border border-[#e5e4e4] px-6 py-16 sm:px-12 sm:py-20 text-center">
-          <DotGrid dotSize={4} gap={22} color="#d8e3dc" />
-          {/* Soft white centre so the text stays easy to read over the dots */}
-          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.7)_40%,rgba(255,255,255,0)_75%)]" />
-          <div className="relative max-w-[820px] mx-auto flex flex-col items-center gap-6">
-            <SectionPill>The Energy Nexus • 108 Hydrogers Deployed</SectionPill>
-            <h2 className="text-[30px] sm:text-[48px] font-light text-[#1A2E23] tracking-[-1.2px] leading-[1.1]">
-              From NEPED Agroforestry to NEPeD Clean Energy
-            </h2>
-            <p className="text-[15px] sm:text-[16px] text-[#1A2E23] leading-relaxed max-w-[680px]">
-              As agro-enterprises expanded across Nagaland, the emerging need was clean, affordable energy to power post-harvest processing, mechanical grain mills, and cold storage to enable Naga farmers to compete globally.
-            </p>
-            <p className="text-[15px] text-[#5B6660] leading-relaxed font-serif italic max-w-[680px]">
-              “This direct requirement gave birth to <strong className="font-medium not-italic text-[#1A2E23]">NEPeD Energy Division</strong> in 2007, which has now installed 108 indigenous hydrogers across remote mountain rivers.”
-            </p>
-            <div className="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <ArrowPillButton to={NEPED_ENERGY_PATHS.home} arrow="up-right">Explore NEPeD Energy Portal</ArrowPillButton>
-              <ArrowPillButton onClick={openContact} variant="outline" arrow="mail">Contact Us</ArrowPillButton>
-            </div>
+      {/* 8. GALLERY PREVIEW — photo marquee (pauses on hover); every photo opens the Gallery page */}
+      <motion.section {...fadeUpOnView}>
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <h2 className={H2}>Gallery</h2>
+          <div className="self-start sm:self-auto">
+            <BookDemoButton to={SHARED_PATHS.gallery} variant="emerald">Click to see more</BookDemoButton>
           </div>
         </div>
+        <Marquee duration={60} pauseOnHover fadeAmount={6}>
+          {GALLERY_MARQUEE_ITEMS.map((item) => (
+            <Link
+              key={item.image}
+              to={SHARED_PATHS.gallery}
+              className="group mx-2 sm:mx-2.5 block w-[240px] sm:w-[320px] shrink-0"
+            >
+              <div className="aspect-[4/3] overflow-hidden bg-[#F3F6F3]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.05]"
+                />
+              </div>
+              <p className="mt-3 text-[14px] text-[#5B6660] transition-colors duration-300 group-hover:text-[#1A2E23]">{item.title}</p>
+            </Link>
+          ))}
+        </Marquee>
       </motion.section>
 
       {/* PARTNER CTA — closing band (shared with the About page) */}

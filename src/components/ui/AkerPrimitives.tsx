@@ -69,7 +69,7 @@ export function TextArrowButton({
 }) {
   const colorClass = dark ? "text-[#ffffff]" : "text-[#1A2E23]";
   const borderClass = variant === "pill" ? (dark ? "border border-white/20 hover:border-white/60" : "border border-black/20 hover:border-black/60") : "";
-  const paddingClass = variant === "pill" ? "px-[16px] py-[10px] sm:py-[13px] rounded-[80px]" : "py-1";
+  const paddingClass = variant === "pill" ? "px-[16px] py-[10px] sm:py-[13px] " : "py-1";
 
   const content = (
     <span
@@ -104,7 +104,7 @@ export function FilledDarkButton({
 }) {
   const content = (
     <span
-      className={`inline-flex items-center justify-center bg-[#12432E] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px] rounded-[80px] hover:bg-[#12432E] transition-all duration-200 active:scale-[0.97] select-none tracking-[0.15px] ${className}`}
+      className={`inline-flex items-center justify-center bg-[#12432E] text-[#ffffff] text-[13px] font-medium px-[16px] py-[12px] sm:py-[14px]  hover:bg-[#12432E] transition-all duration-200 active:scale-[0.97] select-none tracking-[0.15px] ${className}`}
     >
       {children}
     </span>
@@ -133,7 +133,7 @@ export function NumberedItem({
   to?: string;
 }) {
   const content = (
-    <div className="group border-t border-[#e5e4e4] py-6 sm:py-7 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 transition-colors duration-200 hover:bg-[#e5e4e4]/20 px-2 rounded-[8px]">
+    <div className="group border-t border-[#e5e4e4] py-6 sm:py-7 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 sm:gap-6 transition-colors duration-200 hover:bg-[#e5e4e4]/20 px-2 ">
       <div className="flex items-baseline gap-6 sm:gap-10">
         <span className="text-[12px] text-[#5B6660] font-normal w-6 shrink-0">{num}</span>
         <div>
@@ -173,7 +173,7 @@ export function PillBadge({
 }) {
   return (
     <span
-      className={`inline-flex items-center text-[12px] font-medium px-[14px] py-[6px] rounded-[1584px] tracking-[0.12px] ${
+      className={`inline-flex items-center text-[12px] font-medium px-[14px] py-[6px]  tracking-[0.12px] ${
         dark
           ? "bg-white/10 text-[#ffffff] border border-white/15"
           : "bg-[#e5e4e4] text-[#1A2E23]"

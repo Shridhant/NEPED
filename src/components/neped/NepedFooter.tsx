@@ -14,7 +14,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
   return (
     <footer id="contact" className="mt-20 border-t border-[#e5e4e4] pt-16 pb-12 bg-[#ffffff]">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="bg-[#12432E] text-[#ffffff] rounded-[8px] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-[#12432E]">
+        <div className="bg-[#12432E] text-[#ffffff] p-8 sm:p-12 md:p-16 relative overflow-hidden border border-[#12432E]">
           {/* Subtle background ambient line */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E8A33D]/[0.05] rounded-full blur-3xl pointer-events-none" />
 
@@ -57,7 +57,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                 <button
                   type="button"
                   onClick={onOpenContact}
-                  className="inline-flex items-center gap-2 text-[13px] text-[#ffffff] border border-white/20 hover:border-white/60 px-4 py-2.5 rounded-[80px] transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 text-[13px] text-[#ffffff] border border-white/20 hover:border-white/60 px-4 py-2.5 transition-all cursor-pointer"
                 >
                   <Mail size={13} />
                   <span>Contact Us</span>

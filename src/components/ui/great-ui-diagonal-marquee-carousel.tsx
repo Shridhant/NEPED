@@ -112,7 +112,7 @@ const Card = ({ card, className }: { card: CardItem; className?: string }) => {
     <Link
       to={card.href || SHARED_PATHS.gallery}
       className={cn(
-        "group relative h-[220px] sm:h-[260px] md:h-[300px] w-[300px] sm:w-[350px] md:w-[400px] shrink-0 cursor-pointer overflow-hidden rounded-[8px] border border-white/10 bg-[#12432E] transition-all duration-300 hover:border-[#1E6F4C] hover:shadow-2xl block",
+        "group relative h-[220px] sm:h-[260px] md:h-[300px] w-[300px] sm:w-[350px] md:w-[400px] shrink-0 cursor-pointer overflow-hidden  border border-white/10 bg-[#12432E] transition-all duration-300 hover:border-[#1E6F4C] hover:shadow-2xl block",
         className,
       )}
     >
@@ -210,7 +210,7 @@ export default function DiagonalMarqueeCarousel({
   return (
     <div
       className={cn(
-        "relative flex h-[580px] sm:h-[680px] md:h-[760px] w-full items-center justify-center overflow-hidden bg-[#ffffff] rounded-[8px] border border-[#e5e4e4]",
+        "relative flex h-[580px] sm:h-[680px] md:h-[760px] w-full items-center justify-center overflow-hidden bg-[#ffffff]  border border-[#e5e4e4]",
         className,
       )}
     >

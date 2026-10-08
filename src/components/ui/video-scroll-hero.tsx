@@ -69,7 +69,7 @@ export function VideoScrollHero({
               loop
               muted
               playsInline
-              className="w-[80vw] max-w-4xl h-[60vh] object-cover shadow-2xl rounded-2xl"
+              className="w-[80vw] max-w-4xl h-[60vh] object-cover shadow-2xl "
             >
               <source src={videoSrc} type="video/mp4" />
               Your browser does not support the video tag.
@@ -77,7 +77,7 @@ export function VideoScrollHero({
 
             {/* Video Overlay Content */}
             <motion.div
-              className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center rounded-2xl"
+              className="absolute inset-0 bg-background/20 backdrop-blur-[1px] flex items-center justify-center "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}

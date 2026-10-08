@@ -62,7 +62,7 @@ export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
                 type="button"
                 aria-pressed={on}
                 onClick={() => setFilter(f.key)}
-                className={`inline-flex min-h-11 items-center gap-2 rounded-full border-[1.5px] px-4 sm:px-[18px] text-[14px] sm:text-[15px] font-semibold transition-colors duration-300 ease-in-out cursor-pointer ${
+                className={`inline-flex min-h-11 items-center gap-2  border-[1.5px] px-4 sm:px-[18px] text-[14px] sm:text-[15px] font-semibold transition-colors duration-300 ease-in-out cursor-pointer ${
                   on ? "border-[#12432E] bg-[#12432E] text-[#ffffff]" : "border-[#dbe5de] bg-[#ffffff] text-[#12432E] hover:border-[#1E6F4C]"
                 }`}
               >
@@ -80,7 +80,7 @@ export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
             placeholder="Search by project name, agency, or keywords..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full min-h-11 pl-11 pr-4 bg-[#F3F6F3] border-[1.5px] border-transparent focus:border-[#1E6F4C] focus:bg-[#ffffff] rounded-full text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] outline-none transition-colors duration-300"
+            className="w-full min-h-11 pl-11 pr-4 bg-[#F3F6F3] border-[1.5px] border-transparent focus:border-[#1E6F4C] focus:bg-[#ffffff] text-[14px] text-[#1A2E23] placeholder:text-[#5B6660] outline-none transition-colors duration-300"
           />
         </div>
       </div>
@@ -90,7 +90,7 @@ export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
       </p>
 
       {shown.length === 0 ? (
-        <div className="rounded-[20px] bg-[#F3F6F3] p-10 sm:p-12 text-center flex flex-col items-center gap-4">
+        <div className=" bg-[#F3F6F3] p-10 sm:p-12 text-center flex flex-col items-center gap-4">
           <p className="text-[16px] text-[#5B6660]">No projects match your search or filter criteria.</p>
           <button
             type="button"
@@ -98,7 +98,7 @@ export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
               setFilter("All");
               setQuery("");
             }}
-            className="min-h-11 px-5 rounded-full bg-[#1E6F4C] hover:bg-[#185A3E] text-[14px] font-medium text-[#ffffff] cursor-pointer transition-colors"
+            className="min-h-11 px-5 bg-[#1E6F4C] hover:bg-[#185A3E] text-[14px] font-medium text-[#ffffff] cursor-pointer transition-colors"
           >
             Reset filters
           </button>
@@ -198,7 +198,7 @@ function LineageTag({ lineage }: { lineage: Lineage }) {
   };
   const s = styles[lineage];
   return (
-    <span className={`inline-flex w-fit items-center gap-2 rounded-full py-1 pr-3 pl-1 text-[13px] font-bold whitespace-nowrap ${s.cls}`}>
+    <span className={`inline-flex w-fit items-center gap-2  py-1 pr-3 pl-1 text-[13px] font-bold whitespace-nowrap ${s.cls}`}>
       <span className="flex -space-x-1.5">
         {s.logos.map((src) => (
           <img key={src} src={src} alt="" className="h-5 w-5 rounded-full bg-[#ffffff] object-cover ring-1 ring-white" />

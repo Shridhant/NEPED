@@ -29,7 +29,7 @@ export function NumberedTextCard({
   const dark = Boolean(blurBackground);
   return (
     <div
-      className={`relative overflow-hidden h-full rounded-[12px] p-6 sm:p-7 flex flex-col gap-10 border transition-colors ${
+      className={`relative overflow-hidden h-full  p-6 sm:p-7 flex flex-col gap-10 border transition-colors ${
         dark ? "bg-[#12432E] border-white/10 hover:border-white/25" : "bg-[#F3F6F3] border-transparent hover:border-[#e5e4e4]"
       }`}
     >
@@ -41,7 +41,7 @@ export function NumberedTextCard({
         </div>
       )}
       {image && (
-        <div className={`relative z-[1] -mx-3 -mt-3 sm:-mx-4 sm:-mt-4 -mb-4 rounded-[10px] overflow-hidden aspect-[16/10] ${image.fit === "contain" ? "bg-[#ffffff] p-4" : "bg-[#e5e4e4]"}`}>
+        <div className={`relative z-[1] -mx-3 -mt-3 sm:-mx-4 sm:-mt-4 -mb-4  overflow-hidden aspect-[16/10] ${image.fit === "contain" ? "bg-[#ffffff] p-4" : "bg-[#e5e4e4]"}`}>
           <img src={image.src} alt={image.alt} className={`w-full h-full ${image.fit === "contain" ? "object-contain" : "object-cover"}`} />
         </div>
       )}

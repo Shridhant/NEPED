@@ -168,7 +168,7 @@ export function InteractiveGlobeExplorer({
   return (
     <div
       className={cn(
-        "relative flex h-[640px] w-full overflow-hidden rounded-[24px] bg-[#12432E] text-[#ffffff]",
+        "relative flex h-[640px] w-full overflow-hidden  bg-[#12432E] text-[#ffffff]",
         className,
       )}
     >
@@ -233,8 +233,8 @@ export function InteractiveGlobeExplorer({
             fallback={
               <div className="flex items-center justify-center" style={{ width: globeSize, height: globeSize }}>
                 <div className="relative h-12 w-12">
-                  <div className="absolute inset-0 animate-ping rounded-full bg-[#1E6F4C]/30" />
-                  <div className="absolute inset-2 animate-pulse rounded-full bg-[#1E6F4C]/50" />
+                  <div className="absolute inset-0 animate-ping bg-[#1E6F4C]/30" />
+                  <div className="absolute inset-2 animate-pulse bg-[#1E6F4C]/50" />
                 </div>
               </div>
             }

@@ -76,16 +76,16 @@ function XaiLogo({ className = "" }: { className?: string }) {
 
 function ChatPreview() {
   return (
-    <div className="relative z-10 flex w-full flex-col gap-2 rounded-lg border border-zinc-900/80 bg-zinc-950 p-2 shadow-sm">
+    <div className="relative z-10 flex w-full flex-col gap-2 border border-zinc-900/80 bg-zinc-950 p-2 shadow-sm">
       <div className="flex justify-start gap-1.5">
         <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-[8px] font-bold text-zinc-400">U</span>
-        <div className="max-w-[85%] rounded bg-white p-1.5 text-[8px] font-medium leading-normal text-black">
+        <div className="max-w-[85%] bg-white p-1.5 text-[8px] font-medium leading-normal text-black">
           I am building a block library featuring xai, what kind of ui blocks should i design
         </div>
       </div>
       <div className="flex justify-start gap-1.5">
         <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[8px] font-bold text-white">G</span>
-        <div className="max-w-[85%] rounded bg-blue-600 p-1.5 text-[8px] font-medium leading-normal text-white">
+        <div className="max-w-[85%] bg-blue-600 p-1.5 text-[8px] font-medium leading-normal text-white">
           Design cosmic themes, Grok chat blocks, AI response cards, and sharp truth-seeking components.
         </div>
       </div>
@@ -95,10 +95,10 @@ function ChatPreview() {
 
 function BuildPreview() {
   return (
-    <div className="relative z-10 w-full space-y-1.5 overflow-hidden rounded-lg border border-zinc-900/80 bg-zinc-950 p-2 font-mono text-[7.5px] leading-normal text-zinc-400 shadow-sm">
-      <div className="flex items-center justify-between text-zinc-500"><span>Find session references</span><span className="rounded bg-zinc-900 px-1 py-px text-[6.5px] text-zinc-400">explore</span></div>
+    <div className="relative z-10 w-full space-y-1.5 overflow-hidden border border-zinc-900/80 bg-zinc-950 p-2 font-mono text-[7.5px] leading-normal text-zinc-400 shadow-sm">
+      <div className="flex items-center justify-between text-zinc-500"><span>Find session references</span><span className=" bg-zinc-900 px-1 py-px text-[6.5px] text-zinc-400">explore</span></div>
       <div className="flex items-center gap-1 text-zinc-500"><span className="h-1 w-1 rounded-full bg-emerald-500" />Thought for 4.1s</div>
-      <div className="overflow-hidden rounded border border-zinc-900 bg-[#09090b] text-[6.5px]">
+      <div className="overflow-hidden border border-zinc-900 bg-[#09090b] text-[6.5px]">
         <div className="border-b border-zinc-900/60 bg-[#0c0c0e] px-2 py-0.5 text-zinc-500">Edit src/middleware/auth.ts</div>
         <div className="space-y-px p-1 font-mono text-zinc-400">
           <p><span className="mr-1 text-zinc-600">42</span> export async function handler(req) &#123;</p>
@@ -121,10 +121,10 @@ function PanelCard({ item, compact = false, onNavigate }: { item: ProductCard; c
 
   if (item.component || item.imageSrc) {
     return (
-      <a href={item.href || "#"} onClick={handleClick} className="group relative flex h-[180px] flex-col justify-between overflow-hidden rounded-xl border border-zinc-900 bg-zinc-950/40 p-3 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/15">
+      <a href={item.href || "#"} onClick={handleClick} className="group relative flex h-[180px] flex-col justify-between overflow-hidden border border-zinc-900 bg-zinc-950/40 p-3 transition-all duration-300 hover:border-zinc-800 hover:bg-zinc-900/15">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.08),transparent_50%)] opacity-0 transition-opacity group-hover:opacity-100" />
         {item.mediaType === "image" && item.imageSrc ? (
-          <img src={item.imageSrc} alt="" className="relative z-10 h-full w-full rounded-lg object-cover" />
+          <img src={item.imageSrc} alt="" className="relative z-10 h-full w-full object-cover" />
         ) : item.component}
         <span className="relative z-10 mt-auto block text-center text-xs font-medium text-zinc-400 transition-colors group-hover:text-white">{item.title}</span>
       </a>
@@ -132,7 +132,7 @@ function PanelCard({ item, compact = false, onNavigate }: { item: ProductCard; c
   }
 
   return (
-    <a href={item.href || "#"} onClick={handleClick} className={compact ? "group relative flex h-[86px] flex-col justify-center overflow-hidden rounded-xl border border-zinc-900 bg-zinc-950/40 p-3 transition-all hover:border-zinc-800 hover:bg-zinc-900/15" : "group relative flex min-h-[132px] flex-col justify-between overflow-hidden rounded-xl border border-zinc-900 bg-zinc-950/40 p-4 transition-all hover:border-zinc-800 hover:bg-zinc-900/15"}>
+    <a href={item.href || "#"} onClick={handleClick} className={compact ? "group relative flex h-[86px] flex-col justify-center overflow-hidden  border border-zinc-900 bg-zinc-950/40 p-3 transition-all hover:border-zinc-800 hover:bg-zinc-900/15" : "group relative flex min-h-[132px] flex-col justify-between overflow-hidden  border border-zinc-900 bg-zinc-950/40 p-4 transition-all hover:border-zinc-800 hover:bg-zinc-900/15"}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.06),transparent_50%)] opacity-0 transition-opacity group-hover:opacity-100" />
       <div className="relative z-10">
         <h4 className={compact ? "text-sm font-medium text-white" : "text-base font-medium text-white"}>{item.title}</h4>
@@ -179,7 +179,7 @@ export default function NavbarTwo() {
             <div className="z-20 flex h-12 items-center justify-center px-6">
               <nav className="flex w-full items-center justify-center gap-5 text-xs font-medium text-zinc-400">
                 {navItems.map((item) => item.panelId ? (
-                  <button key={item.label} onClick={() => toggleMenu(item.panelId!)} className={`flex cursor-pointer items-center gap-1 rounded-md px-3 py-1 outline-none transition-all hover:text-white ${activeMenu === item.panelId ? "bg-[#18181b] text-white" : "text-zinc-400"}`}>
+                  <button key={item.label} onClick={() => toggleMenu(item.panelId!)} className={`flex cursor-pointer items-center gap-1  px-3 py-1 outline-none transition-all hover:text-white ${activeMenu === item.panelId ? "bg-[#18181b] text-white" : "text-zinc-400"}`}>
                     {item.label}<ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-300 ${activeMenu === item.panelId ? "rotate-180" : ""}`} />
                   </button>
                 ) : <a key={item.label} href={item.href} className="px-2 py-1 text-zinc-400 transition-colors duration-250 hover:text-white">{item.label}</a>)}
@@ -196,32 +196,32 @@ export default function NavbarTwo() {
           </motion.div>
         </div>
 
-        <a href="#" className="group flex items-center gap-1 rounded-lg bg-blue-600 px-3.5 py-1.5 text-[12px] font-semibold text-white shadow-sm transition-colors hover:bg-blue-700">Try it now<ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" /></a>
+        <a href="#" className="group flex items-center gap-1 bg-blue-600 px-3.5 py-1.5 text-[12px] font-semibold text-white shadow-sm transition-colors hover:bg-blue-700">Try it now<ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" /></a>
       </div>
 
       <div className="relative z-30 flex h-14 w-full items-center justify-between lg:hidden">
         <a href="#" className="text-black"><XaiLogo /></a>
         <div className="flex items-center gap-2">
-          <a href="#" className="group flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">Try it now<ArrowRight className="h-3 w-3" /></a>
-          <button onClick={() => setMobileOpen((open) => !open)} className="grid size-9 place-items-center rounded-lg border border-zinc-200 text-zinc-900">{mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}</button>
+          <a href="#" className="group flex items-center gap-1 bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">Try it now<ArrowRight className="h-3 w-3" /></a>
+          <button onClick={() => setMobileOpen((open) => !open)} className="grid size-9 place-items-center border border-zinc-200 text-zinc-900">{mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}</button>
         </div>
       </div>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="relative z-20 w-full overflow-hidden rounded-xl bg-black text-white shadow-xl lg:hidden">
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="relative z-20 w-full overflow-hidden bg-black text-white shadow-xl lg:hidden">
             <div className="grid gap-1 p-4">
               {navItems.map((item) => {
                 const panel = item.panelId ? getPanel(item.panelId) : null;
                 const isOpen = mobileActiveMenu === item.panelId;
 
                 if (!item.panelId) {
-                  return <a key={item.label} href={item.href || "#"} className="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-zinc-300 hover:bg-white/10 hover:text-white">{item.label}</a>;
+                  return <a key={item.label} href={item.href || "#"} className="flex items-center justify-between px-3 py-2 text-sm text-zinc-300 hover:bg-white/10 hover:text-white">{item.label}</a>;
                 }
 
                 return (
                   <div key={item.label}>
-                    <button type="button" onClick={() => setMobileActiveMenu(isOpen ? null : item.panelId!)} className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">
+                    <button type="button" onClick={() => setMobileActiveMenu(isOpen ? null : item.panelId!)} className="flex w-full items-center justify-between px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">
                       {item.label}
                       <ChevronDown className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                     </button>
@@ -230,7 +230,7 @@ export default function NavbarTwo() {
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
                           <div className="mx-3 mb-2 grid gap-2 border-l border-white/10 pl-3 pt-1">
                             {panel.items.map((panelItem) => (
-                              <a key={panelItem.title} href="#" className="rounded-md px-3 py-2 hover:bg-white/5">
+                              <a key={panelItem.title} href="#" className=" px-3 py-2 hover:bg-white/5">
                                 <span className="block text-sm font-medium text-white">{panelItem.title}</span>
                                 {panelItem.description && <span className="mt-0.5 block text-xs leading-5 text-zinc-500">{panelItem.description}</span>}
                               </a>
@@ -252,9 +252,9 @@ export default function NavbarTwo() {
           <a href="#" className="group mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-200 px-2 py-1 text-sm text-neutral-400 transition-colors hover:text-black md:px-3"><span className="rounded-full bg-neutral-200 px-2 py-0.5 text-neutral-500 transition-colors group-hover:bg-neutral-900 group-hover:text-white">Hiring</span>Apply for Design Engineers<ArrowRight className="size-3 text-neutral-400 transition-transform group-hover:translate-x-1 group-hover:text-black" /></a>
           <h1 className="max-w-2xl text-3xl font-semibold tracking-tighter text-black md:text-5xl">Frontier AI models for <br className="hidden md:block" />everything you build</h1>
           <p className="mt-4 max-w-lg text-center text-sm leading-relaxed text-black/60 md:text-lg">Autonomous agents that debug, refactor, and ship features while you focus on architecture and strategy</p>
-          <div className="mb-10 mt-6 flex flex-row gap-4"><a href="#" className="flex min-w-[100px] items-center justify-center rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 md:min-w-[190px] md:text-lg">Get API Access</a><a href="#" className="flex min-w-[100px] items-center justify-center rounded-lg border border-neutral-300 px-3 py-1.5 text-sm font-medium text-black transition-colors hover:bg-gray-50 md:min-w-[190px] md:text-lg">View Documentation</a></div>
+          <div className="mb-10 mt-6 flex flex-row gap-4"><a href="#" className="flex min-w-[100px] items-center justify-center bg-blue-600 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 md:min-w-[190px] md:text-lg">Get API Access</a><a href="#" className="flex min-w-[100px] items-center justify-center border border-neutral-300 px-3 py-1.5 text-sm font-medium text-black transition-colors hover:bg-gray-50 md:min-w-[190px] md:text-lg">View Documentation</a></div>
         </div>
-        <div className="relative overflow-hidden rounded-b-[16px] bg-gray-50"><img src="https://res.cloudinary.com/harshitproject/image/upload/v1774017120/hero-light.png" alt="Dashboard Preview" className="h-auto w-full object-cover object-top" /><div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" /></div>
+        <div className="relative overflow-hidden bg-gray-50"><img src="https://res.cloudinary.com/harshitproject/image/upload/v1774017120/hero-light.png" alt="Dashboard Preview" className="h-auto w-full object-cover object-top" /><div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" /></div>
       </div>
     </div>
   );
@@ -337,7 +337,7 @@ export function NepedNavbarSection() {
         <Link
           to="/"
           onClick={() => handleNavigation("/")}
-          className="flex items-center gap-2 rounded-full bg-ink pl-1.5 pr-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-ink/90 active-scale"
+          className="flex items-center gap-2 bg-ink pl-1.5 pr-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-ink/90 active-scale"
         >
           <img src="/logo.webp" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
           <span className="font-extrabold tracking-tight">NEPeD</span>
@@ -352,7 +352,7 @@ export function NepedNavbarSection() {
             <div className="z-20 flex h-12 items-center justify-center px-6">
               <nav className="flex w-full items-center justify-center gap-6 text-sm font-medium text-zinc-400">
                 {nepedNavItems.map((item) => item.panelId ? (
-                  <button key={item.label} onClick={() => toggleMenu(item.panelId!)} className={`flex cursor-pointer items-center gap-1 rounded-md px-3 py-1 outline-none transition-all hover:text-white ${activeMenu === item.panelId ? "bg-[#18181b] text-white" : "text-zinc-400"}`}>
+                  <button key={item.label} onClick={() => toggleMenu(item.panelId!)} className={`flex cursor-pointer items-center gap-1  px-3 py-1 outline-none transition-all hover:text-white ${activeMenu === item.panelId ? "bg-[#18181b] text-white" : "text-zinc-400"}`}>
                     {item.label}<ChevronDown className={`h-3.5 w-3.5 opacity-70 transition-transform duration-300 ${activeMenu === item.panelId ? "rotate-180" : ""}`} />
                   </button>
                 ) : (
@@ -376,24 +376,24 @@ export function NepedNavbarSection() {
         {/* CTA Button */}
         <button
           onClick={() => handleNavigation("/#contact")}
-          className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-ink/90 active-scale shadow-sm cursor-pointer"
+          className="group inline-flex items-center gap-2 bg-ink px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-ink/90 active-scale shadow-sm cursor-pointer"
         >
           Get in Touch <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </button>
       </div>
 
       {/* Mobile Bar */}
-      <div className="relative z-30 flex h-14 w-full items-center justify-between rounded-full bg-white/90 p-2 shadow-sm backdrop-blur border border-ink/5 lg:hidden">
+      <div className="relative z-30 flex h-14 w-full items-center justify-between bg-white/90 p-2 shadow-sm backdrop-blur border border-ink/5 lg:hidden">
         <Link
           to="/"
           onClick={() => handleNavigation("/")}
-          className="flex items-center gap-2 rounded-full bg-ink pl-1.5 pr-4 py-1 text-sm font-semibold text-white"
+          className="flex items-center gap-2 bg-ink pl-1.5 pr-4 py-1 text-sm font-semibold text-white"
         >
           <img src="/logo.webp" className="h-6 w-6 rounded-full object-cover border border-white/20" alt="NEPeD Logo" />
           <span className="font-extrabold tracking-tight">NEPeD</span>
         </Link>
         <div className="flex items-center gap-2">
-          <button onClick={() => handleNavigation("/#contact")} className="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-1.5 text-xs font-semibold text-white shadow-sm">Get in Touch</button>
+          <button onClick={() => handleNavigation("/#contact")} className="inline-flex items-center gap-1 bg-ink px-4 py-1.5 text-xs font-semibold text-white shadow-sm">Get in Touch</button>
           <button onClick={() => setMobileOpen((open) => !open)} className="grid size-9 place-items-center rounded-full border border-zinc-200 text-zinc-900">{mobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}</button>
         </div>
       </div>
@@ -401,19 +401,19 @@ export function NepedNavbarSection() {
       {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="relative z-20 mt-2 w-full overflow-hidden rounded-2xl bg-black text-white shadow-xl lg:hidden">
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="relative z-20 mt-2 w-full overflow-hidden bg-black text-white shadow-xl lg:hidden">
             <div className="grid gap-1 p-4">
               {nepedNavItems.map((item) => {
                 const panel = item.panelId ? nepedMenuPanels.find((p) => p.id === item.panelId) : null;
                 const isOpen = mobileActiveMenu === item.panelId;
 
                 if (!item.panelId) {
-                  return <button key={item.label} onClick={() => handleNavigation(item.href || "/")} className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">{item.label}</button>;
+                  return <button key={item.label} onClick={() => handleNavigation(item.href || "/")} className="flex w-full items-center justify-between px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">{item.label}</button>;
                 }
 
                 return (
                   <div key={item.label}>
-                    <button type="button" onClick={() => setMobileActiveMenu(isOpen ? null : item.panelId!)} className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">
+                    <button type="button" onClick={() => setMobileActiveMenu(isOpen ? null : item.panelId!)} className="flex w-full items-center justify-between px-3 py-2 text-left text-sm text-zinc-300 hover:bg-white/10 hover:text-white">
                       {item.label}
                       <ChevronDown className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                     </button>
@@ -422,7 +422,7 @@ export function NepedNavbarSection() {
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
                           <div className="mx-3 mb-2 grid gap-2 border-l border-white/10 pl-3 pt-1">
                             {panel.items.map((panelItem) => (
-                              <button key={panelItem.title} onClick={() => handleNavigation(panelItem.href || "/")} className="text-left rounded-md px-3 py-2 hover:bg-white/5 w-full">
+                              <button key={panelItem.title} onClick={() => handleNavigation(panelItem.href || "/")} className="text-left px-3 py-2 hover:bg-white/5 w-full">
                                 <span className="block text-sm font-medium text-white">{panelItem.title}</span>
                                 {panelItem.description && <span className="mt-0.5 block text-xs leading-5 text-zinc-400">{panelItem.description}</span>}
                               </button>

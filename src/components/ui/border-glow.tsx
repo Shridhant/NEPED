@@ -111,7 +111,7 @@ export function BorderGlow({
   glowColor = "40 80 80",
   background = "#120F17",
   light,
-  borderRadius = 28,
+  borderRadius = 0,
   glowRadius = 40,
   glowIntensity = 1,
   coneSpread = 25,

@@ -20,6 +20,7 @@ function preloadPages() {
 }
 // Shared pages (both entities)
 const LandingPage = lazyPage(() => import("./pages/landing/LandingPage").then((m) => ({ default: m.LandingPage })));
+const ContactPage = lazyPage(() => import("./pages/shared/ContactPage").then((m) => ({ default: m.ContactPage })));
 const GalleryPage = lazyPage(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
 // NEPED pages
 const NepedEconomicPage = lazyPage(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
@@ -31,7 +32,8 @@ const NepedArticlePage = lazyPage(() => import("./pages/neped/NepedArticlePage")
 import { NEPED_PHASES } from "./data/neped/nepedPhasesData";
 import { NEPED_SUCCESS_STORIES } from "./data/neped/nepedSuccessStoriesData";
 // NEPeD pages
-const NepedEnergyPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
+// NEPeD homepage not in use for now (route below redirects); keep the file so it can come back
+// const NepedEnergyPage = lazyPage(() => import("./pages/neped-energy/NepedEnergyPage").then((m) => ({ default: m.NepedEnergyPage })));
 const TechnologyPage = lazyPage(() => import("./pages/neped-energy/TechnologyPage").then((m) => ({ default: m.TechnologyPage })));
 const TechProductDetailPage = lazyPage(() => import("./pages/neped-energy/TechProductDetailPage").then((m) => ({ default: m.TechProductDetailPage })));
 const CaseStudiesPage = lazyPage(() => import("./pages/neped-energy/CaseStudiesPage").then((m) => ({ default: m.CaseStudiesPage })));
@@ -89,6 +91,7 @@ export default function App() {
           <Route index element={<NepedEconomicPage />} />
           <Route path={SHARED_PATHS.landingPreview} element={<LandingPage />} />
           <Route path={SHARED_PATHS.gallery} element={<GalleryPage />} />
+          <Route path={SHARED_PATHS.contact} element={<ContactPage />} />
 
           {/* NEPED */}
           <Route path={NEPED_PATHS.legacyHome} element={<LegacyRedirect to={NEPED_PATHS.home} />} />
@@ -100,7 +103,9 @@ export default function App() {
           <Route path="neped/success-stories/:slug" element={<NepedArticlePage items={NEPED_SUCCESS_STORIES} pathFor={NEPED_PATHS.successStory} />} />
 
           {/* NEPeD */}
-          <Route path={NEPED_ENERGY_PATHS.home} element={<NepedEnergyPage />} />
+          {/* NEPeD homepage hidden for now: /neped-energy (and every link to it) goes to the Technology page */}
+          {/* <Route path={NEPED_ENERGY_PATHS.home} element={<NepedEnergyPage />} /> */}
+          <Route path={NEPED_ENERGY_PATHS.home} element={<Navigate to={NEPED_ENERGY_PATHS.technology} replace />} />
           {/* NEPeD About page removed; old links go to the NEPeD home */}
           <Route path={NEPED_ENERGY_PATHS.about} element={<Navigate to={NEPED_ENERGY_PATHS.home} replace />} />
           <Route path={NEPED_ENERGY_PATHS.technology} element={<TechnologyPage />} />

@@ -116,7 +116,7 @@ export function RegionMapExplorer({
   return (
     <div
       className={cn(
-        "relative grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden rounded-[24px] bg-[#12432E] text-[#ffffff]",
+        "relative grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] overflow-hidden  bg-[#12432E] text-[#ffffff]",
         className,
       )}
     >
@@ -173,7 +173,7 @@ export function RegionMapExplorer({
       {/* Map */}
       <div className="order-1 md:order-2 flex items-center p-3 sm:p-4 md:pl-0">
         <div
-          className="relative w-full overflow-hidden rounded-[16px] bg-[#001d25] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
+          className="relative w-full overflow-hidden bg-[#001d25] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
           style={{ aspectRatio: aspect }}
         >
           <div
@@ -211,7 +211,7 @@ export function RegionMapExplorer({
                       />
                     </span>
                     {isActive && (
-                      <span className="absolute left-9 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-[6px] bg-[#000000]/70 backdrop-blur-sm px-2 py-1 text-[11px] font-mono tracking-[0.1em] text-[#ffffff]">
+                      <span className="absolute left-9 top-1/2 -translate-y-1/2 whitespace-nowrap bg-[#000000]/70 backdrop-blur-sm px-2 py-1 text-[11px] font-mono tracking-[0.1em] text-[#ffffff]">
                         {group.name}
                       </span>
                     )}

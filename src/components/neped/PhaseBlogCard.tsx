@@ -9,9 +9,9 @@ export function PhaseBlogCard({ phase }: { phase: NepedPhase }) {
   return (
     <Link
       to={NEPED_PATHS.phase(phase.slug)}
-      className="group h-full flex flex-col rounded-[20px] bg-[#F3F6F3] p-2.5 border border-transparent hover:border-[#e5e4e4] transition-colors"
+      className="group h-full flex flex-col bg-[#F3F6F3] p-2.5 border border-transparent hover:border-[#e5e4e4] transition-colors"
     >
-      <div className="relative aspect-[16/10] rounded-[14px] overflow-hidden">
+      <div className="relative aspect-[16/10] overflow-hidden">
         {phase.image ? (
           <img src={phase.image.src} alt={phase.image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
         ) : (
@@ -20,7 +20,7 @@ export function PhaseBlogCard({ phase }: { phase: NepedPhase }) {
             <span className="text-[11px] font-mono uppercase tracking-[0.14em]">Image placeholder</span>
           </div>
         )}
-        <span className="absolute left-3 top-3 px-3 py-1 rounded-[1584px] bg-black/45 backdrop-blur-md border border-white/20 text-[11px] font-mono text-[#ffffff]">
+        <span className="absolute left-3 top-3 px-3 py-1 bg-black/45 backdrop-blur-md border border-white/20 text-[11px] font-mono text-[#ffffff]">
           {phase.years}
         </span>
       </div>

@@ -113,7 +113,7 @@ function FeatureCard({
   return (
     <div
       className={cn(
-        'relative isolate w-full overflow-hidden rounded-md outline outline-black/10 dark:outline-white/10',
+        'relative isolate w-full overflow-hidden  outline outline-black/10 dark:outline-white/10',
         vs.card,
       )}
     >

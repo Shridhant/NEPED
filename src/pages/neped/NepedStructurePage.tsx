@@ -30,7 +30,7 @@ export function NepedStructurePage() {
 
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div
-          className="rounded-[24px] sm:rounded-[32px] border border-[#e3eee0] px-4 py-10 sm:px-14 sm:py-16"
+          className=" border border-[#e3eee0] px-4 py-10 sm:px-14 sm:py-16"
           style={{ background: CARD_BACKGROUND }}
         >
           <div className="mx-auto max-w-[900px]">

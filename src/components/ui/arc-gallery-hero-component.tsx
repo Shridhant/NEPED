@@ -149,7 +149,7 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
                   <motion.div 
                     animate={{ rotate: [angle / 4, (angle / 4) - 360] }}
                     transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-                    className="rounded-2xl shadow-xl overflow-hidden ring-1 ring-ink/10 dark:ring-white/10 bg-white dark:bg-ink/50 transition-transform hover:scale-105 w-full h-full"
+                    className=" shadow-xl overflow-hidden ring-1 ring-ink/10 dark:ring-white/10 bg-white dark:bg-ink/50 transition-transform hover:scale-105 w-full h-full"
                   >
                     <img
                       src={src}
@@ -192,10 +192,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
             className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
             variants={itemVariants}
           >
-            <button className="w-full sm:w-auto px-6 py-3 rounded-full bg-ink text-white hover:bg-ink/90 transition-all duration-200 shadow-md active-scale font-medium">
+            <button className="w-full sm:w-auto px-6 py-3 bg-ink text-white hover:bg-ink/90 transition-all duration-200 shadow-md active-scale font-medium">
               {primaryButtonText}
             </button>
-            <button className="w-full sm:w-auto px-6 py-3 rounded-full border border-ink/20 hover:bg-ink/5 transition-all duration-200 font-medium">
+            <button className="w-full sm:w-auto px-6 py-3 border border-ink/20 hover:bg-ink/5 transition-all duration-200 font-medium">
               {secondaryButtonText}
             </button>
           </motion.div>

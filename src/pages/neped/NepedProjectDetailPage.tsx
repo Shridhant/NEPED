@@ -42,7 +42,7 @@ export function NepedProjectDetailPage() {
         <div className="pt-4">
           <Link
             to={`${NEPED_PATHS.home}#projects`}
-            className="inline-flex items-center gap-2 bg-[#12432E] text-[#ffffff] px-6 py-3 rounded-full text-[14px] hover:bg-[#12432E] transition-all"
+            className="inline-flex items-center gap-2 bg-[#12432E] text-[#ffffff] px-6 py-3 text-[14px] hover:bg-[#12432E] transition-all"
           >
             ← Return to All {totalProjects} Projects
           </Link>
@@ -69,8 +69,8 @@ export function NepedProjectDetailPage() {
               NEPED Heritage
             </Link>
             <span>/</span>
-            <Link to={`${NEPED_PATHS.home}#projects`} className="hover:text-[#1A2E23] transition-colors">
-              Projects Archive
+            <Link to={NEPED_PATHS.projects} className="hover:text-[#1A2E23] transition-colors">
+              Our Work
             </Link>
             <span>/</span>
             <span className="text-[#1A2E23] font-medium truncate max-w-[200px] sm:max-w-none">
@@ -89,7 +89,7 @@ export function NepedProjectDetailPage() {
 
       {/* 2. PROJECT RECORD CARD — same glassmorphic hero-card language as the homepage spotlight */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[820px] px-4 sm:px-6">
-        <div className="rounded-[8px] border border-white/18 bg-[#12432E] shadow-2xl shadow-black/30 overflow-hidden">
+        <div className=" border border-white/18 bg-[#12432E] shadow-2xl shadow-black/30 overflow-hidden">
           {/* Image banner with phase/category/period tags */}
           <div className="relative h-[160px] sm:h-[190px] overflow-hidden bg-[#12432E]">
             <img
@@ -99,7 +99,7 @@ export function NepedProjectDetailPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#12432E] via-[#12432E]/25 to-transparent" />
             <div className="absolute left-4 top-4 flex flex-wrap items-center gap-2">
-              <span className="rounded-[80px] border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
+              <span className=" border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
                 {project.phase}
               </span>
               <PillBadge dark={true}>{project.category}</PillBadge>
@@ -125,11 +125,11 @@ export function NepedProjectDetailPage() {
             )}
 
             <div className="pt-4 grid grid-cols-2 gap-3 border-t border-white/10">
-              <div className="bg-white/[0.04] p-3 rounded-[4px] border border-white/8">
+              <div className="bg-white/[0.04] p-3 border border-white/8">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Project Period</div>
                 <div className="text-[14px] text-[#ffffff] mt-0.5">{project.period}</div>
               </div>
-              <div className="bg-white/[0.04] p-3 rounded-[4px] border border-white/8">
+              <div className="bg-white/[0.04] p-3 border border-white/8">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Funding Agency</div>
                 <div className="text-[14px] text-[#ffffff] mt-0.5 leading-snug">{project.fundingAgency}</div>
               </div>
@@ -144,7 +144,7 @@ export function NepedProjectDetailPage() {
           {prevProject ? (
             <Link
               to={NEPED_PATHS.project(prevProject.slug)}
-              className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors"
+              className="group p-4 hover:bg-[#e5e4e4]/20 transition-colors"
             >
               <span className="text-[11px] font-mono text-[#5B6660] block mb-1">
                 ← Previous Project ({prevProject.phase})
@@ -160,7 +160,7 @@ export function NepedProjectDetailPage() {
           {nextProject ? (
             <Link
               to={NEPED_PATHS.project(nextProject.slug)}
-              className="group p-4 rounded-[6px] hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
+              className="group p-4 hover:bg-[#e5e4e4]/20 transition-colors sm:text-right"
             >
               <span className="text-[11px] font-mono text-[#5B6660] block mb-1">
                 Next Project ({nextProject.phase}) →
@@ -197,7 +197,7 @@ export function NepedProjectDetailPage() {
             <Link
               key={proj.id}
               to={NEPED_PATHS.project(proj.slug)}
-              className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] rounded-[8px] p-6 flex flex-col justify-between transition-all duration-200"
+              className="group bg-[#ffffff] border border-[#e5e4e4] hover:border-[#000000] p-6 flex flex-col justify-between transition-all duration-200"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">

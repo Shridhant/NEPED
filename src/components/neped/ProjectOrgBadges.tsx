@@ -25,7 +25,7 @@ export function ProjectOrgBadges({ project, dark = false, className = "" }: { pr
       {orgs.map((org) => (
         <span
           key={org}
-          className={`inline-flex items-center gap-1.5 rounded-full pl-1 pr-2.5 py-0.5 text-[11px] font-medium tracking-[0.02em] ${dark ? ORGS[org].dark : ORGS[org].light}`}
+          className={`inline-flex items-center gap-1.5  pl-1 pr-2.5 py-0.5 text-[11px] font-medium tracking-[0.02em] ${dark ? ORGS[org].dark : ORGS[org].light}`}
         >
           <img src={ORGS[org].logo} alt="" className="h-4 w-4 rounded-full bg-[#ffffff] object-cover" />
           {org}

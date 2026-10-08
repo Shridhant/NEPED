@@ -52,7 +52,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                 index === 6 ? "[&>div]:!top-[22.5vh] [&>div]:!left-[25vw] [&>div]:!h-[15vh] [&>div]:!w-[15vw]" : ""
               } `}
             >
-              <div className="relative h-[25vh] w-[25vw] overflow-hidden rounded-2xl shadow-xl border border-white/10">
+              <div className="relative h-[25vh] w-[25vw] overflow-hidden shadow-xl border border-white/10">
                 <img
                   src={src || "/placeholder.svg"}
                   alt={alt || `Parallax image ${index + 1}`}

@@ -16,7 +16,7 @@ const HeroDemo1 = () => {
         {IMAGES.map((imageUrl, index) => (
           <BentoCell
             key={index}
-            className="overflow-hidden rounded-xl shadow-xl"
+            className="overflow-hidden shadow-xl"
           >
             <img
               className="size-full object-cover object-center"
@@ -61,7 +61,7 @@ const HeroDemo2 = () => {
         {IMAGES.filter((_, index) => index <= 3).map((imageUrl, index) => (
           <BentoCell
             key={index}
-            className="overflow-hidden rounded-xl shadow-xl"
+            className="overflow-hidden shadow-xl"
           >
             <img
               className="size-full object-cover object-center"
@@ -109,7 +109,7 @@ const HeroDemo3 = () => {
         {IMAGES.filter((_, index) => index <= 2).map((imageUrl, index) => (
           <BentoCell
             key={index}
-            className="overflow-hidden rounded-xl shadow-xl"
+            className="overflow-hidden shadow-xl"
           >
             <img
               className="size-full object-cover object-center"
