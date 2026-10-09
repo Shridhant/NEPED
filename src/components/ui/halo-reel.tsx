@@ -270,7 +270,7 @@ export function HaloReel({
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
       className={cn(
-        "relative h-[100dvh] w-full touch-pan-y select-none overflow-hidden outline-none",
+        "relative isolate h-[100dvh] w-full touch-pan-y select-none overflow-hidden outline-none",
         draggable && "cursor-grab active:cursor-grabbing",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
         className,

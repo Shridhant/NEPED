@@ -166,6 +166,39 @@ function parseListItems(text: string): string[] {
 /**
  * Load all project files dynamically from /content/projects/*.md
  */
+function projectPeriodYears(period: string): { startYear: number; endYear: number } {
+  const currentYear = new Date().getFullYear();
+  const years = period.match(/\d{2,4}/g)?.map(Number) ?? [];
+  const startYear = years[0] ? normalizeProjectYear(years[0], currentYear) : 0;
+
+  if (/till date|present|ongoing/i.test(period)) {
+    return { startYear, endYear: Math.max(startYear, currentYear) };
+  }
+
+  const rawEndYear = years[1] ?? years[0] ?? 0;
+  return {
+    startYear,
+    endYear: normalizeProjectYear(rawEndYear, startYear || currentYear),
+  };
+}
+
+function normalizeProjectYear(year: number, referenceYear: number): number {
+  if (year >= 1000) return year;
+  const century = Math.floor(referenceYear / 100) * 100;
+  return century + year;
+}
+
+export function compareProjectsByRecency(a: { id?: string; period: string }, b: { id?: string; period: string }): number {
+  const aYears = projectPeriodYears(a.period);
+  const bYears = projectPeriodYears(b.period);
+
+  return (
+    bYears.endYear - aYears.endYear ||
+    bYears.startYear - aYears.startYear ||
+    Number(b.id ?? 0) - Number(a.id ?? 0)
+  );
+}
+
 export function loadAllProjects(): NepedProject[] {
   try {
     const modules = import.meta.glob("/content/projects/*.md", {
@@ -176,7 +209,7 @@ export function loadAllProjects(): NepedProject[] {
 
     const files = Object.values(modules);
     if (files.length === 0) {
-      return NEPED_PROJECTS;
+      return [...NEPED_PROJECTS].sort(compareProjectsByRecency);
     }
 
     const loadedProjects: NepedProject[] = files.map((content) => {
@@ -200,10 +233,10 @@ export function loadAllProjects(): NepedProject[] {
       };
     });
 
-    return loadedProjects.sort((a, b) => Number(a.id) - Number(b.id));
+    return loadedProjects.sort(compareProjectsByRecency);
   } catch (err) {
     console.warn("Using fallback typed projects dataset:", err);
-    return NEPED_PROJECTS;
+    return [...NEPED_PROJECTS].sort(compareProjectsByRecency);
   }
 }
 

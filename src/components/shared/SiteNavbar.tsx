@@ -248,7 +248,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               }}
               className="hidden lg:inline-flex items-center h-11 px-4 xl:px-6 whitespace-nowrap border border-[#1E6F4C] text-[15px] text-[#1E6F4C] hover:bg-[#1E6F4C] hover:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
             >
-              Contact Us
+              Partner with Us
             </button>
 
             {/* Phone menu button */}
@@ -432,7 +432,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     }}
                     className="w-full h-12 border border-[#1E6F4C] text-[16px] text-[#1E6F4C] active:bg-[#1E6F4C] active:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
                   >
-                    Contact Us
+                    Partner with Us
                   </button>
                 </div>
               </nav>

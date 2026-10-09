@@ -17,6 +17,7 @@ import {
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { ProductImageCard } from "@/components/shared/ProductImageCard";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
 import { PageHero } from "@/components/shared/PageHero";
@@ -240,11 +241,16 @@ export function TechnologyPage() {
           </p>
         </div>
 
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <MobileShowMore
+          initialCount={4}
+          showLabel="Show all CERES objectives"
+          hideLabel="Show fewer CERES objectives"
+          className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
           {ceresObjectives.map((obj, idx) => (
             <NumberedTextCard key={obj.num} icon={OBJECTIVE_ICONS[idx]} index={idx} title={obj.title} text={obj.desc} />
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
 
       {/* 3. PRODUCTS CATALOG — Products section style (pill + divider + large photo cards) */}

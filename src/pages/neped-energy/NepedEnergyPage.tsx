@@ -23,6 +23,7 @@ import {
 import { Link } from "react-router-dom";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { CardSlider } from "@/components/shared/CardSlider";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
@@ -257,7 +258,12 @@ export function NepedEnergyPage() {
 
       {/* 4. AIMS — text-only cards (text verbatim from NEPeD/data.txt) */}
       <motion.section {...fadeUpOnView} id="aims" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <MobileShowMore
+          initialCount={4}
+          showLabel="Show all aims"
+          hideLabel="Show fewer aims"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
           <div className="flex items-start px-2 sm:px-0 sm:pr-4 lg:pt-2">
             <h2 className="text-[34px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.1]">
               Aims:
@@ -266,7 +272,7 @@ export function NepedEnergyPage() {
           {aims.map((aim, idx) => (
             <NumberedTextCard key={aim.text} icon={aim.icon} index={idx} text={aim.text} />
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
 
       {/* 5. PRODUCTS — the two NEPeD products (names from NEPeD/data.txt) */}

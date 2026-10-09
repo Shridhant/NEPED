@@ -7,6 +7,7 @@ import { SectionPill } from "@/components/shared/SectionPill";
 import { NEPED_PRESENT_TEAM as presentTeam, type TeamMember } from "@/data/neped/nepedTeamData";
 import { PartnerBand } from "@/components/shared/PartnerBand";
 import { SectionSubnav } from "@/components/shared/SectionSubnav";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { NEPED_PATHS } from "@/routes/paths";
 
 
@@ -288,13 +289,16 @@ export function NepedAboutPage() {
         </div>
 
         {/* Equal-size cards, Team Leader first; a short last row is centred */}
-        <div className="flex flex-wrap justify-center gap-5">
+        <MobileShowMore
+          initialCount={4}
+          showLabel="Show all team members"
+          hideLabel="Show fewer team members"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
           {teamInOrder.map((member) => (
-            <div key={member.id} className="w-full sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-40px)/3)]">
-              <TeamCard member={member} highlight={member.role === "Team Leader"} />
-            </div>
+            <TeamCard key={member.id} member={member} highlight={member.role === "Team Leader"} />
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
 
       <motion.section {...fadeUpOnView} id="leaders" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
@@ -307,7 +311,12 @@ export function NepedAboutPage() {
                 Past Team Leaders
               </h3>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12 gap-y-4 pt-2">
+            <MobileShowMore
+              initialCount={5}
+              showLabel="Show all past leaders"
+              hideLabel="Show fewer past leaders"
+              className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12 gap-y-4 pt-2"
+            >
               {teamLeaders.map((lead) => (
                 <div
                   key={lead.name}
@@ -338,7 +347,7 @@ export function NepedAboutPage() {
                   <span className="text-[12px] font-mono text-[#5B6660] shrink-0">{lead.period}</span>
                 </div>
               ))}
-            </div>
+            </MobileShowMore>
           </div>
         </div>
       </motion.section>

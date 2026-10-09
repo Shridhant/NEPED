@@ -14,6 +14,7 @@ import {
   FlaskConical,
 } from "lucide-react";
 import { SectionPill } from "@/components/shared/SectionPill";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 // import { HoverRevealList } from "@/components/shared/HoverRevealList"; // used by the hidden section 1A
 import { /* NEPED_SECTION_3, NEPED_PHASES_SECTION, */ NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
 // import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
@@ -144,7 +145,12 @@ export function NepedEconomicPage() {
       {/* WHAT WE DO — themed grid */}
       <motion.section {...fadeUpOnView} id="what-we-do" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <h2 className={H2}>One society, many kinds of work.</h2>
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <MobileShowMore
+          initialCount={3}
+          showLabel="Show all work areas"
+          hideLabel="Show fewer work areas"
+          className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
           {HOME_THEMES.map(({ title, text, icon: Icon, to }) => (
             <Link
               key={title}
@@ -159,7 +165,7 @@ export function NepedEconomicPage() {
               <ArrowRight size={18} strokeWidth={1.5} className="text-[#1E6F4C] transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
             </Link>
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
 
       {/* FEATURED CASE STUDY — Kingjung */}
@@ -309,7 +315,14 @@ export function NepedEconomicPage() {
             </h2>
           </motion.div>
 
-          <motion.div {...fadeUpOnView} className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <motion.div {...fadeUpOnView}>
+            <MobileShowMore
+              initialCount={2}
+              showLabel="Show all milestones"
+              hideLabel="Show fewer milestones"
+              buttonClassName="border-white/70 text-[#ffffff] active:bg-[#ffffff] active:text-[#12432E]"
+              className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+            >
             {[
               { value: "7.8 million", label: "economic trees", text: "More than 7.8 million economic trees were planted in 5500 hectares with replication ratio of 1:6." },
               { value: "1794", label: "test plots", text: "The project has established 1794 test plots (2 test plots each, measuring 3 hectares per village) in jhum fields in 854 villages across all (8) the districts covering all 16 tribes of Nagaland." },
@@ -327,6 +340,7 @@ export function NepedEconomicPage() {
                 </div>
               </div>
             ))}
+            </MobileShowMore>
           </motion.div>
         </div>
       </section>
@@ -335,7 +349,12 @@ export function NepedEconomicPage() {
 
       {/* 5. SEVEN OFFICIAL AIMS & OBJECTIVES — NEPeD Aims grid (heading cell + text cards) */}
       <motion.section {...fadeUpOnView} id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <MobileShowMore
+          initialCount={4}
+          showLabel="Show all objectives"
+          hideLabel="Show fewer objectives"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
           <div className="flex flex-col gap-5 px-2 sm:px-0 sm:pr-4 lg:pt-2">
             <SectionPill>02 / Official Objectives</SectionPill>
             <h2 className="text-[30px] sm:text-[36px] font-light text-[#1A2E23] tracking-[-0.8px] leading-[1.12]">
@@ -359,7 +378,7 @@ export function NepedEconomicPage() {
               card={{ number: String(idx + 1).padStart(2, "0"), title: aim.title, description: aim.text, icon: aim.icon, ...AIM_CARD_STYLE }}
             />
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
 
       {/* 8. GALLERY PREVIEW — photo marquee (pauses on hover); every photo opens the Gallery page */}

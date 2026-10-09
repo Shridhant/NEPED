@@ -6,6 +6,7 @@ import {
   SectionHeading,
   NumberedItem,
 } from "@/components/ui/AkerPrimitives";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
 export function NepedEnergyAboutPage() {
@@ -142,7 +143,13 @@ export function NepedEnergyAboutPage() {
             </p>
           </div>
 
-          <div className="lg:col-span-8 space-y-1">
+          <div className="lg:col-span-8">
+            <MobileShowMore
+              initialCount={3}
+              showLabel="Show all pillars"
+              hideLabel="Show fewer pillars"
+              className="space-y-1"
+            >
             <NumberedItem
               num="01"
               title="Community-Based Pico/Micro Hydro"
@@ -168,6 +175,7 @@ export function NepedEnergyAboutPage() {
               title="Cross-State Regional Collaboration"
               subtitle="Partner with government and non-government agencies across Northeast India."
             />
+            </MobileShowMore>
           </div>
         </div>
       </motion.section>
@@ -182,7 +190,12 @@ export function NepedEnergyAboutPage() {
                 Inception POU Cell
               </h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <MobileShowMore
+              initialCount={4}
+              showLabel="Show all inception members"
+              hideLabel="Show fewer inception members"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2"
+            >
               {inceptionTeam.map((mem) => (
                 <div
                   key={mem.name}
@@ -192,7 +205,7 @@ export function NepedEnergyAboutPage() {
                   <span className="text-[11px] text-[#5B6660]">{mem.role}</span>
                 </div>
               ))}
-            </div>
+            </MobileShowMore>
           </div>
         </div>
       </motion.section>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Search } from "lucide-react";
 import type { NepedProject, ProjectOrg } from "@/data/neped/nepedProjectsData";
+import { compareProjectsByRecency } from "@/lib/contentLoader";
 import { NEPED_PATHS } from "@/routes/paths";
 
 type Lineage = "Economic" | "Energy" | "Both";
@@ -28,7 +29,7 @@ const EASE = [0.65, 0, 0.35, 1] as const;
 
 /**
  * All projects in one table, filterable by lineage (NEPED = Economic, NEPeD = Energy) and searchable.
- * Rows = the site's project records + the NEPeD-only projects from the PDF, oldest first. Phones get one card per project.
+ * Rows = the site's project records + the NEPeD-only projects from the PDF, newest first. Phones get one card per project.
  */
 export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
   const rows = useMemo<ProjectRow[]>(() => {
@@ -39,8 +40,7 @@ export function ProjectsTable({ projects }: { projects: NepedProject[] }) {
       lineage: lineageOf(p.implementedBy?.length ? p.implementedBy : ["NEPED"]),
       href: NEPED_PATHS.project(p.slug),
     }));
-    const startYear = (r: ProjectRow) => parseInt(r.period, 10) || 0;
-    return [...fromContent, ...NEPED_ENERGY_ONLY_ROWS].sort((a, b) => startYear(a) - startYear(b));
+    return [...fromContent, ...NEPED_ENERGY_ONLY_ROWS].sort(compareProjectsByRecency);
   }, [projects]);
 
   const [filter, setFilter] = useState<Lineage | "All">("All");

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { SectionPill } from "@/components/shared/SectionPill";
+import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { FolderCard } from "@/components/ui/folder-cards";
 import { CASE_STUDY_CARDS } from "@/data/neped-energy/caseStudyCards";
 import { BlurReveal } from "@/components/ui/blur-reveal";
@@ -20,11 +21,16 @@ export function CaseStudiesPage() {
           <SectionPill>NEPeD</SectionPill>
           <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#1A2E23] tracking-[-1.55px] leading-[1.05]">{"Case Studies"}</BlurReveal>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <MobileShowMore
+          initialCount={3}
+          showLabel="Show all case studies"
+          hideLabel="Show fewer case studies"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+        >
           {CASE_STUDY_CARDS.map((card) => (
             <FolderCard key={card.to} card={card} />
           ))}
-        </div>
+        </MobileShowMore>
       </motion.section>
     </div>
   );
