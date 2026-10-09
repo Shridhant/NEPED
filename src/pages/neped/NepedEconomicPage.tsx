@@ -26,11 +26,6 @@ import { useOpenContact } from "@/lib/contact";
 // Small uppercase label above each homepage section
 const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]";
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
-// CERES products on the homepage (text as in the supplied design)
-const CERES_PRODUCTS = [
-  { name: "Hydroger", text: "3 kW pico-hydro generator, certified at IIT Roorkee.", image: "/Hydroger (Impulse).jpeg" },
-  { name: "Electronic Load Controller", text: "Keeps the supply stable as demand rises and falls.", image: "/elc-device.webp" },
-];
 // The seven aims, shortened (text as in the supplied design)
 const AIMS = [
   { title: "Raise rural incomes", text: "Diversified agro-forestry and farm enterprise." },
@@ -204,44 +199,6 @@ export function NepedEconomicPage() {
               <span className="text-[16px] text-[#1A2E23]">Read the Kingjung story</span>
             </Link>
           </div>
-        </div>
-      </motion.section>
-
-      {/* CERES PRODUCTS — the two products built at CERES, Dimapur */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>CERES · Made in Nagaland</p>
-            <h2 className="font-serif text-[32px] sm:text-[44px] leading-[1.08] tracking-[-0.3px] text-[#1A2E23] text-balance">
-              Renewable technology, built in Dimapur
-            </h2>
-          </div>
-          <Link
-            to={NEPED_ENERGY_PATHS.technology}
-            className="shrink-0 text-[16px] font-semibold text-[#1E6F4C] underline underline-offset-4 hover:text-[#12432E] transition-colors duration-300"
-          >
-            See all products →
-          </Link>
-        </div>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {CERES_PRODUCTS.map((p) => (
-            <article key={p.name} className="flex flex-col overflow-hidden rounded-md border border-[#dbe5de] bg-[#ffffff]">
-              <div className="h-[220px] sm:h-[260px] bg-[#F3F6F3]">
-                <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
-              </div>
-              <div className="flex flex-1 flex-col gap-3 p-6 sm:p-7">
-                <h3 className="text-[20px] font-semibold text-[#1A2E23]">{p.name}</h3>
-                <p className="text-[15px] leading-relaxed text-[#5B6660] flex-1">{p.text}</p>
-                <button
-                  type="button"
-                  onClick={openContact}
-                  className="mt-2 w-fit text-[15px] font-semibold text-[#1E6F4C] underline underline-offset-4 hover:text-[#12432E] transition-colors duration-300 cursor-pointer"
-                >
-                  Enquire →
-                </button>
-              </div>
-            </article>
-          ))}
         </div>
       </motion.section>
 
