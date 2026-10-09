@@ -24,9 +24,10 @@ export function MobileShowMore({
 
   return (
     <>
+      {/* Each item is at least as tall as its grid cell, so cards in a row match in height (fixed heights still apply) */}
       <div className={className}>
         {items.map((child, index) => (
-          <div key={index} className={cn(index >= initialCount && !expanded ? "hidden sm:block" : "")}>
+          <div key={index} className={cn("[&>*]:min-h-full", index >= initialCount && !expanded ? "hidden sm:block" : "")}>
             {child}
           </div>
         ))}

@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { loadAllProjects } from "@/lib/contentLoader";
+import { PROJECT_LIST } from "@/data/neped/projectList";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_PATHS } from "@/routes/paths";
 import { ProjectsTable } from "@/components/neped/ProjectsTable";
@@ -11,15 +11,30 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 const GLASS_CARD =
   " bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
+// Current work — text verbatim from the NEPED team
+const CURRENT_WORK = [
+  {
+    title: "Land, water & biodiversity",
+    text: "with SACON and SDTT, helping villages create Community Conserved Areas, biodiversity registers and management plans, using the Blyth's Tragopan (the state bird) as a flagship species.",
+  },
+  {
+    title: "Livelihoods & enterprise",
+    text: "community-based piggery (NRTT), handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
+  },
+  {
+    title: "Climate resilience",
+    text: "the ongoing NEPED-IV / Forest & Biodiversity Management in the Himalaya (Nagaland) Project across 35 villages (KfW), and the National Adaptation Fund for Climate Change.",
+  },
+  { title: "Eco-tourism", text: "a new green-economy pilot in Benreu and Zhavame." },
+];
+
 export function ProjectsPage() {
   useEffect(() => {
     document.title = "Our Work — NEPED";
   }, []);
 
-  const allProjects = useMemo(() => loadAllProjects(), []);
-
   const stats = [
-    { value: `${allProjects.length} Projects`, label: "Documented Archive" },
+    { value: `${PROJECT_LIST.length} Projects`, label: "Documented Archive" },
     { value: "854", label: "Villages Reached" },
     { value: "7.8M+", label: "Trees Planted" },
     { value: "1995 – 2026", label: "Operational Span" },
@@ -49,8 +64,8 @@ export function ProjectsPage() {
                 <span className="hidden sm:inline text-white/75">Official Project Registry</span>
               </span>
               <BlurReveal as="h1" className="text-[40px] sm:text-[64px] lg:text-[76px] font-light tracking-[-2px] leading-[1.02]">{"Our Work"}</BlurReveal>
-              <p className="max-w-[640px] text-[15px] sm:text-[17px] text-[#ffffff]/90 leading-relaxed">
-                Three decades of landmark interventions in community agroforestry, shifting cultivation transformation, clean micro-hydro engineering, biodiversity conservation, and artisan economic empowerment across Nagaland.
+              <p className="max-w-[720px] text-[15px] sm:text-[17px] text-[#ffffff]/90 leading-relaxed">
+                For three decades, NEPED has worked with jhum (shifting cultivation) farmers across Nagaland — not to end a traditional way of life, but to strengthen it. Tree-planting became a state-wide movement; banking and micro-credit reached villages for the first time; degraded watersheds were restored; and communities set aside and protected their own conservation areas.
               </p>
             </motion.div>
 
@@ -71,9 +86,28 @@ export function ProjectsPage() {
         </div>
       </section>
 
+      {/* CURRENT WORK — heading on the left, numbered list on the right (same layout as the homepage aims). Text verbatim from the NEPED team */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+        <div className="lg:col-span-4 space-y-5">
+          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]">Our Work</p>
+          <h2 className="font-serif text-[32px] sm:text-[40px] leading-[1.12] tracking-[-0.3px] text-[#1A2E23]">Current Work</h2>
+        </div>
+        <ol className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+          {CURRENT_WORK.map((item, i) => (
+            <li key={item.title} className="flex gap-4 border-t border-[#e5e4e4] py-5">
+              <span className="w-8 shrink-0 font-serif text-[22px] leading-none text-[#8A5A12]">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 className="text-[15px] font-semibold text-[#1A2E23]">{item.title}</h3>
+                <p className="mt-1 text-[13.5px] leading-snug text-[#5B6660]">{item.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </motion.section>
+
       {/* 2. PROJECTS IMPLEMENTED — one table for NEPED and NEPeD projects, filterable by lineage and searchable */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <ProjectsTable projects={allProjects} />
+        <ProjectsTable />
       </section>
 
       {/* 4. CROSS-NAVIGATION BANNER — dark green CTA to About Us */}

@@ -30,7 +30,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                   />
                 </div>
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70 font-mono">
-                  Autonomous Registered Society • Est. 1994
+                  Autonomous Registered Society • Est. 1995
                 </span>
               </div>
               <h2 className="text-[42px] sm:text-[56px] font-light text-[#ffffff] tracking-[-1.55px] leading-none">

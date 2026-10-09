@@ -15,13 +15,13 @@ const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#1E
 
 // Timeline — text verbatim from the About copy supplied by the NEPED team
 const TIMELINE: { year: string; body: string; logo?: "neped" | "neped-energy" }[] = [
-  { year: "1994", body: "NEPED founded by the Government of Nagaland.", logo: "neped" },
-  { year: "1995–2000", body: "NEPED-I: tree-planting on jhum land (ICEF/CIDA)." },
-  { year: "2001–2006", body: "NEPED-II: cash crops & micro-finance (ICEF/CIDA)." },
-  { year: "2006–2012", body: "NEPED-III: watershed development (Min. of Agriculture)." },
-  { year: "2007", body: "Energy Development branch established; CERES set up in Dimapur.", logo: "neped-energy" },
-  { year: "2019–present", body: "NEPED-IV / Forest & Biodiversity Management (KfW)." },
   { year: "Today", body: "One society across livelihoods, land and energy." },
+  { year: "2019–present", body: "NEPED-IV / Forest & Biodiversity Management (KfW)." },
+  { year: "2007", body: "Energy Development branch established; CERES set up in Dimapur.", logo: "neped-energy" },
+  { year: "2006–2012", body: "NEPED-III: watershed development (Min. of Agriculture)." },
+  { year: "2001–2006", body: "NEPED-II: cash crops & micro-finance (ICEF/CIDA)." },
+  { year: "1995–2000", body: "NEPED-I: tree-planting on jhum land (ICEF/CIDA)." },
+  { year: "1995", body: "NEPED founded by the Government of Nagaland.", logo: "neped" },
 ];
 
 // Aims & Objectives — verbatim from "NEPED PDF.pdf"
@@ -143,14 +143,14 @@ export function NepedAboutPage() {
       <motion.section {...fadeUpOnView} id="story" className="scroll-mt-40 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)] gap-10 lg:gap-20">
           <div className="flex flex-col gap-4 lg:sticky lg:top-44 lg:self-start">
-            <span className={EYEBROW}>Since 1994</span>
+            <span className={EYEBROW}>Since 1995</span>
             <h2 className="font-serif text-[34px] sm:text-[42px] leading-[1.12] tracking-[-0.3px] text-[#12432E]">
               One institution, an evolving mandate
             </h2>
           </div>
           <div className="max-w-[760px] flex flex-col gap-7 text-[17px] sm:text-[19px] leading-[1.7] text-[#1A2E23]">
             <p>
-              Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Government of Nagaland in 1994 as an autonomous, government-registered society, with its project set up in 1995 to implement the ICEF project — the first foreign-funded project ever undertaken in Nagaland, supported by the India-Canada Environment Facility under the Canadian International Development Agency.
+              Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Government of Nagaland in 1995 as an autonomous, government-registered society, with its project set up in 1995 to implement the ICEF project — the first foreign-funded project ever undertaken in Nagaland, supported by the India-Canada Environment Facility under the Canadian International Development Agency.
             </p>
             <p>
               The society is run by a Project Operations Unit (POU): a multi-disciplinary team of officers seconded from across state government departments, given full autonomy, headed by a senior Secretary-level Team Leader and supported by a Project Steering Committee under the Chief Secretary.
@@ -162,7 +162,7 @@ export function NepedAboutPage() {
               As the livelihood work deepened, one need surfaced everywhere: energy. So in 2007 the society established an energy branch — Nagaland Empowerment of People through Energy Development — and set up CERES, its Centre of Excellence for Renewable Energy Studies, in Dimapur. The branch carries its own name and logo, but it is run by the same team, from the same office, under the same Team Leader.
             </p>
             <p className="border-t-2 border-[#E8A33D] pt-7 font-serif text-[22px] sm:text-[26px] leading-[1.45] text-[#12432E]">
-              The society had extended its reach, but it had not divided. That is why the acronym never changed. Today the 1994 society works across livelihoods, land and energy as a single NEPED, from Nagaland's forests to its rivers.
+              The society had extended its reach, but it had not divided. That is why the acronym never changed. Today the 1995 society works across livelihoods, land and energy as a single NEPED, from Nagaland's forests to its rivers.
             </p>
           </div>
         </div>

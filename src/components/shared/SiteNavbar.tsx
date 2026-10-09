@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Home, Menu, X } from "lucide-react";
-import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS, isNepedEnergyPath } from "@/routes/paths";
-import { loadAllProjects } from "@/lib/contentLoader";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 /*
  * One navbar for NEPED and NEPeD (layout after cleanenergycouncil.org.au).
- * Desktop: both logos, top-level items that open a full-width panel on hover / click
+ * Desktop: NEPED logo, top-level items that open a full-width panel on hover / click
  * (dark link column, description, photo). Phones: full-screen accordion menu.
  * Panel descriptions are the intro text of each page, verbatim.
  */
@@ -23,6 +22,8 @@ type NavSection = {
   image: string;
   /** Zoom the panel photo in from this point (e.g. to crop away empty sky) */
   imageZoom?: { scale: number; origin: string };
+  /** Show the whole photo (blurred copy behind it fills the panel) instead of cropping it to fill */
+  imageContain?: boolean;
   /** Dark link column colour and underline accent */
   panelColor: string;
   accent: string;
@@ -32,48 +33,22 @@ type NavEntry = NavSection | { key: string; label: string; href: string; accent:
 const NEPED_GREEN = { panelColor: "#12432E", accent: "#1E6F4C" };
 const NEPED_ENERGY_TEAL = { panelColor: "#12432E", accent: "#1E6F4C" };
 
-const projects = loadAllProjects();
-
 const NAV: NavEntry[] = [
-  {
-    key: "neped",
-    label: "NEPED",
-    home: { label: "NEPED", href: NEPED_PATHS.home },
-    links: [
-      { label: "About Us", href: NEPED_PATHS.about },
-      { label: "Organisational Structure", href: NEPED_PATHS.structure },
-    ],
-    // Verbatim from the NEPED About Us page
-    description:
-      "Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1994. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.",
-    image: "/dzukou-valley-1400.webp", // same photo as the NEPED homepage hero
-    ...NEPED_GREEN,
-  },
+  { key: "impact", label: "Impact", href: NEPED_ENERGY_PATHS.impact, accent: NEPED_GREEN.accent },
   {
     key: "projects",
     label: "Our Work",
     home: { label: "Our Work", href: NEPED_PATHS.projects },
-    links: projects.slice(0, 4).map((p) => ({ label: p.name, href: NEPED_PATHS.project(p.slug) })),
+    links: [
+      { label: "Projects", href: NEPED_PATHS.projects },
+      { label: "Case Studies", href: NEPED_ENERGY_PATHS.caseStudies },
+    ],
     // Verbatim from the Projects page
     description:
       "Three decades of landmark interventions in community agroforestry, shifting cultivation transformation, clean micro-hydro engineering, biodiversity conservation, and artisan economic empowerment across Nagaland.",
     image: "/doyang-1400.webp",
     imageZoom: { scale: 1.45, origin: "50% 90%" }, // crop away the empty sky, keep the lake and hills
     ...NEPED_GREEN,
-  },
-  {
-    key: "neped-energy",
-    label: "NEPeD Clean Energy",
-    home: { label: "NEPeD", href: NEPED_ENERGY_PATHS.home },
-    links: [
-      { label: "Impact", href: NEPED_ENERGY_PATHS.impact },
-      { label: "Case Studies", href: NEPED_ENERGY_PATHS.caseStudies },
-    ],
-    // Verbatim from the NEPeD homepage
-    description:
-      "The “Nagaland Empowerment of People through Energy Development” (NEPeD) was formed in 2007 by the Government of Nagaland, with full autonomy as an independent registered society (NGO), to address the energy challenges in the state.",
-    image: "/19 SP Tuensang with NEPeD Member at Deithung Hydroger site.webp",
-    ...NEPED_ENERGY_TEAL,
   },
   {
     key: "ceres",
@@ -87,7 +62,22 @@ const NAV: NavEntry[] = [
     description:
       "NEPeD’s decision to indigenize/upscale its work led to the establishment of Centre of Excellence for Renewable Energy Studies (CERES), at Industrial Estate, Dimapur.",
     image: "/Hydroger (Impulse).jpeg",
+    imageContain: true, // portrait photo: show the whole Hydroger
     ...NEPED_ENERGY_TEAL,
+  },
+  {
+    key: "about",
+    label: "About",
+    home: { label: "About", href: NEPED_PATHS.about },
+    links: [
+      { label: "About Us", href: NEPED_PATHS.about },
+      { label: "Organisational Structure", href: NEPED_PATHS.structure },
+    ],
+    // Verbatim from the NEPED About Us page
+    description:
+      "Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1995. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.",
+    image: "/dzukou-valley-1400.webp", // same photo as the NEPED homepage hero
+    ...NEPED_GREEN,
   },
   { key: "gallery", label: "Gallery", href: SHARED_PATHS.gallery, accent: NEPED_GREEN.accent },
   { key: "contact", label: "Contact", href: SHARED_PATHS.contact, accent: NEPED_GREEN.accent },
@@ -99,10 +89,11 @@ const isSection = (e: NavEntry): e is NavSection => "home" in e;
 function currentKey(pathname: string) {
   if (pathname.startsWith(SHARED_PATHS.gallery)) return "gallery";
   if (pathname.startsWith(SHARED_PATHS.contact)) return "contact";
+  if (pathname.startsWith(NEPED_ENERGY_PATHS.impact)) return "impact";
   if (pathname.startsWith(NEPED_ENERGY_PATHS.technology)) return "ceres";
-  if (isNepedEnergyPath(pathname)) return "neped-energy";
-  if (pathname.startsWith(NEPED_PATHS.projects)) return "projects";
-  return "neped";
+  if (pathname.startsWith(NEPED_ENERGY_PATHS.caseStudies) || pathname.startsWith(NEPED_PATHS.projects)) return "projects";
+  if (pathname.startsWith(NEPED_PATHS.about) || pathname.startsWith(NEPED_PATHS.structure)) return "about";
+  return null;
 }
 
 const EASE = [0.65, 0, 0.35, 1] as const;
@@ -173,7 +164,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
         }`}
       >
         <div className="mx-auto max-w-[1440px] h-16 lg:h-[84px] px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-6">
-          {/* Both logos */}
+          {/* Logo */}
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <Link to={NEPED_PATHS.home} onClick={closeAll} className="group flex items-center gap-2.5" aria-label="NEPED home">
               <img
@@ -182,15 +173,6 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
               <span className="hidden sm:block lg:hidden xl:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPED</span>
-            </Link>
-            <span aria-hidden className="h-8 w-px bg-black/10" />
-            <Link to={NEPED_ENERGY_PATHS.home} onClick={closeAll} className="group flex items-center gap-2.5" aria-label="NEPeD home">
-              <img
-                src="/NEPeD Logo High Res.webp"
-                alt="NEPeD Logo"
-                className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
-              />
-              <span className="hidden sm:block lg:hidden xl:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPeD</span>
             </Link>
           </div>
 
@@ -340,6 +322,9 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     <p className="mt-6 max-w-[400px] text-[18px] xl:text-[20px] leading-[1.45] text-[#1A2E23]">{openSection.description}</p>
                   </div>
                   <div className="col-span-4 relative overflow-hidden">
+                    {openSection.imageContain ? (
+                      <img src={openSection.image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover scale-110 blur-xl opacity-70" />
+                    ) : null}
                     <motion.img
                       src={openSection.image}
                       alt=""
@@ -347,7 +332,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                       animate={{ scale: openSection.imageZoom?.scale ?? 1 }}
                       transition={{ duration: 0.8, ease: EASE }}
                       style={{ transformOrigin: openSection.imageZoom?.origin }}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className={`absolute inset-0 h-full w-full ${openSection.imageContain ? "object-contain" : "object-cover"}`}
                     />
                   </div>
                 </motion.div>

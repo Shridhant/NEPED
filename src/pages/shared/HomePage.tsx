@@ -49,7 +49,7 @@ export function HomePage() {
               <span className="w-2 h-2 rounded-full bg-[#1E6F4C] animate-pulse" />
               
               <span className="hidden sm:inline text-[11px] uppercase tracking-[0.1em] text-[#e5e4e4]/70 font-mono">
-                Est. 1994
+                Est. 1995
               </span>
             </motion.div>
 
@@ -190,7 +190,7 @@ export function HomePage() {
               A shifting paradigm in community power
             </SectionHeading>
             <p className="text-[15px] text-[#5B6660] leading-relaxed">
-              Formed in 1994 as an autonomous Government of Nagaland society, NEPED set out to close developmental gaps across the state. Energy became the catalyst — by replacing dependency with self-governed local generation, NEPeD lets remote Himalayan communities thrive on their own terms.
+              Formed in 1995 as an autonomous Government of Nagaland society, NEPED set out to close developmental gaps across the state. Energy became the catalyst — by replacing dependency with self-governed local generation, NEPeD lets remote Himalayan communities thrive on their own terms.
             </p>
           </div>
 
@@ -211,7 +211,7 @@ export function HomePage() {
             <div className="pt-6 mt-2 border-t border-[#e5e4e4]">
               <Link to={NEPED_PATHS.home} className="group inline-block">
                 <span className="text-[12px] font-mono text-[#5B6660] uppercase tracking-wider block group-hover:text-[#1A2E23] transition-colors">
-                  1994 → NEPED Founded
+                  1995 → NEPED Founded
                 </span>
                 <span className="text-[13px] text-[#5B6660] block mt-1 max-w-[420px]">
                   Autonomous Govt. of Nagaland society bridging developmental gaps statewide.

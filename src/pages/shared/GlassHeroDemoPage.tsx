@@ -22,17 +22,17 @@ export function GlassHeroDemoPage() {
         />
         <div className="absolute inset-0 bg-[#07110b]/25" />
 
-        <div className="relative z-10 flex min-h-screen flex-col justify-center overflow-hidden border-r border-white/20 bg-[#101d12]/58 px-4 py-12 shadow-[0_24px_100px_rgba(0,0,0,0.42)] backdrop-blur-[46px] backdrop-saturate-[1.55] sm:px-6 sm:py-16 lg:col-span-7 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))] lg:pr-12 xl:pr-20 xl:py-20">
+        <div className="relative z-10 flex min-h-screen flex-col justify-center overflow-hidden border-r border-white/20 bg-[#101d12]/60 px-4 py-12 shadow-[0_24px_100px_rgba(0,0,0,0.42)] backdrop-blur-[58px] backdrop-saturate-[1.65] sm:px-6 sm:py-16 lg:col-span-7 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))] lg:pr-12 xl:pr-20 xl:py-20">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_6%,rgba(43,181,210,0.78)_0%,rgba(43,181,210,0.48)_22%,rgba(30,111,76,0.28)_48%,rgba(10,18,12,0.72)_100%)]" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,16,10,0.78)_0%,rgba(17,38,23,0.42)_58%,rgba(255,255,255,0.11)_100%)]" />
-          <div className="pointer-events-none absolute inset-0 bg-white/[0.055] mix-blend-screen" />
+          <div className="pointer-events-none absolute inset-0 bg-white/[0.07] mix-blend-screen" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/45" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/12" />
 
           <div className="relative max-w-[760px]">
             <div className="inline-flex items-center gap-2.5 border border-white/20 bg-white/[0.08] px-3.5 py-1.5 text-[11px] font-mono uppercase tracking-[0.1em] text-[#e5e4e4]/85 backdrop-blur-md">
               <span className="h-2 w-2 bg-[#8ccb3f]" />
-              <span>Est. 1994</span>
+              <span>Est. 1995</span>
             </div>
 
             <h1 className="mt-6 max-w-[760px] font-serif text-[40px] font-normal leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance sm:mt-8 sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px]">
@@ -40,7 +40,7 @@ export function GlassHeroDemoPage() {
             </h1>
 
             <p className="mt-6 max-w-[620px] text-[17px] leading-[1.45] text-[#ffffff]/90 sm:mt-8 sm:text-[19px] xl:text-[21px]">
-              Since 1994, NEPED has worked alongside Naga communities to build livelihoods, protect biodiversity, and
+              Since 1995, NEPED has worked alongside Naga communities to build livelihoods, protect biodiversity, and
               bring clean, home-grown energy to the villages that need it most.
             </p>
 

@@ -3,55 +3,47 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Wallet,
-  Briefcase,
-  GraduationCap,
-  Store,
-  PiggyBank,
-  RefreshCw,
   Leaf,
   ArrowRight,
   Zap,
   FlaskConical,
 } from "lucide-react";
-import { SectionPill } from "@/components/shared/SectionPill";
+// import { SectionPill } from "@/components/shared/SectionPill"; // used by the hidden section 1C
 import { MobileShowMore } from "@/components/shared/MobileShowMore";
 // import { HoverRevealList } from "@/components/shared/HoverRevealList"; // used by the hidden section 1A
-import { /* NEPED_SECTION_3, NEPED_PHASES_SECTION, */ NEPED_MILESTONES_SECTION } from "@/data/neped/nepedHomeSections";
+// import { NEPED_SECTION_3, NEPED_PHASES_SECTION } from "@/data/neped/nepedHomeSections"; // used by the hidden sections 1A / 1C
 // import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
 // import { WideCardCarousel } from "@/components/shared/WideCardCarousel"; // used by the hidden section 1C
 // import { PhaseBlogCard } from "@/components/neped/PhaseBlogCard"; // used by the hidden section 1C
 import { HaloReel } from "@/components/ui/halo-reel";
 import { NEPED_PRESENT_TEAM } from "@/data/neped/nepedTeamData";
-import { ProjectTile } from "@/components/neped/ProjectTile";
-import { FolderCard } from "@/components/ui/folder-cards";
-import { BookDemoButton } from "@/components/ui/book-demo-button";
-import { Marquee } from "@/components/ui/marquee";
-import { GALLERY_ALBUMS_DATA } from "@/data/shared/galleryAlbumsData";
-import { loadAllProjects } from "@/lib/contentLoader";
+import { FunderStrip, ProjectTimeline } from "@/components/neped/ProjectTimeline";
 import { fadeUpOnView } from "@/lib/motionVariants";
-import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { NEPED_ENERGY_PATHS, NEPED_PATHS } from "@/routes/paths";
 import { PartnerBand } from "@/components/shared/PartnerBand";
+import { useOpenContact } from "@/lib/contact";
 
+// Small uppercase label above each homepage section
+const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]";
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
-// Aims cards: one uniform style from the site palette (Mist Wash card, Forest Green icon)
-const AIM_CARD_STYLE = {
-  background: "linear-gradient(145deg, #f3f6f3 0%, #dcebe1 100%)",
-  folderColor: "#ffffff",
-  borderColor: "#dbe5de",
-  textColor: "#1a2e23",
-  subTextColor: "#5b6660",
-  iconColor: "#1e6f4c",
-};
-// Gallery preview: every photo in public/gallery, titled "<State> 01, 02…"; each opens the Gallery page
-const GALLERY_MARQUEE_ITEMS = GALLERY_ALBUMS_DATA.flatMap((album) =>
-  album.photos.map((photo, i) => ({
-    title: `${album.title} ${String(i + 1).padStart(2, "0")}`,
-    image: photo.src,
-  })),
-);
+// CERES products on the homepage (text as in the supplied design)
+const CERES_PRODUCTS = [
+  { name: "Hydroger", text: "3 kW pico-hydro generator, certified at IIT Roorkee.", image: "/Hydroger (Impulse).jpeg" },
+  { name: "Electronic Load Controller", text: "Keeps the supply stable as demand rises and falls.", image: "/elc-device.webp" },
+];
+// The seven aims, shortened (text as in the supplied design)
+const AIMS = [
+  { title: "Raise rural incomes", text: "Diversified agro-forestry and farm enterprise." },
+  { title: "Create self-employment", text: "Youth and village entrepreneurs in agri-business." },
+  { title: "Build entrepreneur skills", text: "Training, packaging, quality and scaling." },
+  { title: "Link to markets", text: "Naga produce and crafts to national buyers." },
+  { title: "Encourage thrift savings", text: "Revolving funds for farmers and SHGs." },
+  { title: "Shift mindsets", text: "Villages investing in their own assets." },
+  { title: "Conserve biodiversity", text: "Every activity protects forests and wildlife." },
+];
 // Homepage stat strip and themed grid — text verbatim from the homepage copy supplied by the NEPED team
 const HOME_STATS = [
-  { value: "1994", label: "Established by the Govt. of Nagaland" },
+  { value: "1995", label: "Established by the Govt. of Nagaland" },
   { value: "7.8M", label: "Economic trees planted" },
   { value: "108", label: "Hydrogers installed (3 kW pico)" },
   { value: "854", label: "Villages reached in NEPED-I alone" },
@@ -65,55 +57,71 @@ const HOME_THEMES = [
 
 export function NepedEconomicPage() {
   const isSmallScreen = useIsSmallScreen();
+  const openContact = useOpenContact();
 
   useEffect(() => {
-    document.title = "NEPED — Heritage & Economic Development (1994–Present) • Master Archives";
+    document.title = "NEPED — Heritage & Economic Development (1995–Present) • Master Archives";
   }, []);
 
 
-  const allProjects = loadAllProjects();
-
   return (
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-4">
-      {/* 1. HERO — split layout (after cleanenergycouncil.org.au): dark panel with the headline, photo on the right.
+      {/* 1. HERO — split layout (after cleanenergycouncil.org.au): headline panel on the left, photo on the right.
+          The photo runs behind the whole hero; the left panel is frosted glass over it.
           Phones / tablets: text first, photo below. Text verbatim from the homepage copy supplied by the NEPED team. */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 bg-(--brand-surface) lg:min-h-[calc(100svh-84px)]">
+      <section className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 bg-(--brand-surface) lg:min-h-[calc(100svh-84px)]">
+        {/* Photo: Dzukou Valley. Resized WebP copies; the browser picks the size for the screen */}
+        <motion.img
+          src="/dzukou-valley-1400.webp"
+          srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
+          sizes="100vw"
+          alt="Dzukou Valley, Nagaland"
+          fetchPriority="high"
+          decoding="async"
+          initial={{ scale: 1.06, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.1, ease: [0.23, 1, 0.32, 1] }}
+          className="absolute inset-0 h-full w-full object-cover object-[60%_50%]"
+        />
+
+        {/* Left panel: frosted glass over the photo */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="lg:col-span-7 flex flex-col justify-center px-4 sm:px-6 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))] lg:pr-12 xl:pr-20 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-16 xl:py-20"
+          className="relative lg:col-span-6 flex flex-col justify-center items-center overflow-hidden bg-[#12432E]/25 backdrop-blur-[6px] backdrop-saturate-125 lg:border-r lg:border-white/20 lg:shadow-[inset_-1px_0_0_rgba(255,255,255,0.12),24px_0_60px_rgba(5,25,15,0.25)] px-4 sm:px-6 lg:px-12 xl:px-16 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-16 xl:py-20"
         >
-          <h1 className="max-w-[760px] font-serif font-normal text-[40px] sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px] leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance">
-            Nagaland's communities hold the solutions — we help them build.
-          </h1>
-          <p className="mt-6 sm:mt-8 max-w-[620px] text-[17px] sm:text-[19px] xl:text-[21px] leading-[1.45] text-[#ffffff]/90">
-            Since 1994, NEPED has worked alongside Naga communities to build livelihoods, protect biodiversity, and bring clean, home-grown energy to the villages that need it most.
-          </p>
+          {/* Soft sheen across the glass */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+          {/* Text block centred in the panel (text itself stays left-aligned) */}
+          <div className="relative w-full max-w-[760px]">
+            <h1 className="max-w-[760px] font-serif font-normal text-[40px] sm:text-[58px] lg:text-[54px] xl:text-[68px] 2xl:text-[80px] leading-[1.02] tracking-[-0.5px] text-[#ffffff] text-balance [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]">
+              Nagaland's communities hold the solutions — we help them build.
+            </h1>
+            <p className="mt-6 sm:mt-8 max-w-[620px] text-[17px] sm:text-[19px] xl:text-[21px] leading-[1.45] text-[#ffffff] [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+              Since 1995, NEPED has worked alongside Naga communities to build livelihoods, protect biodiversity, and bring clean, home-grown energy to the villages that need it most.
+            </p>
 
-          <a href="#what-we-do" className="mt-9 sm:mt-10 xl:mt-12 group inline-flex items-center gap-5 w-fit">
-            <span className="h-16 w-16 sm:h-20 sm:w-20 2xl:h-24 2xl:w-24 shrink-0 rounded-full bg-(--brand-accent-on-dark) text-(--brand-surface) flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
-              <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 transition-transform duration-500 ease-in-out group-hover:translate-x-1" strokeWidth={1.5} />
-            </span>
-            <span className="text-[16px] sm:text-[18px] text-[#ffffff]">Discover our work</span>
-          </a>
+            <div className="mt-9 sm:mt-10 xl:mt-12 flex flex-wrap gap-3 sm:gap-4">
+              <a
+                href="#what-we-do"
+                className="inline-flex min-h-12 items-center rounded-md bg-(--brand-accent-on-dark) px-6 text-[15px] sm:text-[16px] font-semibold text-(--brand-surface) hover:bg-[#f0b95e] transition-colors duration-300 ease-in-out"
+              >
+                Discover our work
+              </a>
+              <button
+                type="button"
+                onClick={openContact}
+                className="inline-flex min-h-12 items-center rounded-md border border-white/70 bg-white/10 px-6 text-[15px] sm:text-[16px] font-semibold text-[#ffffff] hover:bg-[#ffffff] hover:text-(--brand-surface) transition-colors duration-300 ease-in-out cursor-pointer"
+              >
+                Partner with us
+              </button>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Photo: Dzukou Valley. Resized WebP copies; the browser picks the size for the screen */}
-        <div className="lg:col-span-5 relative overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto">
-          <motion.img
-            src="/dzukou-valley-1400.webp"
-            srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            alt="Dzukou Valley, Nagaland"
-            fetchPriority="high"
-            decoding="async"
-            initial={{ scale: 1.06, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.1, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute inset-0 h-full w-full object-cover object-[28%_50%] lg:object-[22%_50%]"
-          />
-        </div>
+        {/* Right side: the photo, unblurred (gives the hero its height on phones / tablets) */}
+        <div aria-hidden className="relative lg:col-span-6 aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto" />
       </section>
 
       {/* HOMEPAGE STORY — mission line, stat strip, what we do, featured case study, across borders.
@@ -121,6 +129,7 @@ export function NepedEconomicPage() {
 
       {/* MISSION LINE */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Who we are</p>
         <p className="max-w-[980px] font-serif text-[28px] sm:text-[40px] lg:text-[46px] leading-[1.18] tracking-[-0.3px] text-[#1A2E23] text-balance">
           We are an autonomous Government of Nagaland society with one purpose: to bridge the state's development gaps through ideas, technology and partnership that put communities in charge of their own future.
         </p>
@@ -144,12 +153,13 @@ export function NepedEconomicPage() {
 
       {/* WHAT WE DO — themed grid */}
       <motion.section {...fadeUpOnView} id="what-we-do" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>What we do</p>
         <h2 className={H2}>One society, many kinds of work.</h2>
         <MobileShowMore
           initialCount={3}
           showLabel="Show all work areas"
           hideLabel="Show fewer work areas"
-          className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+          className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 sm:auto-rows-fr"
         >
           {HOME_THEMES.map(({ title, text, icon: Icon, to }) => (
             <Link
@@ -170,6 +180,7 @@ export function NepedEconomicPage() {
 
       {/* FEATURED CASE STUDY — Kingjung */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Stories from the field</p>
         <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden bg-[#F3F6F3]">
           <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px]">
             <img
@@ -196,34 +207,58 @@ export function NepedEconomicPage() {
         </div>
       </motion.section>
 
+      {/* CERES PRODUCTS — the two products built at CERES, Dimapur */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>CERES · Made in Nagaland</p>
+            <h2 className="font-serif text-[32px] sm:text-[44px] leading-[1.08] tracking-[-0.3px] text-[#1A2E23] text-balance">
+              Renewable technology, built in Dimapur
+            </h2>
+          </div>
+          <Link
+            to={NEPED_ENERGY_PATHS.technology}
+            className="shrink-0 text-[16px] font-semibold text-[#1E6F4C] underline underline-offset-4 hover:text-[#12432E] transition-colors duration-300"
+          >
+            See all products →
+          </Link>
+        </div>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {CERES_PRODUCTS.map((p) => (
+            <article key={p.name} className="flex flex-col overflow-hidden rounded-md border border-[#dbe5de] bg-[#ffffff]">
+              <div className="h-[220px] sm:h-[260px] bg-[#F3F6F3]">
+                <img src={p.image} alt={p.name} loading="lazy" className="h-full w-full object-contain" />
+              </div>
+              <div className="flex flex-1 flex-col gap-3 p-6 sm:p-7">
+                <h3 className="text-[20px] font-semibold text-[#1A2E23]">{p.name}</h3>
+                <p className="text-[15px] leading-relaxed text-[#5B6660] flex-1">{p.text}</p>
+                <button
+                  type="button"
+                  onClick={openContact}
+                  className="mt-2 w-fit text-[15px] font-semibold text-[#1E6F4C] underline underline-offset-4 hover:text-[#12432E] transition-colors duration-300 cursor-pointer"
+                >
+                  Enquire →
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </motion.section>
+
       {/* ACROSS BORDERS BAND */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
+        <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Beyond Nagaland</p>
         <p className="max-w-[1000px] text-[22px] sm:text-[30px] lg:text-[34px] font-light leading-[1.3] tracking-[-0.5px] text-[#5B6660]">
           <span className="text-[#1A2E23]">Made in Nagaland, working beyond it.</span> NEPeD Hydrogers now run in Arunachal Pradesh, Meghalaya, Sikkim and as far as Ladakh — and Meghalaya has ordered 100 units.
         </p>
       </motion.section>
 
-      {/* PROJECTS ARCHIVE — placed right after the hero */}
-      <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="pb-8 sm:pb-10 border-b border-[#e5e4e4] flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="max-w-[760px] space-y-5">
-            <SectionPill>Official Project Archive</SectionPill>
-            <h2 className={H2}>Projects Implemented Under NEPED</h2>
-            <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
-              Comprehensive registry of {allProjects.length} landmark projects across international, national, and state funding agencies.
-            </p>
-          </div>
+      {/* PROJECTS — timeline of every project, oldest first, with the funder strip below */}
+      <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 pb-16 sm:pb-20">
+          <ProjectTimeline />
         </div>
-
-        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {allProjects.slice(0, 3).map((proj) => (
-            <ProjectTile key={proj.id} project={proj} />
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <BookDemoButton to={NEPED_PATHS.projects} variant="emerald">See more projects</BookDemoButton>
-        </div>
+        <FunderStrip />
       </motion.section>
 
       {/* 1A. SECTION #3 (list + hover image) — hidden for now; placeholder lorem ipsum content (see nepedHomeSections.ts)
@@ -244,10 +279,10 @@ export function NepedEconomicPage() {
       {/* 1B. ABOUT NEPED SOCIETY — ORIGIN, CHARTER & GOVERNANCE CULTURE (about text verbatim from NepedBige/bigeneped.txt) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="space-y-5">
-          <SectionPill>Origin & Charter</SectionPill>
+          <p className={EYEBROW}>Origin & Charter</p>
           <h2 className={H2}>About the NEPED Society</h2>
           <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
-            Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Govt. of Nagaland in 1994 as an autonomous Government registered society vide Regd.NO.H/RS-4238 Dated 19-04-2005 and Regd.NO.HOME/SRC-6751 Dated 07-07-2014. It was established to bridge developmental gaps in various sectors for economic development and empowerment with a team of multi-disciplinary government employees known as Project Operations Unit (POU) with the aim to carry out studies across Nagaland and identify major issues and to encourage and spread new ideas for sustainable development of the state. The overall aim was envisaged at building a strong resilience towards the emerging Climate Change issues.
+            Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Govt. of Nagaland in 1995 as an autonomous Government registered society vide Regd.NO.H/RS-4238 Dated 19-04-2005 and Regd.NO.HOME/SRC-6751 Dated 07-07-2014. It was established to bridge developmental gaps in various sectors for economic development and empowerment with a team of multi-disciplinary government employees known as Project Operations Unit (POU) with the aim to carry out studies across Nagaland and identify major issues and to encourage and spread new ideas for sustainable development of the state. The overall aim was envisaged at building a strong resilience towards the emerging Climate Change issues.
           </p>
         </div>
 
@@ -279,7 +314,12 @@ export function NepedEconomicPage() {
                 <p className="hidden sm:block max-w-[400px] text-[15px] text-[#5B6660] leading-relaxed">
                   NEPED is made up of a team of multi-disciplinary government officers drawn from various government departments, who are called the Project Operations Unit (POU) Members, formed by the Government of Nagaland, with full autonomy.
                 </p>
-                <BookDemoButton to={NEPED_PATHS.about} variant="emerald">Read more</BookDemoButton>
+                <Link
+                  to={NEPED_PATHS.about}
+                  className="inline-flex min-h-12 items-center rounded-md border border-[#12432E] px-6 text-[15px] font-semibold text-[#12432E] hover:bg-[#12432E] hover:text-[#ffffff] transition-colors duration-300 ease-in-out"
+                >
+                  Read more
+                </Link>
               </div>
             }
             className="h-[460px] sm:h-[600px]"
@@ -304,110 +344,26 @@ export function NepedEconomicPage() {
       </motion.section>
       */}
 
-      {/* 2. MILESTONES — dark green band with stat cards (descriptions verbatim from bigeneped.txt / History PDF; header PLACEHOLDER) */}
-      <section className="relative w-full">
-        <div className="absolute inset-x-0 top-0 bottom-[120px] sm:bottom-[140px] bg-(--brand-surface)" />
-        <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 pt-20 sm:pt-28">
-          <motion.div {...fadeUpOnView} className="max-w-[820px] mx-auto text-center flex flex-col items-center gap-6">
-            <SectionPill dark>{NEPED_MILESTONES_SECTION.label}</SectionPill>
-            <h2 className="text-[34px] sm:text-[52px] font-light text-[#ffffff] tracking-[-1.2px] leading-[1.1]">
-              {NEPED_MILESTONES_SECTION.heading}
-            </h2>
-          </motion.div>
-
-          <motion.div {...fadeUpOnView}>
-            <MobileShowMore
-              initialCount={2}
-              showLabel="Show all milestones"
-              hideLabel="Show fewer milestones"
-              buttonClassName="border-white/70 text-[#ffffff] active:bg-[#ffffff] active:text-[#12432E]"
-              className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
-            >
-            {[
-              { value: "7.8 million", label: "economic trees", text: "More than 7.8 million economic trees were planted in 5500 hectares with replication ratio of 1:6." },
-              { value: "1794", label: "test plots", text: "The project has established 1794 test plots (2 test plots each, measuring 3 hectares per village) in jhum fields in 854 villages across all (8) the districts covering all 16 tribes of Nagaland." },
-              { value: "30", label: "plots of lands", text: "The women, for the first time in the history of Nagaland, had purchased 30 plots of lands by breaking the barriers of the traditional laws." },
-              { value: "1.5 lac", label: "trees per year", text: "Another innovation, designed and developed by NEPED is ‘Foddorizer’ which is helping rural farmers in improving feed and feeding practices of pig and reduction in firewood consumption to a tune of 1.5 lac trees per year." },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className=" p-7 flex flex-col gap-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] bg-[#ffffff] text-[#1A2E23]"
-              >
-                <span className="text-[12px] uppercase font-mono text-[#5B6660]">{stat.label}</span>
-                <div className="space-y-3">
-                  <span className="text-[44px] sm:text-[52px] font-light tracking-[-1.2px] leading-none block">{stat.value}</span>
-                  <p className="text-[13.5px] leading-relaxed text-[#5B6660]">{stat.text}</p>
-                </div>
-              </div>
-            ))}
-            </MobileShowMore>
-          </motion.div>
+      {/* 5. AIMS & OBJECTIVES — heading on the left, the seven aims in a compact numbered list */}
+      <motion.section {...fadeUpOnView} id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+        <div className="lg:col-span-4 space-y-5">
+          <p className={EYEBROW}>What we aim to do</p>
+          <h2 className="font-serif text-[32px] sm:text-[40px] leading-[1.12] tracking-[-0.3px] text-[#1A2E23] text-balance">
+            Seven aims, one shift: from subsidy to self-reliance
+          </h2>
+          <p className="text-[15px] text-[#5B6660] leading-relaxed">Every NEPED project is measured against these seven aims.</p>
         </div>
-      </section>
-
-   
-
-      {/* 5. SEVEN OFFICIAL AIMS & OBJECTIVES — NEPeD Aims grid (heading cell + text cards) */}
-      <motion.section {...fadeUpOnView} id="aims" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
-        <MobileShowMore
-          initialCount={4}
-          showLabel="Show all objectives"
-          hideLabel="Show fewer objectives"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
-        >
-          <div className="flex flex-col gap-5 px-2 sm:px-0 sm:pr-4 lg:pt-2">
-            <SectionPill>02 / Official Objectives</SectionPill>
-            <h2 className="text-[30px] sm:text-[36px] font-light text-[#1A2E23] tracking-[-0.8px] leading-[1.12]">
-              Core Aims & Objectives of NEPED
-            </h2>
-            <p className="text-[15px] text-[#5B6660] leading-relaxed">
-              These 7 core mandates guide every project implemented by NEPED — shifting the state from subsidy dependence toward self-sustaining community investment.
-            </p>
-          </div>
-          {[
-            { icon: Wallet, title: "Enhance Financial Incomes Through Livelihood Activities", text: "Diversifying agro-forestry and farm enterprise models to generate steady rural cash flows." },
-            { icon: Briefcase, title: "Create Opportunities for Self-Employment", text: "Empowering youth and village entrepreneurs in sustainable agri-business and forest products." },
-            { icon: GraduationCap, title: "Enhance Capacities of Local Entrepreneurs", text: "Providing technical training, packaging, quality control, and business scaling guidance." },
-            { icon: Store, title: "Establish Viable Market Linkages", text: "Connecting Naga produce and unique ethnic handicrafts directly with regional and national buyers." },
-            { icon: PiggyBank, title: "Encourage Thrift Savings Amongst Farmers & SHGs", text: "Fostering micro-credit revolving funds and community financial discipline." },
-            { icon: RefreshCw, title: "Transform Mindsets: From Subsidy-Dependent to Self-Dependent Investment", text: "Instilling community ownership where villages invest in their own long-term assets." },
-            { icon: Leaf, title: "Sustained Community Biodiversity Conservation", text: "Ensuring that all economic activities directly protect Nagaland's rich botanical and wildlife ecosystems." },
-          ].map((aim, idx) => (
-            <FolderCard
-              key={aim.title}
-              card={{ number: String(idx + 1).padStart(2, "0"), title: aim.title, description: aim.text, icon: aim.icon, ...AIM_CARD_STYLE }}
-            />
-          ))}
-        </MobileShowMore>
-      </motion.section>
-
-      {/* 8. GALLERY PREVIEW — photo marquee (pauses on hover); every photo opens the Gallery page */}
-      <motion.section {...fadeUpOnView}>
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <h2 className={H2}>Gallery</h2>
-          <div className="self-start sm:self-auto">
-            <BookDemoButton to={SHARED_PATHS.gallery} variant="emerald">Click to see more</BookDemoButton>
-          </div>
-        </div>
-        <Marquee duration={60} pauseOnHover fadeAmount={6}>
-          {GALLERY_MARQUEE_ITEMS.map((item) => (
-            <Link
-              key={item.image}
-              to={SHARED_PATHS.gallery}
-              className="group mx-2 sm:mx-2.5 block w-[240px] sm:w-[320px] shrink-0"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-[#F3F6F3]">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.05]"
-                />
+        <ol className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+          {AIMS.map((aim, i) => (
+            <li key={aim.title} className="flex gap-4 border-t border-[#e5e4e4] py-5">
+              <span className="w-8 shrink-0 font-serif text-[22px] leading-none text-[#8A5A12]">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 className="text-[15px] font-semibold text-[#1A2E23]">{aim.title}</h3>
+                <p className="mt-1 text-[13.5px] leading-snug text-[#5B6660]">{aim.text}</p>
               </div>
-              <p className="mt-3 text-[14px] text-[#5B6660] transition-colors duration-300 group-hover:text-[#1A2E23]">{item.title}</p>
-            </Link>
+            </li>
           ))}
-        </Marquee>
+        </ol>
       </motion.section>
 
       {/* PARTNER CTA — closing band (shared with the About page) */}
