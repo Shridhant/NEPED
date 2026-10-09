@@ -3,7 +3,7 @@ import type { NepedProject, ProjectOrg } from "@/data/neped/nepedProjectsData";
 /** Which organisation implemented a project: NEPED in Forest Green, NEPeD in Harvest Gold (the Energy lineage colour). */
 const ORGS: Record<ProjectOrg, { logo: string; light: string; dark: string }> = {
   NEPED: {
-    logo: "/NEPED Logo.jpg.webp",
+    logo: "/logos/neped-logo.webp",
     light: "bg-[#1E6F4C]/10 text-[#185A3E]",
     dark: "bg-[#ffffff]/12 text-[#ffffff] border border-white/20",
   },

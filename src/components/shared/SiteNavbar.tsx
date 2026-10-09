@@ -168,7 +168,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <Link to={NEPED_PATHS.home} onClick={closeAll} className="group flex items-center gap-2.5" aria-label="NEPED home">
               <img
-                src="/NEPED Logo.jpg.webp"
+                src="/logos/neped-logo.webp"
                 alt="NEPED Logo"
                 className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />

@@ -123,7 +123,7 @@ export function AkerNavbar({ onOpenContact }: { onOpenContact: () => void }) {
           >
             <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white p-0.5 border border-white/20 flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 transition-transform duration-200">
               <img
-                src="/NEPED Logo.jpg.webp"
+                src="/logos/neped-logo.webp"
                 alt="NEPED Logo"
                 className="h-full w-full rounded-full object-cover"
               />

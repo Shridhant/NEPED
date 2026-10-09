@@ -24,9 +24,9 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
               <div className="flex items-center gap-2.5">
                 <div className="h-8 w-8 rounded-full bg-white p-1 flex items-center justify-center shrink-0">
                   <img
-                    src="/NEPED Logo.jpg.webp"
+                    src="/logos/neped-logo.webp"
                     alt="NEPED Heritage Logo"
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full rounded-full object-contain"
                   />
                 </div>
                 <span className="text-[12px] uppercase tracking-[0.12px] text-[#e5e4e4]/70 font-mono">

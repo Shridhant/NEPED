@@ -253,7 +253,7 @@ export function NepedEconomicPage() {
         </p>
       </motion.section>
 
-      {/* PROJECTS — timeline of every project, oldest first, with the funder strip below */}
+      {/* PROJECTS — timeline of every project, newest first, with the funder strip below */}
       <motion.section {...fadeUpOnView} id="projects" className="scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 pb-16 sm:pb-20">
           <ProjectTimeline />

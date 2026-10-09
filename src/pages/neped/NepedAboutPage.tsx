@@ -72,7 +72,7 @@ const SUBNAV = [
 ];
 
 function TimelineLogo({ logo, small = false }: { logo: "neped" | "neped-energy"; small?: boolean }) {
-  const src = logo === "neped" ? "/NEPED Logo.jpg.webp" : "/NEPeD Logo High Res.webp";
+  const src = logo === "neped" ? "/logos/neped-logo.webp" : "/NEPeD Logo High Res.webp";
   const alt = logo === "neped" ? "NEPED logo" : "NEPeD logo";
   return (
     <span className={`${small ? "h-9 w-9" : "h-12 w-12"} rounded-full bg-[#ffffff] ring-1 ring-[#dbe5de] p-1 flex items-center justify-center shrink-0`}>
@@ -129,7 +129,7 @@ export function NepedAboutPage() {
             </motion.div>
             <div className="lg:col-span-4 hidden lg:flex lg:justify-end">
               <div className="h-48 w-48 bg-[#ffffff] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
-                <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="max-h-full max-w-full object-contain" />
+                <img src="/logos/neped-logo.webp" alt="NEPED Logo" className="max-h-full max-w-full rounded-full object-contain" />
               </div>
             </div>
           </div>

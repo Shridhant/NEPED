@@ -10,7 +10,7 @@ const FILTERS: Filter[] = ["All", "Agroforestry", "Conservation", "Energy", "Liv
 
 const EASE = [0.65, 0, 0.35, 1] as const;
 
-/** Homepage projects section: every project on one horizontal timeline, oldest first, filterable by theme. */
+/** Homepage projects section: every project on one horizontal timeline, newest first, filterable by theme. */
 export function ProjectTimeline() {
   const [filter, setFilter] = useState<Filter>("All");
   const shown = PROJECT_LIST.filter((p) => filter === "All" || p.theme === filter);

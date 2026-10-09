@@ -55,7 +55,7 @@ export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <Link to={NEPED_PATHS.home} aria-label="NEPED home" className="shrink-0">
-                <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
+                <img src="/logos/neped-logo.webp" alt="NEPED Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
               </Link>
               <span aria-hidden className="h-8 w-px bg-white/20" />
               <Link to={NEPED_ENERGY_PATHS.technology} aria-label="NEPeD" className="shrink-0">

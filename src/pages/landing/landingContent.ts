@@ -15,7 +15,7 @@ export const LANDING_CONTENT = {
       key: "neped",
       acronym: "NEPED",
       fullName: "Nagaland Empowerment of People through Economic Development",
-      logo: "/NEPED Logo.jpg.webp",
+      logo: "/logos/neped-logo.webp",
       logoAlt: "NEPED Logo",
       summary: "[Pending: NEPED summary]",
       ctaLabel: "[Pending: NEPED button label]",

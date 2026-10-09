@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeUpOnView } from "@/lib/motionVariants";
-import { RegionMapExplorer } from "@/components/ui/region-map-explorer";
-import { HYDROGER_SITE_GROUPS } from "@/data/neped-energy/hydrogerSitesData";
+import { InstalledSitesTable } from "@/components/neped-energy/InstalledSitesTable";
+// import { RegionMapExplorer } from "@/components/ui/region-map-explorer"; // map left out for now
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionSubnav } from "@/components/shared/SectionSubnav";
 import { useOpenContact } from "@/lib/contact";
@@ -16,12 +16,14 @@ import { useOpenContact } from "@/lib/contact";
  * - bullets with unfilled placeholders ([NUMBER], [DISTRICTS], [PRODUCT COUNT]) and the editor's notes are not shown.
  */
 
+/* Map settings, for when the map comes back:
 // NASA Blue Marble: Next Generation (public domain), north-east India, EPSG:4326 extent below
 const NE_INDIA_MAP = {
   imageUrl: "/maps/northeast-india.webp",
   imageAlt: "Satellite image of north-east India",
   bounds: { west: 87.5, east: 96.5, south: 23, north: 29 },
 };
+*/
 
 const STATS = [
   { value: "7.8M", label: "Economic trees planted" },
@@ -167,14 +169,15 @@ export function NepedEnergyImpactPage() {
         </section>
       ))}
 
-      {/* INSTALLED SITES — map */}
+      {/* INSTALLED SITES — table of every site, filterable by state */}
       <motion.section {...fadeUpOnView} id="installed-sites" className="scroll-mt-40 mx-auto max-w-[1200px] px-4 sm:px-6 space-y-6">
         <span className={EYEBROW}>Installed Sites</span>
         <p className="max-w-[760px] text-[17px] sm:text-[19px] leading-[1.6] text-[#1A2E23]">
           A growing record of every place a Hydroger now turns — most of them in remote Indo-Myanmar border villages. Explore our installations across Nagaland and beyond.
         </p>
+        {/* Interactive map left out for now; the table lists every site */}
         <div className="pt-4">
-          <RegionMapExplorer groups={HYDROGER_SITE_GROUPS} {...NE_INDIA_MAP} />
+          <InstalledSitesTable />
         </div>
       </motion.section>
 

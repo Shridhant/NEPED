@@ -169,7 +169,7 @@ function FivePartCaseStudy({ data, photos, prevNext }: { data: CaseStudyFivePart
             <div className="flex flex-wrap items-center gap-3">
               <span className={`${EYEBROW} text-[#E8A33D]`}>Case Study</span>
               <span className={`inline-flex items-center gap-2 py-1 pr-3 pl-1 text-[12px] font-bold ${energy ? "bg-[#E8A33D] text-[#12432E]" : "bg-[#1E6F4C] text-[#ffffff]"}`}>
-                <img src={energy ? "/NEPeD Logo High Res.webp" : "/NEPED Logo.jpg.webp"} alt="" className="h-5 w-5 rounded-full bg-[#ffffff] object-cover" />
+                <img src={energy ? "/NEPeD Logo High Res.webp" : "/logos/neped-logo.webp"} alt="" className="h-5 w-5 rounded-full bg-[#ffffff] object-cover" />
                 {data.lineage}
               </span>
             </div>

@@ -5,7 +5,7 @@ import { PROJECT_LIST, type ProjectListItem } from "@/data/neped/projectList";
 
 const EASE = [0.65, 0, 0.35, 1] as const;
 
-/** All projects in one searchable table, oldest first. Phones get one card per project. */
+/** All projects in one searchable table, newest first. Phones get one card per project. */
 export function ProjectsTable() {
   const rows = PROJECT_LIST;
   const [query, setQuery] = useState("");
