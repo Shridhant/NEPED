@@ -283,7 +283,7 @@ export function NepedAboutPage() {
             Project Operations Unit (POU) members combining administrative leadership, electrical engineering, and rural outreach.
           </p>
           <Link to={NEPED_PATHS.structure} className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#1E6F4C]">
-            Organisational Structure
+           Our Team
             <ArrowRight size={16} className="transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
           </Link>
         </div>

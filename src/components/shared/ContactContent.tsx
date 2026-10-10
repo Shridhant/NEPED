@@ -35,12 +35,13 @@ export function ContactDetails({ className = "" }: { className?: string }) {
 export function ContactForm({ idPrefix = "contact" }: { idPrefix?: string }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const subject = encodeURIComponent(`Website Enquiry from ${name || "Website Visitor"}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}${phone ? `\n${phone}` : ""}`);
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   }
 
@@ -59,6 +60,19 @@ export function ContactForm({ idPrefix = "contact" }: { idPrefix?: string }) {
           <input id={`${idPrefix}-email`} type="email" required placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} className={field} />
         </label>
       </div>
+      <label className="block">
+        <span className="sr-only">Your phone number (optional)</span>
+        <input
+          id={`${idPrefix}-phone`}
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          placeholder="Your phone number (optional)"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className={field}
+        />
+      </label>
       <label className="block">
         <span className="sr-only">Your message</span>
         <textarea

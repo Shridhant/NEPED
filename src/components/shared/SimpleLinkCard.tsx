@@ -6,6 +6,8 @@ import { ArrowRight } from "lucide-react";
  * Simple framed card (same look as the gallery album cards): photo, title, optional text and a
  * small action label with a round arrow. The whole card is one link — no second button.
  * `fit="contain"` shows the whole photo (product shots) instead of cropping it.
+ * `fit="full"` shows the whole photo edge to edge, with a blurred copy filling the spare space
+ * (photos with captions burned into them, e.g. case study covers).
  */
 export function SimpleLinkCard({
   to,
@@ -20,7 +22,7 @@ export function SimpleLinkCard({
   to: string;
   image: string;
   imageAlt?: string;
-  fit?: "cover" | "contain";
+  fit?: "cover" | "contain" | "full";
   badge?: ReactNode;
   title: string;
   text?: string;
@@ -32,6 +34,15 @@ export function SimpleLinkCard({
       className="group flex h-full w-full flex-col border border-[#e5e4e4] bg-[#ffffff] p-2.5 transition-[border-color,box-shadow] duration-300 hover:border-[#C9D4CD] hover:shadow-[0_1px_2px_rgba(18,67,46,0.06),0_12px_32px_rgba(18,67,46,0.10)] outline-none focus-visible:ring-2 focus-visible:ring-(--brand-accent)"
     >
       <div className={`relative aspect-[4/3] w-full overflow-hidden ${fit === "contain" ? "bg-[#F3F6F3]" : "bg-[#e5e4e4]"}`}>
+        {fit === "full" && (
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl brightness-90"
+          />
+        )}
         <img
           src={image}
           alt={imageAlt}
@@ -39,6 +50,8 @@ export function SimpleLinkCard({
           className={
             fit === "contain"
               ? "h-full w-full object-contain p-4 sm:p-6 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              : fit === "full"
+              ? "relative h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               : "h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
           }
         />

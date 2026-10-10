@@ -38,6 +38,7 @@ export function CaseStudiesPage() {
                 to={NEPED_ENERGY_PATHS.caseStudy(study.slug)}
                 image={cover?.src ?? ""}
                 imageAlt={cover?.alt}
+                fit="full"
                 badge={
                   <>
                     <MapPin size={14} className="text-(--brand-accent)" />
