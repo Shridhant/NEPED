@@ -9,6 +9,7 @@ import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
 import { HYDROGER_PAGE, ELC_PAGE, PRODUCT_PAGES } from "@/data/neped-energy/productPagesData";
 import { BlurReveal } from "@/components/ui/blur-reveal";
+import { HydrogerHowItWorks, HydrogerTurbines, HydrogerCapacityComparison } from "@/components/neped-energy/HydrogerExplainer";
 
 // All product text comes from productPagesData.ts (verbatim from NEPeD/data.txt).
 
@@ -184,6 +185,9 @@ function HydrogerContent() {
         </div>
       </ProductHero>
 
+      <HydrogerHowItWorks />
+      <HydrogerTurbines />
+
       {/* Indigenization */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -218,6 +222,8 @@ function HydrogerContent() {
           </div>
         </motion.div>
       </section>
+
+      <HydrogerCapacityComparison />
 
       {/* Salient features & uses — Aims-style cards */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">

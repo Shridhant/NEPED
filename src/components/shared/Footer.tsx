@@ -5,7 +5,7 @@ import { CONTACT_EMAIL } from "./ContactContent";
 
 /*
  * One footer for NEPED and NEPeD pages (matches the unified navbar): a full-width Deep Forest band,
- * both logos, link columns that mirror the navbar, the Secretariat address and a bottom bar.
+ * the NEPED Society logo, link columns that mirror the navbar, the Secretariat address and a bottom bar.
  * Names and address as used elsewhere on the site. The old per-wing footers (NepedFooter,
  * NepedEnergyFooter) are no longer used.
  */
@@ -22,7 +22,7 @@ const COLUMNS: { title: string; links: { label: string; to: string }[] }[] = [
   {
     title: "NEPeD Clean Energy",
     links: [
-      { label: "What is a Hydroger?", to: NEPED_ENERGY_PATHS.technology },
+      { label: "What is a Hydroger?", to: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
       { label: "Impact", to: NEPED_ENERGY_PATHS.impact },
       { label: "Case Studies", to: NEPED_ENERGY_PATHS.caseStudies },
     ],
@@ -57,14 +57,9 @@ export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
               <Link to={NEPED_PATHS.home} aria-label="NEPED home" className="shrink-0">
                 <img src="/logos/neped-logo.webp" alt="NEPED Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
               </Link>
-              <span aria-hidden className="h-8 w-px bg-white/20" />
-              <Link to={NEPED_ENERGY_PATHS.technology} aria-label="NEPeD" className="shrink-0">
-                <img src="/NEPeD Logo High Res.webp" alt="NEPeD Logo" className="h-12 w-12 rounded-full bg-[#ffffff] object-cover" />
-              </Link>
             </div>
             <div className="space-y-2 text-[15px] leading-relaxed text-[#ffffff]/85 max-w-[380px]">
               <p>Nagaland Empowerment of People through Economic Development (NEPED)</p>
-              <p>Nagaland Empowerment of People through Energy Development (NEPeD)</p>
             </div>
             <button
               type="button"

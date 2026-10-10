@@ -2,10 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { PROJECT_LIST } from "@/data/neped/projectList";
 import { fadeUpOnView } from "@/lib/motionVariants";
-import { NEPED_PATHS } from "@/routes/paths";
 import { ProjectsTable } from "@/components/neped/ProjectsTable";
-import { SectionPill } from "@/components/shared/SectionPill";
-import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
 const GLASS_CARD =
@@ -110,19 +107,6 @@ export function ProjectsPage() {
         <ProjectsTable />
       </section>
 
-      {/* 4. CROSS-NAVIGATION BANNER — dark green CTA to About Us */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="relative overflow-hidden bg-(--brand-surface) px-6 py-14 sm:px-12 sm:py-16 text-center">
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-(--brand-accent-on-dark)/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative max-w-[760px] mx-auto flex flex-col items-center gap-6">
-            <SectionPill dark>NEPED</SectionPill>
-            <h2 className="text-[28px] sm:text-[44px] font-light text-[#ffffff] tracking-[-1px] leading-[1.1]">
-              About NEPED
-            </h2>
-            <ArrowPillButton to={NEPED_PATHS.about} arrow="up-right">About Us</ArrowPillButton>
-          </div>
-        </div>
-      </motion.section>
     </div>
   );
 }

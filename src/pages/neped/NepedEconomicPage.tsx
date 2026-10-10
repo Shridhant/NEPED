@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -15,8 +15,6 @@ import { MobileShowMore } from "@/components/shared/MobileShowMore";
 // import { NEPED_PHASES } from "@/data/neped/nepedPhasesData"; // used by the hidden section 1C
 // import { WideCardCarousel } from "@/components/shared/WideCardCarousel"; // used by the hidden section 1C
 // import { PhaseBlogCard } from "@/components/neped/PhaseBlogCard"; // used by the hidden section 1C
-import { HaloReel } from "@/components/ui/halo-reel";
-import { NEPED_PRESENT_TEAM } from "@/data/neped/nepedTeamData";
 import { FunderStrip, ProjectTimeline } from "@/components/neped/ProjectTimeline";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS } from "@/routes/paths";
@@ -51,7 +49,6 @@ const HOME_THEMES = [
 ];
 
 export function NepedEconomicPage() {
-  const isSmallScreen = useIsSmallScreen();
   const openContact = useOpenContact();
 
   useEffect(() => {
@@ -243,45 +240,6 @@ export function NepedEconomicPage() {
           </p>
         </div>
 
-        {/* Team members on a rotating ring, with a link to the About Us page */}
-        <div className="mt-10 sm:mt-12 bg-[#F3F6F3] overflow-hidden">
-          <HaloReel
-            items={NEPED_PRESENT_TEAM.map((member) => ({ src: member.image, alt: member.name, caption: member.name }))}
-            aria-label="NEPED team members"
-            cardWidth={isSmallScreen ? 96 : 110}
-            cardHeight={isSmallScreen ? 96 : 110}
-            radiusXRatio={isSmallScreen ? 0.3 : 0.45}
-            minScale={0.4}
-            radiusYRatio={0.38}
-            // Few slots keep the photos spaced out (on phones, room for each name under its photo)
-            maxCards={isSmallScreen ? NEPED_PRESENT_TEAM.length : 10}
-            holdDuration={1400}
-            stepDuration={700}
-            cardClassName="rounded-full ring-4 ring-[#ffffff]"
-            imageClassName="scale-[1.15] object-top"
-            // Phones: name under each photo. Desktop: the front member's name inside the ring
-            captionPlacement={isSmallScreen ? "card" : "ring"}
-            captionClassName=" bg-[#ffffff] px-2.5 py-1 text-[11px] font-medium leading-tight text-[#23452a] shadow-[0_4px_14px_rgba(14,36,25,0.12)] whitespace-nowrap"
-            ringCaptionClassName="max-w-[340px] text-[28px] lg:text-[34px] font-light tracking-[-0.8px] leading-[1.15] text-[#23452a]"
-            interactiveCenterLabel
-            centerLabel={
-              <div className="flex flex-col items-center gap-5 text-center">
-                <span className="text-[30px] sm:text-[52px] font-light tracking-[-1.2px] leading-none text-[#1A2E23] whitespace-nowrap">About Us</span>
-                {/* Verbatim from "NEPED PDF.pdf" (About Us); hidden on phones, where the space beside the ring is too narrow */}
-                <p className="hidden sm:block max-w-[400px] text-[15px] text-[#5B6660] leading-relaxed">
-                  NEPED is made up of a team of multi-disciplinary government officers drawn from various government departments, who are called the Project Operations Unit (POU) Members, formed by the Government of Nagaland, with full autonomy.
-                </p>
-                <Link
-                  to={NEPED_PATHS.about}
-                  className="inline-flex min-h-12 items-center rounded-md border border-[#12432E] px-6 text-[15px] font-semibold text-[#12432E] hover:bg-[#12432E] hover:text-[#ffffff] transition-colors duration-300 ease-in-out"
-                >
-                  Read more
-                </Link>
-              </div>
-            }
-            className="h-[460px] sm:h-[600px]"
-          />
-        </div>
       </motion.section>
 
       {/* 1C. NEPED PHASES carousel — hidden for now; the Official Project Archive section is used instead
@@ -327,17 +285,4 @@ export function NepedEconomicPage() {
       <PartnerBand />
     </div>
   );
-}
-
-/** True below the sm breakpoint (640px); updates on resize. */
-function useIsSmallScreen() {
-  const query = "(max-width: 639px)";
-  const [small, setSmall] = useState(() => typeof window !== "undefined" && window.matchMedia(query).matches);
-  useEffect(() => {
-    const mq = window.matchMedia(query);
-    const onChange = () => setSmall(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return small;
 }

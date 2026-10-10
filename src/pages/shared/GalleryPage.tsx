@@ -14,7 +14,12 @@ export function GalleryPage() {
     <div className="w-full pt-10 sm:pt-14 pb-24">
       {/* No scroll-fade on this section: the albums show as soon as the page opens */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#1A2E23] tracking-[-1.55px] leading-[1.05] mb-12 sm:mb-16">{"Gallery"}</BlurReveal>
+        <div className="max-w-[760px] space-y-5 mb-12 sm:mb-16">
+          <BlurReveal as="h1" className="text-[40px] sm:text-[64px] font-light text-[#1A2E23] tracking-[-1.55px] leading-[1.05]">{"Our work, in pictures"}</BlurReveal>
+          <p className="text-[16px] sm:text-[18px] text-[#5B6660] leading-relaxed">
+            Three decades of work across Nagaland and the wider Northeast — the machines, the rivers and the people behind the power. Choose a region to explore.
+          </p>
+        </div>
         <PhotoAlbums albums={GALLERY_ALBUMS_DATA} />
       </section>
     </div>

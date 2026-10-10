@@ -40,7 +40,6 @@ const NAV: NavEntry[] = [
     label: "Our Work",
     home: { label: "Our Work", href: NEPED_PATHS.projects },
     links: [
-      { label: "Projects", href: NEPED_PATHS.projects },
       { label: "Case Studies", href: NEPED_ENERGY_PATHS.caseStudies },
     ],
     // Verbatim from the Projects page
@@ -70,7 +69,6 @@ const NAV: NavEntry[] = [
     label: "About",
     home: { label: "About", href: NEPED_PATHS.about },
     links: [
-      { label: "About Us", href: NEPED_PATHS.about },
       { label: "Organisational Structure", href: NEPED_PATHS.structure },
     ],
     // Verbatim from the NEPED About Us page
@@ -228,7 +226,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                 closeAll();
                 onOpenContact();
               }}
-              className="hidden lg:inline-flex items-center h-11 px-4 xl:px-6 whitespace-nowrap border border-[#1E6F4C] text-[15px] text-[#1E6F4C] hover:bg-[#1E6F4C] hover:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
+              className="hidden lg:inline-flex items-center h-11 px-4 xl:px-6 whitespace-nowrap bg-[#E8A33D] text-[15px] font-medium text-[#12432E] hover:bg-[#D4912A] transition-colors duration-300 ease-in-out cursor-pointer"
             >
               Partner with Us
             </button>
@@ -415,7 +413,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                       closeAll();
                       onOpenContact();
                     }}
-                    className="w-full h-12 border border-[#1E6F4C] text-[16px] text-[#1E6F4C] active:bg-[#1E6F4C] active:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
+                    className="w-full h-12 bg-[#E8A33D] text-[16px] font-medium text-[#12432E] active:bg-[#D4912A] transition-colors duration-300 ease-in-out cursor-pointer"
                   >
                     Partner with Us
                   </button>

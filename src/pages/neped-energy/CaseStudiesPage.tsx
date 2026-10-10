@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { SectionPill } from "@/components/shared/SectionPill";
 import { MobileShowMore } from "@/components/shared/MobileShowMore";
-import { FolderCard } from "@/components/ui/folder-cards";
-import { CASE_STUDY_CARDS } from "@/data/neped-energy/caseStudyCards";
+import { MapPin } from "lucide-react";
+import { SimpleLinkCard } from "@/components/shared/SimpleLinkCard";
+import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
+import { CASE_STUDY_PHOTOS } from "@/data/neped-energy/caseStudyPhotos";
+import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** All NEPeD case studies (text from NEPeD/casestudies.txt). */
@@ -25,11 +28,28 @@ export function CaseStudiesPage() {
           initialCount={3}
           showLabel="Show all case studies"
           hideLabel="Show fewer case studies"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 sm:gap-x-6 gap-y-8"
         >
-          {CASE_STUDY_CARDS.map((card) => (
-            <FolderCard key={card.to} card={card} />
-          ))}
+          {CASE_STUDIES.map((study) => {
+            const cover = CASE_STUDY_PHOTOS[study.slug]?.[0];
+            return (
+              <SimpleLinkCard
+                key={study.slug}
+                to={NEPED_ENERGY_PATHS.caseStudy(study.slug)}
+                image={cover?.src ?? ""}
+                imageAlt={cover?.alt}
+                badge={
+                  <>
+                    <MapPin size={14} className="text-(--brand-accent)" />
+                    {study.place}
+                  </>
+                }
+                title={study.title}
+                text={study.overview}
+                action="Read case study"
+              />
+            );
+          })}
         </MobileShowMore>
       </motion.section>
     </div>
