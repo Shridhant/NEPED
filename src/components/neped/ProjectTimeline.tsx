@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { PROJECT_LIST, type ProjectTheme } from "@/data/neped/projectList";
 import { NEPED_PATHS } from "@/routes/paths";
+import { LogoCloud, type Logo } from "@/components/ui/logo-cloud-2";
 
 type Filter = "All" | ProjectTheme;
 
@@ -87,36 +88,27 @@ export function ProjectTimeline() {
 }
 
 // Logos of the funders in the project list (public/logos). No Ministry of Textiles logo yet.
-const FUNDERS = [
-  { name: "Canadian International Development Agency (CIDA)", logo: "/logos/cida.jpeg", className: "max-h-12 max-w-[128px]" },
-  { name: "Ministry of Agriculture & Farmers Welfare, GoI", logo: "/logos/ministry-of-agriculture.jpeg", className: "max-h-12 max-w-[132px]" },
-  { name: "Sir Dorabji Tata Trust", logo: "/logos/sir-dorabji-tata-trust.jpeg", className: "max-h-12 max-w-[92px] scale-[1.28]" },
-  { name: "Tata Trusts", logo: "/logos/tata-trusts.jpeg", className: "max-h-10 max-w-[132px]" },
-  { name: "Ministry of New and Renewable Energy (MNRE), GoI", logo: "/logos/mnre.jpeg", className: "max-h-12 max-w-[132px]" },
-  { name: "North Eastern Council (NEC)", logo: "/logos/nec.jpeg", className: "max-h-14 max-w-[72px]" },
-  { name: "KfW", logo: "/logos/kfw.jpeg", className: "max-h-11 max-w-[132px]" },
+const FUNDERS: Logo[] = [
+  { alt: "Canadian International Development Agency (CIDA)", src: "/logos/cida.jpeg", className: "max-h-12 max-w-[128px]" },
+  { alt: "Ministry of Agriculture & Farmers Welfare, GoI", src: "/logos/ministry-of-agriculture.jpeg", className: "max-h-12 max-w-[132px]" },
+  { alt: "Sir Dorabji Tata Trust", src: "/logos/sir-dorabji-tata-trust.jpeg", className: "max-h-12 max-w-[92px] scale-[1.28]" },
+  { alt: "Tata Trusts", src: "/logos/tata-trusts.jpeg", className: "max-h-10 max-w-[132px]" },
+  { alt: "Ministry of New and Renewable Energy (MNRE), GoI", src: "/logos/mnre.jpeg", className: "max-h-12 max-w-[132px]" },
+  { alt: "North Eastern Council (NEC)", src: "/logos/nec.jpeg", className: "max-h-14 max-w-[72px]" },
+  { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-11 max-w-[132px]" },
 ];
 
-/** "Funded & trusted by" logo strip under the homepage projects section. */
+/** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */
 export function FunderStrip() {
   return (
     <div className="border-y border-[#e5e4e4]">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 py-8 sm:py-9 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-        <p className="shrink-0 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]">Funded &amp; Trusted By</p>
-        <ul className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 items-center gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-5 flex-1">
-          {FUNDERS.map((f) => (
-            <li key={f.name} className="flex h-20 w-full items-center justify-center overflow-hidden px-2">
-              <img
-                src={f.logo}
-                alt={f.name}
-                title={f.name}
-                loading="lazy"
-                className={`h-auto w-auto max-w-full object-contain mix-blend-multiply ${f.className}`}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <LogoCloud
+        className="mx-auto max-w-[1200px]"
+        logos={FUNDERS}
+        lead={
+          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]">Funded &amp; Trusted By</p>
+        }
+      />
     </div>
   );
 }

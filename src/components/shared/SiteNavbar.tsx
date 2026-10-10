@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Home, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 /*
@@ -15,7 +15,7 @@ type NavLinkItem = { label: string; href: string };
 type NavSection = {
   key: string;
   label: string;
-  /** Section landing page (first row of the panel, with the home icon) */
+  /** Section landing page (first row of the panel) */
   home: NavLinkItem;
   links: NavLinkItem[];
   description: string;
@@ -38,7 +38,7 @@ const NAV: NavEntry[] = [
   {
     key: "projects",
     label: "Our Work",
-    home: { label: "Our Work", href: NEPED_PATHS.projects },
+    home: { label: "All Projects", href: NEPED_PATHS.projects },
     links: [
       { label: "Case Studies", href: NEPED_ENERGY_PATHS.caseStudies },
     ],
@@ -67,7 +67,7 @@ const NAV: NavEntry[] = [
   {
     key: "about",
     label: "About",
-    home: { label: "About", href: NEPED_PATHS.about },
+    home: { label: "About NEPED", href: NEPED_PATHS.about },
     links: [
       { label: "Organisational Structure", href: NEPED_PATHS.structure },
     ],
@@ -285,10 +285,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                       onClick={closeAll}
                       className="group flex items-center justify-between gap-4 pb-6 border-b border-white/20 text-[22px] text-[#ffffff]"
                     >
-                      <span className="flex items-center gap-3">
-                        <Home size={20} strokeWidth={1.5} />
-                        {openSection.home.label}
-                      </span>
+                      <span>{openSection.home.label}</span>
                       <ArrowRight size={20} strokeWidth={1.5} className="transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
                     </Link>
                     <ul className="mt-6 space-y-1">
@@ -316,7 +313,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     </ul>
                   </div>
                   <div className="col-span-4 px-10 xl:px-16 py-12">
-                    <p className="text-[18px] text-[#1A2E23]">{openSection.home.label}</p>
+                    <p className="text-[18px] text-[#1A2E23]">{openSection.label}</p>
                     <p className="mt-6 max-w-[400px] text-[18px] xl:text-[20px] leading-[1.45] text-[#1A2E23]">{openSection.description}</p>
                   </div>
                   <div className="col-span-4 relative overflow-hidden">
@@ -385,15 +382,12 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                               className="overflow-hidden"
                             >
                               <div className="-mx-4 sm:-mx-6 mb-3 bg-[#ffffff] px-4 sm:px-6 py-3">
-                                <Link to={entry.home.href} onClick={closeAll} className="flex items-center justify-between gap-4 py-2.5 text-[17px] text-[#1A2E23]">
-                                  <span className="flex items-center gap-2.5 pl-4">
-                                    <Home size={17} strokeWidth={1.5} />
-                                    {entry.home.label}
-                                  </span>
+                                <Link to={entry.home.href} onClick={closeAll} className="flex items-center justify-between gap-4 py-2.5 pl-4 text-[15px] text-[#1A2E23]">
+                                  <span className="line-clamp-2">{entry.home.label}</span>
                                   <ArrowRight size={18} strokeWidth={1.5} className="shrink-0" />
                                 </Link>
                                 {entry.links.map((l) => (
-                                  <Link key={l.href} to={l.href} onClick={closeAll} className="flex items-center justify-between gap-4 py-2.5 pl-11 text-[15px] text-[#1A2E23]">
+                                  <Link key={l.href} to={l.href} onClick={closeAll} className="flex items-center justify-between gap-4 py-2.5 pl-4 text-[15px] text-[#1A2E23]">
                                     <span className="line-clamp-2">{l.label}</span>
                                     <ArrowRight size={18} strokeWidth={1.5} className="shrink-0" />
                                   </Link>
