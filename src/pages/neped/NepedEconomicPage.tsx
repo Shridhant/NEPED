@@ -59,8 +59,8 @@ export function NepedEconomicPage() {
   return (
     <div className="theme-neped w-full space-y-20 sm:space-y-28 pb-4">
       {/* 1. HERO — split layout (after cleanenergycouncil.org.au): headline panel on the left, photo on the right.
-          The photo runs behind the whole hero; the left panel is frosted glass over it.
-          Phones / tablets: text first, photo below. Text verbatim from the homepage copy supplied by the NEPED team. */}
+          Desktop: the photo runs behind the whole hero; the left panel is frosted glass over it.
+          Phones / tablets: text first, photo below as its own block (so it isn't stretched to the full stacked height). Text verbatim from the homepage copy supplied by the NEPED team. */}
       <section className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 bg-(--brand-surface) lg:min-h-[calc(100svh-84px)]">
         {/* Photo: Dzukou Valley. Resized WebP copies; the browser picks the size for the screen */}
         <motion.img
@@ -73,7 +73,7 @@ export function NepedEconomicPage() {
           initial={{ scale: 1.06, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.1, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 h-full w-full object-cover object-[60%_50%]"
+          className="relative order-last w-full aspect-[4/3] sm:aspect-[16/9] object-cover object-[60%_50%] lg:order-none lg:absolute lg:inset-0 lg:h-full lg:aspect-auto"
         />
 
         {/* Left panel: frosted glass over the photo */}
@@ -83,6 +83,18 @@ export function NepedEconomicPage() {
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
           className="relative lg:col-span-6 flex flex-col justify-center items-center overflow-hidden bg-[#12432E]/25 backdrop-blur-[6px] backdrop-saturate-125 lg:border-r lg:border-white/20 lg:shadow-[inset_-1px_0_0_rgba(255,255,255,0.12),24px_0_60px_rgba(5,25,15,0.25)] px-4 sm:px-6 lg:px-12 xl:px-16 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-16 xl:py-20"
         >
+          {/* Phones / tablets: the photo isn't behind this panel, so a blurred copy gives the same frosted-glass look.
+              Same src / srcSet as the main photo, so the browser reuses the download */}
+          <img
+            src="/dzukou-valley-1400.webp"
+            srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
+            sizes="100vw"
+            alt=""
+            aria-hidden
+            decoding="async"
+            className="lg:hidden pointer-events-none absolute inset-0 h-full w-full object-cover object-[60%_50%] scale-110 blur-[6px] saturate-125"
+          />
+          <div aria-hidden className="lg:hidden pointer-events-none absolute inset-0 bg-[#12432E]/25" />
           {/* Soft sheen across the glass */}
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
           {/* Text block centred in the panel (text itself stays left-aligned) */}
@@ -112,8 +124,8 @@ export function NepedEconomicPage() {
           </div>
         </motion.div>
 
-        {/* Right side: the photo, unblurred (gives the hero its height on phones / tablets) */}
-        <div aria-hidden className="relative lg:col-span-6 aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto" />
+        {/* Right side (desktop only): the photo shows through here unblurred */}
+        <div aria-hidden className="hidden lg:block relative lg:col-span-6" />
       </section>
 
       {/* HOMEPAGE STORY — mission line, stat strip, what we do, featured case study, across borders.
