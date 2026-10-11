@@ -10,6 +10,7 @@ export const SHARED_PATHS = {
   blog: "/blog",
   blogPost: (slug: string) => `/blog/${slug}`,
   gallery: "/gallery",
+  resources: "/resources",
   contact: "/contact",
   glassHeroDemo: "/glass-hero-demo",
   galleryAlbum: (slug: string) => `/gallery/${slug}`,

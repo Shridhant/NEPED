@@ -77,7 +77,19 @@ const NAV: NavEntry[] = [
     image: "/dzukou-valley-1400.webp", // same photo as the NEPED homepage hero
     ...NEPED_GREEN,
   },
-  { key: "gallery", label: "Gallery", href: SHARED_PATHS.gallery, accent: NEPED_GREEN.accent },
+  {
+    key: "media",
+    label: "Media",
+    home: { label: "Gallery", href: SHARED_PATHS.gallery },
+    links: [
+      { label: "Resources & Downloads", href: SHARED_PATHS.resources },
+    ],
+    // Verbatim from the Gallery page
+    description:
+      "Three decades of work across Nagaland and the wider Northeast — the machines, the rivers and the people behind the power. Choose a region to explore.",
+    image: "/52 NEPeD members at Nagaland Youth Summit 2016.webp",
+    ...NEPED_GREEN,
+  },
   { key: "contact", label: "Contact", href: SHARED_PATHS.contact, accent: NEPED_GREEN.accent },
 ];
 
@@ -85,7 +97,7 @@ const isSection = (e: NavEntry): e is NavSection => "home" in e;
 
 /** Which top-level entry the current page belongs to (for the underline). */
 function currentKey(pathname: string) {
-  if (pathname.startsWith(SHARED_PATHS.gallery)) return "gallery";
+  if (pathname.startsWith(SHARED_PATHS.gallery) || pathname.startsWith(SHARED_PATHS.resources)) return "media";
   if (pathname.startsWith(SHARED_PATHS.contact)) return "contact";
   if (pathname.startsWith(NEPED_ENERGY_PATHS.impact)) return "impact";
   if (pathname.startsWith(NEPED_ENERGY_PATHS.technology)) return "ceres";

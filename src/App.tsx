@@ -22,6 +22,7 @@ function preloadPages() {
 const LandingPage = lazyPage(() => import("./pages/landing/LandingPage").then((m) => ({ default: m.LandingPage })));
 const ContactPage = lazyPage(() => import("./pages/shared/ContactPage").then((m) => ({ default: m.ContactPage })));
 const GalleryPage = lazyPage(() => import("./pages/shared/GalleryPage").then((m) => ({ default: m.GalleryPage })));
+const ResourcesPage = lazyPage(() => import("./pages/shared/ResourcesPage").then((m) => ({ default: m.ResourcesPage })));
 const GlassHeroDemoPage = lazyPage(() => import("./pages/shared/GlassHeroDemoPage").then((m) => ({ default: m.GlassHeroDemoPage })));
 // NEPED pages
 const NepedEconomicPage = lazyPage(() => import("./pages/neped/NepedEconomicPage").then((m) => ({ default: m.NepedEconomicPage })));
@@ -93,6 +94,7 @@ export default function App() {
           <Route index element={<NepedEconomicPage />} />
           <Route path={SHARED_PATHS.landingPreview} element={<LandingPage />} />
           <Route path={SHARED_PATHS.gallery} element={<GalleryPage />} />
+          <Route path={SHARED_PATHS.resources} element={<ResourcesPage />} />
           <Route path={SHARED_PATHS.contact} element={<ContactPage />} />
 
           {/* NEPED */}
