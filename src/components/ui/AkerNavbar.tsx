@@ -18,7 +18,7 @@ const nepedMasterDropdownItems = [
   },
   {
     num: "03",
-    label: "Organisational Structure",
+    label: "Our Team",
     href: NEPED_PATHS.structure,
   },
   {

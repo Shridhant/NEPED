@@ -121,7 +121,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to={`${NEPED_PATHS.about}#leaders`} className="hover:text-[#E8A33D] transition-colors">
+                    <Link to={`${NEPED_PATHS.structure}#leaders`} className="hover:text-[#E8A33D] transition-colors">
                       11 Team Leaders Roll
                     </Link>
                   </li>

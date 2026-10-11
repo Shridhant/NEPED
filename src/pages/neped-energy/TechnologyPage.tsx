@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { SectionPill } from "@/components/shared/SectionPill";
-import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
 import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { SimpleLinkCard } from "@/components/shared/SimpleLinkCard";
 import { NumberedTextCard } from "@/components/shared/NumberedTextCard";
@@ -147,43 +146,6 @@ export function TechnologyPage() {
               title={prod.name}
               action="View Product Specifications"
             />
-          ))}
-        </div>
-      </motion.section>
-
-      {/* 5. MICROGRID ARCHITECTURE — dark teal cards */}
-      <motion.section {...fadeUpOnView} id="microgrids" className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-          {[
-            {
-              label: "Off-Grid Architecture",
-              title: "Decentralized Village Grids",
-              body: "Distribution lines run directly from the powerhouse to village dwellings, eliminating expensive long-distance transmission line losses.",
-            },
-            {
-              label: "Zero Emission",
-              title: "Run-of-the-River Impact",
-              body: "No large dams or flooded valleys. Water is diverted through a small forebay tank, passed through the runner, and returned 100% cleanly to the stream.",
-              
-              cta: "Environmental Policy",
-            },
-          ].map((card: { label: string; title: string; body: string; to?: string; cta?: string }) => (
-            <div
-              key={card.title}
-              className="relative overflow-hidden bg-[#12432E] p-7 sm:p-10 flex flex-col justify-between gap-10 min-h-[340px]"
-            >
-              <div className="absolute top-0 right-0 w-[260px] h-[260px] bg-[#1E6F4C]/15 rounded-full blur-3xl pointer-events-none" />
-              <div className="relative space-y-4">
-                <SectionPill dark>{card.label}</SectionPill>
-                <h3 className="text-[28px] sm:text-[36px] font-light text-[#ffffff] tracking-[-0.72px] leading-tight">{card.title}</h3>
-                <p className="text-[15px] sm:text-[16px] text-[#e5e4e4]/80 leading-relaxed">{card.body}</p>
-              </div>
-              {card.to && card.cta && (
-                <div className="relative">
-                  <ArrowPillButton to={card.to} variant="glass">{card.cta}</ArrowPillButton>
-                </div>
-              )}
-            </div>
           ))}
         </div>
       </motion.section>

@@ -69,7 +69,7 @@ const NAV: NavEntry[] = [
     label: "About",
     home: { label: "About NEPED", href: NEPED_PATHS.about },
     links: [
-      { label: "Organisational Structure", href: NEPED_PATHS.structure },
+      { label: "Our Team", href: NEPED_PATHS.structure },
     ],
     // Verbatim from the NEPED About Us page
     description:
