@@ -16,13 +16,13 @@ const CURRENT_WORK = [
   },
   {
     title: "Livelihoods & enterprise",
-    text: "community-based piggery (NRTT), handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
+    text: "Community-based piggery (NRTT), handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
   },
   {
     title: "Climate resilience",
-    text: "the ongoing NEPED-IV / Forest & Biodiversity Management in the Himalaya (Nagaland) Project across 35 villages (KfW), and the National Adaptation Fund for Climate Change.",
+    text: "The ongoing NEPED-IV / Forest & Biodiversity Management in the Himalaya (Nagaland) Project across 35 villages (KfW), and the National Adaptation Fund for Climate Change.",
   },
-  { title: "Eco-tourism", text: "a new green-economy pilot in Benreu and Zhavame." },
+  { title: "Eco-tourism", text: "A new green-economy pilot in Benreu and Zhavame." },
 ];
 
 export function ProjectsPage() {
