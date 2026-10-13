@@ -16,7 +16,7 @@ export const PROJECT_LIST: ProjectListItem[] = [
   { name: "Handicraft / NTFP / Emporia", focus: "", period: "2021–2025", funder: "Ministry of Textiles, GoI", theme: "Livelihoods" },
   { name: "NEPED-IV / FBMP", focus: "Forest & biodiversity (35 villages)", period: "2019–present", funder: "Federal Republic of Germany via KfW", theme: "Conservation" },
   { name: "NAFCC", focus: "Climate adaptation", period: "2018–2026", funder: "Ministry of Agriculture, GoI", theme: "Conservation" },
-  { name: "Development of Hydrogen", focus: "", period: "2017–2019", funder: "NEC", theme: "Energy" },
+  { name: "Development of Hydroger", focus: "", period: "2017–2019", funder: "NEC", theme: "Energy" },
   { name: "Pico Hydroger/Watermill installation (30 nos)", focus: "", period: "2015–2016", funder: "MNRE, GoI", theme: "Energy" },
   { name: "Community-based piggery", focus: "", period: "2012–2016", funder: "Navajbhai Ratan Tata Trust (NRTT)", theme: "Livelihoods" },
   { name: "NEPED-SCEN", focus: "Community Conserved Areas", period: "2007–2010", funder: "Sir Dorabji Tata Trust (SDTT)", theme: "Conservation" },

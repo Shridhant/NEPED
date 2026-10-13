@@ -43,7 +43,7 @@ export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) 
           <div
             key={i}
             className={cn(
-              "relative flex h-28 items-center justify-center px-4 md:h-32 md:px-8",
+              "relative flex h-36 items-center justify-center px-4 md:h-44 md:px-8",
               base.alt ? "bg-[#ffffff]" : "bg-[#ffffff]",
               md.alt ? "md:bg-[#ffffff]" : "md:bg-[#ffffff]",
             )}

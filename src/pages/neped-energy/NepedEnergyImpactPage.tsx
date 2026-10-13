@@ -51,7 +51,7 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
     stat: { value: "17,930 ha", label: "of arable and non-arable land treated under NEPED-III" },
     paragraphs: [
       "NEPED-III treated 17,930 hectares of arable and non-arable land with soil-erosion control measures, reforestation through natural regeneration, and enrichment planting. These activities also strengthened community biodiversity conservation — a direct bridge between land management and species protection.",
-      "Through the NEPED-SCEN programme (with SACON, funded by the Tata Trust), communities set aside areas within village lands as Community Conserved Areas, with village council resolutions restricting hunting, fishing and logging. NEPED supported the creation of biodiversity registers, resource maps and management plans, using the Blyth's Tragopan — the state bird of Nagaland — as a flagship species.",
+      "Through the NEPED-SCEN programme, communities set aside areas within village lands as Community Conserved Areas, with village council resolutions restricting hunting, fishing and logging. NEPED supported the creation of biodiversity registers, resource maps and management plans, using the Blyth's Tragopan — the state bird of Nagaland — as a flagship species.",
       "This work continues under NEPED-IV / Forest and Biodiversity Management in the Himalaya (Nagaland), funded by Germany through KfW, across 35 villages — strengthening community-conserved areas, improving forest connectivity and supporting sustainable livelihoods.",
     ],
   },
@@ -70,17 +70,6 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
 
 const ROAD_AHEAD: { title: string; text: string; points: string[]; scaleUp: string; cta?: string }[] = [
   {
-    title: "Scale community energy across Nagaland's unelectrified villages",
-    text: "Nagaland has hundreds of villages — many along the Indo-Myanmar border — with no reliable grid connection. NEPeD's Hydroger is a proven, certified, locally manufactured solution. The gap is installation funding and the community-engagement process that makes each unit sustainable.",
-    points: [
-      "Proven technology (3 kW impulse Hydroger)",
-      "Proven ownership model (village energy committee, monthly revenue, local engineers)",
-      "30 new watermills/pico Hydrogers funded by the North Eastern Council (2025–26) — the current pipeline",
-    ],
-    scaleUp: "Move from pico-hydro (3 kW) to community mini-hydro (10–100 kW) in villages with higher-capacity streams, powering not just households but small enterprise clusters.",
-    cta: "Partner on community energy",
-  },
-  {
     title: "Deepen climate-resilient livelihoods and conservation",
     text: "NEPED-IV (Forest and Biodiversity Management, funded by KfW) is already active across 35 villages. The National Adaptation Fund for Climate Change (NAFCC) project runs through 2026. Beyond these, NEPED's three-phase track record in agro-forestry, watershed management and community conservation provides a ready-made platform for the next generation of climate and biodiversity funding.",
     points: [
@@ -91,6 +80,17 @@ const ROAD_AHEAD: { title: string; text: string; points: string[]; scaleUp: stri
     ],
     scaleUp: "Expand the CCA model to new districts, connect conservation with eco-tourism revenue, and strengthen community-based monitoring and reporting systems.",
     cta: "Partner on livelihoods and conservation",
+  },
+  {
+    title: "Scale community energy across Nagaland's unelectrified villages",
+    text: "Nagaland has hundreds of villages — many along the Indo-Myanmar border — with no reliable grid connection. NEPeD's Hydroger is a proven, certified, locally manufactured solution. The gap is installation funding and the community-engagement process that makes each unit sustainable.",
+    points: [
+      "Proven technology (3 kW impulse Hydroger)",
+      "Proven ownership model (village energy committee, monthly revenue, local engineers)",
+      "30 new watermills/pico Hydrogers funded by the North Eastern Council (2025–26) — the current pipeline",
+    ],
+    scaleUp: "Move from pico-hydro (3 kW) to community mini-hydro (10–100 kW) in villages with higher-capacity streams, powering not just households but small enterprise clusters.",
+    cta: "Partner on community energy",
   },
   {
     title: "Grow CERES as a regional renewable-energy hub",

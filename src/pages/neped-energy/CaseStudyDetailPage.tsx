@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { CASE_STUDIES } from "@/data/neped-energy/caseStudiesData";
-import { CASE_STUDY_PHOTOS } from "@/data/neped-energy/caseStudyPhotos";
+import { CASE_STUDY_PHOTOS, type CaseStudyPhoto } from "@/data/neped-energy/caseStudyPhotos";
 import { CASE_STUDY_FIVE_PARTS, type CaseStudyFiveParts } from "@/data/neped-energy/caseStudyFiveParts";
 import { NEPED_ENERGY_PATHS } from "@/routes/paths";
 import { ArrowPillButton } from "@/components/shared/ArrowPillButton";
@@ -71,9 +71,12 @@ export function CaseStudyDetailPage() {
         <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
           <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
             {photos.map((photo) => (
-              <div key={photo.src} className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">
-                <img src={photo.src} alt={photo.alt} className="aspect-[3/2] h-full w-full object-cover" />
-              </div>
+              <figure key={photo.src}>
+                <div className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">
+                  <img src={photo.src} alt={photo.alt} className="aspect-[3/2] h-full w-full object-cover" />
+                </div>
+                {photo.caption ? <figcaption className="mt-3 text-[15px] text-[#5B6660]">{photo.caption}</figcaption> : null}
+              </figure>
             ))}
           </div>
         </motion.section>
@@ -134,7 +137,7 @@ function PrevNext({ prev, next }: { prev: StudyLink; next: StudyLink }) {
 const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em]";
 
 /** Five-part case study: full-bleed photo hero, stat strip, then the five numbered parts. */
-function FivePartCaseStudy({ data, photos, prevNext }: { data: CaseStudyFiveParts; photos: { src: string; alt: string }[]; prevNext: React.ReactNode }) {
+function FivePartCaseStudy({ data, photos, prevNext }: { data: CaseStudyFiveParts; photos: CaseStudyPhoto[]; prevNext: React.ReactNode }) {
   const energy = data.lineage === "Energy Development";
   return (
     <div className="w-full space-y-16 sm:space-y-24 pb-24">
@@ -236,9 +239,12 @@ function FivePartCaseStudy({ data, photos, prevNext }: { data: CaseStudyFivePart
         <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
           <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
             {photos.map((photo) => (
-              <div key={photo.src} className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">
-                <img src={photo.src} alt={photo.alt} loading="lazy" className="aspect-[3/2] h-full w-full object-cover" />
-              </div>
+              <figure key={photo.src}>
+                <div className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">
+                  <img src={photo.src} alt={photo.alt} loading="lazy" className="aspect-[3/2] h-full w-full object-cover" />
+                </div>
+                {photo.caption ? <figcaption className="mt-3 text-[15px] text-[#5B6660]">{photo.caption}</figcaption> : null}
+              </figure>
             ))}
           </div>
         </motion.section>

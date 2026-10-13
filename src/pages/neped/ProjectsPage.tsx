@@ -12,7 +12,7 @@ const GLASS_CARD =
 const CURRENT_WORK = [
   {
     title: "Land, water & biodiversity",
-    text: "with SACON and SDTT, helping villages create Community Conserved Areas, biodiversity registers and management plans, using the Blyth's Tragopan (the state bird) as a flagship species.",
+    text: "Helping villages strengthen Community Conserved Areas, biodiversity registers, and management plans, using the Blyth’s Tragopan (the state bird) as a flagship species.",
   },
   {
     title: "Livelihoods & enterprise",
@@ -92,10 +92,10 @@ export function ProjectsPage() {
         <ol className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8">
           {CURRENT_WORK.map((item, i) => (
             <li key={item.title} className="flex gap-4 border-t border-[#e5e4e4] py-5">
-              <span className="w-8 shrink-0 font-serif text-[22px] leading-none text-[#8A5A12]">{String(i + 1).padStart(2, "0")}</span>
+              <span className="w-9 shrink-0 font-serif text-[26px] leading-none text-[#8A5A12]">{String(i + 1).padStart(2, "0")}</span>
               <div>
-                <h3 className="text-[15px] font-semibold text-[#1A2E23]">{item.title}</h3>
-                <p className="mt-1 text-[13.5px] leading-snug text-[#5B6660]">{item.text}</p>
+                <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#1A2E23]">{item.title}</h3>
+                <p className="mt-1.5 text-[16px] sm:text-[17px] leading-relaxed text-[#5B6660]">{item.text}</p>
               </div>
             </li>
           ))}

@@ -80,7 +80,7 @@ export function NepedStructurePage() {
           <div className="bg-[#F3F6F3] p-7 sm:p-10 space-y-6">
             <div>
               <SectionPill>Historical Archive</SectionPill>
-              <h3 className="text-[28px] font-light text-[#1A2E23] tracking-[-0.72px] mt-1">
+              <h3 className="text-[32px] sm:text-[40px] font-light text-[#1A2E23] tracking-[-0.9px] mt-1">
                 Past Team Leaders
               </h3>
             </div>
@@ -88,15 +88,15 @@ export function NepedStructurePage() {
               initialCount={5}
               showLabel="Show all past leaders"
               hideLabel="Show fewer past leaders"
-              className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12 gap-y-4 pt-2"
+              className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-12 gap-y-5 pt-2"
             >
               {teamLeaders.map((lead) => (
                 <div
                   key={lead.name}
-                  className="flex items-center justify-between gap-4 border-b border-[#e5e4e4] pb-3"
+                  className="flex items-center justify-between gap-4 border-b border-[#e5e4e4] pb-4"
                 >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="h-10 w-10 rounded-full bg-[#e5e4e4] overflow-hidden shrink-0 flex items-center justify-center">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-[#e5e4e4] overflow-hidden shrink-0 flex items-center justify-center">
                       {lead.image ? (
                         <img
                           src={lead.image}
@@ -107,17 +107,17 @@ export function NepedStructurePage() {
                           }}
                         />
                       ) : (
-                        <span className="text-[11px] font-medium text-[#5B6660]">
+                        <span className="text-[15px] font-medium text-[#5B6660]">
                           {lead.name.replace(/^(Shri\.?|Late|Padmashree)\s*/i, "").charAt(0)}
                         </span>
                       )}
                     </div>
                     <div className="min-w-0">
-                      <h4 className="text-[15px] font-medium text-[#1A2E23] truncate">{lead.name}</h4>
-                      <span className="text-[12px] text-[#5B6660]">{lead.title}</span>
+                      <h4 className="text-[17px] sm:text-[18px] font-medium text-[#1A2E23] truncate">{lead.name}</h4>
+                      <span className="text-[14px] sm:text-[15px] text-[#5B6660]">{lead.title}</span>
                     </div>
                   </div>
-                  <span className="text-[12px] font-mono text-[#5B6660] shrink-0">{lead.period}</span>
+                  <span className="text-[13px] sm:text-[14px] font-mono text-[#5B6660] shrink-0">{lead.period}</span>
                 </div>
               ))}
             </MobileShowMore>

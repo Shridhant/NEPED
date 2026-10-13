@@ -89,13 +89,13 @@ export function ProjectTimeline() {
 
 // Logos of the funders in the project list (public/logos). No Ministry of Textiles logo yet.
 const FUNDERS: Logo[] = [
-  { alt: "Canadian International Development Agency (CIDA)", src: "/logos/cida.jpeg", className: "max-h-12 max-w-[128px]" },
-  { alt: "Ministry of Agriculture & Farmers Welfare, GoI", src: "/logos/ministry-of-agriculture.jpeg", className: "max-h-12 max-w-[132px]" },
-  { alt: "Sir Dorabji Tata Trust", src: "/logos/sir-dorabji-tata-trust.jpeg", className: "max-h-12 max-w-[92px] scale-[1.28]" },
-  { alt: "Tata Trusts", src: "/logos/tata-trusts.jpeg", className: "max-h-10 max-w-[132px]" },
-  { alt: "Ministry of New and Renewable Energy (MNRE), GoI", src: "/logos/mnre.jpeg", className: "max-h-12 max-w-[132px]" },
-  { alt: "North Eastern Council (NEC)", src: "/logos/nec.jpeg", className: "max-h-14 max-w-[72px]" },
-  { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-11 max-w-[132px]" },
+  { alt: "Canadian International Development Agency (CIDA)", src: "/logos/cida.jpeg", className: "max-h-[72px] max-w-[192px]" },
+  { alt: "Ministry of Agriculture & Farmers Welfare, GoI", src: "/logos/ministry-of-agriculture.jpeg", className: "max-h-[72px] max-w-[198px]" },
+  { alt: "Sir Dorabji Tata Trust", src: "/logos/sir-dorabji-tata-trust.jpeg", className: "max-h-[72px] max-w-[138px] scale-[1.28]" },
+  { alt: "Tata Trusts", src: "/logos/tata-trusts.jpeg", className: "max-h-[60px] max-w-[198px]" },
+  { alt: "Ministry of New and Renewable Energy (MNRE), GoI", src: "/logos/mnre.jpeg", className: "max-h-[72px] max-w-[198px]" },
+  { alt: "North Eastern Council (NEC)", src: "/logos/nec.jpeg", className: "max-h-[84px] max-w-[108px]" },
+  { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-[66px] max-w-[198px]" },
 ];
 
 /** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */

@@ -94,7 +94,7 @@ export function NepedFooter({ onOpenContact }: { onOpenContact: () => void }) {
                   </li>
                   <li>
                     <Link to={NEPED_PATHS.phase("neped-scen")} className="hover:text-[#E8A33D] transition-colors">
-                      NEPED-SCEN (SACON)
+                      NEPED-SCEN
                     </Link>
                   </li>
                 </ul>
