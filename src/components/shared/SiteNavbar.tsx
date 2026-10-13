@@ -107,6 +107,11 @@ function currentKey(pathname: string) {
 }
 
 const EASE = [0.65, 0, 0.35, 1] as const;
+/** Soft ease-out for the desktop panel: moves quickly at first, then settles gently */
+const PANEL_EASE = [0.22, 1, 0.36, 1] as const;
+/** Hover delays (ms) so brushing past an item doesn't open or switch the panel */
+const OPEN_DELAY = 120;
+const SWITCH_DELAY = 220;
 
 export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   const { pathname } = useLocation();
@@ -115,6 +120,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   const [mobile, setMobile] = useState<{ path: string; expanded: string | null } | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<number | undefined>(undefined);
+  const hoverTimer = useRef<number | undefined>(undefined);
 
   const openKey = panel?.path === pathname ? panel.key : null;
   const mobileOpen = mobile?.path === pathname;
@@ -149,15 +155,30 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
     };
   }, [mobileOpen]);
 
-  useEffect(() => () => window.clearTimeout(closeTimer.current), []);
+  useEffect(
+    () => () => {
+      window.clearTimeout(closeTimer.current);
+      window.clearTimeout(hoverTimer.current);
+    },
+    [],
+  );
 
   const openPanel = (key: string | null) => {
     window.clearTimeout(closeTimer.current);
+    window.clearTimeout(hoverTimer.current);
     setPanel(key ? { key, path: pathname } : null);
+  };
+  /** Hover: wait a moment before opening / switching, so the mouse can pass over other items */
+  const hoverPanel = (key: string | null) => {
+    window.clearTimeout(closeTimer.current);
+    window.clearTimeout(hoverTimer.current);
+    if (key === openKey) return; // back on the open item: cancel any pending switch
+    hoverTimer.current = window.setTimeout(() => openPanel(key), openKey ? SWITCH_DELAY : OPEN_DELAY);
   };
   const scheduleClose = () => {
     window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(() => setPanel(null), 160);
+    window.clearTimeout(hoverTimer.current);
+    closeTimer.current = window.setTimeout(() => setPanel(null), 200);
   };
   const closeAll = () => {
     setPanel(null);
@@ -217,14 +238,14 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                   type="button"
                   aria-expanded={openKey === entry.key}
                   aria-controls="site-nav-panel"
-                  onMouseEnter={() => openPanel(entry.key)}
+                  onMouseEnter={() => hoverPanel(entry.key)}
                   onClick={() => openPanel(openKey === entry.key ? null : entry.key)}
                   className={cls}
                 >
                   {inner}
                 </button>
               ) : (
-                <Link key={entry.key} to={entry.href} onMouseEnter={() => openPanel(null)} onClick={closeAll} className={cls}>
+                <Link key={entry.key} to={entry.href} onMouseEnter={() => hoverPanel(null)} onClick={closeAll} className={cls}>
                   {inner}
                 </Link>
               );
@@ -273,20 +294,21 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
             <motion.div
               id="site-nav-panel"
               key="panel"
-              initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.6 }}
-              animate={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
-              exit={{ clipPath: "inset(0 0 100% 0)", opacity: 0.6 }}
-              transition={{ duration: 0.45, ease: EASE }}
+              initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+              animate={{ clipPath: "inset(0 0 0% 0)", opacity: 1, transition: { duration: 0.55, ease: PANEL_EASE } }}
+              exit={{ clipPath: "inset(0 0 100% 0)", opacity: 0, transition: { duration: 0.35, ease: PANEL_EASE } }}
               className="hidden lg:block absolute left-0 right-0 top-full bg-[#F3F6F3] border-t border-black/5"
             >
-              <AnimatePresence mode="wait" initial={false}>
+              {/* Sections crossfade (stacked in one grid cell) instead of fading out then in */}
+              <div className="grid">
+              <AnimatePresence initial={false}>
                 <motion.div
                   key={openSection.key}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2, ease: EASE }}
-                  className="grid grid-cols-12 min-h-[420px]"
+                  transition={{ duration: 0.3, ease: PANEL_EASE }}
+                  className="[grid-area:1/1] grid grid-cols-12 min-h-[420px] bg-[#F3F6F3]"
                 >
                   <div
                     className="col-span-4 px-10 xl:px-16 py-12 transition-colors duration-300 ease-in-out"
@@ -344,6 +366,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                   </div>
                 </motion.div>
               </AnimatePresence>
+              </div>
             </motion.div>
           ) : null}
         </AnimatePresence>
@@ -439,7 +462,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: EASE }}
+            transition={{ duration: 0.45, ease: PANEL_EASE }}
             onClick={() => setPanel(null)}
             className="hidden lg:block fixed inset-0 z-40 bg-[#12432E]/25"
           />
