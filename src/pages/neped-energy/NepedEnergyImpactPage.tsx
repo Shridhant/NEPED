@@ -26,7 +26,7 @@ const NE_INDIA_MAP = {
 */
 
 const STATS = [
-  { value: "7.8M", label: "Economic trees planted" },
+  { value: "8M+", label: "Economic trees planted" },
   { value: "17,930 ha", label: "Watershed land treated" },
   { value: "108", label: "Hydrogers installed" },
   { value: "~20k", label: "Farmers supported across phases", note: "7,000+ (NEPED-I) · 7,888 (NEPED-II) · 6,600 (NEPED-III)" },
@@ -63,7 +63,7 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
     paragraphs: [
       "NEPeD has installed 108 Hydrogers (3 kW pico-hydro units) across Nagaland, most of them in remote Indo-Myanmar border villages. Each Hydroger delivers 24×7 off-grid power to communities that had no reliable electricity supply — lighting homes, schools and health posts, and powering mills, blacksmithing, carpentry and food processing.",
       "Every unit is designed, manufactured and serviced within the state, at CERES (Centre of Excellence for Renewable Energy Studies) in Dimapur, in partnership with the Nagaland Tool Room and Training Centre.",
-      "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Meghalaya, Sikkim and Ladakh. Meghalaya has placed an order for 100 units.",
+      "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Agency (MBDA), which installed them after training by NEPeD.",
     ],
   },
 ];
@@ -98,7 +98,7 @@ const ROAD_AHEAD: { title: string; text: string; points: string[]; scaleUp: stri
     points: [
       "Manufacturing infrastructure already in place at Industrial Estate, Dimapur",
       "Partnership with Nagaland Tool Room and Training Centre",
-      "Demand from other states (Meghalaya 100-unit order, Sikkim, Ladakh)",
+      "Demand from other states (155 units supplied to Meghalaya; Sikkim, Ladakh)",
     ],
     scaleUp: "Develop CERES training programmes for rural engineers and renewable-energy entrepreneurs from across the Northeast; establish a product testing and certification pathway; and open the facility to collaborative R&D with research institutions.",
   },
@@ -110,7 +110,42 @@ const SUBNAV = [
   { id: "land", label: "Land & Biodiversity" },
   { id: "energy", label: "Energy" },
   { id: "installed-sites", label: "Installed Sites" },
+  { id: "policy", label: "Policy & Government Impact" },
   { id: "road-ahead", label: "The Road Ahead" },
+];
+
+// Policy & Government Impact — from "NEPED ImpactsPDF.pdf", newest first. Quotes to be added word for word once the PDF is in.
+const POLICY_IMPACT: { year: string; heading: string; source: string }[] = [
+  {
+    year: "2004 (11 Nov)",
+    heading: "RSVY district plan for Mon uses the NEPED-II model to channel funds to farmers, entrepreneurs and SHGs",
+    source: "Summary of District Plan under RSVY, Mon; Dr. K. Haloi, NIRD North Eastern Regional Centre, Guwahati",
+  },
+  {
+    year: "2004 (25 Feb)",
+    heading: "UNDP accepts Nagaland's Village Development Boards as CBOs for the GEF Small Grants Programme, with pilot micro-hydel funding linked to MNES and NEPED",
+    source: "UNDP India, IND/98/G52",
+  },
+  {
+    year: "2002 (24 Dec)",
+    heading: "Ministry of Environment & Forests recommends Nagaland's agro-forestry model (Indo-Canadian project) for strengthening Joint Forest Management",
+    source: "GoI, MoEF (JFM Cell), No. 22-8/2000-JFM(FPD)",
+  },
+  {
+    year: "1999",
+    heading: "Government of Nagaland declares 1999 the \"Year of Tree Plantation\"",
+    source: "NEPED Impacts PDF, item 6",
+  },
+  {
+    year: "1997 (Mar)",
+    heading: "Shukla Commission calls NEPED \"a critical lead programme\" for the Northeast",
+    source: "High Level Commission report to the Prime Minister, Planning Commission, 7 March 1997",
+  },
+  {
+    year: "1997 (Apr)",
+    heading: "Forest-policy study says NEPED's approach to improving shifting cultivation \"may perhaps be more appropriate\"",
+    source: "Dr. J. K. Rawat & D. P. Bankhwal, Forest Policy and Legal Framework in HP, UP, J&K and NE India, Dehra Dun",
+  },
 ];
 
 const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#1E6F4C]";
@@ -180,6 +215,27 @@ export function NepedEnergyImpactPage() {
           <InstalledSitesTable />
         </div>
       </motion.section>
+
+      {/* POLICY & GOVERNMENT IMPACT — same heading + intro + body layout as the themed blocks; items newest first */}
+      <section id="policy" className="scroll-mt-40 bg-[#F3F6F3] py-20 sm:py-24">
+        <motion.div {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)] gap-10 lg:gap-20">
+          <div className="flex flex-col gap-5 lg:sticky lg:top-44 lg:self-start">
+            <span className={EYEBROW}>Policy & Government Impact</span>
+            <h2 className="font-serif text-[30px] sm:text-[38px] leading-[1.14] tracking-[-0.3px] text-[#12432E]">
+              Policy changes NEPED's work led to in Nagaland and at the Centre
+            </h2>
+          </div>
+          <ol className="max-w-[760px] list-none flex flex-col">
+            {POLICY_IMPACT.map((item) => (
+              <li key={item.heading} className="border-t border-[#dbe5de] py-6 sm:py-7 flex flex-col gap-2.5">
+                <span className="text-[13px] font-semibold text-[#8A5A12]">{item.year}</span>
+                <h3 className="text-[19px] sm:text-[21px] leading-[1.4] text-[#1A2E23]">{item.heading}</h3>
+                <p className="text-[14px] leading-snug text-[#5B6660]">{item.source}</p>
+              </li>
+            ))}
+          </ol>
+        </motion.div>
+      </section>
 
       {/* THE ROAD AHEAD — three partnership tracks on a deep-green band */}
       <section id="road-ahead" className="scroll-mt-40 relative overflow-hidden bg-(--brand-surface) px-4 sm:px-6 py-20 sm:py-24 lg:py-28 text-[#ffffff]">

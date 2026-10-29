@@ -37,9 +37,11 @@ const AIMS = [
 // Homepage stat strip and themed grid — text verbatim from the homepage copy supplied by the NEPED team
 const HOME_STATS = [
   { value: "1995", label: "Established by the Govt. of Nagaland" },
-  { value: "7.8M", label: "Economic trees planted" },
-  { value: "108", label: "Hydrogers installed (3 kW pico)" },
-  { value: "854", label: "Villages reached in NEPED-I alone" },
+  { value: "8M+", label: "Economic trees planted" },
+  { value: "108+", label: "Hydrogers installed (3 kW pico)" },
+  { value: "1000+", label: "Villages reached" },
+  { value: "2,700+", label: "SHGs supported through microcredit" },
+  { value: "60+", label: "CCAs strengthened" },
 ];
 const HOME_THEMES = [
   { title: "Livelihoods & Enterprise", text: "helping Naga farmers move from subsidy to self-reliance through cash crops, micro-credit and rural enterprise.", icon: Wallet, to: NEPED_PATHS.projects },
@@ -137,11 +139,12 @@ export function NepedEconomicPage() {
 
       {/* STAT STRIP — headline numbers */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <dl className="grid grid-cols-2 lg:grid-cols-4 border-t border-[#dbe5de]">
+        {/* Two columns on phones / tablets, three on desktop (two rows of three) */}
+        <dl className="grid grid-cols-2 lg:grid-cols-3 border-t border-[#dbe5de]">
           {HOME_STATS.map((stat, i) => (
             <div
               key={stat.value}
-              className={`pt-7 pb-2 pr-4 sm:pr-8 ${i % 2 === 1 ? "pl-4 sm:pl-8 border-l border-[#dbe5de]" : ""} ${i >= 2 ? "mt-8 lg:mt-0" : ""} ${i === 2 ? "lg:pl-8 lg:border-l" : ""}`}
+              className={`pt-7 pb-2 pr-4 sm:pr-8 border-[#dbe5de] ${i % 2 === 1 ? "pl-4 sm:pl-8 border-l" : ""} ${i % 3 === 0 ? "lg:pl-0 lg:border-l-0" : "lg:pl-8 lg:border-l"} ${i >= 2 ? "mt-8" : ""} ${i >= 3 ? "lg:mt-8" : "lg:mt-0"}`}
             >
               <dt className="sr-only">{stat.label}</dt>
               <dd className="text-[44px] sm:text-[60px] font-light leading-none tracking-[-1.5px] text-[#1E6F4C]">{stat.value}</dd>
@@ -211,7 +214,7 @@ export function NepedEconomicPage() {
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Beyond Nagaland</p>
         <p className="max-w-[1000px] text-[22px] sm:text-[30px] lg:text-[34px] font-light leading-[1.3] tracking-[-0.5px] text-[#5B6660]">
-          <span className="text-[#1A2E23]">Made in Nagaland, working beyond it.</span> NEPeD Hydrogers now run in Arunachal Pradesh, Meghalaya, Sikkim and as far as Ladakh — and Meghalaya has ordered 100 units.
+          <span className="text-[#1A2E23]">Made in Nagaland, working beyond it.</span> NEPeD Hydrogers now run in Arunachal Pradesh, Sikkim and Ladakh, and NEPeD has supplied 155 Hydrogers and 16 ram pumps to Meghalaya through MBDA.
         </p>
       </motion.section>
 

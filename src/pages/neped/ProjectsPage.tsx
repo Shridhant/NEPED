@@ -12,11 +12,11 @@ const GLASS_CARD =
 const CURRENT_WORK = [
   {
     title: "Land, water & biodiversity",
-    text: "Helping villages strengthen Community Conserved Areas, biodiversity registers, and management plans, using the Blyth’s Tragopan (the state bird) as a flagship species.",
+    text: "Helping villages strengthen Community Conserved Areas, biodiversity registers, and management plans.",
   },
   {
     title: "Livelihoods & enterprise",
-    text: "Community-based piggery (NRTT), handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
+    text: "Community-based piggery, handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
   },
   {
     title: "Climate resilience",
@@ -33,7 +33,7 @@ export function ProjectsPage() {
   const stats = [
     { value: `${PROJECT_LIST.length} Projects`, label: "Documented Archive" },
     { value: "854", label: "Villages Reached" },
-    { value: "7.8M+", label: "Trees Planted" },
+    { value: "8M+", label: "Trees Planted" },
     { value: "1995 – 2026", label: "Operational Span" },
   ];
 

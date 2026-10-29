@@ -22,7 +22,7 @@ export function ProjectTimeline() {
         <div className="space-y-4">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]">Our Projects</p>
           <h2 className="font-serif text-[36px] sm:text-[48px] leading-[1.05] tracking-[-0.3px] text-[#1A2E23]">
-            {PROJECT_LIST.length} projects, 30 years
+            {PROJECT_LIST.length} projects, 30+ years
           </h2>
         </div>
         <div role="group" aria-label="Filter projects by theme" className="flex flex-wrap gap-2">
@@ -87,7 +87,7 @@ export function ProjectTimeline() {
   );
 }
 
-// Logos of the funders in the project list (public/logos). No Ministry of Textiles logo yet.
+// Logos of the funders and partners (public/logos). No Ministry of Textiles or MBDA logo yet.
 const FUNDERS: Logo[] = [
   { alt: "Canadian International Development Agency (CIDA)", src: "/logos/cida.jpeg", className: "max-h-[72px] max-w-[192px]" },
   { alt: "Ministry of Agriculture & Farmers Welfare, GoI", src: "/logos/ministry-of-agriculture.jpeg", className: "max-h-[72px] max-w-[198px]" },
@@ -96,6 +96,7 @@ const FUNDERS: Logo[] = [
   { alt: "Ministry of New and Renewable Energy (MNRE), GoI", src: "/logos/mnre.jpeg", className: "max-h-[72px] max-w-[198px]" },
   { alt: "North Eastern Council (NEC)", src: "/logos/nec.jpeg", className: "max-h-[84px] max-w-[108px]" },
   { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-[66px] max-w-[198px]" },
+  { alt: "Foundation for Ecological Security (FES)", src: "/logos/fes.jpeg", className: "max-h-[72px] max-w-[160px]" },
 ];
 
 /** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */

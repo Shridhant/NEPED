@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 /** Contact details and the enquiry form — shared by the Contact Us popup and the Contact Us page. */
 export const CONTACT_EMAIL = "nepednagaland@gmail.com";
+export const CONTACT_PHONE = "9436401453";
 
 export function ContactDetails({ className = "" }: { className?: string }) {
   return (
@@ -25,6 +26,16 @@ export function ContactDetails({ className = "" }: { className?: string }) {
         <div className="text-[13px] text-[#1A2E23] leading-relaxed">
           <p className="text-[#1A2E23] font-medium">Email Us</p>
           <p className="break-all">{CONTACT_EMAIL}</p>
+        </div>
+      </a>
+      <a
+        href={`tel:+91${CONTACT_PHONE}`}
+        className="sm:col-span-2 flex items-start gap-3 p-4 bg-[#F3F6F3] border border-[#e5e4e4] hover:border-[#1E6F4C]/50 transition-colors"
+      >
+        <Phone size={16} className="text-[#1E6F4C] mt-0.5 shrink-0" />
+        <div className="text-[13px] text-[#1A2E23] leading-relaxed">
+          <p className="text-[#1A2E23] font-medium">Call Us</p>
+          <p>{CONTACT_PHONE}</p>
         </div>
       </a>
     </div>

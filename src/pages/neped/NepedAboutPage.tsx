@@ -12,6 +12,7 @@ const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#1E
 const TIMELINE: { year: string; body: string; logo?: "neped" | "neped-energy" }[] = [
   { year: "Today", body: "One society across livelihoods, land and energy." },
   { year: "2019–present", body: "NEPED-IV / Forest & Biodiversity Management (KfW)." },
+  { year: "2019–2024", body: "Supplied 155 Hydrogers and 16 ram pumps to Meghalaya (MBDA)." },
   { year: "2009", body: "CERES established" },
   { year: "2007", body: "NEPeD (Energy Development branch established)", logo: "neped-energy" },
   { year: "2006–2012", body: "NEPED-III: watershed development (Min. of Agriculture)." },
@@ -48,7 +49,7 @@ const CHANGE_STAGES: { title: string; text: string; example: string; icon: Lucid
   {
     title: "Prove the model, then spread it",
     text: "Each NEPED intervention is designed to demonstrate a replicable model — not a one-off project. NEPED-I planted 7.8 million trees on 1,794 test plots, with a replication ratio of 1:6. That means for every test plot NEPED supported, neighbouring farmers replicated the approach six times on their own land. The Hydroger programme follows the same logic: prove the technology and the community-ownership model in one village, then equip the next village to adopt it.",
-    example: "After proving the Hydroger in Nagaland's border villages, demand spread to other states. Meghalaya has ordered 100 units; installations now run in Arunachal Pradesh, Sikkim and Ladakh.",
+    example: "After proving the Hydroger in Nagaland's border villages, demand spread to other states. NEPeD Hydrogers now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Agency (MBDA).",
     icon: Sprout,
   },
   {

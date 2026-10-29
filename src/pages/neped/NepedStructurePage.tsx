@@ -1,6 +1,12 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
-import { NEPED_PRESENT_TEAM as presentTeam, type TeamMember } from "@/data/neped/nepedTeamData";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  NEPED_PRESENT_TEAM as presentTeam,
+  NEPED_SUPPORTING_STAFF,
+  CERES_STAFF,
+  GOVERNING_BODIES,
+  type TeamMember,
+} from "@/data/neped/nepedTeamData";
 import { MobileShowMore } from "@/components/shared/MobileShowMore";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { SectionPill } from "@/components/shared/SectionPill";
@@ -21,13 +27,11 @@ export function NepedStructurePage() {
     window.scrollTo({ top: 0 });
   }, []);
 
-  // Team Leader first, then Dr. Kezevituo Metha, then the other POU members in their listed order
-  const rank = (m: TeamMember) => (m.role === "Team Leader" ? 0 : m.name === "Dr. Kezevituo Metha" ? 1 : 2);
-  const teamInOrder = [...presentTeam].sort((a, b) => rank(a) - rank(b));
+  const [ceresOpen, setCeresOpen] = useState(false);
 
   const teamLeaders = [
     { name: "Late A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.webp" },
-    { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader" },
+    { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader", image: "/Team Leaders/R Kevichusa, IAS - Team Leader.webp" },
     { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader" },
     { name: "Shri. Alemtemshi Jamir (IAS)", period: "2003 – 2006", title: "Team Leader", image: "/Team Leaders/Alemtemshi Jamir, IAS - Team Leader.jpg.webp" },
     { name: "Late Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader", image: "/Team Leaders/Temjen Toy, IAS - Team Leader.jpg.webp" },
@@ -67,13 +71,87 @@ export function NepedStructurePage() {
           hideLabel="Show fewer team members"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {teamInOrder.map((member) => (
+          {presentTeam.map((member) => (
             <TeamCard key={member.id} member={member} highlight={member.role === "Team Leader"} />
           ))}
         </MobileShowMore>
       </motion.section>
 
-      {/* 2. PAST TEAM LEADERS */}
+      {/* 2. SUPPORTING STAFF — Kohima office in the main list; CERES (Dimapur) staff behind a button */}
+      <motion.section {...fadeUpOnView} id="supporting-staff" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <div className="max-w-[760px] mx-auto text-center flex flex-col items-center gap-5 mb-10 sm:mb-14">
+          <SectionPill>NEPED Main Office (Kohima)</SectionPill>
+          <h2 className="text-[34px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05]">
+            Supporting Staff
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {NEPED_SUPPORTING_STAFF.map((member) => (
+            <TeamCard key={member.id} member={member} />
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <button
+            type="button"
+            aria-expanded={ceresOpen}
+            aria-controls="ceres-team"
+            onClick={() => setCeresOpen((open) => !open)}
+            className="inline-flex min-h-12 items-center rounded-md border border-[#12432E] px-6 text-[15px] font-semibold text-[#12432E] hover:bg-[#12432E] hover:text-[#ffffff] transition-colors duration-300 ease-in-out cursor-pointer"
+          >
+            {ceresOpen ? "Hide CERES team" : "View CERES team"}
+          </button>
+        </div>
+
+        <AnimatePresence initial={false}>
+          {ceresOpen ? (
+            <motion.div
+              id="ceres-team"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="pt-10">
+                <h3 className="text-center text-[24px] sm:text-[28px] font-light text-[#1A2E23] tracking-[-0.5px] mb-8">
+                  CERES staff (Dimapur)
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {CERES_STAFF.map((member) => (
+                    <TeamCard key={member.id} member={member} />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </motion.section>
+
+      {/* 3. GOVERNING BODIES */}
+      <motion.section {...fadeUpOnView} id="governing-bodies" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
+        <h2 className="text-[34px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05] text-center mb-10 sm:mb-14">
+          Governing Bodies
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {GOVERNING_BODIES.map((body) => (
+            <div key={body.title} className="bg-[#F3F6F3] p-7 sm:p-10">
+              <h3 className="text-[22px] sm:text-[26px] font-medium text-[#1A2E23] tracking-[-0.4px]">{body.title}</h3>
+              <dl className="mt-6">
+                {body.members.map((m) => (
+                  <div key={m.role} className="border-t border-[#e5e4e4] py-4">
+                    <dt className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#5B6660]">{m.role}</dt>
+                    <dd className="mt-1 text-[16px] sm:text-[17px] text-[#1A2E23]">{m.names}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* 4. PAST TEAM LEADERS */}
       <motion.section {...fadeUpOnView} id="leaders" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="grid grid-cols-1">
           {/* Past Team Leaders */}
@@ -125,7 +203,7 @@ export function NepedStructurePage() {
         </div>
       </motion.section>
 
-      {/* 3. ORGANISATIONAL STRUCTURE */}
+      {/* 5. ORGANISATIONAL STRUCTURE */}
       <motion.section {...fadeUpOnView} id="structure" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <h2 className="text-[34px] sm:text-[56px] font-light text-[#1A2E23] tracking-[-1.4px] leading-[1.05] text-center mb-10 sm:mb-14">
           Organisational Structure
@@ -143,7 +221,7 @@ export function NepedStructurePage() {
   );
 }
 
-/** Team card — photo bottom-right; the Team Leader's card is dark (same size as the rest). */
+/** Team card — photo bottom-right; the Team Leader's card is dark (same size as the rest). Without a photo the card is name and designation only. */
 function TeamCard({ member, highlight = false }: { member: TeamMember; highlight?: boolean }) {
   const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     (e.target as HTMLElement).style.display = "none";
@@ -151,7 +229,7 @@ function TeamCard({ member, highlight = false }: { member: TeamMember; highlight
 
   return (
     <div
-      className={`group relative h-[300px]  overflow-hidden p-7 sm:p-8 ${
+      className={`group relative ${member.image ? "h-[300px]" : ""} overflow-hidden p-7 sm:p-8 ${
         highlight ? "bg-(--brand-surface) text-[#ffffff]" : "bg-[#F3F6F3] text-[#1A2E23]"
       }`}
     >
@@ -162,15 +240,17 @@ function TeamCard({ member, highlight = false }: { member: TeamMember; highlight
         <h3 className="text-[20px] sm:text-[22px] font-medium tracking-[-0.3px]">{member.name}</h3>
         <p className={`text-[14px] mt-1 ${highlight ? "text-[#ffffff]/75" : "text-[#5B6660]"}`}>{member.role}</p>
       </div>
-      <div className="absolute right-0 bottom-0 w-[44%] h-[64%] overflow-hidden">
-        {/* scale crops the white border of the passport-style photos */}
-        <img
-          src={member.image}
-          alt={member.name}
-          onError={hideOnError}
-          className="w-full h-full object-cover object-top scale-[1.12] origin-top transition-transform duration-500 group-hover:scale-[1.18]"
-        />
-      </div>
+      {member.image ? (
+        <div className="absolute right-0 bottom-0 w-[44%] h-[64%] overflow-hidden">
+          {/* scale crops the white border of the passport-style photos */}
+          <img
+            src={member.image}
+            alt={member.name}
+            onError={hideOnError}
+            className="w-full h-full object-cover object-top scale-[1.12] origin-top transition-transform duration-500 group-hover:scale-[1.18]"
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

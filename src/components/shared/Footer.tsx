@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUp, Mail } from "lucide-react";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
-import { CONTACT_EMAIL } from "./ContactContent";
+import { CONTACT_EMAIL, CONTACT_PHONE } from "./ContactContent";
 
 /*
  * One footer for NEPED and NEPeD pages (matches the unified navbar): a full-width Deep Forest band,
@@ -101,6 +101,11 @@ export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
               <p className="pt-3">
                 <a href={`mailto:${CONTACT_EMAIL}`} className={`${LINK} break-all`}>
                   {CONTACT_EMAIL}
+                </a>
+              </p>
+              <p>
+                <a href={`tel:+91${CONTACT_PHONE}`} className={LINK}>
+                  {CONTACT_PHONE}
                 </a>
               </p>
             </address>
