@@ -23,7 +23,7 @@ export function CaseStudyDetailPage() {
   const fiveParts = study ? CASE_STUDY_FIVE_PARTS[study.slug] : undefined;
 
   useEffect(() => {
-    if (study) document.title = `${fiveParts?.title ?? study.title} • NEPeD`;
+    if (study) document.title = `${fiveParts?.title ?? study.title} • ${fiveParts?.lineage === "Economic Development" ? "NEPED" : "NEPeD"}`;
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [study, fiveParts]);
 

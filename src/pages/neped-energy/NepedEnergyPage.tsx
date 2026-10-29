@@ -45,7 +45,7 @@ const CASE_DECK_STYLE: Record<string, { color: string; panel: string; image?: st
   aniashu: { color: CASE_DECK_COLOR, panel: CASE_DECK_PANEL },
   kaha: { color: CASE_DECK_COLOR, panel: CASE_DECK_PANEL },
 };
-const CASE_STUDY_DECK: ProjectItem[] = CASE_STUDIES.map((study, i) => ({
+const CASE_STUDY_DECK: ProjectItem[] = CASE_STUDIES.filter((s) => s.categories.includes("Energy")).map((study, i) => ({
   id: study.slug,
   tabTitle: `${String(i + 1).padStart(2, "0")} · ${study.place}`,
   title: study.title,

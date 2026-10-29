@@ -3,13 +3,18 @@
  * Edits: photo captions pasted into the text were removed (e.g. "Street lighting" before "Kingjung is…");
  * numbering removed from list items (shown as a numbered list). overview = first sentence.
  */
-export type CaseStudySection = { heading: string | null; paragraphs: string[]; list: string[] };
-export type CaseStudy = { slug: string; place: string; title: string; overview: string; sections: CaseStudySection[] };
+import { NEPED_CASE_STUDIES } from "@/data/neped/nepedCaseStudies";
 
-export const CASE_STUDIES: CaseStudy[] = [
+export type CaseStudySection = { heading: string | null; paragraphs: string[]; list: string[] };
+/** Filter tags on the Case Studies page */
+export type CaseStudyCategory = "Energy" | "Livelihoods" | "Conservation / Agroforestry" | "Farming systems";
+export type CaseStudy = { slug: string; place: string; categories: CaseStudyCategory[]; title: string; overview: string; sections: CaseStudySection[] };
+
+const ENERGY_CASE_STUDIES: CaseStudy[] = [
   {
     "slug": "kingjung",
     "place": "Kingjung",
+    "categories": ["Energy"],
     "title": "The Kingjung Story",
     "overview": "Kingjung is a small village of 90 households in Tuensang, 108 kms south-east of Noklak, along the Indo-Myanmar border.",
     "sections": [
@@ -41,6 +46,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     "slug": "kingpao",
     "place": "Kingpao",
+    "categories": ["Energy"],
     "title": "The Kingpao Hydroger Story",
     "overview": "Kingpao is a peaceful village of 27 household located in the mountainous part bordering Myanmar.",
     "sections": [
@@ -78,6 +84,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     "slug": "pang",
     "place": "Pang",
+    "categories": ["Energy"],
     "title": "The Pang Story",
     "overview": "Pang is a village of 94 households, situated along the Indo Myanmar border about 150 kms south east of Noklak with a coordinates of N-25° 56’ 19”, E-094° 57’ 40”.",
     "sections": [
@@ -115,6 +122,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     "slug": "aniashu",
     "place": "Aniashu",
+    "categories": ["Energy"],
     "title": "Aniashu Hydroger Project",
     "overview": "Aniashu a Khiamniungan village is located 65 kms south east of Noklak at an altitude of 1137 with coordinates N26º 07.551’ E095º 04.695’.",
     "sections": [
@@ -132,6 +140,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     "slug": "kaha",
     "place": "Kaha",
+    "categories": ["Energy"],
     "title": "Kaha Hydroger Project",
     "overview": "A small village of 24 household under Kiphire district is a place inhabited by Yimchungers.",
     "sections": [
@@ -149,3 +158,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     ]
   }
 ];
+
+/** Every case study: the NEPeD (energy) stories, then the NEPED stories (src/data/neped/nepedCaseStudies.ts) */
+export const CASE_STUDIES: CaseStudy[] = [...ENERGY_CASE_STUDIES, ...NEPED_CASE_STUDIES];

@@ -17,6 +17,7 @@ const COLUMNS: { title: string; links: { label: string; to: string }[] }[] = [
       { label: "About Us", to: NEPED_PATHS.about },
       { label: "Our Team", to: NEPED_PATHS.structure },
       { label: "Our Work", to: NEPED_PATHS.projects },
+      { label: "Case Studies", to: NEPED_ENERGY_PATHS.caseStudies },
     ],
   },
   {

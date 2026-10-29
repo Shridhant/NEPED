@@ -34,7 +34,13 @@ export function SimpleLinkCard({
       className="group flex h-full w-full flex-col border border-[#e5e4e4] bg-[#ffffff] p-2.5 transition-[border-color,box-shadow] duration-300 hover:border-[#C9D4CD] hover:shadow-[0_1px_2px_rgba(18,67,46,0.06),0_12px_32px_rgba(18,67,46,0.10)] outline-none focus-visible:ring-2 focus-visible:ring-(--brand-accent)"
     >
       <div className={`relative aspect-[4/3] w-full overflow-hidden ${fit === "contain" ? "bg-[#F3F6F3]" : "bg-[#e5e4e4]"}`}>
-        {fit === "full" && (
+        {/* No photo yet (e.g. NEPED case studies awaiting photos): the NEPED logo on a mist tile */}
+        {!image ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-[#F3F6F3]">
+            <img src="/logos/neped-logo.webp" alt="" aria-hidden className="h-20 w-20 rounded-full object-cover opacity-90" />
+          </div>
+        ) : null}
+        {image && fit === "full" && (
           <img
             src={image}
             alt=""
@@ -43,18 +49,20 @@ export function SimpleLinkCard({
             className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl brightness-90"
           />
         )}
-        <img
-          src={image}
-          alt={imageAlt}
-          loading="lazy"
-          className={
-            fit === "contain"
-              ? "h-full w-full object-contain p-4 sm:p-6 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              : fit === "full"
-              ? "relative h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              : "h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-          }
-        />
+        {image ? (
+          <img
+            src={image}
+            alt={imageAlt}
+            loading="lazy"
+            className={
+              fit === "contain"
+                ? "h-full w-full object-contain p-4 sm:p-6 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                : fit === "full"
+                ? "relative h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                : "h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+            }
+          />
+        ) : null}
         {badge && (
           <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-[#ffffff]/95 px-2.5 py-1 text-[12px] font-medium text-[#1A2E23] shadow-sm backdrop-blur-sm">
             {badge}

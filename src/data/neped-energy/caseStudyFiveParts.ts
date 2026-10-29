@@ -5,7 +5,10 @@
  *   sorted into the five parts. Nothing is added; a part with no source text is left out (its number is kept), and stats
  *   are figures stated in that study's own text.
  * Editor's notes and [PLACEHOLDER] lines are never published. Studies without an entry keep the older layout.
+ * NEPED (non-energy) studies: src/data/neped/nepedCaseStudies.ts.
  */
+import { NEPED_CASE_STUDY_FIVE_PARTS } from "@/data/neped/nepedCaseStudies";
+
 export type CaseStudyBlock =
   | { type: "p"; text: string }
   | { type: "list"; items: string[] }
@@ -23,7 +26,7 @@ export type CaseStudyFiveParts = {
   parts: { num: 1 | 2 | 3 | 4 | 5; heading: string; blocks: CaseStudyBlock[] }[];
 };
 
-export const CASE_STUDY_FIVE_PARTS: Record<string, CaseStudyFiveParts> = {
+const ENERGY_FIVE_PARTS: Record<string, CaseStudyFiveParts> = {
   kingjung: {
     lineage: "Energy Development",
     title: "Kingjung: a village powered by its own river",
@@ -307,3 +310,5 @@ export const CASE_STUDY_FIVE_PARTS: Record<string, CaseStudyFiveParts> = {
     ],
   },
 };
+
+export const CASE_STUDY_FIVE_PARTS: Record<string, CaseStudyFiveParts> = { ...ENERGY_FIVE_PARTS, ...NEPED_CASE_STUDY_FIVE_PARTS };
