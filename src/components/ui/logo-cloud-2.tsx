@@ -20,8 +20,8 @@ const COLS = { base: 2, md: 4 } as const;
 
 /**
  * Bordered logo grid: every logo gets an equal cell, plus marks at the inner corners.
- * A short last row is centred (no empty filler cells). Cells draw their own left/right/top borders,
- * overlapped by 1px so neighbouring lines collapse into one; the bottom line comes from the parent.
+ * A short last row is centred (no empty filler cells). Every cell draws its own full border,
+ * overlapped by 1px so neighbouring lines (and the parent's top/bottom line) collapse into one.
  */
 export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) {
   const cells: (ReactNode | Logo)[] = lead ? [lead, ...logos] : [...logos];
@@ -34,7 +34,7 @@ export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) 
   };
 
   return (
-    <div className={cn("flex flex-wrap justify-center", className)} {...props}>
+    <div className={cn("-mb-px flex flex-wrap justify-center", className)} {...props}>
       {cells.map((cell, i) => {
         const base = corner(i, COLS.base);
         const md = corner(i, COLS.md);
@@ -42,7 +42,7 @@ export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) 
         return (
           <div
             key={i}
-            className="relative -mt-px -ml-px flex h-36 w-[calc(50%+1px)] items-center justify-center border-x border-t border-[#e5e4e4] bg-[#ffffff] px-4 md:h-44 md:w-[calc(25%+1px)] md:px-8"
+            className="relative -mt-px -ml-px flex h-36 w-[calc(50%+1px)] items-center justify-center border border-[#e5e4e4] bg-[#ffffff] px-4 md:h-44 md:w-[calc(25%+1px)] md:px-8"
           >
             {isLogo ? (
               <img
