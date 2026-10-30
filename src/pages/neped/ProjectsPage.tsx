@@ -39,7 +39,7 @@ export function ProjectsPage() {
 
   const stats = [
     { value: `${PROJECT_LIST.length} Projects`, label: "Documented Archive" },
-    { value: "854", label: "Villages Reached" },
+    { value: "1000+", label: "Villages Reached" },
     { value: "8M+", label: "Trees Planted" },
     { value: "1995 – 2026", label: "Operational Span" },
   ];
