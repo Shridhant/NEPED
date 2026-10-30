@@ -8,21 +8,28 @@ import { BlurReveal } from "@/components/ui/blur-reveal";
 const GLASS_CARD =
   " bg-gradient-to-br from-white/20 to-white/[0.05] border border-white/25 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.3)]";
 
-// Current work — text verbatim from the NEPED team
-const CURRENT_WORK = [
+// Current work — text verbatim from the NEPED team; photos from the client's Drive "Web Site pics" (CCA / livelihood)
+const CURRENT_WORK: { title: string; text: string; image: { src: string; alt: string } }[] = [
   {
     title: "Land, water & biodiversity",
     text: "Helping villages strengthen Community Conserved Areas, biodiversity registers, and management plans.",
+    image: { src: "/gallery-photos/community-conserved-areas/WhatsApp Image 2026-06-15 at 7.40.51 AM-3.webp", alt: "Villagers beside a Community Conserved Area signboard" },
   },
   {
     title: "Livelihoods & enterprise",
     text: "Community-based piggery, handicraft marketing and emporia, and value-addition to Non-Timber Forest Products.",
+    image: { src: "/gallery-photos/livelihoods/IMG_20221021_083219.webp", alt: "Villagers with trays at a livelihood distribution" },
   },
   {
     title: "Climate resilience",
     text: "The ongoing NEPED-IV / Forest & Biodiversity Management in the Himalaya (Nagaland) Project across 35 villages (KfW), and the National Adaptation Fund for Climate Change.",
+    image: { src: "/gallery-photos/community-conserved-areas/IMG_20250521_101044.webp", alt: "A stone bund holding soil in a forest clearing" },
   },
-  { title: "Eco-tourism", text: "A new green-economy pilot in Benreu and Zhavame." },
+  {
+    title: "Eco-tourism",
+    text: "A new green-economy pilot in Benreu and Zhavame.",
+    image: { src: "/gallery-photos/community-conserved-areas/WhatsApp Image 2026-08-01 at 8.00.00 AM.webp", alt: "Fauna Range Conservation Committee signboard, Benreu" },
+  },
 ];
 
 export function ProjectsPage() {
@@ -93,7 +100,8 @@ export function ProjectsPage() {
           {CURRENT_WORK.map((item, i) => (
             <li key={item.title} className="flex gap-4 border-t border-[#e5e4e4] py-5">
               <span className="w-9 shrink-0 font-serif text-[26px] leading-none text-[#8A5A12]">{String(i + 1).padStart(2, "0")}</span>
-              <div>
+              <div className="min-w-0 flex-1">
+                <img src={item.image.src} alt={item.image.alt} loading="lazy" className="mb-4 aspect-[3/2] w-full object-cover bg-[#e5e4e4]" />
                 <h3 className="text-[17px] sm:text-[18px] font-semibold text-[#1A2E23]">{item.title}</h3>
                 <p className="mt-1.5 text-[16px] sm:text-[17px] leading-relaxed text-[#5B6660]">{item.text}</p>
               </div>

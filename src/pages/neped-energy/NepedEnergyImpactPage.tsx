@@ -32,7 +32,8 @@ const STATS = [
   { value: "~20k", label: "Farmers supported across phases", note: "7,000+ (NEPED-I) · 7,888 (NEPED-II) · 6,600 (NEPED-III)" },
 ];
 
-const THEMES: { id: string; eyebrow: string; title: string; stat: { value: string; label: string }; paragraphs: string[] }[] = [
+// photos: from the client's Drive "Web Site pics" folders (livelihood / CCA / Renewable Energy), per the blueprint
+const THEMES: { id: string; eyebrow: string; title: string; stat: { value: string; label: string }; paragraphs: string[]; photos: { src: string; alt: string }[] }[] = [
   {
     id: "livelihoods",
     eyebrow: "Livelihoods",
@@ -42,6 +43,11 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
       "Across NEPED-I and NEPED-II (1995–2006), more than 7,000 farmers in 854 villages were trained in agro-forestry, and a further 7,888 farmers grew cash crops through NEPED's micro-credit mechanism. The replication ratio of tree-planting was 1:6 — for every test plot NEPED supported, neighbouring farmers adopted the model six times over on their own land.",
       "In NEPED-II, women's Self-Help Groups accessed village funds and, for the first time in Nagaland's history, women purchased land in their own names — more than 30 plots, breaking traditional barriers that had excluded women from land ownership. They cultivated vegetables and short-term crops on these plots and repaid their loans from the produce.",
       "NEPED-III (2006–2012) supported a further 6,600 jhum farmers with land-based livelihood activities — piggery, poultry, weaving, rice mills, fishery, carpentry and more — funded by the Ministry of Agriculture.",
+    ],
+    photos: [
+      { src: "/gallery-photos/livelihoods/IMG-20231016-WA0011.webp", alt: "Villagers selling produce at a market shed" },
+      { src: "/gallery-photos/livelihoods/IMG-20250108-WA0004.webp", alt: "Villagers with their cattle" },
+      { src: "/gallery-photos/livelihoods/WhatsApp Image 2026-10-24 at 4.20.47 PM.webp", alt: "Women planting banana suckers" },
     ],
   },
   {
@@ -54,6 +60,11 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
       "Through the NEPED-SCEN programme, communities set aside areas within village lands as Community Conserved Areas, with village council resolutions restricting hunting, fishing and logging. NEPED supported the creation of biodiversity registers, resource maps and management plans, using the Blyth's Tragopan — the state bird of Nagaland — as a flagship species.",
       "This work continues under NEPED-IV / Forest and Biodiversity Management in the Himalaya (Nagaland), funded by Germany through KfW, across 35 villages — strengthening community-conserved areas, improving forest connectivity and supporting sustainable livelihoods.",
     ],
+    photos: [
+      { src: "/gallery-photos/community-conserved-areas/0a5cb78847584a01947e9e493a713102.webp", alt: "A mithun in community forest" },
+      { src: "/gallery-photos/community-conserved-areas/IMG-20260407-WA0017.webp", alt: "Camera traps for wildlife monitoring" },
+      { src: "/gallery-photos/community-conserved-areas/WhatsApp Image 2026-10-23 at 2.30.45 PM.webp", alt: "A river flowing through forested hills" },
+    ],
   },
   {
     id: "energy",
@@ -64,6 +75,11 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
       "NEPeD has installed 108 Hydrogers (3 kW pico-hydro units) across Nagaland, most of them in remote Indo-Myanmar border villages. Each Hydroger delivers 24×7 off-grid power to communities that had no reliable electricity supply — lighting homes, schools and health posts, and powering mills, blacksmithing, carpentry and food processing.",
       "Every unit is designed, manufactured and serviced within the state, at CERES (Centre of Excellence for Renewable Energy Studies) in Dimapur, in partnership with the Nagaland Tool Room and Training Centre.",
       "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Agency (MBDA), which installed them after training by NEPeD.",
+    ],
+    photos: [
+      { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 10.59.02 AM.webp", alt: "A Hydroger installed at a stream" },
+      { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 11.13.41 AM-2.webp", alt: "A Hydroger power house" },
+      { src: "/gallery-photos/renewable-energy/Screenshot_20230630_213425_WhatsApp.webp", alt: "A village street lit at night" },
     ],
   },
 ];
@@ -217,6 +233,11 @@ export function NepedEnergyImpactPage() {
               {t.paragraphs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
+              <div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {t.photos.map((photo) => (
+                  <img key={photo.src} src={photo.src} alt={photo.alt} loading="lazy" className="aspect-[4/3] w-full object-cover bg-[#e5e4e4]" />
+                ))}
+              </div>
             </div>
           </motion.div>
         </section>

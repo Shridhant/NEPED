@@ -33,7 +33,8 @@ const AIMS = [
 ];
 
 // Theory of Change — text verbatim from the copy supplied by the NEPED team
-const CHANGE_STAGES: { title: string; text: string; example: string; icon: LucideIcon }[] = [
+// image: step 2 uses a training photo from the client's Drive "Web Site pics / Community capacity", per the blueprint
+const CHANGE_STAGES: { title: string; text: string; example: string; icon: LucideIcon; image?: { src: string; alt: string } }[] = [
   {
     title: "Work with the community, not for it",
     text: "Every NEPED project begins with the village council. Communities identify their own needs, contribute labour, materials and governance, and take ownership from day one. NEPED provides the technical knowledge and the connection to funding — the community provides the mandate and the commitment.",
@@ -45,6 +46,7 @@ const CHANGE_STAGES: { title: string; text: string; example: string; icon: Lucid
     text: "NEPED trains farmers, village engineers, Self-Help Groups and government field staff — not as one-off events, but as an embedded part of every project cycle. Across three phases, more than 7,000 farmers and 2,000 state government officials completed capacity-building programmes. In the energy programme, rural engineers are trained on-site so that every Hydroger can be maintained and repaired within the village, without waiting for an external technician.",
     example: "When Kingjung's original bamboo penstock pipes deteriorated, the village committee and its trained engineers upgraded to GI pipes and rebuilt the power house in 2019 — a decade after installation — using the revenue the community had collected.",
     icon: GraduationCap,
+    image: { src: "/gallery-photos/community-capacity/IMG20230518144010.webp", alt: "A village training session in a community hall" },
   },
   {
     title: "Prove the model, then spread it",
@@ -210,7 +212,7 @@ export function NepedAboutPage() {
 
           <div>
             <ol className="list-none">
-              {CHANGE_STAGES.map(({ title, text, example, icon: Icon }, i) => (
+              {CHANGE_STAGES.map(({ title, text, example, icon: Icon, image }, i) => (
                 <motion.li
                   key={title}
                   initial={{ opacity: 0, y: 18 }}
@@ -231,6 +233,7 @@ export function NepedAboutPage() {
                       <span className="text-[#1E6F4C]">{i + 1}.</span> {title}
                     </h3>
                     <p className="text-[16px] sm:text-[17px] leading-[1.65] text-[#1A2E23]">{text}</p>
+                    {image ? <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[16/9] w-full object-cover bg-[#e5e4e4]" /> : null}
                     <div className=" bg-[#ffffff] border-l-[3px] border-[#E8A33D] px-5 py-4 sm:px-6 sm:py-5">
                       <p className="text-[15px] sm:text-[16px] leading-[1.6] text-[#1A2E23]">
                         <span className="font-semibold text-[#12432E]">Example: </span>
