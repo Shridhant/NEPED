@@ -64,20 +64,19 @@ export function NepedEconomicPage() {
           Desktop: the photo runs behind the whole hero; the left panel is frosted glass over it.
           Phones / tablets: same idea stacked — frosted panel on top, the sharp photo showing below it. Text verbatim from the homepage copy supplied by the NEPED team. */}
       <section className="relative overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-12 lg:grid-rows-1 bg-(--brand-surface) min-h-[calc(100svh-84px)]">
-        {/* Photo: DSC_0344 from the client's "Front page pics" folder, behind the whole hero on every screen size.
-            Phones / tablets get a portrait crop (cut from the 4288×2848 original, centred on the hill and the red-blossom tree)
-            so the photo isn't zoomed in and stays sharp; desktop gets the wide copies */}
+        {/* Photo: newbg.jpeg from the client's "Front page pics" folder (1280×720, so no copy larger than the original),
+            behind the whole hero on every screen size. Phones / tablets get a portrait crop centred on the valley */}
         <picture className="absolute inset-0">
           <source
             media="(max-width: 1023px)"
-            srcSet="/home-hero-mobile-800.webp 800w, /home-hero-mobile-1200.webp 1200w, /home-hero-mobile-1600.webp 1600w"
+            srcSet="/home-hero-valley-mobile-480.webp 480w"
             sizes="100vw"
           />
           <motion.img
-            src="/home-hero-1400.webp"
-            srcSet="/home-hero-800.webp 800w, /home-hero-1400.webp 1400w, /home-hero-2200.webp 2200w"
+            src="/home-hero-valley-1280.webp"
+            srcSet="/home-hero-valley-800.webp 800w, /home-hero-valley-1280.webp 1280w"
             sizes="100vw"
-            alt="Forested hills with autumn colours, Nagaland"
+            alt="Forested hills and a valley under a cloudy sky, Nagaland"
             fetchPriority="high"
             decoding="async"
             initial={{ scale: 1.06, opacity: 0 }}
