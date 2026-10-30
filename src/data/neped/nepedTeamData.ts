@@ -1,4 +1,4 @@
-/** NEPED team. POU names and roles as in the client's list (NEPED_Kohima Office_CERES.docx), in that order. */
+/** NEPED team. POU names and roles as in the client's list (NEPED_Kohima Office_CERES.docx); order as the client's list, except the Member Secretary comes second (per the team). */
 export interface TeamMember {
   id: string;
   name: string;
@@ -13,6 +13,12 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     name: "Shri. Kovi Meyase, NCS",
     role: "Team Leader",
     image: "/Team Leaders/Kovi Keyase, NCS -  - Team Leader.jpg.webp",
+  },
+  {
+    id: "7",
+    name: "Dr. Rokhu Savio Krocha",
+    role: "Member Secretary",
+    image: "/POU/Dr. Savio Krocha - POU member.jpg.webp",
   },
   {
     id: "2",
@@ -43,12 +49,6 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     name: "Atheo Ezung",
     role: "Member",
     image: "/POU/Atheo Ezung - POU member.jpg.webp",
-  },
-  {
-    id: "7",
-    name: "Dr. Rokhu Savio Krocha",
-    role: "Member Secretary",
-    image: "/POU/Dr. Savio Krocha - POU member.jpg.webp",
   },
 ];
 
