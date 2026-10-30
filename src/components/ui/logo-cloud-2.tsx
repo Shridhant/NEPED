@@ -15,38 +15,34 @@ type LogoCloudProps = React.ComponentProps<"div"> & {
   lead?: ReactNode;
 };
 
-// Columns at each breakpoint; the grid is padded with empty cells to a multiple of both
+// Columns at each breakpoint
 const COLS = { base: 2, md: 4 } as const;
 
-/** Bordered logo grid: every logo gets an equal cell, alternating backgrounds, plus marks at the inner corners. */
+/**
+ * Bordered logo grid: every logo gets an equal cell, plus marks at the inner corners.
+ * A short last row is centred (no empty filler cells). Cells draw their own left/right/top borders,
+ * overlapped by 1px so neighbouring lines collapse into one; the bottom line comes from the parent.
+ */
 export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) {
-  const cells: (ReactNode | Logo | null)[] = lead ? [lead, ...logos] : [...logos];
-  while (cells.length % COLS.md !== 0) cells.push(null);
+  const cells: (ReactNode | Logo)[] = lead ? [lead, ...logos] : [...logos];
 
-  const at = (i: number, cols: number) => {
-    const rows = cells.length / cols;
+  // Corner mark only where this row and the row below are both full, so every mark sits on a real crossing
+  const corner = (i: number, cols: number) => {
+    const fullRows = Math.floor(cells.length / cols);
     const row = Math.floor(i / cols);
-    const col = i % cols;
-    return { alt: (row + col) % 2 === 1, corner: col < cols - 1 && row < rows - 1 };
+    return i % cols < cols - 1 && row + 1 < fullRows;
   };
 
   return (
-    <div
-      className={cn("grid grid-cols-2 gap-px border-x border-[#e5e4e4] bg-[#e5e4e4] md:grid-cols-4", className)}
-      {...props}
-    >
+    <div className={cn("flex flex-wrap justify-center", className)} {...props}>
       {cells.map((cell, i) => {
-        const base = at(i, COLS.base);
-        const md = at(i, COLS.md);
+        const base = corner(i, COLS.base);
+        const md = corner(i, COLS.md);
         const isLogo = cell !== null && typeof cell === "object" && "src" in (cell as Logo);
         return (
           <div
             key={i}
-            className={cn(
-              "relative flex h-36 items-center justify-center px-4 md:h-44 md:px-8",
-              base.alt ? "bg-[#ffffff]" : "bg-[#ffffff]",
-              md.alt ? "md:bg-[#ffffff]" : "md:bg-[#ffffff]",
-            )}
+            className="relative -mt-px -ml-px flex h-36 w-[calc(50%+1px)] items-center justify-center border-x border-t border-[#e5e4e4] bg-[#ffffff] px-4 md:h-44 md:w-[calc(25%+1px)] md:px-8"
           >
             {isLogo ? (
               <img
@@ -62,14 +58,14 @@ export function LogoCloud({ logos, lead, className, ...props }: LogoCloudProps) 
             ) : (
               (cell as ReactNode)
             )}
-            {base.corner || md.corner ? (
+            {base || md ? (
               <PlusIcon
                 aria-hidden
                 strokeWidth={1}
                 className={cn(
                   "absolute -right-[12.5px] -bottom-[12.5px] z-10 size-6 text-[#1A2E23]",
-                  base.corner ? "block" : "hidden",
-                  md.corner ? "md:block" : "md:hidden",
+                  base ? "block" : "hidden",
+                  md ? "md:block" : "md:hidden",
                 )}
               />
             ) : null}
