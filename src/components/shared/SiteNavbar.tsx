@@ -74,7 +74,7 @@ const NAV: NavEntry[] = [
     // Verbatim from the NEPED About Us page
     description:
       "Nagaland Empowerment of People through Economic Development (NEPED) is a Government of Nagaland programme project set up in 1995. Initially it implemented the ICEF project, the first ever foreign funded project in Nagaland.",
-    image: "/dzukou-valley-1400.webp", // same photo as the NEPED homepage hero
+    image: "/home-hero-1400.webp", // same photo as the NEPED homepage hero
     ...NEPED_GREEN,
   },
   {

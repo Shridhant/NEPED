@@ -64,19 +64,20 @@ export function NepedEconomicPage() {
           Desktop: the photo runs behind the whole hero; the left panel is frosted glass over it.
           Phones / tablets: same idea stacked — frosted panel on top, the sharp photo showing below it. Text verbatim from the homepage copy supplied by the NEPED team. */}
       <section className="relative overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-12 lg:grid-rows-1 bg-(--brand-surface) min-h-[calc(100svh-84px)]">
-        {/* Photo: Dzukou Valley, behind the whole hero on every screen size. Phones / tablets get a portrait crop
-            (cut from the 6000×4000 original) so the photo isn't zoomed in and stays sharp; desktop gets the wide copies */}
+        {/* Photo: DSC_0344 from the client's "Front page pics" folder, behind the whole hero on every screen size.
+            Phones / tablets get a portrait crop (cut from the 4288×2848 original, centred on the hill and the red-blossom tree)
+            so the photo isn't zoomed in and stays sharp; desktop gets the wide copies */}
         <picture className="absolute inset-0">
           <source
             media="(max-width: 1023px)"
-            srcSet="/dzukou-valley-mobile-800.webp 800w, /dzukou-valley-mobile-1200.webp 1200w, /dzukou-valley-mobile-1600.webp 1600w"
+            srcSet="/home-hero-mobile-800.webp 800w, /home-hero-mobile-1200.webp 1200w, /home-hero-mobile-1600.webp 1600w"
             sizes="100vw"
           />
           <motion.img
-            src="/dzukou-valley-1400.webp"
-            srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
+            src="/home-hero-1400.webp"
+            srcSet="/home-hero-800.webp 800w, /home-hero-1400.webp 1400w, /home-hero-2200.webp 2200w"
             sizes="100vw"
-            alt="Dzukou Valley, Nagaland"
+            alt="Forested hills with autumn colours, Nagaland"
             fetchPriority="high"
             decoding="async"
             initial={{ scale: 1.06, opacity: 0 }}
