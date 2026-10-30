@@ -87,7 +87,7 @@ export function ProjectTimeline() {
   );
 }
 
-// Logos of the funders and partners (public/logos). No Ministry of Textiles or MBDA logo yet.
+// Logos of the funders and partners (public/logos), from the client's "Partner agency" folder.
 const FUNDERS: Logo[] = [
   { alt: "Canadian International Development Agency (CIDA)", src: "/logos/cida.jpeg", className: "max-h-[72px] max-w-[192px]" },
   { alt: "Ministry of Agriculture & Farmers Welfare, GoI", src: "/logos/ministry-of-agriculture.jpeg", className: "max-h-[72px] max-w-[198px]" },
@@ -97,6 +97,15 @@ const FUNDERS: Logo[] = [
   { alt: "North Eastern Council (NEC)", src: "/logos/nec.jpeg", className: "max-h-[84px] max-w-[108px]" },
   { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-[66px] max-w-[198px]" },
   { alt: "Foundation for Ecological Security (FES)", src: "/logos/fes.jpeg", className: "max-h-[72px] max-w-[160px]" },
+  { alt: "Ministry of Textiles, GoI", src: "/logos/ministry-of-textiles.png", className: "max-h-[66px] max-w-[198px]" },
+  { alt: "Meghalaya Basin Development Agency (MBDA)", src: "/logos/mbda.webp", className: "max-h-[96px] max-w-[96px]" },
+  { alt: "Government of Nagaland", src: "/logos/seal-of-nagaland.svg", className: "max-h-[96px] max-w-[96px]" },
+  { alt: "Department of Environment, Forests & Climate Change, Nagaland", src: "/logos/dept-environment-forests-nagaland.webp", className: "max-h-[96px] max-w-[96px]" },
+  { alt: "Department of Agriculture, Govt. of Nagaland", src: "/logos/dept-agriculture-nagaland.webp", className: "max-h-[96px] max-w-[96px]" },
+  { alt: "ICIMOD", src: "/logos/icimod.webp", className: "max-h-[72px] max-w-[180px]" },
+  { alt: "International Livestock Research Institute (ILRI)", src: "/logos/ilri.webp", className: "max-h-[72px] max-w-[150px]" },
+  { alt: "GIZ", src: "/logos/giz.webp", className: "max-h-[72px] max-w-[198px]" },
+  { alt: "International Development Research Centre (IDRC)", src: "/logos/idrc.webp", className: "max-h-[80px] max-w-[160px]" },
 ];
 
 /** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */

@@ -114,21 +114,33 @@ const SUBNAV = [
   { id: "road-ahead", label: "The Road Ahead" },
 ];
 
-// Policy & Government Impact — from "NEPED ImpactsPDF.pdf", newest first. Quotes to be added word for word once the PDF is in.
-const POLICY_IMPACT: { year: string; heading: string; source: string }[] = [
+// Policy & Government Impact — from "NEPED ImpactsPDF.pdf", newest first. Quotes word for word from the PDF, with the
+// typos fixed per the blueprint ("sultivation" → "cultivation", "STRENGTHNING" → "STRENGTHENING") and line-break
+// hyphen gaps closed ("Agro- forestry", "Non- Conventional"). Item 6 (1999) has no quote in the PDF.
+const POLICY_IMPACT: { year: string; heading: string; quotes?: string[]; source: string }[] = [
   {
     year: "2004 (11 Nov)",
     heading: "RSVY district plan for Mon uses the NEPED-II model to channel funds to farmers, entrepreneurs and SHGs",
+    quotes: [
+      "… Fortunately, in the state, there is an experience available of the application of an alternative sustain under a Project called NEPED Project, Phase-II …",
+      "… The model under the given situation of the district has been considered and made use for channelising RSVY funds to the village and town components of the plan so that the farmers, entrepreneurs and SHGs find access to the investment necessary for undertaking income generating activities uplifting their economy …",
+    ],
     source: "Summary of District Plan under RSVY, Mon; Dr. K. Haloi, NIRD North Eastern Regional Centre, Guwahati",
   },
   {
     year: "2004 (25 Feb)",
     heading: "UNDP accepts Nagaland's Village Development Boards as CBOs for the GEF Small Grants Programme, with pilot micro-hydel funding linked to MNES and NEPED",
+    quotes: [
+      "Later the NC as per the recommendations of the last NSC meeting made a presentation on the involvement of the “Village Development Boards” from Nagaland also as CBOs particularly for the North East Regions of India. Further during discussions Shri Anil Arora explained how it would be useful to work with CBOs and after deliberations, it was decided that the VDBs could be considered as a learning experience as CBOs in Nagaland for GEF SGP. It was agreed that funding on a pilot basis for micro hydel and related projects as a special case, to be linked with the Ministry of Non-Conventional Energy Sources (MNES), NEPED and others could be taken up",
+    ],
     source: "UNDP India, IND/98/G52",
   },
   {
     year: "2002 (24 Dec)",
     heading: "Ministry of Environment & Forests recommends Nagaland's agro-forestry model (Indo-Canadian project) for strengthening Joint Forest Management",
+    quotes: [
+      "Agro-forestry models developed in various states under different conditions should be studied and adopted. A case in point is the Agro-forestry model developed by Nagaland under the Indo-Canadian Environment Project to control shifting cultivation",
+    ],
     source: "GoI, MoEF (JFM Cell), No. 22-8/2000-JFM(FPD)",
   },
   {
@@ -139,11 +151,17 @@ const POLICY_IMPACT: { year: string; heading: string; source: string }[] = [
   {
     year: "1997 (Mar)",
     heading: "Shukla Commission calls NEPED \"a critical lead programme\" for the Northeast",
+    quotes: [
+      "NEPED’s potential for mapping, conserving, developing and exploiting the enormous bio-diversity of the Northeast marks it out as a critical lead programme. The necessary funding, manpower development and other support required for its careful evaluation and refinement for replication or adoption elsewhere in the Region must be made available.",
+    ],
     source: "High Level Commission report to the Prime Minister, Planning Commission, 7 March 1997",
   },
   {
     year: "1997 (Apr)",
     heading: "Forest-policy study says NEPED's approach to improving shifting cultivation \"may perhaps be more appropriate\"",
+    quotes: [
+      "Since efforts at containment, management and gradual reduction of shifting cultivation will have to continue for quite some time and possibility of its elimination in near future is rather remote, the strategy adopted by NEPED project in Nagaland for improvement of the practice may perhaps be more appropriate",
+    ],
     source: "Dr. J. K. Rawat & D. P. Bankhwal, Forest Policy and Legal Framework in HP, UP, J&K and NE India, Dehra Dun",
   },
 ];
@@ -230,6 +248,11 @@ export function NepedEnergyImpactPage() {
               <li key={item.heading} className="border-t border-[#dbe5de] py-6 sm:py-7 flex flex-col gap-2.5">
                 <span className="text-[13px] font-semibold text-[#8A5A12]">{item.year}</span>
                 <h3 className="text-[19px] sm:text-[21px] leading-[1.4] text-[#1A2E23]">{item.heading}</h3>
+                {item.quotes?.map((q) => (
+                  <blockquote key={q} className="border-l-[3px] border-[#E8A33D] pl-4 sm:pl-5 font-serif text-[16px] sm:text-[17px] leading-[1.6] text-[#12432E]">
+                    “{q}”
+                  </blockquote>
+                ))}
                 <p className="text-[14px] leading-snug text-[#5B6660]">{item.source}</p>
               </li>
             ))}
