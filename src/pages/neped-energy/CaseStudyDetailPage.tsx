@@ -69,7 +69,7 @@ export function CaseStudyDetailPage() {
       {/* Photos (public/<slug>/) */}
       {photos.length > 0 && (
         <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-          <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
+          <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 2 ? "sm:grid-cols-2 lg:grid-cols-3" : photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
             {photos.map((photo) => (
               <figure key={photo.src}>
                 <div className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">
@@ -237,7 +237,7 @@ function FivePartCaseStudy({ data, photos, prevNext }: { data: CaseStudyFivePart
       {/* Photos (public/<slug>/) */}
       {photos.length > 0 && (
         <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-          <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
+          <div className={`grid grid-cols-1 gap-4 sm:gap-5 ${photos.length > 2 ? "sm:grid-cols-2 lg:grid-cols-3" : photos.length > 1 ? "sm:grid-cols-2" : "max-w-[760px]"}`}>
             {photos.map((photo) => (
               <figure key={photo.src}>
                 <div className="overflow-hidden bg-[#F3F6F3] ring-1 ring-black/5">

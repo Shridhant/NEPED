@@ -5,6 +5,9 @@ import type { CaseStudyFiveParts } from "@/data/neped-energy/caseStudyFiveParts"
  * NEPED (non-energy) case studies — text verbatim from "NEPED Case Studies.pdf", in its order (case studies 1–7).
  * Left out: the "Photos: … NEPED to supply" notes, and case study 8 (Women and self-help groups), which the PDF
  * calls a framework with open [Confirm] / [NEPED to name…] items. overview = first sentence of "The place".
+ * "womens-participation": text verbatim from WMENFOTO.pdf (Vizonyu Liezie), sorted into the five parts in the PDF's order;
+ * it names no place and no owner, so parts 1 and 4 are left out (numbers kept). Edits: list items start with a capital,
+ * sub-headings ("Women's Test Plots" …) lead their list item. overview = its first sentence.
  */
 export const NEPED_CASE_STUDIES: CaseStudy[] = [
   {
@@ -61,6 +64,14 @@ export const NEPED_CASE_STUDIES: CaseStudy[] = [
     categories: ["Farming systems"],
     title: "A fourth year of harvest: testing legume rotations in eight districts",
     overview: "Eight villages in eight districts of Nagaland, chosen near main roads so the plots could serve as demonstrations.",
+    sections: [],
+  },
+  {
+    slug: "womens-participation",
+    place: "Nagaland",
+    categories: ["Livelihoods", "Conservation / Agroforestry"],
+    title: "Women's Participation in NEPED",
+    overview: "The main thrust of the NEPED (Nagaland Environment Protection and Economic Development) activity is on development of villages through tree plantation and agricultural farming.",
     sections: [],
   },
 ];
@@ -483,6 +494,62 @@ export const NEPED_CASE_STUDY_FIVE_PARTS: Record<string, CaseStudyFiveParts> = {
               "The lasting result was bigger than the trial. Legumes were built into NEPED's and other Government rural livelihood programmes. The trials also helped the Government of Nagaland recognise French beans as a major commercial crop for the eastern districts.",
             ],
           },
+        ],
+      },
+    ],
+  },
+  "womens-participation": {
+    lineage: "Economic Development",
+    title: "Women's Participation in NEPED",
+    location: "Case study of women empowerment  ·  By Vizonyu Liezie",
+    stats: [
+      { value: "80", label: "Test plots established by women groups" },
+      { value: "80", label: "Women's nurseries supported" },
+      { value: "213", label: "Women from 123 villages given basic training" },
+      { value: "30", label: "Women from 21 villages given advanced training" },
+    ],
+    parts: [
+      {
+        num: 2,
+        heading: "The need",
+        blocks: [
+          { type: "p", text: "The main thrust of the NEPED (Nagaland Environment Protection and Economic Development) activity is on development of villages through tree plantation and agricultural farming. The interest of the villagers has already been aroused and massive plantation of trees was carried out in the State. The most critical component was availability of quantity and quality planting stock for success of any tree-planting programme. Therefore proper management of nursery and tree planting activities play a dominant role. Though the knowledge on local species of trees is yet quite poor, the POU (Project Operations Unit) has made some progress by raising nurseries throughout the state and documented them as well." },
+          { type: "p", text: "Initially, in each of the districts, one nursery was established to try out some local species with a view to supplement requirement of saplings for the test plots. But nurseries so established could not succeed due to poor management and finally, the POU had to decide to wind up many of those nurseries, which could not show performance. In order to establish a good tree nursery, the site is first selected followed by initial preparation viz. Fencing, construction of rest shed, selection of species, procurement of seeds, arrangement of implements and other inputs, preparation of soil for sowing, raising saplings and maintenance. As nursery bed preparation starts with the onset of monsoon, training of nursery personnel need to be imparted well in advance." },
+        ],
+      },
+      {
+        num: 3,
+        heading: "What NEPED brought",
+        blocks: [
+          { type: "p", text: "The component of gender dimension was not originally incorporated in the project proposal. It is however, globally accepted norm for inclusion of gender issue and at the instance of the IDRC (International Development Research Centre), was added at a later stage. A POU member was specifically entrusted to look after the issue. In order to build up local capability to conduct training in women empowerment and participation in development, another women coordinator was inducted to assist the lone member. The gender issue is a very vast subject. The extent of handling this issue within the project performance is minimal but effective during the short tenure of the project." },
+          { type: "p", text: "There is a need to focus a classification of gender sharing in the nature of management of any productive project. This concept may probably be analysed on the basis of cultural life style of a natural society; division of works in particular. In order to solve the complexity of diverse nature of work in different ethnicity, projects of any sort may therefore be illustratively classified in term of light and heavy nature of work. The light works may be given to the women group and the heavy works assigned to the menfolk. This type of classificatory nature has a relative root in natural growth and physical strength of mankind. However, the concept does not mean to confine to womenfolk in such work such as nursery, the fact that establishment of a nursery project can be common to both sexes, for instance, shed construction will obviously be the work of menfolk and maintenance, or watering is suitable to gender domination. As far as the present sharing system is concerned, it is justified for the reason that the percentage of division is streamlined for the simplicity sake." },
+          { type: "p", text: "There are 3 components for women's participation in the project:" },
+          {
+            type: "list",
+            items: [
+              "Women's Test Plots. The Village Councils were advised to allot one of the test plots to the women. If the women are very keen and capable, an additional test plot is also allowed. There are altogether 80 test plots established by the Women groups. In fact this idea occurred when one village was allotted a test plot to the women during 1995 in Kohima district. This test plot was performing very well.",
+              "Women's Nursery. The women groups wherever willing and capable, were assisted to establish nurseries. The cash assistance is limited to Rs. 30,000 per nursery. Out of 80 nurseries supported, some have been continuing at good profit. The POU provided technical guidance through training and supervision. A recent decision was also taken to make the tree nurseries the 'hub' around which various awareness training for the women could be conducted.",
+              "Women's Empowerment Training. A more positive role for women than just caring nurseries was in the component of women empowerment which was included as a separate item. The woman has a triple role to play as caretaker of farms, household and child care activities. Two courses were provided to the women in training namely the basic training and the advanced training of selected candidates from those who have undergone the basic course. So far, 213 women from 123 different villages and 30 women from 21 villages are given Basic and Advance empowerment training respectively. The empowerment includes letting women to choose in decision making process by actively participating in it. The training was emphasized on group participation and how best the problems could be solved mutually for the improvement of the quality of women's life. The POU has not yet applied their mind as to how to proceed beyond giving advance training to the women. The empowerment means building up self-reliance, confidence and participation in decision making process.",
+            ],
+          },
+          { type: "p", text: "Exposure Trips. The exchange visits for women outside the state were organised by the POU in order to make them aware with what have been happening outside their homes. Accordingly, groups of women selected from different districts were taken to visit other projects. The participants were not just women farmers but they have certain initiatives and potentials to act as trainers in their respective villages to create awareness about the environment and related problem and women issues." },
+        ],
+      },
+      {
+        num: 5,
+        heading: "What changed",
+        blocks: [
+          { type: "p", text: "Several issues emerged from the Women's empowerment training conducted:" },
+          {
+            type: "list",
+            items: [
+              "Some women have taken up the infrastructural projects such as building construction, rice mill and orchard as well from the 25% women's share of VDB fund.",
+              "Some have taken up of livestock, apiculture, and other farming systems.",
+              "Another group of women could impose fine on the owners of cattle against their nursery damage.",
+              "Sometimes conflict issues come up which led to differences among the groups and with Village Council as well.",
+            ],
+          },
+          { type: "callout", text: "The success rate of implementation of any developmental project for women if prepared as per need base is more successful." },
         ],
       },
     ],

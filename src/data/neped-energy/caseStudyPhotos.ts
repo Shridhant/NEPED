@@ -29,4 +29,11 @@ export const CASE_STUDY_PHOTOS: Record<string, CaseStudyPhoto[]> = {
     photo("kaha", "Villagers transporting hydroger.jpg", "Villagers transporting hydroger"),
     photo("kaha", "Powerhouse.jpg", "Powerhouse"),
   ],
+  "womens-participation": [
+    photo("womens-participation", "NEPED team with a woman farmer at a nursery.webp"),
+    photo("womens-participation", "Village tree nursery.webp"),
+    photo("womens-participation", "Women's test plot.webp"),
+    photo("womens-participation", "Women's nursery.webp"),
+    photo("womens-participation", "Women's empowerment training group.webp"),
+  ],
 };
