@@ -44,10 +44,10 @@ const HOME_STATS = [
   { value: "60+", label: "CCAs strengthened" },
 ];
 const HOME_THEMES = [
-  { title: "Land, Water & Biodiversity", text: "agro-forestry on jhum land, watershed restoration, and community-led conservation.", icon: Leaf, to: NEPED_PATHS.projects },
-  { title: "Livelihoods & Enterprise", text: "helping Naga farmers move from subsidy to self-reliance through cash crops, micro-credit and rural enterprise.", icon: Wallet, to: NEPED_PATHS.projects },
+  { title: "Land, Water & Biodiversity", text: "Agro-forestry on jhum land, watershed restoration, and community-led conservation.", icon: Leaf, to: NEPED_PATHS.projects },
+  { title: "Livelihoods & Enterprise", text: "Helping Naga farmers move from subsidy to self-reliance through cash crops, micro-credit and rural enterprise.", icon: Wallet, to: NEPED_PATHS.projects },
   { title: "Energy", text: "'Made in Nagaland' Hydrogers bringing 24×7 clean power to off-grid and border villages.", icon: Zap, to: NEPED_ENERGY_PATHS.home },
-  { title: "CERES", text: "our Centre of Excellence in Dimapur, where renewable technology is researched and built.", icon: FlaskConical, to: NEPED_ENERGY_PATHS.technology },
+  { title: "CERES", text: "Our Centre of Excellence in Dimapur, where renewable technology is researched and built.", icon: FlaskConical, to: NEPED_ENERGY_PATHS.technology },
 ];
 
 export function NepedEconomicPage() {
