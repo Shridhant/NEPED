@@ -24,6 +24,8 @@ import { useOpenContact } from "@/lib/contact";
 // Small uppercase label above each homepage section
 const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#12432E]";
 const H2 = "text-[30px] sm:text-[44px] font-light text-[#1A2E23] tracking-[-1px] leading-[1.12]";
+// Full name under the "Who we are" abbreviation; capitalised words give the highlighted initials N-E-P-E-D
+const NEPED_FULL_NAME = ["Nagaland", "Empowerment", "of", "People", "through", "Economic", "Development"];
 // The seven aims, shortened (text as in the supplied design)
 const AIMS = [
   { title: "Raise rural incomes", text: "Diversified agro-forestry and farm enterprise." },
@@ -129,10 +131,33 @@ export function NepedEconomicPage() {
       {/* HOMEPAGE STORY — mission line, stat strip, what we do, featured case study, across borders.
           All text verbatim from the homepage copy supplied by the NEPED team ("NEPeD Hydrogers" per the team). */}
 
-      {/* MISSION LINE */}
-      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
-        <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Who we are</p>
-        <p className="max-w-[980px] font-serif text-[28px] sm:text-[40px] lg:text-[46px] leading-[1.18] tracking-[-0.3px] text-[#1A2E23] text-balance">
+      {/* MISSION LINE — the NEPED abbreviation and its full name on the left, the description on the right */}
+      <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-center">
+        <div className="lg:col-span-5">
+          <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Who we are</p>
+          <abbr
+            title={NEPED_FULL_NAME.join(" ")}
+            className="block no-underline font-serif text-[72px] sm:text-[104px] lg:text-[120px] leading-[0.9] tracking-[-2px] text-[#12432E]"
+          >
+            NEPED
+          </abbr>
+          <p className="mt-5 max-w-[360px] text-[16px] sm:text-[18px] leading-[1.45] text-[#5B6660]">
+            {NEPED_FULL_NAME.map((word, i) => (
+              <span key={word}>
+                {i > 0 ? " " : null}
+                {/^[A-Z]/.test(word) ? (
+                  <>
+                    <span className="font-semibold text-[#1E6F4C]">{word[0]}</span>
+                    {word.slice(1)}
+                  </>
+                ) : (
+                  word
+                )}
+              </span>
+            ))}
+          </p>
+        </div>
+        <p className="lg:col-span-7 lg:border-l lg:border-[#dbe5de] lg:pl-12 font-serif text-[26px] sm:text-[34px] lg:text-[36px] leading-[1.25] tracking-[-0.3px] text-[#1A2E23] text-balance">
           We are an autonomous Government of Nagaland society with one purpose: to bridge the state's development gaps through ideas, technology and partnership that put communities in charge of their own future.
         </p>
       </motion.section>
