@@ -3,6 +3,13 @@ import { Download } from "lucide-react";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /* Resources & Downloads — text and documents verbatim as supplied by the NEPED team */
+// Files in public/; labels are the documents' names as supplied by the NEPED team
+const DOWNLOADS = [
+  { label: "Capability Statement", href: "/NEPED_Capability_Statement.pdf" },
+  { label: "NEPED Leaflet (PRA)", href: "/NEPED_Leaflet_PRA.pdf" },
+  { label: "Exploring Gender Dimension into NEPED", href: "/Exploring_Gender_Dimension_into_NEPED.pdf" },
+];
+
 export function ResourcesPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -19,16 +26,18 @@ export function ResourcesPage() {
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a
-              href="/NEPED_Capability_Statement.pdf"
-              download
-              className="group flex items-center justify-between gap-4 h-full border border-black/10 bg-[#ffffff] px-6 py-5 text-[17px] sm:text-[18px] text-[#1A2E23] hover:border-[#1E6F4C] transition-colors duration-300 ease-in-out"
-            >
-              <span>Capability Statement</span>
-              <Download size={20} strokeWidth={1.5} className="shrink-0 text-[#1E6F4C] transition-transform duration-300 ease-in-out group-hover:translate-y-0.5" />
-            </a>
-          </li>
+          {DOWNLOADS.map((doc) => (
+            <li key={doc.href}>
+              <a
+                href={doc.href}
+                download
+                className="group flex items-center justify-between gap-4 h-full border border-black/10 bg-[#ffffff] px-6 py-5 text-[17px] sm:text-[18px] text-[#1A2E23] hover:border-[#1E6F4C] transition-colors duration-300 ease-in-out"
+              >
+                <span>{doc.label}</span>
+                <Download size={20} strokeWidth={1.5} className="shrink-0 text-[#1E6F4C] transition-transform duration-300 ease-in-out group-hover:translate-y-0.5" />
+              </a>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
