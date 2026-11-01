@@ -14,6 +14,14 @@ import {
 import AnimatedCardStack from "@/components/ui/animate-card-animation";
 import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-carousel";
 import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
+import { NEPED_CASE_STUDIES, NEPED_CASE_STUDY_FIVE_PARTS } from "@/data/neped/nepedCaseStudies";
+import { CASE_STUDY_PHOTOS } from "@/data/neped-energy/caseStudyPhotos";
+
+/** Hero featured case study: Women's Participation in NEPED */
+const FEATURED_SLUG = "womens-participation";
+const featured = NEPED_CASE_STUDIES.find((s) => s.slug === FEATURED_SLUG)!;
+const featuredParts = NEPED_CASE_STUDY_FIVE_PARTS[FEATURED_SLUG];
+const featuredPhoto = CASE_STUDY_PHOTOS[FEATURED_SLUG][0];
 
 export function HomePage() {
   useEffect(() => {
@@ -105,17 +113,17 @@ export function HomePage() {
               {/* Image banner with phase tag */}
               <div className="relative h-[115px] sm:h-[125px] overflow-hidden bg-[#12432E]">
                 <img
-                  src="/forest.webp"
-                  alt="NEPED agroforestry project landscape"
+                  src={featuredPhoto.src}
+                  alt={featuredPhoto.alt}
                   className="h-full w-full object-cover opacity-85 transition-transform duration-500 hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12432E]/90 via-transparent to-transparent" />
                 <div className="absolute left-3.5 top-3.5 flex items-center gap-2">
                   <span className=" border border-white/20 bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12px] text-[#ffffff]">
-                    Featured Heritage
+                    Featured Case Study
                   </span>
                   <span className="text-[10px] font-mono text-[#e5e4e4]/70 uppercase">
-                    Phase I (1995–2000)
+                    {featuredParts.lineage}
                   </span>
                 </div>
               </div>
@@ -124,31 +132,29 @@ export function HomePage() {
               <div className="p-4 sm:p-5 space-y-3.5">
                 <div>
                   <h3 className="text-[17px] sm:text-[18px] font-light leading-[1.2] text-[#ffffff] tracking-[-0.2px]">
-                    Agroforestry in Shifting Cultivation
+                    {featured.title}
                   </h3>
                   <p className="mt-1.5 text-[12px] sm:text-[13px] leading-relaxed text-[#e5e4e4]/75">
-                    The founding ICEF/CIDA initiative enriched traditional jhum fields with economic trees across village-managed test plots.
+                    {featured.overview}
                   </p>
                 </div>
 
                 {/* Key Metrics Grid */}
                 <div className="grid grid-cols-2 gap-3 border-t border-white/12 pt-3">
-                  <div className="bg-white/[0.04] p-2.5 border border-white/8">
-                    <div className="text-[18px] sm:text-[20px] font-light text-[#ffffff] tracking-tight">7.8M+</div>
-                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Trees Planted</div>
-                  </div>
-                  <div className="bg-white/[0.04] p-2.5 border border-white/8">
-                    <div className="text-[18px] sm:text-[20px] font-light text-[#ffffff] tracking-tight">854</div>
-                    <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">Villages Reached</div>
-                  </div>
+                  {[featuredParts.stats[0], featuredParts.stats[2]].map((stat) => (
+                    <div key={stat.label} className="bg-white/[0.04] p-2.5 border border-white/8">
+                      <div className="text-[18px] sm:text-[20px] font-light text-[#ffffff] tracking-tight">{stat.value}</div>
+                      <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#e5e4e4]/60">{stat.label}</div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Bottom link */}
                 <Link
-                  to={NEPED_PATHS.project("neped-1-agroforestry-shifting-cultivation")}
+                  to={NEPED_ENERGY_PATHS.caseStudy(FEATURED_SLUG)}
                   className="pt-1 flex items-center justify-between text-[12px] sm:text-[13px] text-[#ffffff] hover:text-[#1E6F4C] transition-colors group cursor-pointer"
                 >
-                  <span className="font-medium">Explore Project Case Study</span>
+                  <span className="font-medium">Read the Case Study</span>
                   <span className="text-[15px] transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </Link>
               </div>
