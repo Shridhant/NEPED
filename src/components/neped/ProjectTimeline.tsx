@@ -106,6 +106,7 @@ const FUNDERS: Logo[] = [
   { alt: "International Livestock Research Institute (ILRI)", src: "/logos/ilri.webp", className: "max-h-[72px] max-w-[150px]" },
   { alt: "GIZ", src: "/logos/giz.webp", className: "max-h-[72px] max-w-[198px]" },
   { alt: "International Development Research Centre (IDRC)", src: "/logos/idrc.webp", className: "max-h-[80px] max-w-[160px]" },
+  { alt: "NagaEd", src: "/logos/nagaed.png", className: "max-h-[72px] max-w-[160px]" },
 ];
 
 /** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */
