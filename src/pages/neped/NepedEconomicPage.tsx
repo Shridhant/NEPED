@@ -206,30 +206,30 @@ export function NepedEconomicPage() {
         </MobileShowMore>
       </motion.section>
 
-      {/* FEATURED CASE STUDY — Kingjung */}
+      {/* FEATURED CASE STUDY — Women's Participation in NEPED */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>Stories from the field</p>
         <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden bg-[#F3F6F3]">
           <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[440px]">
             <img
-              src="/20 Kingjung Village Energy Committee (2).webp"
-              alt="Kingjung Village Energy Committee"
+              src="/womens-participation/NEPED team with a woman farmer at a nursery.webp"
+              alt="NEPED team with a woman farmer at a nursery"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
           <div className="p-7 sm:p-10 lg:p-14 flex flex-col justify-center gap-6">
             <h2 className="font-serif text-[32px] sm:text-[44px] leading-[1.08] tracking-[-0.3px] text-[#1A2E23] text-balance">
-              Kingjung: a village powered by its own river
+              Women's Participation in NEPED
             </h2>
             <p className="text-[16px] sm:text-[17px] leading-relaxed text-[#5B6660]">
-              A community-managed 3 kW Hydroger delivers 24×7 off-grid power to Kingjung, Thonoknyu — run by a seven-member village energy committee and driving mills, blacksmithing and daily life.
+              The main thrust of the NEPED (Nagaland Environment Protection and Economic Development) activity is on development of villages through tree plantation and agricultural farming.
             </p>
-            <Link to={NEPED_ENERGY_PATHS.caseStudy("kingjung")} className="group inline-flex items-center gap-4 w-fit">
+            <Link to={NEPED_ENERGY_PATHS.caseStudy("womens-participation")} className="group inline-flex items-center gap-4 w-fit">
               <span className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-full bg-[#1E6F4C] text-[#ffffff] flex items-center justify-center transition-transform duration-500 ease-in-out group-hover:scale-105">
                 <ArrowRight className="h-5 w-5 transition-transform duration-500 ease-in-out group-hover:translate-x-0.5" strokeWidth={1.5} />
               </span>
-              <span className="text-[16px] text-[#1A2E23]">Read the Kingjung story</span>
+              <span className="text-[16px] text-[#1A2E23]">Read the story</span>
             </Link>
           </div>
         </div>
