@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { GALLERY_ALBUMS_DATA } from "@/data/shared/galleryAlbumsData";
+import { GALLERY_ALBUMS_DATA } from "@/lib/siteContent";
 
 /*
  * Site intro, built from components/ui/layout-preloader.tsx: flips through one gallery photo per

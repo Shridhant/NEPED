@@ -1,0 +1,41 @@
+{
+  "name": "neped-cms",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NEPED website content manager (Strapi)",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "import-content": "node scripts/import-content.mts"
+  },
+  "dependencies": {
+    "@strapi/database": "5.61.0",
+    "@strapi/plugin-users-permissions": "5.61.0",
+    "@strapi/strapi": "5.61.0",
+    "pg": "8.20.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22.0.0 <=26.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "724cd980-d239-44ad-8c44-cf385df568e7",
+    "installId": "fd36daa6c8913bba3880303b55ce7d6c1fc7b0f20877dc410b08ab4a5055af03"
+  }
+}

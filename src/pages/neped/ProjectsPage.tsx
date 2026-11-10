@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { PROJECT_LIST } from "@/data/neped/projectList";
+import { PROJECT_LIST } from "@/lib/siteContent";
 import { fadeUpOnView } from "@/lib/motionVariants";
 import { ProjectsTable } from "@/components/neped/ProjectsTable";
 import { BlurReveal } from "@/components/ui/blur-reveal";

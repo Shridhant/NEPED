@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blog_sections",
+  "info": {
+    "displayName": "Section",
+    "icon": "layer",
+    "description": "A headed section of an article. Separate paragraphs with a blank line."
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "required": true
+    },
+    "highlightQuote": {
+      "type": "text"
+    }
+  }
+}

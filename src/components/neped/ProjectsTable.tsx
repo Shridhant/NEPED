@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { PROJECT_LIST, type ProjectListItem } from "@/data/neped/projectList";
+import type { ProjectListItem } from "@/data/neped/projectList";
+import { PROJECT_LIST } from "@/lib/siteContent";
 
 const EASE = [0.65, 0, 0.35, 1] as const;
 

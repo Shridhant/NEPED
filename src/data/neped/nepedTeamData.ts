@@ -64,7 +64,7 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
 export const NEPED_SUPPORTING_STAFF: TeamMember[] = [
   { id: "s1", name: "Zavikhol Tsükrü", role: "Natural Resource Associate", image: "/Teammembers/Zavikhol.jpg.webp" },
   { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive", image: "/Teammembers/Noune.webp" },
-  { id: "s3", name: "Chichamo Lotha", role: "IT Operations & Technical Support Executive", image: "/Teammembers/Chichamo.jpg.webp" },
+  { id: "s3", name: "Cichamo Lotha", role: "IT Operations & Technical Support Executive", image: "/Teammembers/Chichamo.jpg.webp" },
   { id: "s4", name: "Margaret Kezevino", role: "Office Manager", image: "/Teammembers/Margaret.jpg.webp" },
   { id: "s5", name: "Benthungo Shitiri", role: "MTS", image: "/Teammembers/Benthungo Shitiri.JPG.webp" },
   { id: "s6", name: "Neilhousienuo Keyho", role: "MTS", image: "/Teammembers/Neilhou.jpg.webp" },

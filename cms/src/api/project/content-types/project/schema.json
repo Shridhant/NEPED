@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Rows of the Projects table and the homepage project timeline."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "focus": {
+      "type": "text"
+    },
+    "period": {
+      "type": "string",
+      "required": true
+    },
+    "funder": {
+      "type": "string",
+      "required": true
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": ["Agroforestry", "Conservation", "Energy", "Livelihoods"],
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 100
+    }
+  }
+}

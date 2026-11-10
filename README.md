@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# NEPED / NEPeD website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + TypeScript + Vite + Tailwind 4. Deployed on Vercel.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Local dev server |
+| `npm run build` | Pulls CMS content (when `CMS_URL` is set), type-checks, builds to `dist/` |
+| `npm run lint` | ESLint |
+| `npm run fetch-cms` | Pull CMS content only |
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Layout
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+  pages/          one file per route (landing, neped, neped-energy, shared)
+  components/     neped/, neped-energy/, shared/, ui/
+  data/           site content as TS files (neped, neped-energy, shared)
+  lib/            helpers; siteContent.ts swaps in CMS data when present
+  routes/paths.ts all URL paths
+content/          markdown projects, blogs and gallery albums (loaded by src/lib/contentLoader.ts)
+public/           only files the site actually serves (images as .webp, downloadable PDFs)
+cms/              Strapi CMS (separate project, own package.json)
+scripts/          fetch-cms.mjs, which runs before every build
+_archive/         git-ignored, local only, see below
 ```
+
+## Adding images
+
+Put the `.webp` in `public/` and reference it as `/<path>.webp`. Keep the original
+JPG/PNG in `_archive/public-webp-originals/` instead of `public/`, because everything
+in `public/` gets deployed.
+
+## `_archive/` (not committed, not deployed)
+
+- `client-docs/`: PDFs, the zip, photo folders and notes supplied by the client
+- `tooling/`: old Python PDF scripts, design notes, the Neue Montreal font files
+- `public-unused/`: images and files from `public/` that no page references
+- `public-webp-originals/`: full-size originals of the `.webp` files in `public/`
+- `unused-code/`: components, demos and pages that nothing imports

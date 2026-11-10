@@ -28,3 +28,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+# CMS content pulled at build time (scripts/fetch-cms.mjs)
+src/generated/
+public/cms-media/
+
+# Client source material, old tooling and unused assets (kept locally, not deployed)
+_archive/

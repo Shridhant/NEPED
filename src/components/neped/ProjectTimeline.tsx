@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { PROJECT_LIST, type ProjectTheme } from "@/data/neped/projectList";
+import type { ProjectTheme } from "@/data/neped/projectList";
+import { PROJECT_LIST } from "@/lib/siteContent";
 import { NEPED_PATHS } from "@/routes/paths";
 import { LogoCloud, type Logo } from "@/components/ui/logo-cloud-2";
 

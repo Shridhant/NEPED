@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { PhotoAlbums } from "@/components/ui/photo-albums";
-import { GALLERY_ALBUMS_DATA } from "@/data/shared/galleryAlbumsData";
+import { GALLERY_ALBUMS_DATA } from "@/lib/siteContent";
 import { BlurReveal } from "@/components/ui/blur-reveal";
 
 /** Shared gallery (NEPED + NEPeD): one album per state folder in public/gallery. */
