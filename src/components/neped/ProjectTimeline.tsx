@@ -107,6 +107,9 @@ const FUNDERS: Logo[] = [
   { alt: "GIZ", src: "/logos/giz.webp", className: "max-h-[72px] max-w-[198px]" },
   { alt: "International Development Research Centre (IDRC)", src: "/logos/idrc.webp", className: "max-h-[80px] max-w-[160px]" },
   { alt: "NagaEd", src: "/logos/nagaed.png", className: "max-h-[72px] max-w-[160px]" },
+  { alt: "National Bank for Agriculture and Rural Development (NABARD)", src: "/logos/nabard.webp", className: "max-h-[84px] max-w-[96px]" },
+  { alt: "Salim Ali Centre for Ornithology and Natural History (SACON)", src: "/logos/sacon.webp", className: "max-h-[84px] max-w-[96px]" },
+  { alt: "Northeast Initiative Development Agency (NEIDA)", src: "/logos/neida.webp", className: "max-h-[72px] max-w-[160px]" },
 ];
 
 /** "Funded & trusted by" logo grid under the homepage projects section; the label fills the first cell. */

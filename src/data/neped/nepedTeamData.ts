@@ -10,8 +10,9 @@ export interface TeamMember {
 /** Chairman — placeholder until the client sends the name and photo */
 export const NEPED_CHAIRMAN: TeamMember = {
   id: "chairman",
-  name: "[Pending: Chairman's name]",
+  name: "Shri Supongmeren Hoki",
   role: "Chairman",
+  image: "/Chairman (Supongmeren Hoki).jpg.webp",
 };
 
 export const NEPED_PRESENT_TEAM: TeamMember[] = [
@@ -43,7 +44,7 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     id: "4",
     name: "Er. L. Moamanen Imchen",
     role: "Member",
-    image: "/POU/Er. Moamanen Imchen - POU member.jpg.webp",
+    image: "/Teammembers/Moamanen.webp",
   },
   {
     id: "5",
@@ -62,7 +63,7 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
 /** Supporting Staff: NEPED Main Office (Kohima) */
 export const NEPED_SUPPORTING_STAFF: TeamMember[] = [
   { id: "s1", name: "Zavikhol Tsükrü", role: "Natural Resource Associate", image: "/Teammembers/Zavikhol.jpg.webp" },
-  { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive", image: "/Teammembers/Noune-u.jpg.webp" },
+  { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive", image: "/Teammembers/Noune.webp" },
   { id: "s3", name: "Chichamo Lotha", role: "IT Operations & Technical Support Executive", image: "/Teammembers/Chichamo.jpg.webp" },
   { id: "s4", name: "Margaret Kezevino", role: "Office Manager", image: "/Teammembers/Margaret.jpg.webp" },
   { id: "s5", name: "Benthungo Shitiri", role: "MTS", image: "/Teammembers/Benthungo Shitiri.JPG.webp" },

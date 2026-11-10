@@ -8,9 +8,12 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
  * - Turn it off after the launch period by setting LAUNCH_REVEAL_ENABLED to false.
  * - Every visitor sees it once (remembered in localStorage).
  * - Add ?launch to any URL to always show it (rehearsals and the launch itself).
+ * - While ALWAYS_SHOW_ON_LANDING is true, it shows every time the landing page ("/") is opened or
+ *   refreshed, ignoring the "seen" memory (client testing). Set it back to false for go-live.
  * - "Reduce motion": curtains simply fade, no confetti or balloons.
  */
 export const LAUNCH_REVEAL_ENABLED = true;
+const ALWAYS_SHOW_ON_LANDING = true;
 
 const SEEN_KEY = "neped-launch-reveal-seen";
 const OPEN_S = 2.4; // curtains opening
@@ -65,16 +68,70 @@ const BALLOONS = Array.from({ length: 18 }, (_, i) => ({
   color: FESTIVE[i % FESTIVE.length] === "#ffffff" ? "#E8A33D" : FESTIVE[i % FESTIVE.length],
 }));
 
-/** Red velvet: vertical folds, darker at the top and bottom */
-const VELVET = [
-  "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 78%, rgba(0,0,0,0.4) 100%)",
-  "repeating-linear-gradient(90deg, #4a070d 0px, #7d1019 22px, #b31f2c 44px, #8c1420 66px, #4a070d 88px)",
-].join(", ");
+/** Red velvet: irregular vertical folds (shadow → sheen → shadow), darker at the top and bottom */
+function velvetFolds() {
+  const stops: string[] = [];
+  let a = 0;
+  while (a < 100) {
+    const w = Math.min(rand(5, 10), 100 - a);
+    const b = a + w;
+    const dark = pick(["#33040a", "#3d050b", "#45060d"]);
+    const mid = pick(["#6e0d16", "#780f19", "#7f111b"]);
+    const lite = pick(["#ad1f2c", "#b92533", "#c42b39", "#a51b28"]);
+    stops.push(
+      `${dark} ${a.toFixed(2)}%`,
+      `${mid} ${(a + w * 0.22).toFixed(2)}%`,
+      `${lite} ${(a + w * 0.48).toFixed(2)}%`,
+      `${mid} ${(a + w * 0.74).toFixed(2)}%`,
+      `${dark} ${b.toFixed(2)}%`,
+    );
+    a = b;
+  }
+  return `linear-gradient(90deg, ${stops.join(", ")})`;
+}
+const FALLOFF =
+  "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 20%, rgba(255,200,170,0.04) 48%, rgba(0,0,0,0.08) 78%, rgba(0,0,0,0.55) 100%)";
+const VELVET = { left: `${FALLOFF}, ${velvetFolds()}`, right: `${FALLOFF}, ${velvetFolds()}` };
+
+/** Fine vertical fibre texture (velvet pile) */
+const FIBRE_NOISE = `url("data:image/svg+xml,${encodeURIComponent(
+  "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.018' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(#n)'/></svg>",
+)}")`;
+
+/** Pelmet tile: velvet band, draped swag with gold braid and fringe, tassels at each join. Repeats across. */
+const PELMET_TILE = `url("data:image/svg+xml,${encodeURIComponent(`
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 150' width='240' height='150'>
+  <defs>
+    <linearGradient id='band' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#2a0307'/><stop offset='0.55' stop-color='#7a0f19'/><stop offset='1' stop-color='#4a060d'/>
+    </linearGradient>
+    <radialGradient id='swag' cx='0.5' cy='0.15' r='0.75'>
+      <stop offset='0' stop-color='#3a050a'/><stop offset='0.55' stop-color='#8c1420'/><stop offset='0.82' stop-color='#b92533'/><stop offset='1' stop-color='#5a0810'/>
+    </radialGradient>
+    <linearGradient id='gold' x1='0' y1='0' x2='1' y2='0'>
+      <stop offset='0' stop-color='#a8761f'/><stop offset='0.3' stop-color='#f7dc8a'/><stop offset='0.55' stop-color='#c39234'/><stop offset='0.8' stop-color='#fbe7a6'/><stop offset='1' stop-color='#a8761f'/>
+    </linearGradient>
+    <linearGradient id='goldV' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#fbe7a6'/><stop offset='0.5' stop-color='#d8a845'/><stop offset='1' stop-color='#8a5f17'/>
+    </linearGradient>
+  </defs>
+  <rect width='240' height='46' fill='url(#band)'/>
+  <rect y='40' width='240' height='5' fill='url(#gold)'/>
+  <path d='M0 44 C 40 44, 62 112, 120 112 C 178 112, 200 44, 240 44 Z' fill='url(#swag)'/>
+  <path d='M14 47 C 52 50, 72 96, 120 96 C 168 96, 188 50, 226 47' stroke='#2a0307' stroke-opacity='0.45' stroke-width='5' fill='none'/>
+  <path d='M22 46 C 58 50, 78 84, 120 84 C 162 84, 182 50, 218 46' stroke='#d4404d' stroke-opacity='0.22' stroke-width='4' fill='none'/>
+  <path d='M30 46 C 64 49, 84 72, 120 72 C 156 72, 176 49, 210 46' stroke='#2a0307' stroke-opacity='0.35' stroke-width='3' fill='none'/>
+  <path d='M0 44 C 40 44, 62 112, 120 112 C 178 112, 200 44, 240 44' stroke='url(#gold)' stroke-width='4' fill='none'/>
+  <path d='M0 50 C 40 50, 62 119, 120 119 C 178 119, 200 50, 240 50' stroke='url(#goldV)' stroke-width='10' stroke-dasharray='1.4 1.6' fill='none'/>
+  <circle cx='0' cy='50' r='6' fill='url(#goldV)'/><circle cx='240' cy='50' r='6' fill='url(#goldV)'/>
+  <path d='M-4 55 L4 55 L9 92 L-9 92 Z' fill='url(#goldV)'/><path d='M236 55 L244 55 L249 92 L231 92 Z' fill='url(#goldV)'/>
+</svg>`)}")`;
 
 function shouldShow() {
   if (!LAUNCH_REVEAL_ENABLED) return false;
   try {
     if (new URLSearchParams(window.location.search).has("launch")) return true;
+    if (ALWAYS_SHOW_ON_LANDING && window.location.pathname === "/") return true;
     return localStorage.getItem(SEEN_KEY) !== "1";
   } catch {
     return true;
@@ -140,39 +197,53 @@ export function LaunchReveal() {
           transition={{ duration: reduceMotion ? 0.8 : OPEN_S, ease: EASE }}
           style={{
             transformOrigin: side === "left" ? "0% 50%" : "100% 50%",
-            backgroundImage: VELVET,
+            backgroundImage: VELVET[side],
           }}
           className={`absolute top-0 bottom-0 w-[50.5%] ${side === "left" ? "left-0" : "right-0"} shadow-[0_0_60px_rgba(0,0,0,0.6)]`}
         >
+          {/* Velvet pile texture */}
+          <div className="absolute inset-0 opacity-[0.35] mix-blend-multiply" style={{ backgroundImage: FIBRE_NOISE }} />
+          {/* Depth where the two curtains meet */}
+          <div
+            className={`absolute top-0 bottom-0 w-[18%] ${side === "left" ? "right-0" : "left-0"}`}
+            style={{ background: `linear-gradient(${side === "left" ? "to left" : "to right"}, rgba(0,0,0,0.45), rgba(0,0,0,0))` }}
+          />
           {/* Gold trim along the meeting edge */}
           <div
-            className={`absolute top-0 bottom-0 w-[6px] ${side === "left" ? "right-0" : "left-0"}`}
-            style={{ background: "linear-gradient(to bottom, #f6d77a, #b8862b, #f6d77a, #b8862b)" }}
+            className={`absolute top-0 bottom-0 w-[5px] ${side === "left" ? "right-0" : "left-0"}`}
+            style={{ background: "linear-gradient(to bottom, #fbe7a6, #b8862b 25%, #f6d77a 50%, #a8761f 75%, #f6d77a)" }}
           />
         </motion.div>
       ))}
 
-      {/* Pelmet (valance) across the top with a scalloped edge and gold fringe */}
+      {/* Pelmet (valance) across the top: draped swags, gold braid, fringe and tassels */}
       <motion.div
         aria-hidden
         initial={false}
         animate={opening && !reduceMotion ? { y: "-110%" } : opening ? { opacity: 0 } : { y: "0%" }}
         transition={{ duration: 1.2, ease: EASE, delay: opening && !reduceMotion ? OPEN_S - 0.6 : 0 }}
-        className="absolute inset-x-0 top-0 h-[12vh] min-h-[70px]"
-      >
-        <div className="absolute inset-0" style={{ backgroundImage: VELVET, filter: "brightness(0.85)" }} />
-        <div
-          className="absolute inset-x-0 -bottom-[22px] h-[24px]"
-          style={{
-            background: "radial-gradient(circle at 50% 0, #6b0d16 0 18px, transparent 19px)",
-            backgroundSize: "44px 24px",
-          }}
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-[6px]"
-          style={{ background: "linear-gradient(90deg, #b8862b, #f6d77a, #b8862b, #f6d77a, #b8862b)" }}
-        />
-      </motion.div>
+        className="absolute inset-x-0 top-0 h-[clamp(84px,14vh,150px)]"
+        style={{
+          backgroundImage: PELMET_TILE,
+          backgroundRepeat: "repeat-x",
+          backgroundSize: "auto 100%",
+          backgroundPosition: "center top",
+          filter: "drop-shadow(0 10px 14px rgba(0,0,0,0.5))",
+        }}
+      />
+
+      {/* Stage lighting on the closed curtains: warm spotlight in the centre, darker edges */}
+      <motion.div
+        aria-hidden
+        initial={false}
+        animate={{ opacity: opening ? 0 : 1 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 38% 52% at 50% 54%, rgba(255,214,150,0.22), rgba(255,190,120,0.06) 55%, transparent 75%), radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(0,0,0,0.5) 100%)",
+        }}
+      />
 
       {/* Logo and launch button */}
       <AnimatePresence>

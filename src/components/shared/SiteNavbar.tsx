@@ -55,7 +55,7 @@ const NAV: NavEntry[] = [
     key: "ceres",
     label: "Energy",
     panelTitle: "NEPeD",
-    home: { label: "CERES (Centre of Excellence)", href: NEPED_ENERGY_PATHS.technology },
+    home: { label: "NEPeD", href: NEPED_ENERGY_PATHS.technology },
     links: [
       { label: "Hydroger Pico-Turbines", href: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
       { label: "Electronic Load Controllers (ELC)", href: NEPED_ENERGY_PATHS.product("electronic-load-controller") },
@@ -172,7 +172,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <Link to={NEPED_PATHS.home} onClick={closeAll} className="group flex items-center gap-2.5" aria-label="NEPED home">
               <img
-                src="/logos/neped-logo.webp"
+                src="/NEPED Logo.jpg.webp"
                 alt="NEPED Logo"
                 className="h-10 w-auto lg:h-12 rounded-sm object-contain ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />

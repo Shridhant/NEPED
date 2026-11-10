@@ -15,7 +15,7 @@ const TIMELINE: { year: string; body: string; logo?: "neped" | "neped-energy" }[
   { year: "2019–2024", body: "Supplied 155 Hydrogers and 16 ram pumps to Meghalaya (MBDA)." },
   { year: "2009", body: "CERES established" },
   { year: "2007", body: "NEPeD (Energy Development branch established)", logo: "neped-energy" },
-  { year: "2006–2012", body: "NEPED-III: watershed development (Min. of Agriculture)." },
+  { year: "2006–2012", body: "NEPED-III: watershed development (Min. of Agriculture). Through the initiative of the erst  while planning commission" },
   { year: "2001–2006", body: "NEPED-II: cash crops & micro-finance (ICEF/CIDA)." },
   { year: "1995–2000", body: "NEPED-I: tree-planting on jhum land (ICEF/CIDA)." },
   { year: "1995", body: "NEPED founded by the Government of Nagaland.", logo: "neped" },
@@ -66,11 +66,11 @@ const SUBNAV = [
 ];
 
 function TimelineLogo({ logo, small = false }: { logo: "neped" | "neped-energy"; small?: boolean }) {
-  const src = logo === "neped" ? "/logos/neped-logo.webp" : "/NEPeD Logo High Res.webp";
+  const src = logo === "neped" ? "/NEPED Logo.jpg.webp" : "/NEPeD Logo High Res.webp";
   const alt = logo === "neped" ? "NEPED logo" : "NEPeD logo";
   return (
-    <span className={`${small ? "h-9 w-9" : "h-12 w-12"} rounded-full bg-[#ffffff] ring-1 ring-[#dbe5de] p-1 flex items-center justify-center shrink-0`}>
-      <img src={src} alt={alt} className="h-full w-full rounded-full object-contain" />
+    <span className={`${small ? "h-9 w-9" : "h-12 w-12"} bg-[#ffffff] ring-1 ring-[#dbe5de] p-1 flex items-center justify-center shrink-0`}>
+      <img src={src} alt={alt} className="h-full w-full object-contain" />
     </span>
   );
 }
@@ -105,7 +105,7 @@ export function NepedAboutPage() {
             </motion.div>
             <div className="lg:col-span-4 hidden lg:flex lg:justify-end">
               <div className="h-48 w-48 bg-[#ffffff] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
-                <img src="/logos/neped-logo.webp" alt="NEPED Logo" className="max-h-full max-w-full rounded-full object-contain" />
+                <img src="/NEPED Logo.jpg.webp" alt="NEPED Logo" className="h-full w-full object-contain" />
               </div>
             </div>
           </div>
@@ -129,13 +129,13 @@ export function NepedAboutPage() {
               Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Government of Nagaland in 1995 as an autonomous, government-registered society, with its project set up in 1995 to implement the ICEF project — the first foreign-funded project ever undertaken in Nagaland, supported by the India-Canada Environment Facility under the Canadian International Development Agency.
             </p>
             <p>
-              The organisation is run by a Project Operations Unit (POU): a multi-disciplinary team of officers seconded from across state government departments, given full autonomy, headed by a senior Secretary-level Team Leader and supported by a Project Steering Committee under the Chief Secretary.
+              The organisation as a society is run by a Project Operations Unit (POU): a multi-disciplinary team of officers seconded from across state government departments, given full autonomy, headed by a senior Secretary-level Team Leader and supported by a Project Steering Committee under the Chief Secretary.
             </p>
             <p>
-              The first phase was called Nagaland Environment Protection and Economic Development through People's Action. From the second phase, the organisation became known as Nagaland Empowerment of People through Economic Development.
+              The first phase was called Nagaland Environment Protection and Economic Development through People's Action. From the second phase, with vital emerging issues, it came to be known as Nagaland Empowerment of People through Economic Development.
             </p>
             <p>
-              As the livelihood work deepened, one need surfaced everywhere: energy. So in 2007 the organisation established an energy branch — Nagaland Empowerment of People through Energy Development — and in 2009 set up CERES, its Centre of Excellence for Renewable Energy Studies, in Dimapur. The branch carries its own name and logo, but it is run by the same team, from the same office, under the same Team Leader.
+              As the livelihood work deepened, one need surfaced everywhere: energy. So in 2007 the society established an energy cell — Nagaland Empowerment of People through Energy Development — and in 2009 set up CERES, its Centre of Excellence for Renewable Energy Studies, in Dimapur. The cell carries its own name and logo, under the same Team Leader.
             </p>
             <p className="border-t-2 border-[#E8A33D] pt-7 font-serif text-[22px] sm:text-[26px] leading-[1.45] text-[#12432E]">
               The organisation had extended its reach, but it had not divided. That is why the acronym never changed. Today the 1995 organisation works across livelihoods, land and energy as a single NEPED, from Nagaland's forests to its rivers.

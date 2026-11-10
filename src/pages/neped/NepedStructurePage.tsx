@@ -64,12 +64,14 @@ export function NepedStructurePage() {
           </p>
         </div>
 
-        {/* Chairman and Team Leader first, then the members; equal-size cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-          {[NEPED_CHAIRMAN, ...presentTeam.filter((m) => m.role === "Team Leader")].map((member) => (
-            <TeamCard key={member.id} member={member} />
-          ))}
-        </div>
+        {/* Chairman on top, Team Leader below, then the members; each top card sits centred, the width of one grid column */}
+        {[NEPED_CHAIRMAN, ...presentTeam.filter((m) => m.role === "Team Leader")].map((member) => (
+          <div key={member.id} className="flex justify-center mb-5">
+            <div className="w-full sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]">
+              <TeamCard member={member} />
+            </div>
+          </div>
+        ))}
         <MobileShowMore
           initialCount={4}
           showLabel="Show all team members"
