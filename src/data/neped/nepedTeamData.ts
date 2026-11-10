@@ -61,7 +61,7 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
 
 /** Supporting Staff: NEPED Main Office (Kohima) */
 export const NEPED_SUPPORTING_STAFF: TeamMember[] = [
-  { id: "s1", name: "Zavikhol Tsukru", role: "Natural Resource Associate", image: "/Teammembers/Zavikhol.jpg.webp" },
+  { id: "s1", name: "Zavikhol Tsükrü", role: "Natural Resource Associate", image: "/Teammembers/Zavikhol.jpg.webp" },
   { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive", image: "/Teammembers/Noune-u.jpg.webp" },
   { id: "s3", name: "Chichamo Lotha", role: "IT Operations & Technical Support Executive", image: "/Teammembers/Chichamo.jpg.webp" },
   { id: "s4", name: "Margaret Kezevino", role: "Office Manager", image: "/Teammembers/Margaret.jpg.webp" },
@@ -94,15 +94,16 @@ export const GOVERNING_BODIES: GoverningBody[] = [
       { role: "Team Leader", names: "Shri. Kovi Meyase (NCS)" },
       { role: "Executive Secretary", names: "Dr. Rokhu Savio Krocha" },
       { role: "Treasurer / Finance Secretary", names: "Dr. Kezevituo Metha" },
-      { role: "Members", names: "Asa Tep, Nouneu Theunuo" },
+      { role: "Members", names: "Asa Tep, Nouneu Theunuo, Zavikhol Tsükrü" },
     ],
   },
   {
     title: "Governing Body, NEPeD",
     members: [
       { role: "Team Leader", names: "Shri. Kovi Meyase (NCS)" },
-      { role: "Treasurer", names: "Atheo Ezung" },
-      { role: "Members", names: "Er. L. Moamanen Imchen, Er. Renbenthung Humtsoe, Margaret Kezevino" },
+      { role: "Executive Secretary", names: "Er. Renbenthung Humtsoe" },
+      { role: "Treasurer / Finance Secretary", names: "Atheo Ezung" },
+      { role: "Members", names: "Er. L. Moamanen Imchen, Margaret Kezevino, Chichamo Lotha" },
     ],
   },
 ];
