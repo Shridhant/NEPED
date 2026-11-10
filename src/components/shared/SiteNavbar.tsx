@@ -11,7 +11,7 @@ import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
  * Panel descriptions are the intro text of each page, verbatim.
  */
 
-type NavLinkItem = { label: string; href: string };
+type NavLinkItem = { label: string; href: string; /** Smaller line under the label (e.g. a full form) */ sublabel?: string };
 type NavSection = {
   key: string;
   label: string;
@@ -55,7 +55,7 @@ const NAV: NavEntry[] = [
     key: "ceres",
     label: "Energy",
     panelTitle: "NEPeD",
-    home: { label: "NEPeD", href: NEPED_ENERGY_PATHS.technology },
+    home: { label: "NEPeD", sublabel: "Nagaland Empowerment of People through Energy Development", href: NEPED_ENERGY_PATHS.technology },
     links: [
       { label: "Hydroger Pico-Turbines", href: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
       { label: "Electronic Load Controllers (ELC)", href: NEPED_ENERGY_PATHS.product("electronic-load-controller") },
@@ -291,7 +291,12 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                       onClick={closeAll}
                       className="group flex items-center justify-between gap-4 pb-6 border-b border-white/20 text-[22px] text-[#ffffff]"
                     >
-                      <span>{openSection.home.label}</span>
+                      <span>
+                        {openSection.home.label}
+                        {openSection.home.sublabel ? (
+                          <span className="mt-1.5 block text-[14px] leading-snug text-[#ffffff]/70">{openSection.home.sublabel}</span>
+                        ) : null}
+                      </span>
                       <ArrowRight size={20} strokeWidth={1.5} className="transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
                     </Link>
                     <ul className="mt-6 space-y-1">
@@ -390,7 +395,10 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                             >
                               <div className="-mx-4 sm:-mx-6 mb-3 bg-[#ffffff] px-4 sm:px-6 py-3">
                                 <Link to={entry.home.href} onClick={closeAll} className="flex items-center justify-between gap-4 py-2.5 pl-4 text-[15px] text-[#1A2E23]">
-                                  <span className="line-clamp-2">{entry.home.label}</span>
+                                  <span>
+                                    <span className="line-clamp-2">{entry.home.label}</span>
+                                    {entry.home.sublabel ? <span className="mt-0.5 block text-[13px] leading-snug text-[#5B6660]">{entry.home.sublabel}</span> : null}
+                                  </span>
                                   <ArrowRight size={18} strokeWidth={1.5} className="shrink-0" />
                                 </Link>
                                 {entry.links.map((l) => (
