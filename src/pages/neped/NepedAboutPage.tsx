@@ -10,7 +10,7 @@ const EYEBROW = "text-[13px] font-semibold uppercase tracking-[0.14em] text-[#1E
 
 // Timeline — text verbatim from the About copy supplied by the NEPED team
 const TIMELINE: { year: string; body: string; logo?: "neped" | "neped-energy" }[] = [
-  { year: "Today", body: "One society across livelihoods, land and energy." },
+  { year: "Today", body: "One organisation across livelihoods, land and energy." },
   { year: "2019–present", body: "NEPED-IV / Forest & Biodiversity Management (KfW)." },
   { year: "2019–2024", body: "Supplied 155 Hydrogers and 16 ram pumps to Meghalaya (MBDA)." },
   { year: "2009", body: "CERES established" },
@@ -34,30 +34,26 @@ const AIMS = [
 
 // Theory of Change — text verbatim from the copy supplied by the NEPED team
 // image: step 2 uses a training photo from the client's Drive "Web Site pics / Community capacity", per the blueprint
-const CHANGE_STAGES: { title: string; text: string; example: string; icon: LucideIcon; image?: { src: string; alt: string } }[] = [
+const CHANGE_STAGES: { title: string; text: string; icon: LucideIcon; image?: { src: string; alt: string } }[] = [
   {
     title: "Work with the community, not for it",
     text: "Every NEPED project begins with the village council. Communities identify their own needs, contribute labour, materials and governance, and take ownership from day one. NEPED provides the technical knowledge and the connection to funding — the community provides the mandate and the commitment.",
-    example: "In Kingjung village, a seven-member energy committee (five men, two women) manages the Hydroger, collects ₹20 per household per month, and pays two village-trained rural engineers. NEPED installed the machine; the village runs it.",
     icon: Handshake,
   },
   {
     title: "Build local capacity to sustain the work",
     text: "NEPED trains farmers, village engineers, Self-Help Groups and government field staff — not as one-off events, but as an embedded part of every project cycle. Across three phases, more than 7,000 farmers and 2,000 state government officials completed capacity-building programmes. In the energy programme, rural engineers are trained on-site so that every Hydroger can be maintained and repaired within the village, without waiting for an external technician.",
-    example: "When Kingjung's original bamboo penstock pipes deteriorated, the village committee and its trained engineers upgraded to GI pipes and rebuilt the power house in 2019 — a decade after installation — using the revenue the community had collected.",
     icon: GraduationCap,
     image: { src: "/gallery-photos/community-capacity/IMG20230518144010.webp", alt: "A village training session in a community hall" },
   },
   {
     title: "Prove the model, then spread it",
     text: "Each NEPED intervention is designed to demonstrate a replicable model — not a one-off project. NEPED-I planted 7.8 million trees on 1,794 test plots, with a replication ratio of 1:6. That means for every test plot NEPED supported, neighbouring farmers replicated the approach six times on their own land. The Hydroger programme follows the same logic: prove the technology and the community-ownership model in one village, then equip the next village to adopt it.",
-    example: "After proving the Hydroger in Nagaland's border villages, demand spread to other states. NEPeD Hydrogers now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Agency (MBDA).",
     icon: Sprout,
   },
   {
     title: "Shift the baseline permanently",
     text: "The measure of NEPED's work is not whether a project runs, but whether the change outlasts the project. Women in NEPED-II villages purchased land in their own names for the first time in Nagaland's history — that is a permanent shift in economic agency. Villages that adopted agro-forestry under NEPED-I continue to harvest from those trees three decades later. Hydroger-powered villages have uninterrupted energy and the revenue model to maintain it indefinitely.",
-    example: "The Shukla Commission (Government of India, March 1997) called NEPED 'a critical lead programme' for the region — not because of one project, but because the model itself was worth replicating across the Northeast.",
     icon: TrendingUp,
   },
 ];
@@ -133,16 +129,16 @@ export function NepedAboutPage() {
               Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Government of Nagaland in 1995 as an autonomous, government-registered society, with its project set up in 1995 to implement the ICEF project — the first foreign-funded project ever undertaken in Nagaland, supported by the India-Canada Environment Facility under the Canadian International Development Agency.
             </p>
             <p>
-              The society is run by a Project Operations Unit (POU): a multi-disciplinary team of officers seconded from across state government departments, given full autonomy, headed by a senior Secretary-level Team Leader and supported by a Project Steering Committee under the Chief Secretary.
+              The organisation is run by a Project Operations Unit (POU): a multi-disciplinary team of officers seconded from across state government departments, given full autonomy, headed by a senior Secretary-level Team Leader and supported by a Project Steering Committee under the Chief Secretary.
             </p>
             <p>
-              The first phase was called Nagaland Environment Protection and Economic Development through People's Action. From the second phase, the society became known as Nagaland Empowerment of People through Economic Development.
+              The first phase was called Nagaland Environment Protection and Economic Development through People's Action. From the second phase, the organisation became known as Nagaland Empowerment of People through Economic Development.
             </p>
             <p>
-              As the livelihood work deepened, one need surfaced everywhere: energy. So in 2007 the society established an energy branch — Nagaland Empowerment of People through Energy Development — and in 2009 set up CERES, its Centre of Excellence for Renewable Energy Studies, in Dimapur. The branch carries its own name and logo, but it is run by the same team, from the same office, under the same Team Leader.
+              As the livelihood work deepened, one need surfaced everywhere: energy. So in 2007 the organisation established an energy branch — Nagaland Empowerment of People through Energy Development — and in 2009 set up CERES, its Centre of Excellence for Renewable Energy Studies, in Dimapur. The branch carries its own name and logo, but it is run by the same team, from the same office, under the same Team Leader.
             </p>
             <p className="border-t-2 border-[#E8A33D] pt-7 font-serif text-[22px] sm:text-[26px] leading-[1.45] text-[#12432E]">
-              The society had extended its reach, but it had not divided. That is why the acronym never changed. Today the 1995 society works across livelihoods, land and energy as a single NEPED, from Nagaland's forests to its rivers.
+              The organisation had extended its reach, but it had not divided. That is why the acronym never changed. Today the 1995 organisation works across livelihoods, land and energy as a single NEPED, from Nagaland's forests to its rivers.
             </p>
           </div>
         </div>
@@ -199,7 +195,7 @@ export function NepedAboutPage() {
         </div>
       </motion.section>
 
-      {/* THEORY OF CHANGE — vertical flow of four stages, each with an icon and one real example (text verbatim) */}
+      {/* THEORY OF CHANGE — vertical flow of four stages, each with an icon (text verbatim) */}
       <section id="change" className="scroll-mt-40 bg-[#F3F6F3] px-4 sm:px-6 py-20 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-[1200px] grid grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)] gap-10 lg:gap-20">
           <motion.div {...fadeUpOnView} className="flex flex-col gap-4 lg:sticky lg:top-44 lg:self-start">
@@ -212,7 +208,7 @@ export function NepedAboutPage() {
 
           <div>
             <ol className="list-none">
-              {CHANGE_STAGES.map(({ title, text, example, icon: Icon, image }, i) => (
+              {CHANGE_STAGES.map(({ title, text, icon: Icon, image }, i) => (
                 <motion.li
                   key={title}
                   initial={{ opacity: 0, y: 18 }}
@@ -234,12 +230,6 @@ export function NepedAboutPage() {
                     </h3>
                     <p className="text-[16px] sm:text-[17px] leading-[1.65] text-[#1A2E23]">{text}</p>
                     {image ? <img src={image.src} alt={image.alt} loading="lazy" className="aspect-[16/9] w-full object-cover bg-[#e5e4e4]" /> : null}
-                    <div className=" bg-[#ffffff] border-l-[3px] border-[#E8A33D] px-5 py-4 sm:px-6 sm:py-5">
-                      <p className="text-[15px] sm:text-[16px] leading-[1.6] text-[#1A2E23]">
-                        <span className="font-semibold text-[#12432E]">Example: </span>
-                        {example}
-                      </p>
-                    </div>
                   </div>
                 </motion.li>
               ))}

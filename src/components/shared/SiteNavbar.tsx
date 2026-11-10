@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
@@ -6,7 +6,7 @@ import { NEPED_ENERGY_PATHS, NEPED_PATHS, SHARED_PATHS } from "@/routes/paths";
 
 /*
  * One navbar for NEPED and NEPeD (layout after cleanenergycouncil.org.au).
- * Desktop: NEPED logo, top-level items that open a full-width panel on hover / click
+ * Desktop: NEPED logo, top-level items that open a full-width panel on click
  * (dark link column, description, photo). Phones: full-screen accordion menu.
  * Panel descriptions are the intro text of each page, verbatim.
  */
@@ -18,6 +18,8 @@ type NavSection = {
   /** Section landing page (first row of the panel) */
   home: NavLinkItem;
   links: NavLinkItem[];
+  /** Heading above the description in the panel (defaults to the menu label) */
+  panelTitle?: string;
   description: string;
   image: string;
   /** Zoom the panel photo in from this point (e.g. to crop away empty sky) */
@@ -51,7 +53,8 @@ const NAV: NavEntry[] = [
   },
   {
     key: "ceres",
-    label: "CERES",
+    label: "Energy",
+    panelTitle: "NEPeD",
     home: { label: "CERES (Centre of Excellence)", href: NEPED_ENERGY_PATHS.technology },
     links: [
       { label: "Hydroger Pico-Turbines", href: NEPED_ENERGY_PATHS.product("hydroger-turbine-system") },
@@ -109,9 +112,6 @@ function currentKey(pathname: string) {
 const EASE = [0.65, 0, 0.35, 1] as const;
 /** Soft ease-out for the desktop panel: moves quickly at first, then settles gently */
 const PANEL_EASE = [0.22, 1, 0.36, 1] as const;
-/** Hover delays (ms) so brushing past an item doesn't open or switch the panel */
-const OPEN_DELAY = 120;
-const SWITCH_DELAY = 220;
 
 export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   const { pathname } = useLocation();
@@ -119,8 +119,6 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   const [panel, setPanel] = useState<{ key: string; path: string } | null>(null);
   const [mobile, setMobile] = useState<{ path: string; expanded: string | null } | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const closeTimer = useRef<number | undefined>(undefined);
-  const hoverTimer = useRef<number | undefined>(undefined);
 
   const openKey = panel?.path === pathname ? panel.key : null;
   const mobileOpen = mobile?.path === pathname;
@@ -155,31 +153,8 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
     };
   }, [mobileOpen]);
 
-  useEffect(
-    () => () => {
-      window.clearTimeout(closeTimer.current);
-      window.clearTimeout(hoverTimer.current);
-    },
-    [],
-  );
-
-  const openPanel = (key: string | null) => {
-    window.clearTimeout(closeTimer.current);
-    window.clearTimeout(hoverTimer.current);
-    setPanel(key ? { key, path: pathname } : null);
-  };
-  /** Hover: wait a moment before opening / switching, so the mouse can pass over other items */
-  const hoverPanel = (key: string | null) => {
-    window.clearTimeout(closeTimer.current);
-    window.clearTimeout(hoverTimer.current);
-    if (key === openKey) return; // back on the open item: cancel any pending switch
-    hoverTimer.current = window.setTimeout(() => openPanel(key), openKey ? SWITCH_DELAY : OPEN_DELAY);
-  };
-  const scheduleClose = () => {
-    window.clearTimeout(closeTimer.current);
-    window.clearTimeout(hoverTimer.current);
-    closeTimer.current = window.setTimeout(() => setPanel(null), 200);
-  };
+  /** Menus open on click (not hover); clicking the open item again closes it */
+  const openPanel = (key: string | null) => setPanel(key ? { key, path: pathname } : null);
   const closeAll = () => {
     setPanel(null);
     setMobile(null);
@@ -188,8 +163,6 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
   return (
     <>
       <header
-        onMouseLeave={scheduleClose}
-        onMouseEnter={() => window.clearTimeout(closeTimer.current)}
         className={`sticky top-0 z-50 bg-[#F3F6F3] transition-shadow duration-300 ${
           scrolled || openKey || mobileOpen ? "shadow-[0_6px_24px_rgba(14,36,25,0.08)]" : ""
         }`}
@@ -201,7 +174,7 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
               <img
                 src="/logos/neped-logo.webp"
                 alt="NEPED Logo"
-                className="h-10 w-10 lg:h-12 lg:w-12 rounded-full object-cover ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
+                className="h-10 w-auto lg:h-12 rounded-sm object-contain ring-1 ring-black/5 transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
               <span className="hidden sm:block lg:hidden xl:block text-[15px] font-medium tracking-[0.06em] text-[#12432E]">NEPED</span>
             </Link>
@@ -238,14 +211,13 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                   type="button"
                   aria-expanded={openKey === entry.key}
                   aria-controls="site-nav-panel"
-                  onMouseEnter={() => hoverPanel(entry.key)}
                   onClick={() => openPanel(openKey === entry.key ? null : entry.key)}
                   className={cls}
                 >
                   {inner}
                 </button>
               ) : (
-                <Link key={entry.key} to={entry.href} onMouseEnter={() => hoverPanel(null)} onClick={closeAll} className={cls}>
+                <Link key={entry.key} to={entry.href} onClick={closeAll} className={cls}>
                   {inner}
                 </Link>
               );
@@ -347,8 +319,8 @@ export function SiteNavbar({ onOpenContact }: { onOpenContact: () => void }) {
                     </ul>
                   </div>
                   <div className="col-span-4 px-10 xl:px-16 py-12">
-                    <p className="text-[18px] text-[#1A2E23]">{openSection.label}</p>
-                    <p className="mt-6 max-w-[400px] text-[18px] xl:text-[20px] leading-[1.45] text-[#1A2E23]">{openSection.description}</p>
+                    <p className="text-[18px] text-[#1A2E23]">{openSection.panelTitle ?? openSection.label}</p>
+                    <p className="mt-4 max-w-[400px] text-[15px] xl:text-[16px] leading-[1.6] text-[#5B6660]">{openSection.description}</p>
                   </div>
                   <div className="col-span-4 relative overflow-hidden">
                     {openSection.imageContain ? (

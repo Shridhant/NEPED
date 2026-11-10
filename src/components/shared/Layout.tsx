@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ContactModal } from "./ContactModal";
+import { LaunchReveal } from "./LaunchReveal";
 // import { SitePreloader } from "./SitePreloader"; // intro removed
 import { pageTransitionVariants } from "@/lib/motionVariants";
 import type { LayoutContext } from "@/lib/contact";
@@ -34,6 +35,8 @@ export function Layout() {
       </main>
       <Footer onOpenContact={() => setIsContactOpen(true)} />
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      {/* Website launch curtain reveal — switch off with LAUNCH_REVEAL_ENABLED in LaunchReveal.tsx */}
+      <LaunchReveal />
     </div>
   );
 }

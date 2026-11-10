@@ -3,34 +3,41 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
-  /** No photo yet for the supporting staff; the card shows name and designation only */
+  /** Without a photo the card shows name and designation only */
   image?: string;
 }
+
+/** Chairman — placeholder until the client sends the name and photo */
+export const NEPED_CHAIRMAN: TeamMember = {
+  id: "chairman",
+  name: "[Pending: Chairman's name]",
+  role: "Chairman",
+};
 
 export const NEPED_PRESENT_TEAM: TeamMember[] = [
   {
     id: "1",
     name: "Shri. Kovi Meyase, NCS",
     role: "Team Leader",
-    image: "/Team Leaders/Kovi Keyase, NCS -  - Team Leader.jpg.webp",
+    image: "/Teammembers/Kovi Meyase Team Leader.webp",
   },
   {
     id: "7",
     name: "Dr. Rokhu Savio Krocha",
     role: "Member Secretary",
-    image: "/POU/Dr. Savio Krocha - POU member.jpg.webp",
+    image: "/Teammembers/Dr Savio.jpg.webp",
   },
   {
     id: "2",
     name: "Dr. Kezevituo Metha",
     role: "Member",
-    image: "/POU/Dr. Kezevituo Metha - POU member.jpg.webp",
+    image: "/Teammembers/Dr Kezevituo.jpg.webp",
   },
   {
     id: "3",
     name: "Asa Tep",
     role: "Member",
-    image: "/POU/Asa Tep - POU member.jpg.webp",
+    image: "/Teammembers/Asa Tep.jpg.webp",
   },
   {
     id: "4",
@@ -42,35 +49,35 @@ export const NEPED_PRESENT_TEAM: TeamMember[] = [
     id: "5",
     name: "Er. Renbenthung Humtsoe",
     role: "Member",
-    image: "/POU/Er. Renbenthung Humtsoe - POU member.jpg.webp",
+    image: "/Teammembers/Renbenthung Humtsoe.jpg.webp",
   },
   {
     id: "6",
     name: "Atheo Ezung",
     role: "Member",
-    image: "/POU/Atheo Ezung - POU member.jpg.webp",
+    image: "/Teammembers/Atheo Ezung.webp",
   },
 ];
 
 /** Supporting Staff: NEPED Main Office (Kohima) */
 export const NEPED_SUPPORTING_STAFF: TeamMember[] = [
-  { id: "s1", name: "Zavikhol Tsukru", role: "Natural Resource Associate" },
-  { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive" },
-  { id: "s3", name: "Chichamo Lotha", role: "IT Operations & Technical Support Executive" },
-  { id: "s4", name: "Margaret Kezevino", role: "Office Manager" },
-  { id: "s5", name: "Benthungo Shitiri", role: "MTS" },
-  { id: "s6", name: "Neilhousienuo Keyho", role: "MTS" },
+  { id: "s1", name: "Zavikhol Tsukru", role: "Natural Resource Associate", image: "/Teammembers/Zavikhol.jpg.webp" },
+  { id: "s2", name: "Nouneu Theunuo", role: "Accounts & Finance Executive", image: "/Teammembers/Noune-u.jpg.webp" },
+  { id: "s3", name: "Chichamo Lotha", role: "IT Operations & Technical Support Executive", image: "/Teammembers/Chichamo.jpg.webp" },
+  { id: "s4", name: "Margaret Kezevino", role: "Office Manager", image: "/Teammembers/Margaret.jpg.webp" },
+  { id: "s5", name: "Benthungo Shitiri", role: "MTS", image: "/Teammembers/Benthungo Shitiri.JPG.webp" },
+  { id: "s6", name: "Neilhousienuo Keyho", role: "MTS", image: "/Teammembers/Neilhou.jpg.webp" },
 ];
 
 /** CERES staff (Dimapur), shown behind the "View CERES team" button */
 export const CERES_STAFF: TeamMember[] = [
-  { id: "c1", name: "Rongsenkaba", role: "MTS" },
-  { id: "c2", name: "Anato Sema", role: "Chowkidar" },
-  { id: "c3", name: "Wangying Konyak", role: "Pickup Driver" },
-  { id: "c4", name: "Hisenlo Semp", role: "Technician cum Supervisor" },
-  { id: "c5", name: "Kekhrieselie Talie", role: "Technician" },
-  { id: "c6", name: "Hegou Lhouvum", role: "Technician" },
-  { id: "c7", name: "Atsaba A. Sangtam", role: "Technician" },
+  { id: "c1", name: "Rongsenkaba", role: "MTS", image: "/Teammembers/Rongsenkaba.jpg.webp" },
+  { id: "c2", name: "Anato Sema", role: "Chowkidar", image: "/Teammembers/Anato Sema.jpg.webp" },
+  { id: "c3", name: "Wangying Konyak", role: "Pickup Driver", image: "/Teammembers/Wangyingn Konyak.jpg.webp" },
+  { id: "c4", name: "Hisenlo Semp", role: "Technician cum Supervisor", image: "/Teammembers/Hisenlo Semp.jpg.webp" },
+  { id: "c5", name: "Kekhrieselie Talie", role: "Technician", image: "/Teammembers/Kekhrieselie Talie.jpg.webp" },
+  { id: "c6", name: "Hegou Lhouvum", role: "Technician", image: "/Teammembers/Hegou Lhouvum.jpg.webp" },
+  { id: "c7", name: "Atsaba A. Sangtam", role: "Technician", image: "/Teammembers/Atsaba Sangtam.jpg.webp" },
   { id: "c8", name: "Sarenba Aier", role: "ELC Consultant" },
 ];
 
@@ -91,7 +98,7 @@ export const GOVERNING_BODIES: GoverningBody[] = [
     ],
   },
   {
-    title: "Governing Body, CERES",
+    title: "Governing Body, NEPeD",
     members: [
       { role: "Team Leader", names: "Shri. Kovi Meyase (NCS)" },
       { role: "Treasurer", names: "Atheo Ezung" },

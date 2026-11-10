@@ -5,7 +5,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE } from "./ContactContent";
 
 /*
  * One footer for NEPED and NEPeD pages (matches the unified navbar): a full-width Deep Forest band,
- * the NEPED Society logo, link columns that mirror the navbar, the Secretariat address and a bottom bar.
+ * the NEPED logo, link columns that mirror the navbar, the Secretariat address and a bottom bar.
  * Names and address as used elsewhere on the site. The old per-wing footers (NepedFooter,
  * NepedEnergyFooter) are no longer used.
  */
@@ -115,7 +115,7 @@ export function Footer({ onOpenContact }: { onOpenContact: () => void }) {
 
         {/* Bottom bar */}
         <div className="mt-14 sm:mt-16 pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-[#ffffff]/60">
-          <p>© {new Date().getFullYear()} NEPED Society — Nagaland Empowerment of People through Economic Development</p>
+          <p>© {new Date().getFullYear()} NEPED Organisation — Nagaland Empowerment of People through Economic Development</p>
           <a href="#root" className="inline-flex w-fit items-center gap-1.5 hover:text-[#ffffff] transition-colors">
             Back to Top
             <ArrowUp size={14} />

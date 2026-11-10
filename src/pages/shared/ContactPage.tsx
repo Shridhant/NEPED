@@ -13,7 +13,7 @@ export function ContactPage() {
   return (
     <div className="w-full space-y-16 sm:space-y-24 pb-8">
       <PageHero
-        eyebrow="NEPED SOCIETY & NEPeD ENERGY DIVISION"
+        eyebrow="NEPED ORGANISATION & NEPeD ENERGY DIVISION"
         title="Get in Touch"
         intro="Reach out about programmes, partnerships, or field deployments — whichever wing your query belongs to."
       />

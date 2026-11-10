@@ -54,7 +54,7 @@ export function InstalledSitesTable() {
       {/* State filter with counts */}
       <div className="lg:col-span-4 rounded-xl bg-[#F3F6F3] p-6 sm:p-7">
         <p className="text-[48px] sm:text-[56px] font-light leading-none tracking-[-1.5px] text-[#1E6F4C]">{SITES.length}</p>
-        <p className="mt-2 text-[15px] text-[#5B6660]">Hydroger sites listed, across {STATES.length} states</p>
+        <p className="mt-2 text-[15px] text-[#5B6660]">Major hydroger sites listed</p>
         <ul role="group" aria-label="Filter sites by state" className="mt-6 flex flex-col gap-1.5">
           {[{ name: "All states", count: SITES.length, value: null as string | null }, ...STATES.map((s) => ({ ...s, value: s.name }))].map((st) => {
             const on = state === st.value;

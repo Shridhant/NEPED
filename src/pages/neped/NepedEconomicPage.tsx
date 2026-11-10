@@ -66,19 +66,19 @@ export function NepedEconomicPage() {
           Desktop: the photo runs behind the whole hero; the left panel is frosted glass over it.
           Phones / tablets: same idea stacked — frosted panel on top, the sharp photo showing below it. Text verbatim from the homepage copy supplied by the NEPED team. */}
       <section className="relative overflow-hidden grid grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-12 lg:grid-rows-1 bg-(--brand-surface) min-h-[calc(100svh-84px)]">
-        {/* Photo: newbg.jpeg from the client's "Front page pics" folder (1280×720, so no copy larger than the original),
-            behind the whole hero on every screen size. Phones / tablets get a portrait crop centred on the valley */}
+        {/* Photo: Dzukou Valley (DzukouValley_PelevizoMeyase_003.JPG), behind the whole hero on every screen size.
+            Phones / tablets get a portrait crop */}
         <picture className="absolute inset-0">
           <source
             media="(max-width: 1023px)"
-            srcSet="/home-hero-valley-mobile-480.webp 480w"
+            srcSet="/dzukou-valley-mobile-800.webp 800w, /dzukou-valley-mobile-1200.webp 1200w, /dzukou-valley-mobile-1600.webp 1600w"
             sizes="100vw"
           />
           <motion.img
-            src="/home-hero-valley-1280.webp"
-            srcSet="/home-hero-valley-800.webp 800w, /home-hero-valley-1280.webp 1280w"
+            src="/dzukou-valley-1400.webp"
+            srcSet="/dzukou-valley-800.webp 800w, /dzukou-valley-1400.webp 1400w, /dzukou-valley-2200.webp 2200w"
             sizes="100vw"
-            alt="Forested hills and a valley under a cloudy sky, Nagaland"
+            alt="Dzukou Valley, Nagaland"
             fetchPriority="high"
             decoding="async"
             initial={{ scale: 1.06, opacity: 0 }}
@@ -158,7 +158,7 @@ export function NepedEconomicPage() {
           </p>
         </div>
         <p className="lg:col-span-7 lg:border-l lg:border-[#dbe5de] lg:pl-12 font-serif text-[26px] sm:text-[34px] lg:text-[36px] leading-[1.25] tracking-[-0.3px] text-[#1A2E23] text-balance">
-          We are an autonomous Government of Nagaland society with one purpose: to bridge the state's development gaps through ideas, technology and partnership that put communities in charge of their own future.
+          We are an autonomous Government of Nagaland organisation with one purpose: to bridge the state's development gaps through ideas, technology and partnership that put communities in charge of their own future.
         </p>
       </motion.section>
 
@@ -266,11 +266,11 @@ export function NepedEconomicPage() {
       </motion.section>
       */}
 
-      {/* 1B. ABOUT NEPED SOCIETY — ORIGIN, CHARTER & GOVERNANCE CULTURE (about text verbatim from NepedBige/bigeneped.txt) */}
+      {/* 1B. ABOUT NEPED — ORIGIN, CHARTER & GOVERNANCE CULTURE (about text verbatim from NepedBige/bigeneped.txt) */}
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <div className="space-y-5">
           <p className={EYEBROW}>Origin & Charter</p>
-          <h2 className={H2}>About the NEPED Society</h2>
+          <h2 className={H2}>About NEPED</h2>
           <p className="text-[15px] sm:text-[16px] text-[#5B6660] leading-relaxed">
             Nagaland Empowerment of People through Economic Development (NEPED) was formed by the Govt. of Nagaland in 1995 as an autonomous Government registered society vide Regd.NO.H/RS-4238 Dated 19-04-2005 and Regd.NO.HOME/SRC-6751 Dated 07-07-2014. It was established to bridge developmental gaps in various sectors for economic development and empowerment with a team of multi-disciplinary government employees known as Project Operations Unit (POU) with the aim to carry out studies across Nagaland and identify major issues and to encourage and spread new ideas for sustainable development of the state. The overall aim was envisaged at building a strong resilience towards the emerging Climate Change issues.
           </p>

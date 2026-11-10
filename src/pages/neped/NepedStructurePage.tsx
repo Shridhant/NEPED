@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   NEPED_PRESENT_TEAM as presentTeam,
+  NEPED_CHAIRMAN,
   NEPED_SUPPORTING_STAFF,
   CERES_STAFF,
   GOVERNING_BODIES,
@@ -35,7 +36,6 @@ export function NepedStructurePage() {
     { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader" },
     { name: "Shri. Alemtemshi Jamir (IAS)", period: "2003 – 2006", title: "Team Leader", image: "/Team Leaders/Alemtemshi Jamir, IAS - Team Leader.jpg.webp" },
     { name: "Late Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader", image: "/Team Leaders/Temjen Toy, IAS - Team Leader.jpg.webp" },
-    { name: "Late Raj K. Verma (NCS)", period: "2007 – 2012", title: "Team Leader / Deputy Leader", image: "/Team Leaders/2 Mr. Raj K. Verma, NCS, Deputy Team Leader.jpg.webp" },
     { name: "Shri. H. K. Khulu (IAS)", period: "2011 – 2012", title: "Team Leader", image: "/Team Leaders/H.K. Khulu, IAS - Team Leader.jpg.webp" },
     { name: "Shri. Amardeep S. Bhatia (IAS)", period: "2012 – 2013", title: "Team Leader", image: "/Team Leaders/A.S. Bhatia, IAS - Team Leader.jpg.webp" },
     { name: "Late Menukhol John", period: "2013 – 2018", title: "Principal Secretary, Govt. of Nagaland", image: "/Team Leaders/Menukhol John - Team Leader.jpg.webp" },
@@ -64,16 +64,23 @@ export function NepedStructurePage() {
           </p>
         </div>
 
-        {/* Equal-size cards, Team Leader first; a short last row is centred */}
+        {/* Chairman and Team Leader first, then the members; equal-size cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+          {[NEPED_CHAIRMAN, ...presentTeam.filter((m) => m.role === "Team Leader")].map((member) => (
+            <TeamCard key={member.id} member={member} />
+          ))}
+        </div>
         <MobileShowMore
           initialCount={4}
           showLabel="Show all team members"
           hideLabel="Show fewer team members"
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {presentTeam.map((member) => (
-            <TeamCard key={member.id} member={member} highlight={member.role === "Team Leader"} />
-          ))}
+          {presentTeam
+            .filter((m) => m.role !== "Team Leader")
+            .map((member) => (
+              <TeamCard key={member.id} member={member} />
+            ))}
         </MobileShowMore>
       </motion.section>
 
@@ -222,23 +229,18 @@ export function NepedStructurePage() {
 }
 
 /** Team card — photo bottom-right; the Team Leader's card is dark (same size as the rest). Without a photo the card is name and designation only. */
-function TeamCard({ member, highlight = false }: { member: TeamMember; highlight?: boolean }) {
+function TeamCard({ member }: { member: TeamMember }) {
   const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     (e.target as HTMLElement).style.display = "none";
   };
 
   return (
     <div
-      className={`group relative ${member.image ? "h-[300px]" : ""} overflow-hidden p-7 sm:p-8 ${
-        highlight ? "bg-(--brand-surface) text-[#ffffff]" : "bg-[#F3F6F3] text-[#1A2E23]"
-      }`}
+      className={`group relative ${member.image ? "h-[300px]" : ""} overflow-hidden p-7 sm:p-8 bg-[#F3F6F3] text-[#1A2E23]`}
     >
-      {highlight ? (
-        <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/3 w-[320px] h-[320px] rounded-full bg-(--brand-accent)/60 blur-3xl pointer-events-none" />
-      ) : null}
       <div className="relative z-10">
         <h3 className="text-[20px] sm:text-[22px] font-medium tracking-[-0.3px]">{member.name}</h3>
-        <p className={`text-[14px] mt-1 ${highlight ? "text-[#ffffff]/75" : "text-[#5B6660]"}`}>{member.role}</p>
+        <p className="text-[14px] mt-1 text-[#5B6660]">{member.role}</p>
       </div>
       {member.image ? (
         <div className="absolute right-0 bottom-0 w-[44%] h-[64%] overflow-hidden">

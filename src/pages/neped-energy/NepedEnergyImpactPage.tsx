@@ -98,7 +98,7 @@ const ROAD_AHEAD: { title: string; text: string; points: string[]; scaleUp: stri
     cta: "Partner on livelihoods and conservation",
   },
   {
-    title: "Scale community energy across Nagaland's unelectrified villages",
+    title: "Scale community energy across Nagaland's remote villages",
     text: "Nagaland has hundreds of villages — many along the Indo-Myanmar border — with no reliable grid connection. NEPeD's Hydroger is a proven, certified, locally manufactured solution. The gap is installation funding and the community-engagement process that makes each unit sustainable.",
     points: [
       "Proven technology (3 kW impulse Hydroger)",

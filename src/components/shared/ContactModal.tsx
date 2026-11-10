@@ -65,7 +65,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="p-8 sm:p-10 space-y-8">
               <div className="space-y-2">
                 <span className="text-[11px] font-mono tracking-wider text-[#5B6660]">
-                  NEPED SOCIETY &amp; NEPeD ENERGY DIVISION
+                  NEPED ORGANISATION &amp; NEPeD ENERGY DIVISION
                 </span>
                 <h2 id="contact-modal-heading" className="text-[28px] sm:text-[32px] font-light tracking-[-0.6px]">
                   Get in Touch
