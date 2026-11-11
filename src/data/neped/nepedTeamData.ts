@@ -79,7 +79,7 @@ export const CERES_STAFF: TeamMember[] = [
   { id: "c5", name: "Kekhrieselie Talie", role: "Technician", image: "/Teammembers/Kekhrieselie Talie.jpg.webp" },
   { id: "c6", name: "Hegou Lhouvum", role: "Technician", image: "/Teammembers/Hegou Lhouvum.jpg.webp" },
   { id: "c7", name: "Atsaba A. Sangtam", role: "Technician", image: "/Teammembers/Atsaba Sangtam.jpg.webp" },
-  { id: "c8", name: "Sarenba Aier", role: "ELC Consultant" },
+  { id: "c8", name: "Sarenba Aier", role: "ELC Consultant", image: "/Teammembers/Sarenba Aier.webp" },
 ];
 
 export interface GoverningBody {
