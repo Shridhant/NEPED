@@ -15,7 +15,7 @@ export function ContactPage() {
       <PageHero
         eyebrow="NEPED ORGANISATION & NEPeD ENERGY DIVISION"
         title="Get in Touch"
-        intro="Reach out about programmes, partnerships, or field deployments — whichever wing your query belongs to."
+        intro="Reach out for enquiries about our programmes, partnerships, field deployments, internships, or research opportunities. We’ll connect you with the right team."
       />
 
       <motion.section {...fadeUpOnView} className="mx-auto max-w-[1200px] px-4 sm:px-6">

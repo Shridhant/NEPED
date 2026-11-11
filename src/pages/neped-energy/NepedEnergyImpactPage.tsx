@@ -77,7 +77,7 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
       "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Authority (MBDA), which installed them after training by NEPeD.",
     ],
     photos: [
-      { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 10.59.02 AM.webp", alt: "A Hydroger installed at a stream" },
+      { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 10.59.03 AM.webp", alt: "A Hydroger powering a light at its installation site" },
       { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 11.13.41 AM-2.webp", alt: "A Hydroger power house" },
       { src: "/gallery-photos/renewable-energy/Screenshot_20230630_213425_WhatsApp.webp", alt: "A village street lit at night" },
     ],
