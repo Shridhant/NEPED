@@ -103,7 +103,7 @@ export const GOVERNING_BODIES: GoverningBody[] = [
     members: [
       { role: "Team Leader", names: "Shri. Kovi Meyase (NCS)" },
       { role: "Executive Secretary", names: "Er. Renbenthung Humtsoe" },
-      { role: "Treasurer / Finance Secretary", names: "Atheo Ezung" },
+      { role: "Treasurer", names: "Atheo Ezung" },
       { role: "Members", names: "Er. L. Moamanen Imchen, Margaret Kezevino, Chichamo Lotha" },
     ],
   },

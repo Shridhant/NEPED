@@ -182,7 +182,7 @@ export function NepedEconomicPage() {
       {/* WHAT WE DO — themed grid */}
       <motion.section {...fadeUpOnView} id="what-we-do" className="scroll-mt-24 mx-auto max-w-[1200px] px-4 sm:px-6">
         <p className={`mb-5 sm:mb-6 ${EYEBROW}`}>What we do</p>
-        <h2 className={H2}>One society, many kinds of work.</h2>
+        <h2 className={H2}>One organisation, many kinds of work.</h2>
         <MobileShowMore
           initialCount={3}
           showLabel="Show all work areas"

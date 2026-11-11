@@ -255,9 +255,11 @@ export function LaunchReveal() {
             exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.35 } }}
             className="absolute inset-0 flex flex-col items-center justify-center gap-8 px-4"
           >
-            <div className="bg-[#ffffff] rounded-md p-3 shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
-              <img src="/logos/neped-logo.webp" alt="NEPED Logo" className="h-28 sm:h-36 w-auto object-contain" />
-            </div>
+            <img
+              src="/NEPED Logo.jpg.webp"
+              alt="NEPED Logo"
+              className="h-28 sm:h-36 w-auto rounded-sm object-contain ring-1 ring-black/5 shadow-[0_10px_40px_rgba(0,0,0,0.45)]"
+            />
             <button
               type="button"
               autoFocus

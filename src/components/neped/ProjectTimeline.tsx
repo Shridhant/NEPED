@@ -99,7 +99,7 @@ const FUNDERS: Logo[] = [
   { alt: "KfW", src: "/logos/kfw.jpeg", className: "max-h-[66px] max-w-[198px]" },
   { alt: "Foundation for Ecological Security (FES)", src: "/logos/fes.jpeg", className: "max-h-[72px] max-w-[160px]" },
   { alt: "Ministry of Textiles, GoI", src: "/logos/ministry-of-textiles.png", className: "max-h-[66px] max-w-[198px]" },
-  { alt: "Meghalaya Basin Development Agency (MBDA)", src: "/logos/mbda.webp", className: "max-h-[96px] max-w-[96px]" },
+  { alt: "Meghalaya Basin Development Authority (MBDA)", src: "/logos/mbda.webp", className: "max-h-[96px] max-w-[96px]" },
   { alt: "Government of Nagaland", src: "/logos/seal-of-nagaland.svg", className: "max-h-[96px] max-w-[96px]" },
   { alt: "Department of Environment, Forests & Climate Change, Nagaland", src: "/logos/dept-environment-forests-nagaland.webp", className: "max-h-[96px] max-w-[96px]" },
   { alt: "Department of Agriculture, Govt. of Nagaland", src: "/logos/dept-agriculture-nagaland.webp", className: "max-h-[96px] max-w-[96px]" },

@@ -74,7 +74,7 @@ const THEMES: { id: string; eyebrow: string; title: string; stat: { value: strin
     paragraphs: [
       "NEPeD has installed 108 Hydrogers (3 kW pico-hydro units) across Nagaland, most of them in remote Indo-Myanmar border villages. Each Hydroger delivers 24×7 off-grid power to communities that had no reliable electricity supply — lighting homes, schools and health posts, and powering mills, blacksmithing, carpentry and food processing.",
       "Every unit is designed, manufactured and serviced within the state, at CERES (Centre of Excellence for Renewable Energy Studies) in Dimapur, in partnership with the Nagaland Tool Room and Training Centre.",
-      "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Agency (MBDA), which installed them after training by NEPeD.",
+      "The model has spread beyond Nagaland: installations now run in Arunachal Pradesh, Sikkim and Ladakh. NEPeD has also supplied 155 Hydrogers and 16 ram pumps to Meghalaya through the Meghalaya Basin Development Authority (MBDA), which installed them after training by NEPeD.",
     ],
     photos: [
       { src: "/gallery-photos/renewable-energy/WhatsApp Image 2026-10-24 at 10.59.02 AM.webp", alt: "A Hydroger installed at a stream" },

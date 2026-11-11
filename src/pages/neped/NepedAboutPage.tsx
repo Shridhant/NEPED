@@ -42,7 +42,7 @@ const CHANGE_STAGES: { title: string; text: string; icon: LucideIcon; image?: { 
   },
   {
     title: "Build local capacity to sustain the work",
-    text: "NEPED trains farmers, village engineers, Self-Help Groups and government field staff — not as one-off events, but as an embedded part of every project cycle. Across three phases, more than 7,000 farmers and 2,000 state government officials completed capacity-building programmes. In the energy programme, rural engineers are trained on-site so that every Hydroger can be maintained and repaired within the village, without waiting for an external technician.",
+    text: "NEPED trains farmers, village engineers, Self-Help Groups and government field staff — not as one-off events, but as an embedded part of every project cycle. Till date, more than 7,000 farmers and 2,000 state government officials completed capacity-building programmes. In the energy programme, rural engineers are trained on-site so that every Hydroger can be maintained and repaired within the village, without waiting for an external technician.",
     icon: GraduationCap,
     image: { src: "/gallery-photos/community-capacity/IMG20230518144010.webp", alt: "A village training session in a community hall" },
   },

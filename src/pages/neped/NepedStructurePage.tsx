@@ -33,7 +33,7 @@ export function NepedStructurePage() {
   const teamLeaders = [
     { name: "Late A M Gokhale (IAS)", period: "Founding Visionary", title: "Founding Advisor & Pioneer", image: "/Team Leaders/A.M. Gokhale, IAS - Team Leader.webp" },
     { name: "Shri. R Kevichusa (IAS)", period: "1995 – 2000", title: "Team Leader", image: "/Team Leaders/R Kevichusa, IAS - Team Leader.webp" },
-    { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader" },
+    { name: "Shri. Khekiye K Sema (IAS)", period: "2000 – 2003", title: "Team Leader", image: "/Team Leaders/Khekiye K Sema, IAS - Team Leader.webp" },
     { name: "Shri. Alemtemshi Jamir (IAS)", period: "2003 – 2006", title: "Team Leader", image: "/Team Leaders/Alemtemshi Jamir, IAS - Team Leader.jpg.webp" },
     { name: "Late Temjen Toy (IAS)", period: "2007 – 2011", title: "Team Leader", image: "/Team Leaders/Temjen Toy, IAS - Team Leader.jpg.webp" },
     { name: "Shri. H. K. Khulu (IAS)", period: "2011 – 2012", title: "Team Leader", image: "/Team Leaders/H.K. Khulu, IAS - Team Leader.jpg.webp" },
