@@ -21,7 +21,8 @@ const DONE_MS = 10000; // overlay removed once the balloons have floated away
 
 const EASE = [0.65, 0, 0.35, 1] as const;
 
-const FESTIVE = ["#E8A33D", "#1E6F4C", "#C0392B", "#2E86C1", "#F4D03F", "#8E44AD", "#ffffff", "#E67E22"];
+// White and gold confetti, to match the white balloons and the gold curtain trim
+const FESTIVE = ["#ffffff", "#ffffff", "#fbf8f1", "#f3ece0", "#f7dc8a", "#d8a845", "#c39234", "#fbe7a6"];
 
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
 const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
@@ -65,7 +66,6 @@ const BALLOONS = Array.from({ length: 18 }, (_, i) => ({
   sway: rand(14, 34),
   delay: rand(0.5, 2.6),
   duration: rand(6.5, 9),
-  color: FESTIVE[i % FESTIVE.length] === "#ffffff" ? "#E8A33D" : FESTIVE[i % FESTIVE.length],
 }));
 
 /** Red velvet: irregular vertical folds (shadow → sheen → shadow), darker at the top and bottom */
@@ -285,7 +285,7 @@ export function LaunchReveal() {
               animate={{ y: "110vh", x: `${c.drift}vw`, rotate: c.spin, opacity: [1, 1, 0.9] }}
               transition={{ duration: c.duration, delay: c.delay, ease: "linear" }}
               className="absolute top-0"
-              style={{ left: `${c.left}%`, width: c.w, height: c.round ? c.w : c.h, backgroundColor: c.color, borderRadius: c.round ? "50%" : 2 }}
+              style={{ left: `${c.left}%`, width: c.w, height: c.round ? c.w : c.h, backgroundColor: c.color, borderRadius: c.round ? "50%" : 2, boxShadow: "0 1px 2px rgba(0,0,0,0.18)" }}
             />
           ))
         : null}
@@ -300,7 +300,7 @@ export function LaunchReveal() {
               animate={{ x: `${c.x}vw`, y: ["0vh", `${c.peak}vh`, "10vh"], rotate: c.spin, opacity: [1, 1, 0] }}
               transition={{ duration: c.duration, delay: c.delay, ease: "easeOut", y: { duration: c.duration, delay: c.delay, times: [0, 0.4, 1], ease: ["easeOut", "easeIn"] } }}
               className={`absolute bottom-0 ${c.fromLeft ? "left-0" : "right-0"}`}
-              style={{ width: c.w, height: c.h, backgroundColor: c.color, borderRadius: 2 }}
+              style={{ width: c.w, height: c.h, backgroundColor: c.color, borderRadius: 2, boxShadow: "0 1px 2px rgba(0,0,0,0.18)" }}
             />
           ))
         : null}
@@ -318,10 +318,20 @@ export function LaunchReveal() {
               style={{ left: `${b.left}%`, width: b.size }}
             >
               <svg viewBox="0 0 60 120" width={b.size} height={b.size * 2} className="drop-shadow-[0_6px_10px_rgba(0,0,0,0.25)]">
-                <ellipse cx="30" cy="34" rx="26" ry="32" fill={b.color} />
-                <ellipse cx="21" cy="22" rx="6" ry="10" fill="#ffffff" opacity="0.35" transform="rotate(-20 21 22)" />
-                <path d="M26 65 L34 65 L30 70 Z" fill={b.color} />
-                <path d="M30 70 Q24 85 31 98 T29 120" stroke="#6b6b6b" strokeWidth="1" fill="none" opacity="0.7" />
+                <defs>
+                  {/* Pearl-white satin: bright highlight up-left, soft ivory-grey toward the rim */}
+                  <radialGradient id={`pearl-${b.id}`} cx="0.36" cy="0.3" r="0.78">
+                    <stop offset="0" stopColor="#ffffff" />
+                    <stop offset="0.45" stopColor="#fbf9f4" />
+                    <stop offset="0.8" stopColor="#e9e5dc" />
+                    <stop offset="1" stopColor="#cfc9bd" />
+                  </radialGradient>
+                </defs>
+                <ellipse cx="30" cy="34" rx="26" ry="32" fill={`url(#pearl-${b.id})`} />
+                <ellipse cx="20" cy="20" rx="5.5" ry="10" fill="#ffffff" opacity="0.95" transform="rotate(-22 20 20)" />
+                <ellipse cx="38" cy="54" rx="9" ry="4" fill="#ffffff" opacity="0.45" transform="rotate(-25 38 54)" />
+                <path d="M26 65 L34 65 L30 70 Z" fill="#e3ded3" />
+                <path d="M30 70 Q24 85 31 98 T29 120" stroke="#c9a14a" strokeWidth="1" fill="none" opacity="0.85" />
               </svg>
             </motion.div>
           ))
