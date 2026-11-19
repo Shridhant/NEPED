@@ -102,9 +102,9 @@ export const GOVERNING_BODIES: GoverningBody[] = [
     title: "Governing Body, NEPeD",
     members: [
       { role: "Team Leader", names: "Shri. Kovi Meyase (NCS)" },
-      { role: "Executive Secretary", names: "Er. Renbenthung Humtsoe" },
+      { role: "Joint Secretary", names: "Er. L. Moamanen Imchen" },
       { role: "Treasurer", names: "Atheo Ezung" },
-      { role: "Members", names: "Er. L. Moamanen Imchen, Margaret Kezevino, Chichamo Lotha" },
+      { role: "Members", names: "Margaret Kezevino, Chichamo Lotha" },
     ],
   },
 ];
